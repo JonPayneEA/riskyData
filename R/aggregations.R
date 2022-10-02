@@ -13,7 +13,7 @@
 #' @import data.table
 #'
 #' @examples
-#' hourlyAgg(Buildwas)
+#' # hourlyAgg(Buildwas)
 hourlyAgg <- function(x, method = 'mean', ...) {
   UseMethod('hourlyAgg', x)
 }
@@ -118,7 +118,7 @@ hourlyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @import data.table
 #'
 #' @examples
-#' dailyAgg(Buildwas)
+#' # dailyAgg(Buildwas)
 dailyAgg <- function(x, method = 'mean', ...) {
   UseMethod('dailyAgg', x)
 }
@@ -223,7 +223,7 @@ dailyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @import data.table
 #'
 #' @examples
-#' monthlyAgg(Buildwas)
+#' #monthlyAgg(Buildwas)
 monthlyAgg <- function(x, method = 'mean', ...) {
   UseMethod('monthlyAgg', x)
 }
@@ -329,7 +329,7 @@ monthlyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @import data.table
 #'
 #' @examples
-#' annualAgg(Buildwas)
+#' #annualAgg(Buildwas)
 annualAgg <- function(x, method = 'mean', ...) {
   UseMethod('annualAgg', x)
 }
@@ -434,7 +434,7 @@ annualAgg.rainAll <- function(x, method = 'mean', ...){
 #' @import data.table
 #'
 #' @examples
-#' hydroYearAgg(Buildwas)
+#' #hydroYearAgg(Buildwas)
 hydroYearAgg <- function(x, method = 'mean', ...) {
   UseMethod('hydroYearAgg', x)
 }
@@ -520,7 +520,7 @@ hydroYearAgg.stageLoad <- function(x, method = 'mean', ...){
 #' @import RcppRoll
 #'
 #' @examples
-#' rollingAggs(Buildwas)
+#' # rollingAggs(Buildwas)
 rollingAggs <- function(dt, rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120), interval = 0.25, method = 'mean') {
   UseMethod('rollingAggs', dt)
 }
