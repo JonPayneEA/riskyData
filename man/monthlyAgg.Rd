@@ -33,5 +33,5 @@ Aggregates sub monthly time series into a monthly resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-#monthlyAgg(Buildwas)
+monthlyAgg(Buildwas)
 }

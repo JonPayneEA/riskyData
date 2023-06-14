@@ -30,5 +30,5 @@ Aggregates sub annual time series into a hydrological year resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-#hydroYearAgg(Buildwas)
+hydroYearAgg(Buildwas)
 }

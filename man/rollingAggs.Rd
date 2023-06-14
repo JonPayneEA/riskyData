@@ -51,5 +51,5 @@ rollingAggs(
 Provides a rolling aggregation of a user defined periods.
 }
 \examples{
-# rollingAggs(Buildwas)
+rollingAggs(Buildwas)
 }
