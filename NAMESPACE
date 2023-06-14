@@ -46,5 +46,3 @@ export(rollingAggs)
 export(uploadPeakFlow)
 import(RcppRoll)
 import(data.table)
-useDynLib(HydroEnR); exportPattern("ˆ[[:alpha:]]+"); importFrom(Rcpp, evalCpp)
-
