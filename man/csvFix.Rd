@@ -29,9 +29,6 @@ csvFix(
 
 \item{edit}{If you wish to manually change file contents set as TRUE}
 }
-\value{
-
-}
 \description{
 Data preprocessing for WISKI files, Constrains an irregular csv
 columns to those of a user specified value. This negates the issue where

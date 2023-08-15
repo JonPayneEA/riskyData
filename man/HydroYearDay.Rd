@@ -12,9 +12,6 @@ HydroYearDay(d, hy_cal = "oct_us_gb")
 \item{hy_cal}{Set to 'oct_us_gb' (USA and UK), but can also be 'sep_br'
 (Brazil), 'apr_cl' (Chille).}
 }
-\value{
-
-}
 \description{
 Creates fields for hydrological year and hydrological day.
 

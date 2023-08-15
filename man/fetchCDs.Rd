@@ -11,9 +11,6 @@ fetchCDs(CD, peakCDs)
 
 \item{peakCDs}{Peak flow database, optional}
 }
-\value{
-
-}
 \description{
 Fetch CDs
 }

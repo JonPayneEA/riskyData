@@ -55,9 +55,6 @@ Available metrics;
 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity',
 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom'}
 }
-\value{
-
-}
 \description{
 The loadAPI function is used to interogate the EAs API. Data for
 all station can be pulled, or when specified to a single site various

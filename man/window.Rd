@@ -27,9 +27,6 @@ series.}
 \item{end}{End date and time. If NULL it will default to the end of the
 series}
 }
-\value{
-
-}
 \description{
 Window is a generic function which extracts the subset of the
 object x observed between the times start and end. If a frequency is specified, the

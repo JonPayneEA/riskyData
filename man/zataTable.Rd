@@ -14,9 +14,6 @@ zataTable(x, ...)
 
 \item{...}{Extra parameters if requirred}
 }
-\value{
-
-}
 \description{
 Converts AMAX data taken from NRFA from type zoo to data.table.
 Maintaining consistency in package.

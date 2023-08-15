@@ -9,9 +9,6 @@ loadPeakCDs(local = NULL)
 \arguments{
 \item{local}{defaults as NULL. To load a local version of the peak flow database and a file link.}
 }
-\value{
-
-}
 \description{
 Load CD data from NRFA
 }

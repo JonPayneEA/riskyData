@@ -26,6 +26,8 @@ library(ggplot2)
 #' 'waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium',
 #' 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity',
 #' 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom'
+#' @param meta Set as TRUE, exports metadata for gauge with the data request
+#'
 #'
 #' @import jsonlite
 #' @import tidyr
@@ -61,7 +63,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                     type = NULL, datapoints = 'standard',
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
-                    obsProperty = NULL){
+                    obsProperty = NULL, meta = TRUE){
   #Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obsVars <- c('waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel',
                'ammonium', 'dissolved-oxygen', 'conductivity', 'ph',
@@ -187,7 +189,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     return(params)
   }
 
-  # Return data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Main data export ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if (!is.null(ID)&!is.null(measure)&!is.null(period)){
     link <- paste0(baselink, '?wiskiID=', ID)
     data <- jsonlite::fromJSON(link)
@@ -204,6 +206,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                        note,]
     measImp <- paste0('http://environment.data.gov.uk/hydrology/id/measures/',
                       datalink)
+
     ## Additional URL commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if (datapoints == 'all')
       datalinkAppend <- paste0(measImp, '/readings.json?_limit=2000000')
@@ -236,9 +239,43 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     format = '%Y-%m-%dT%H:%M',
                                     tz = 'GMT')
     }
+    if(meta == TRUE){
+      metaD <- getMeta(ID = ID,
+                       mainLink = datalinkAppend,
+                       measureLink = measImp,
+                       import = series[,-1:-2])
+
+
+      out <- hydroLoad$new(data = series[,-1:-2],
+                           stationName = metaD$Data[[1]],
+                           riverName = metaD$Data[[2]],
+                           WISKI = metaD$Data[[3]],
+                           RLOID = metaD$Data[[4]],
+                           stationGuide = metaD$Data[[5]],
+                           baseURL = metaD$Data[[6]],
+                           dataURL = metaD$Data[[7]],
+                           measureURL = metaD$Data[[8]],
+                           idNRFA = metaD$Data[[9]],
+                           urlNRFA = metaD$Data[[10]],
+                           easting = metaD$Data[[11]],
+                           northing = metaD$Data[[12]],
+                           latitude = metaD$Data[[13]],
+                           longitude = metaD$Data[[14]],
+                           area = metaD$Data[[15]],
+                           parameter = metaD$Data[[16]],
+                           unitName = metaD$Data[[17]],
+                           unit = metaD$Data[[18]],
+                           datum = metaD$Data[[19]],
+                           boreholeDepth = metaD$Data[[20]],
+                           aquifer = metaD$Data[[21]],
+                           timeZone = metaD$Data[[22]])
+      return(out)
+    }
+  }else{
     return(series[,-1:-2])
   }
 }
+
 
 
 

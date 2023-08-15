@@ -9,9 +9,6 @@ uploadPeakFlow(filepath)
 \arguments{
 \item{filepath}{file path to Peak Flow data folder}
 }
-\value{
-
-}
 \description{
 Upload peak flow data from a local source
 }

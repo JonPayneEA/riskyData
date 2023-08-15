@@ -16,9 +16,6 @@ loadPE(link, skip = 0, meta_rows = 10, impute = TRUE)
 \item{impute}{Set to TRUE, this fills in missing data using the
 'forecast::na.interp()' function}
 }
-\value{
-
-}
 \description{
 Load potential evaporation data
 }

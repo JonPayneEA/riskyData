@@ -10,9 +10,6 @@ metaCollate(...)
 \item{...}{WISKI deived datasets of classes; 'flowLoad', 'rrainLoad', and
 'stageLoad'}
 }
-\value{
-
-}
 \description{
 Collate the metadata of numerous WISKI datasets.
 }

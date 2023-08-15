@@ -44,9 +44,6 @@ rollingAggs(
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 }
-\value{
-
-}
 \description{
 Provides a rolling aggregation of a user defined periods.
 }

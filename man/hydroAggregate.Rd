@@ -20,15 +20,12 @@ hydroAggregate(
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 }
-\value{
-
-}
 \description{
 Hydro Aggregate
 }
 \details{
 Wrapper function for the various aggregation methods employed in
-HydroEnR
+riskyData
 }
 \examples{
 #hydroAggregate(buildwas)

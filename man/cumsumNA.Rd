@@ -26,9 +26,6 @@ cumsumNA(x, ...)
 
 \item{...}{Additional parameters as required}
 }
-\value{
-
-}
 \description{
 Provides a cumulative sum of rain gauge data while excluding NA
 values.

@@ -14,7 +14,7 @@
 #'
 #' @return
 #' @export
-#' @rawNamespace useDynLib(HydroEnR); exportPattern("ˆ[[:alpha:]]+"); importFrom(Rcpp, evalCpp)
+#'
 #'
 loadPE <- function(link,
                    skip = 0,

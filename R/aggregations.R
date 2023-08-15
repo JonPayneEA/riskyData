@@ -3,7 +3,7 @@
 #' @description Aggregates sub hourly time series into an hourly resolution,
 #' aggregations are carried out to the calendar day not a rolling time period.
 #'
-#' @param x Data generated in the HydroEnR package
+#' @param x Data generated in the riskyData package
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
@@ -108,7 +108,7 @@ hourlyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @description Aggregates sub daily time series into a daily resolution,
 #' aggregations are carried out to the calendar day not a rolling time period.
 #'
-#' @param x Data generated in the HydroEnR package
+#' @param x Data generated in the riskyData package
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
@@ -213,7 +213,7 @@ dailyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @description Aggregates sub monthly time series into a monthly resolution,
 #' aggregations are carried out to the calendar day not a rolling time period.
 #'
-#' @param x Data generated in the HydroEnR package
+#' @param x Data generated in the riskyData package
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
@@ -319,7 +319,7 @@ monthlyAgg.rainAll <- function(x, method = 'mean', ...){
 #' @description Aggregates sub annual time series into an annual resolution,
 #' aggregations are carried out to the calendar day not a rolling time period.
 #'
-#' @param x Data generated in the HydroEnR package
+#' @param x Data generated in the riskyData package
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
@@ -424,7 +424,7 @@ annualAgg.rainAll <- function(x, method = 'mean', ...){
 #' @description Aggregates sub annual time series into a hydrological year resolution,
 #' aggregations are carried out to the calendar day not a rolling time period.
 #'
-#' @param x Data generated in the HydroEnR package
+#' @param x Data generated in the riskyData package
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
@@ -608,7 +608,7 @@ rollingAggs.stageLoad <- function(dt, rolling_aggregations = c(1, 2, 3, 4, 8, 24
 #' @title Hydro Aggregate
 #'
 #' @details Wrapper function for the various aggregation methods employed in
-#' HydroEnR
+#' riskyData
 #'
 #' @param dt flowLoad, rainLoad, or stageLoad data
 #' @param rolling_aggregations User defined periods of aggregation
