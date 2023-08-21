@@ -6,7 +6,7 @@
 #' @param x Raw rain gauge data or merged dataset
 #' @param ... Additional parameters as required
 #'
-#' @return
+#' @return A cumulative sum of rain gauge data
 #' @export
 #'
 #' @examples

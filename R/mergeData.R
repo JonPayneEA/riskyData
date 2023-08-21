@@ -5,7 +5,7 @@
 #'
 #' @param ... Multiple flowLoad, rainLoad, and /or stageLoad class data.
 #'
-#' @return
+#' @return Merged dataset of rain gauges and catchment averages
 #' @export
 #'
 #' @examples

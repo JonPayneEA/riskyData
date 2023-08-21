@@ -8,7 +8,7 @@
 #' @param hy_cal hydrological year calendar. Set to 'oct_us_gb' (USA and UK), but can also be 'sep_br'
 #' (Brazil), 'apr_cl' (Chille).
 #'
-#' @return
+#' @return Creates a hydrological year and hydrological day column
 #' @export
 #'
 #' @examples

@@ -7,7 +7,7 @@
 #' @param interval Set as 0.25 to represent 15 minute data, for hourly change to 1 etc.
 #' @param method 'min', 'max', 'mean', 'median', and 'sum' options available
 #'
-#' @return
+#' @return A dataset containg numerous aggregations on a roll
 #' @export
 #'
 #' @import data.table

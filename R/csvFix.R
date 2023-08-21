@@ -14,7 +14,7 @@
 #' @param expected_col Constrains the csv to a certain number of columns
 #' @param edit If you wish to manually change file contents set as TRUE
 #'
-#' @return
+#' @return A tidied csv file suitable for import
 #' @export
 #'
 #' @examples

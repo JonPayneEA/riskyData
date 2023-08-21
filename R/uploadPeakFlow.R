@@ -4,7 +4,7 @@ library(XML)
 #'
 #' @param filepath file path to Peak Flow data folder
 #'
-#' @return
+#' @return An imported CD taken from an XML file
 #' @export
 #'
 #' @examples

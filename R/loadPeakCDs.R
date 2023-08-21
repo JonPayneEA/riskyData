@@ -2,7 +2,7 @@
 #'
 #' @param local defaults as NULL. To load a local version of the peak flow database and a file link.
 #'
-#' @return
+#' @return Imports CDs from the NRFA API
 #' @export
 #'
 #' @examples

@@ -5,7 +5,7 @@
 #' @param ... WISKI deived datasets of classes; 'flowLoad', 'rrainLoad', and
 #' 'stageLoad'
 #'
-#' @return
+#' @return Collates metadata from numerous sites
 #' @export
 #'
 #' @examples

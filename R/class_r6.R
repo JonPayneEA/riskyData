@@ -39,9 +39,9 @@ library(cli)
 # gauge$rollingAggs()
 
 
-#' R6 Class representing a hydroLoad import from the API
+#' R6 Class representing a `hydroLoad` import from the API
 #'
-#' A hydrooLoad contains public raw data and private metadata.
+#' A `hydroLoad` contains public raw data and private metadata.
 hydroLoad <- R6Class(
   classname = "hydroLoad",
   public = list(

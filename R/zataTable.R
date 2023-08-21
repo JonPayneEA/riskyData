@@ -6,9 +6,9 @@
 #' Maintaining consistency in package.
 #'
 #' @param x data in zoo format
-#' @param ... Extra parameters if requirred
+#' @param ... Extra parameters if required
 #'
-#' @return
+#' @return Converted zoo to data.table
 #' @export
 #'
 #' @examples

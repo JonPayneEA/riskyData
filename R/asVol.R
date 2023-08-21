@@ -3,7 +3,7 @@
 #' @param x Data set of 'flowLoad' or 'rainLoad' class
 #' @param area_km Area of coverage for rain gauges
 #'
-#' @return
+#' @return Calculated volume of flow or rainfall
 #' @export
 #'
 #' @examples

@@ -3,7 +3,7 @@
 #' @param CD can be numeric ID relating to peak flows database or a file path to catchment descriptor file .cd2, .cd3, or .xml
 #' @param peakCDs Peak flow database, optional
 #'
-#' @return
+#' @return CDs in an S4 class
 #' @export
 #'
 #' @examples

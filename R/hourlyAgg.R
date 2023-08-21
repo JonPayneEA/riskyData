@@ -7,7 +7,7 @@
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
-#' @return
+#' @return Hourly aggregated data.table
 #' @export
 #'
 #' @import data.table
