@@ -17,7 +17,8 @@ loadAPI(
   easting = NULL,
   northing = NULL,
   dist = NULL,
-  obsProperty = NULL
+  obsProperty = NULL,
+  meta = TRUE
 )
 }
 \arguments{
@@ -54,6 +55,8 @@ Available metrics;
 'waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium',
 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity',
 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom'}
+
+\item{meta}{Set as TRUE, exports metadata for gauge with the data request}
 }
 \description{
 The loadAPI function is used to interogate the EAs API. Data for

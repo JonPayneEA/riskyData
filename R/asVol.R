@@ -24,6 +24,16 @@ asVol <- function(x, area_km){
 
 #' @rdname asVol
 #' @export
+asVol.data.table <- function(x, area_km = NULL){
+  tDiff <- difftime(x$dateTime[2],
+                    x$dateTime[1],
+                    units = 'mins')
+  tDiff <- as.numeric(tDiff)
+  x[, volume := value * tDiff * 60]
+}
+
+#' @rdname asVol
+#' @export
 asVol.flowLoad <- function(x, area_km = NULL){
   tDiff <- difftime(x$GaugeData$DateTime[2],
                     x$GaugeData$DateTime[1],

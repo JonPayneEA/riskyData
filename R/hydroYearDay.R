@@ -12,8 +12,56 @@
 #' @export
 #'
 #' @examples
-#' HydroYearrDay(Buildwas$GaugeData$DateTime, hy_cal = 'oct_us_gb')
-hydroYearDay <-function(x, hy_cal = 'oct_us_gb'){
+#' hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = 'oct_us_gb')
+hydroYearDay <- function(x, calendar = 'oct_us_gb', ...) {
+  UseMethod('hourlyAgg', x)
+}
+
+#' @rdname hydroYearDay
+#' @export
+hydroYearDay.data.table <-function(x, calendar = 'oct_us_gb'){
+  date <-as.Date(x$dateTime)
+
+  m <- as.numeric(month(date)) # extract month
+  y <- as.numeric(year(date)) # extract year
+
+  ## Create array for hydrological year
+  hydroYear <- y
+
+  if (calendar == 'oct_us_gb'){
+    ## USA and Great Britain
+    # Hydrological year 2010 starts on Oct 1st 2009 and finishes on Sep 30th 2010
+    hydroYear[m >= 10] <- (hydroYear[m >= 10] + 1)
+    startHY <- as.Date(paste0(hydroYear - 1,'-10-01'))
+
+  } else if(calendar == 'sep_br'){
+    ## Brazil
+    # Hydrological year 2010 starts on Sep 1st 2009 and finishes on Aug 31st 2010
+    hydroYear[m >= 9] <- (hydroYear[m >= 9] + 1)
+    startHY <- as.Date(paste0(hydroYear - 1,'-09-01'))
+
+  } else if(calendar == 'apr_cl'){
+    ## Chile
+    # Hydrological year 2010 starts on Apr 1st 2010 and finishes on Mar 31st 2011
+    hydroYear[m <= 3] <-(hydroYear[m <= 3] - 1)
+    startHY <- as.Date(paste0(hydroYear, '-04-01'))
+
+  } else {
+    stop(paste0('Unkown hydrological year calendar:', calendar))
+  }
+
+  ## days since the beginning of the hydro year
+  hydroYearDay <- as.numeric(date - startHY + 1)
+
+  if (any(hydroYearDay <1|hydroYearDay>366)){
+    stop('Error when computing day of hydro year')
+  }
+  return(data.table(hydroYear, hydroYearDay))
+}
+
+#' @rdname hydroYearDay
+#' @export
+hydroYearDay.default <-function(x, hy_cal = 'oct_us_gb'){
 
   if(class(x)!='Date'){stop('x should be of class Date - use as.Date')}
 
