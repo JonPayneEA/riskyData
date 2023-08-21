@@ -7,7 +7,7 @@
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
-#' @return
+#' @return Data are aggregated to the hydrological year
 #' @export
 #'
 #' @import data.table

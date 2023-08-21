@@ -4,7 +4,19 @@
 \alias{hydroLoad}
 \title{R6 Class representing a hydroLoad import from the API}
 \description{
+R6 Class representing a hydroLoad import from the API
+
+R6 Class representing a hydroLoad import from the API
+}
+\details{
 A hydrooLoad contains public raw data and private metadata.
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{data}}{Imported data via the API tool. Uses data.table.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -35,6 +47,7 @@ A hydrooLoad contains public raw data and private metadata.
 \if{html}{\out{<a id="method-hydroLoad-new"></a>}}
 \if{latex}{\out{\hypertarget{method-hydroLoad-new}{}}}
 \subsection{Method \code{new()}}{
+Create a new hydroLoad object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{hydroLoad$new(
   data = NA,
@@ -66,6 +79,66 @@ A hydrooLoad contains public raw data and private metadata.
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{Raw data}
+
+\item{\code{stationName}}{Name of gauge}
+
+\item{\code{riverName}}{River name}
+
+\item{\code{WISKI}}{WISKI ID}
+
+\item{\code{stationGuide}}{Station Unique IDentifier}
+
+\item{\code{baseURL}}{Base URL used in the API}
+
+\item{\code{dataURL}}{End of URL that downloaded the raw data}
+
+\item{\code{measureURL}}{Primarily used in gaining the metadata}
+
+\item{\code{idNRFA}}{National River Flow Archive station identifier}
+
+\item{\code{easting}}{Easting coordinate}
+
+\item{\code{northing}}{Northing coordinate}
+
+\item{\code{latitude}}{Latitude coordinate}
+
+\item{\code{longitude}}{Longitude coordinate}
+
+\item{\code{area}}{Catchment area of flow/level gauge}
+
+\item{\code{parameter}}{Details the collected data e.g. flow, level etc.}
+
+\item{\code{unitName}}{Unit name used}
+
+\item{\code{unit}}{Details on the unit of measurement}
+
+\item{\code{datum}}{Datum of the gauge, ifavailable}
+
+\item{\code{boreholeDepth}}{Depth of borehole recording}
+
+\item{\code{aquifer}}{Details on the aquifer type}
+
+\item{\code{start}}{Function calculates the date of the first imported record}
+
+\item{\code{end}}{Function calculates the date of the last imported record}
+
+\item{\code{timeZone}}{Timezone used in data, defaults to GMT}
+
+\item{\code{records}}{Function calculates the number of records}
+
+\item{\code{ROLID}}{River Levels on the Internet ID}
+
+\item{\code{urlNRFANational}}{River Flow Archive station URL}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A new \code{hydroLoad} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-hydroLoad-print"></a>}}

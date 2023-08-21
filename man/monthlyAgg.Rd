@@ -28,6 +28,9 @@ monthlyAgg(x, method = "mean", ...)
 
 \item{...}{Other variables as required}
 }
+\value{
+An aggregated dataset taken to the calendar month
+}
 \description{
 Aggregates sub monthly time series into a monthly resolution,
 aggregations are carried out to the calendar day not a rolling time period.

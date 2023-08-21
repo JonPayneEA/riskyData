@@ -12,7 +12,7 @@
 #' @param impute Set to TRUE, this fills in missing data using the
 #' 'forecast::na.interp()' function
 #'
-#' @return
+#' @return A tidied dataset of PE data
 #' @export
 #'
 #'

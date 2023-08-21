@@ -34,7 +34,7 @@
 #' @import tidyr
 #' @import ggplot2
 #'
-#' @return
+#' @return Vartious outputs see vignette
 #' @export
 #'
 #' @examples

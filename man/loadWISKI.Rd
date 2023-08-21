@@ -28,6 +28,9 @@ the first 2 must be 'DateTime' and 'Value'}
 
 \item{...}{Extra parameters to add to the fread command}
 }
+\value{
+Dataset loaded into R from WISKI exports
+}
 \description{
 Load data downloaded from WISKI, in the EA ascii format. Metadata
 are preserved. Loaded data are in the form of a list, called either flowLoad,

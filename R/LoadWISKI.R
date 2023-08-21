@@ -17,7 +17,7 @@ library(data.table)
 #' the first 2 must be 'DateTime' and 'Value'
 #' @param ... Extra parameters to add to the fread command
 #'
-#' @return
+#' @return Dataset loaded into R from WISKI exports
 #' @export
 #'
 #' @import data.table

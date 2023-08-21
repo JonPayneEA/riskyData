@@ -2,7 +2,7 @@
 #'
 #' @param x Raw data in data.table format in hydroLoad class
 #'
-#' @return
+#' @return The hydroYear column removed from the `obj$data`
 #' @export
 #'
 #' @examples
@@ -25,7 +25,7 @@ rmHY.data.table <- function(x){
 #'
 #' @param x Raw data in data.table format in hydroLoad class
 #'
-#' @return
+#' @return The hydroYearDay column removed from the `obj$data`
 #' @export
 #'
 #' @examples
@@ -48,7 +48,7 @@ rmHYD.data.table <- function(x){
 #'
 #' @param x Raw data in data.table format in hydroLoad class
 #'
-#' @return
+#' @return The volume column removed from the `obj$data`
 #' @export
 #'
 #' @examples

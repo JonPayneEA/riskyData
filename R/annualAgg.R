@@ -7,7 +7,7 @@
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
-#' @return
+#' @return A dataset of annually aggregated data
 #' @export
 #'
 #' @import data.table

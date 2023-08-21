@@ -7,7 +7,7 @@
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
-#' @return
+#' @return An aggregated dataset taken to the calendar month
 #' @export
 #'
 #' @import data.table

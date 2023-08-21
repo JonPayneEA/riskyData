@@ -3,9 +3,9 @@
 #' @param ID Use to specify a particular WISKI ID
 #' @param mainLink URL to the main data download
 #' @param measureLink URL to the measures element of the site
-#' @param import The main raw data import fiile, used to collate dates etc.
+#' @param import The main raw data import file, used to collate dates etc.
 #'
-#' @return
+#' @return A data.table of gauge metadata, for adding to the R6 `hydroLoad`
 #' @export
 #'
 #' @examples

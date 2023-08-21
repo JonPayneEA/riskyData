@@ -28,6 +28,9 @@ annualAgg(x, method = "mean", ...)
 
 \item{...}{Other variables as required}
 }
+\value{
+A dataset of annually aggregated data
+}
 \description{
 Aggregates sub annual time series into an annual resolution,
 aggregations are carried out to the calendar day not a rolling time period.

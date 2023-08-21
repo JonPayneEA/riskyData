@@ -14,14 +14,14 @@
 #' @param end End date and time. If NULL it will default to the end of the
 #' series
 #'
-#' @return
+#' @return A tidied window of data
 #' @export
 #'
 #' @examples
 #' window(rain, start = '1988-06-12 23:30')
-# window <- function(x, start, end){
-#   UseMethod('window', x)
-# }
+window <- function(x, start, end){
+  UseMethod('window', x)
+}
 
 #' @rdname window
 #' @export

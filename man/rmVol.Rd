@@ -9,6 +9,9 @@ rmVol(x)
 \arguments{
 \item{x}{Raw data in data.table format in hydroLoad class}
 }
+\value{
+The volume column removed from the \code{obj$data}
+}
 \description{
 Remove calculated volume from hydroYear class
 }

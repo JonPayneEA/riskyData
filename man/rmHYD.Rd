@@ -12,6 +12,9 @@ rmHYD(x)
 \arguments{
 \item{x}{Raw data in data.table format in hydroLoad class}
 }
+\value{
+The hydroYearDay column removed from the \code{obj$data}
+}
 \description{
 Remove hydrological day of year from hydroYear class
 }
