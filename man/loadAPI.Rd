@@ -58,6 +58,9 @@ Available metrics;
 
 \item{meta}{Set as TRUE, exports metadata for gauge with the data request}
 }
+\value{
+Vartious outputs see vignette
+}
 \description{
 The loadAPI function is used to interogate the EAs API. Data for
 all station can be pulled, or when specified to a single site various

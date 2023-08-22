@@ -25,6 +25,9 @@ hydroYearAgg(x, method = "mean", ...)
 
 \item{...}{Other variables as required}
 }
+\value{
+Data are aggregated to the hydrological year
+}
 \description{
 Aggregates sub annual time series into a hydrological year resolution,
 aggregations are carried out to the calendar day not a rolling time period.

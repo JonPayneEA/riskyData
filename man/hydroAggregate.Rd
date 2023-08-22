@@ -20,6 +20,9 @@ hydroAggregate(
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 }
+\value{
+Numerous aggregations
+}
 \description{
 Hydro Aggregate
 }

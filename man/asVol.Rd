@@ -20,6 +20,9 @@ asVol(x, area_km)
 
 \item{area_km}{Area of coverage for rain gauges}
 }
+\value{
+Calculated volume of flow or rainfall
+}
 \description{
 Add convert flow or rainfall data to a volume
 }

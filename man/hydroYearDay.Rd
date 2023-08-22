@@ -18,6 +18,9 @@ hydroYearDay(x, calendar = "oct_us_gb", ...)
 
 \item{d}{Array of dates of class Date}
 }
+\value{
+Creates a hydrological year and hydrological day column
+}
 \description{
 Creates fields for hydrological year and hydrological day.
 

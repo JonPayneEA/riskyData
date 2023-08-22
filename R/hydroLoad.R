@@ -1,81 +1,56 @@
-library(R6)
-library(cli)
-
-# gauge <- loadAPI(ID = '2001',
-#                  measure = 'flow',
-#                  period = 900,
-#                  type = 'instantaneous',
-#                  datapoints = 'range',
-#                  from = '2020-07-29',
-#                  to = '2022-08-01')
-#
-# gauge <- loadAPI(ID = '2001',
-#                  measure = 'flow',
-#                  period = 900,
-#                  type = 'instantaneous',
-#                  datapoints = 'all')
-#
-# gauge$hydroYearDay()$hydroYearAgg()
-#
-# gauge$data
-# gauge$quality()
-# gauge$methods()
-# gauge$meta()
-# print(gauge)
-# gauge$asVol()
-# gauge$hydroYearDay()
-# gauge$rmVol()
-# gauge$rmHY()
-# gauge$rmHYD()
-# gauge$summary()
-# gauge$start()
-# gauge$coords()
-# gauge$nrfa()
-# gauge$hourlyAgg()
-# gauge$dailyAgg()
-# gauge$monthlyAgg()
-# gauge$annualAgg()
-# gauge$hydroYearAgg(method = 'max')
-# gauge$rollingAggs()
-
-
-#' R6 Class representing a `hydroLoad` import from the API
+#' @title R6 object for imported data via the EA API
 #'
-#' A `hydroLoad` contains public raw data and private metadata.
-hydroLoad <- R6Class(
+#' @description
+#' This is the base class for all data imported via the API. A hydroLoad contains public raw data and private metadata.
+#'
+#' @param data Raw data
+#' @param stationName Name of gauge
+#' @param riverName River name
+#' @param WISKI WISKI ID
+#' @param RLOID River Levels on the Internet ID
+#' @param stationGuide Station Unique IDentifier
+#' @param baseURL Base URL used in the API
+#' @param dataURL End of URL that downloaded the raw data
+#' @param measureURL Primarily used in gaining the metadata
+#' @param idNRFA National River Flow Archive station identifier
+#' @param urlNRFA National River Flow Archive station URL
+#' @param easting Easting coordinate
+#' @param northing Northing coordinate
+#' @param latitude Latitude coordinate
+#' @param longitude Longitude coordinate
+#' @param area Catchment area of flow/level gauge
+#' @param parameter Details the collected data e.g. flow, level etc.
+#' @param unitName Unit name used
+#' @param unit Details on the unit of measurement
+#' @param datum Datum of the gauge, if available
+#' @param boreholeDepth Depth of borehole recording
+#' @param aquifer Details on the aquifer type
+#' @param start Function calculates the date of the first imported record
+#' @param end Function calculates the date of the last imported record
+#' @param timeZone Time zone used in data, defaults to GMT
+#' @param records Function calculates the number of records
+#'
+#' @param  hourlyAgg See [hourlyAgg]
+#' @param  dailyAgg See [dailyAgg]
+#' @param  monthlyAgg See [monthlyAgg]
+#' @param  annualAgg See [annualAgg]
+#' @param  hydroYearAgg See [hydroYearAgg]
+#' @param  rollingAggs See [rollingAggs]
+#'
+#' @import R6
+#' @import cli
+#'
+#' @name hydroLoad
+#' @rdname hydroLoad
+#' @return A class containing raw data, metadata and methods
+#' @export
+hydroLoad <- R6::R6Class(
   classname = "hydroLoad",
   public = list(
     #' @field data Imported data via the API tool. Uses data.table.
     data = NULL,
     #' @description
-    #' Create a new hydroLoad object.
-    #' @param data Raw data
-    #' @param stationName Name of gauge
-    #' @param riverName River name
-    #' @param WISKI WISKI ID
-    #' @param RLOID River Levels on the Internet ID
-    #' @param stationGuide Station Unique IDentifier
-    #' @param baseURL Base URL used in the API
-    #' @param dataURL End of URL that downloaded the raw data
-    #' @param measureURL Primarily used in gaining the metadata
-    #' @param idNRFA National River Flow Archive station identifier
-    #' @param urlNRFA National River Flow Archive station URL
-    #' @param easting Easting coordinate
-    #' @param northing Northing coordinate
-    #' @param latitude Latitude coordinate
-    #' @param longitude Longitude coordinate
-    #' @param area Catchment area of flow/level gauge
-    #' @param parameter Details the collected data e.g. flow, level etc.
-    #' @param unitName Unit name used
-    #' @param unit Details on the unit of measurement
-    #' @param datum Datum of the gauge, if available
-    #' @param boreholeDepth Depth of borehole recording
-    #' @param aquifer Details on the aquifer type
-    #' @param start Function calculates the date of the first imported record
-    #' @param end Function calculates the date of the last imported record
-    #' @param timeZone Time zone used in data, defaults to GMT
-    #' @param records Function calculates the number of records
-    #' @return A new `hydroLoad` object.
+    #' Initialise the new hydroLoad object
     initialize = function(data = NA,
                           stationName = NA,
                           riverName = NA,
@@ -129,9 +104,7 @@ hydroLoad <- R6Class(
     },
     #' @description
     #' Display the R6 object
-    #' @param ... Dataset details
-    #' @example
-    #' #obj$print()
+    #' @param ... (ignored).
     print = function(...) {
       cli::cli_h1("Class: hydroLoad")
       cli::cli_h2("Private:")
@@ -153,9 +126,8 @@ hydroLoad <- R6Class(
     },
     #' @description
     #' Display the methods available in the R6 object
-    #' @example
-    #' #obj$methods()
-    methods = function() {
+    #' @param ... (ignored).
+    methods = function(...) {
       ## Collate the methods
       usage <- c('obj$data', 'obj$meta()', 'obj$asVol()', 'obj$hydroYearDay()',
                  'obj$rmVol()', 'obj$rmHY()', 'obj$rmHYD()', 'obj$summary()',
@@ -195,9 +167,8 @@ hydroLoad <- R6Class(
     },
     #' @description
     #' Display a summary of the R6 object
-    #' @example
-    #' #obj$summary()
-    summary = function() {
+    #' @param ... (ignored).
+    summary = function(...) {
       cat("hydroLoad: \n")
       cat("\tStation ID: ", private$WISKI, "\n", sep = "")
       cat("\tStart: ", as.character(private$start()), "\n", sep = "")
@@ -210,62 +181,55 @@ hydroLoad <- R6Class(
     },
     #' @description
     #' Calculate the volume of water for flow or rainfall data
-    #' @example
-    #' #obj$asVol()
-    asVol = function(){
+    #' @param ... (ignored).
+    asVol = function(...){
       asVol(x = self$data)
       invisible(self)
     },
     #' @description
     #' Calculate hydrological year and day
-    #' @example
-    #' #obj$hydroYearDay()
-    hydroYearDay = function(){
+    #' @param ... (ignored).
+    hydroYearDay = function(...){
       dt <- hydroYearDay(x = self$data)
       self$data <- data.table(self$data, dt)
       invisible(self)
     },
     #' @description
     #' Remove the calculated volume
-    #' @example
-    #' #obj$rmVol()
-    rmVol = function(){
+    #' @param ... (ignored).
+    rmVol = function(...){
       rmVol(x = self$data)
       invisible(self)
     },
     #' @description
     #' Remove the calculated hydroYear
-    #' @example
-    #' #obj$rmHY()
-    rmHY = function(){
+    #' @param ... (ignored).
+    rmHY = function(...){
       rmHY(x = self$data)
       invisible(self)
     },
     #' @description
     #' Remove the calculated hydrological day
-    #' @example
-    #' #obj$rmHY()
-    rmHYD = function(){
+    #' @param ... (ignored).
+    rmHYD = function(...){
       rmHYD(x = self$data)
       invisible(self)
     },
     #' @description
     #' Return the coordinates of the gauge
-    #' @example
-    #' #obj$coords()
-    coords = function() {
+    #' @param ... (ignored).
+    coords = function(...) {
       dt <- data.table(Easting = private$easting,
                        Northing = private$northing,
                        Latitude = private$latitude,
                        Longitude = private$longitude
-                       )
+      )
       return(dt)
     },
     #' @description
     #' Return the NRFA details of the gauge
-    #' @example
-    #' #obj$nrfa()
-    nrfa = function() {
+    #' @param ... (ignored).
+    nrfa = function(...) {
       dt <- data.table(WISKI = private$WISKI,
                        codeNRFA = private$idNRFA,
                        urlNRFA = private$urlNRFA)
@@ -274,8 +238,6 @@ hydroLoad <- R6Class(
     #' @description
     #' Return the hourly aggregated data
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @example
-    #' #obj$hourlyAgg()
     hourlyAgg = function(method = 'mean') {
       dt <- hourlyAgg(x = self$data, method = method)
       return(dt)
@@ -283,8 +245,6 @@ hydroLoad <- R6Class(
     #' @description
     #' Return the daily aggregated data
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @example
-    #' #obj$dauilyAgg()
     dailyAgg = function(method = 'mean') {
       dt <- dailyAgg(x = self$data, method = method)
       return(dt)
@@ -292,8 +252,6 @@ hydroLoad <- R6Class(
     #' @description
     #' Return the monthly aggregated data
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @example
-    #' #obj$monthlyAgg()
     monthlyAgg = function(method = 'mean') {
       dt <- monthlyAgg(x = self$data, method = method)
       return(dt)
@@ -301,8 +259,6 @@ hydroLoad <- R6Class(
     #' @description
     #' Return the annually aggregated data
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @example
-    #' #obj$annualAgg()
     annualAgg = function(method = 'mean') {
       dt <- annualAgg(x = self$data, method = method)
       return(dt)
@@ -310,8 +266,6 @@ hydroLoad <- R6Class(
     #' @description
     #' Return the aggregated data by hydrological year
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @example
-    #' #obj$hydroYearAgg()
     hydroYearAgg = function(method = 'mean') {
       dt <- hydroYearAgg(x = self$data, method = method)
       return(dt)
@@ -321,17 +275,14 @@ hydroLoad <- R6Class(
     #' @param method Choose mean, median, min, max, and sum for volumes
     #' @param rolling_aggregations The hourly aggregations selected by the user
     #' @param interval Corrects for the time step of the data, set to 0.25 hours
-    #' @example
-    #' #obj$hourlyAgg()
     rollingAggs = function(method = 'mean', rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120), interval = 0.25) {
       dt <- rollingAggs(x = self$data, method = method)
       return(dt)
     },
     #' @description
     #' Returns the metadata as a data.table
-    #' @example
-    #' #obj$meta()
-    meta = function() {
+    #' @param ... (ignored).
+    meta = function(...) {
       dt <- data.table(
         stationName = private$stationName,
         riverName = private$riverName,
@@ -361,10 +312,9 @@ hydroLoad <- R6Class(
       return(dt)
     },
     #' @description
-    #' Displays the number of observations uinder each quality flag
-    #' @example
-    #' #obj$quality()
-    quality = function() {
+    #' Displays the number of observations under each quality flag
+    #' @param ... (ignored).
+    quality = function(...) {
       dt <- self$data[, .(count = .N), by = quality]
       return(dt)
     }
@@ -372,31 +322,6 @@ hydroLoad <- R6Class(
 
   ## Set private fields (hidden from normal view)
   private = list(
-    #' @field stationName Name of gauge
-    #' @field riverName River name
-    #' @field WISKI WISKI ID
-    #' @field RLOID River Levels on the Internet ID
-    #' @field stationGuide Station Unique IDentifier
-    #' @field baseURL Base URL used in the API
-    #' @field dataURL End of URL that downloaded the raw data
-    #' @field measureURL Primarily used in gaining the metadata
-    #' @field idNRFA National River Flow Archive station identifier
-    #' @field urlNRFA National River Flow Archive station URL
-    #' @field easting Easting coordinate
-    #' @field northing Northing coordinate
-    #' @field latitude Latitude coordinate
-    #' @field longitude Longitude coordinate
-    #' @field area Catchment area of flow/level gauge
-    #' @field fieldeter Details the collected data e.g. flow, level etc.
-    #' @field unitName Unit name used
-    #' @field unit Details on the unit of measurement
-    #' @field datum Datum of the gauge, if available
-    #' @field boreholeDepth Depth of borehole recording
-    #' @field aquifer Details on the aquifer type
-    #' @field start Function calculates the date of the first imported record
-    #' @field end Function calculates the date of the last imported record
-    #' @field timeZone Time zone used in data, defaults to GMT
-    #' @field records Function calculates the number of records
     stationName = NULL,
     start = function(){
       return(min(self$data$dateTime))
@@ -430,6 +355,4 @@ hydroLoad <- R6Class(
     }
   )
 )
-
-
 

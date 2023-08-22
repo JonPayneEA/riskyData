@@ -13,7 +13,10 @@ getMeta(ID = NULL, mainLink = NULL, measureLink = NULL, import = NULL)
 
 \item{measureLink}{URL to the measures element of the site}
 
-\item{import}{The main raw data import fiile, used to collate dates etc.}
+\item{import}{The main raw data import file, used to collate dates etc.}
+}
+\value{
+A data.table of gauge metadata, for adding to the R6 \code{hydroLoad}
 }
 \description{
 Import metadata for a gauge

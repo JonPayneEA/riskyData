@@ -11,4 +11,24 @@ Language: es
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    data.table
+    data.table,
+    jsonlite,
+    R6,
+    cli,
+    tidyr,
+    ggplot2
+Collate: 
+    'annualAgg.R'
+    'asVol.R'
+    'dailyAgg.R'
+    'getMeta.R'
+    'hourlyAgg.R'
+    'hydroLoad.R'
+    'hydroAggregate.R'
+    'hydroYearAgg.R'
+    'hydroYearDay.R'
+    'loadAPI.R'
+    'loadPE.R'
+    'monthlyAgg.R'
+    'rmFunctions.R'
+    'rollingAggs.R'

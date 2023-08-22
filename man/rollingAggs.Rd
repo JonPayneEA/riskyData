@@ -52,6 +52,9 @@ rollingAggs(
 
 \item{dt}{flowLoad, rainLoad, or stageLoad data}
 }
+\value{
+A dataset containg numerous aggregations on a roll
+}
 \description{
 Provides a rolling aggregation of a user defined periods.
 }

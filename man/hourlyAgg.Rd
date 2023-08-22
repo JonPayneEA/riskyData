@@ -28,6 +28,9 @@ hourlyAgg(x, method = "mean", ...)
 
 \item{...}{Other variables as required}
 }
+\value{
+Hourly aggregated data.table
+}
 \description{
 Aggregates sub hourly time series into an hourly resolution,
 aggregations are carried out to the calendar day not a rolling time period.
