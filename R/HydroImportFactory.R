@@ -1,14 +1,16 @@
 #' @title R6 object for imported data via the EA API
 #'
 #' @description
-#' This is the base class for all data imported via the API. A hydroLoad contains public raw data and private metadata.
+#' This is the base class for all data imported via the API. A HydroImport contains public raw data and private metadata.
 #'
 #' @param data Raw data
+#' @param dataType Details the type of data in this environment
+#' @param modifications Details modifications made to the data
 #' @param stationName Name of gauge
 #' @param riverName River name
 #' @param WISKI WISKI ID
 #' @param RLOID River Levels on the Internet ID
-#' @param stationGuide Station Unique IDentifier
+#' @param stationGuide Station Unique Identifier
 #' @param baseURL Base URL used in the API
 #' @param dataURL End of URL that downloaded the raw data
 #' @param measureURL Primarily used in gaining the metadata
@@ -27,6 +29,7 @@
 #' @param aquifer Details on the aquifer type
 #' @param start Function calculates the date of the first imported record
 #' @param end Function calculates the date of the last imported record
+#' @param timeStep Function that calculates the timestep in seconds
 #' @param timeZone Time zone used in data, defaults to GMT
 #' @param records Function calculates the number of records
 #'
@@ -40,18 +43,20 @@
 #' @import R6
 #' @import cli
 #'
-#' @name hydroLoad
-#' @rdname hydroLoad
+#' @name HydroImport
+#' @rdname HydroImport
 #' @return A class containing raw data, metadata and methods
 #' @export
-hydroLoad <- R6::R6Class(
-  classname = "hydroLoad",
+HydroImportFactory <- R6::R6Class(
+  classname = "HydroImport",
   public = list(
     #' @field data Imported data via the API tool. Uses data.table.
     data = NULL,
     #' @description
-    #' Initialise the new hydroLoad object
+    #' Initialise the new HydroImport object
     initialize = function(data = NA,
+                          dataType = 'Raw Import',
+                          modifications = NA,
                           stationName = NA,
                           riverName = NA,
                           WISKI = NA,
@@ -75,9 +80,12 @@ hydroLoad <- R6::R6Class(
                           aquifer = NA,
                           start = NA,
                           end = NA,
+                          timeStep = NA,
                           timeZone = "GMT - UTC±00:00",
                           records = NA) {
       self$data = data
+      private$dataType = dataType
+      private$modifications = modifications
       private$stationName = stationName
       private$riverName = riverName
       private$WISKI = WISKI
@@ -104,15 +112,18 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Display the R6 object
-    #' @param ... (ignored).
-    print = function(...) {
+    #' @param . (ignored).
+    print = function(.) {
       cli::cli_h1("Class: hydroLoad")
       cli::cli_h2("Private:")
+      cli::cli_text(paste("{.strong Data Type:}", private$dataType))
       cli::cli_text(paste("{.strong Station name:}", private$stationName))
       cli::cli_text(paste("{.strong WISKI ID:}", private$WISKI))
       cli::cli_text(paste("{.strong Data Type:}", private$parameter))
+      cli::cli_text(paste("{.strong Modifications:}", private$modifications))
       cli::cli_text(paste("{.strong Start:}", private$start()))
       cli::cli_text(paste("{.strong End:}", private$end()))
+      cli::cli_text(paste("{.strong Time Step:}", private$timeStep()))
       cli::cli_text(paste("{.strong Easting:}", private$easting))
       cli::cli_text(paste("{.strong Northing:}", private$northing))
       cli::cli_text(paste("{.strong Longitude:}", private$longitude))
@@ -126,14 +137,15 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Display the methods available in the R6 object
-    #' @param ... (ignored).
-    methods = function(...) {
+    #' @param . (ignored).
+    methods = function(.) {
       ## Collate the methods
       usage <- c('obj$data', 'obj$meta()', 'obj$asVol()', 'obj$hydroYearDay()',
                  'obj$rmVol()', 'obj$rmHY()', 'obj$rmHYD()', 'obj$summary()',
                  'obj$coords()', 'obj$nrfa()', 'obj$hourlyAgg()',
                  'obj$dailyAgg()', 'obj$monthlyAgg()','obj$annualAgg()',
-                 'obj$hydroYearAgg()', 'obj$rollingAggs()', 'obj$quality()')
+                 'obj$hydroYearAgg()', 'obj$rollingAggs()', 'obj$dayStats()',
+                 'obj$quality()')
 
       desc <- c('Returns the raw data imported via the API',
                 'Returns the metadata associated with the object',
@@ -151,6 +163,7 @@ hydroLoad <- R6::R6Class(
                 'Aggregates data by the calendar year, see ?annualAgg',
                 'Aggregates data by the hydrological year, see ?hydroYearAgg',
                 'Uses user specified aggregation timings, see ?rollingAggs',
+                'Produces daily statistics of flow, carried out on hydrological of calendar days',
                 'Provides a quick summary table of the data qualiity flags')
 
       ## Set the box interior up
@@ -167,9 +180,10 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Display a summary of the R6 object
-    #' @param ... (ignored).
-    summary = function(...) {
+    #' @param . (ignored).
+    summary = function(.) {
       cat("hydroLoad: \n")
+      cat("\tData Type: ", private$dataType, "\n", sep = "")
       cat("\tStation ID: ", private$WISKI, "\n", sep = "")
       cat("\tStart: ", as.character(private$start()), "\n", sep = "")
       cat("\tEnd: ", as.character(private$end()), "\n", sep = "")
@@ -181,44 +195,44 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Calculate the volume of water for flow or rainfall data
-    #' @param ... (ignored).
-    asVol = function(...){
+    #' @param . (ignored).
+    asVol = function(.){
       asVol(x = self$data)
       invisible(self)
     },
     #' @description
     #' Calculate hydrological year and day
-    #' @param ... (ignored).
-    hydroYearDay = function(...){
+    #' @param . (ignored).
+    hydroYearDay = function(.){
       dt <- hydroYearDay(x = self$data)
       self$data <- data.table(self$data, dt)
       invisible(self)
     },
     #' @description
     #' Remove the calculated volume
-    #' @param ... (ignored).
-    rmVol = function(...){
+    #' @param . (ignored).
+    rmVol = function(.){
       rmVol(x = self$data)
       invisible(self)
     },
     #' @description
     #' Remove the calculated hydroYear
-    #' @param ... (ignored).
-    rmHY = function(...){
+    #' @param . (ignored).
+    rmHY = function(.){
       rmHY(x = self$data)
       invisible(self)
     },
     #' @description
     #' Remove the calculated hydrological day
-    #' @param ... (ignored).
-    rmHYD = function(...){
+    #' @param . (ignored).
+    rmHYD = function(.){
       rmHYD(x = self$data)
       invisible(self)
     },
     #' @description
     #' Return the coordinates of the gauge
-    #' @param ... (ignored).
-    coords = function(...) {
+    #' @param . (ignored).
+    coords = function(.) {
       dt <- data.table(Easting = private$easting,
                        Northing = private$northing,
                        Latitude = private$latitude,
@@ -228,8 +242,8 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Return the NRFA details of the gauge
-    #' @param ... (ignored).
-    nrfa = function(...) {
+    #' @param . (ignored).
+    nrfa = function(.) {
       dt <- data.table(WISKI = private$WISKI,
                        codeNRFA = private$idNRFA,
                        urlNRFA = private$urlNRFA)
@@ -281,9 +295,11 @@ hydroLoad <- R6::R6Class(
     },
     #' @description
     #' Returns the metadata as a data.table
-    #' @param ... (ignored).
-    meta = function(...) {
+    #' @param . (ignored).
+    meta = function(.) {
       dt <- data.table(
+        dataType = private$dataType,
+        modifications = private$modifications,
         stationName = private$stationName,
         riverName = private$riverName,
         WISKI = private$WISKI,
@@ -307,14 +323,26 @@ hydroLoad <- R6::R6Class(
         aquifer = private$aquifer,
         start = private$start(),
         end = private$end(),
+        timeStep = private$timeStep(),
         timeZone = private$timeZone,
-        records = private$records())
+        records = private$recoords())
       return(dt)
     },
     #' @description
+    #' Daily statistics for imported data
+    #' @param plot Set to TRUE, will produce a plot of the statistics
+    dayStats = function(plot = TRUE) {
+      if ('hydroYearDay' %in% colnames(self$data)){
+        dt <- dayStats(x = self$data, plot = plot)
+        return(dt)
+      } else {
+        stop('Please run the `obj$hydroYearDay()` function to generate the hydrological day of the year')
+      }
+    },
+    #' @description
     #' Displays the number of observations under each quality flag
-    #' @param ... (ignored).
-    quality = function(...) {
+    #' @param . (ignored).
+    quality = function(.) {
       dt <- self$data[, .(count = .N), by = quality]
       return(dt)
     }
@@ -324,12 +352,32 @@ hydroLoad <- R6::R6Class(
   private = list(
     stationName = NULL,
     start = function(){
+      if(is.null(dim(self$data))) {
+        return(NA)
+      }
       return(min(self$data$dateTime))
     },
     end = function(){
+      if(is.null(dim(self$data))) {
+        return(NA)
+      }
       return(max(self$data$dateTime))
     },
+    timeStep = function(){
+      if (is.null(dim(self$data))){
+        return(NA)
+      } else {
+        return(as.numeric(difftime(self$data$dateTime[2],
+                                   self$data$dateTime[1],
+                                   units = 'secs')))
+      }
+      # return(as.numeric(difftime(self$data$dateTime[2],
+      #                            self$data$dateTime[1],
+      #                            units = 'secs')))
+    },
     riverName = NULL,
+    dataType = NULL,
+    modifications = NULL,
     WISKI = NULL,
     RLOID = NULL,
     stationGuide = NULL,
@@ -351,6 +399,9 @@ hydroLoad <- R6::R6Class(
     aquifer = NULL,
     timeZone = NULL,
     records = function(){
+      if(is.null(dim(self$data))) {
+        return(NA)
+      }
       return(length(self$data$dateTime))
     }
   )

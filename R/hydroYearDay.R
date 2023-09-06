@@ -14,7 +14,7 @@
 #' @examples
 #' hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = 'oct_us_gb')
 hydroYearDay <- function(x, calendar = 'oct_us_gb', ...) {
-  UseMethod('hourlyAgg', x)
+  UseMethod('hydroYearDay', x)
 }
 
 #' @rdname hydroYearDay
