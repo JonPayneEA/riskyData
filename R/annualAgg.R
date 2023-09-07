@@ -22,19 +22,19 @@ annualAgg <- function(x, method = 'mean', ...) {
 #' @export
 annualAgg.data.table <- function(x, method = 'mean', ...){
   if(method  == 'mean') {
-    Annual <- x[, .(Annual_Mean = mean(value, na.rm = TRUE)), .(Calendar_Year = year(dateTime))]
+    Annual <- x[, .(Annual_Mean = mean(value, na.rm = TRUE)), .(dateTime = year(dateTime))]
   }
   if(method  == 'median') {
-    Annual <- x[, .(Monthly_Median = median(value, na.rm = TRUE)), .(Calendar_Year = year(dateTime))]
+    Annual <- x[, .(Monthly_Median = median(value, na.rm = TRUE)), .(dateTime = year(dateTime))]
   }
   if(method  == 'min') {
-    Annual <- x[, .(Annual_Min = min(value, na.rm = TRUE)), .(Calendar_Year = year(dateTime))]
+    Annual <- x[, .(Annual_Min = min(value, na.rm = TRUE)), .(dateTime = year(dateTime))]
   }
   if(method  == 'max') {
-    Annual <- x[, .(Annual_Max = max(value, na.rm = TRUE)), .(Calendar_Year = year(dateTime))]
+    Annual <- x[, .(Annual_Max = max(value, na.rm = TRUE)), .(dateTime = year(dateTime))]
   }
   if(method  == 'sum') {
-    Annual <- x[, .(Annual_Sum = sum(volume, na.rm = TRUE)), .(Calendar_Year = year(dateTime))]
+    Annual <- x[, .(Annual_Sum = sum(volume, na.rm = TRUE)), .(dateTime = year(dateTime))]
   }
   return(Annual)
 }

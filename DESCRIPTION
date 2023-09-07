@@ -24,6 +24,7 @@ Collate:
     'dayStats.R'
     'getMeta.R'
     'hourlyAgg.R'
+    'HydroAggsFactory.R'
     'HydroImportFactory.R'
     'hydroAggregate.R'
     'hydroYearAgg.R'

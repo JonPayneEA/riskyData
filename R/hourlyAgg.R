@@ -22,19 +22,19 @@ hourlyAgg <- function(x, method = 'mean', ...) {
 #' @export
 hourlyAgg.data.table <- function(x, method = 'mean', ...){
   if(method  == 'mean') {
-    Hourly <- x[, .(Hourly_Mean = mean(value, na.rm = TRUE)), .(Hourly = paste(as.Date(dateTime), hour(dateTime)))]
+    Hourly <- x[, .(Hourly_Mean = mean(value, na.rm = TRUE)), .(dateTime = paste(as.Date(dateTime), hour(dateTime)))]
   }
   if(method  == 'median') {
-    Hourly <- x[, .(Hourly_Median = median(value, na.rm = TRUE)), .(Hourly = paste(as.Date(dateTime), hour(dateTime)))]
+    Hourly <- x[, .(Hourly_Median = median(value, na.rm = TRUE)), .(dateTime = paste(as.Date(dateTime), hour(dateTime)))]
   }
   if(method  == 'min') {
-    Hourly <- x[, .(Hourly_Min = min(value, na.rm = TRUE)), .(Hourly = paste(as.Date(dateTime), hour(dateTime)))]
+    Hourly <- x[, .(Hourly_Min = min(value, na.rm = TRUE)), .(dateTime = paste(as.Date(dateTime), hour(dateTime)))]
   }
   if(method  == 'max') {
-    Hourly <- x[, .(Hourly_Max = max(value, na.rm = TRUE)), .(Hourly = paste(as.Date(dateTime), hour(dateTime)))]
+    Hourly <- x[, .(Hourly_Max = max(value, na.rm = TRUE)), .(dateTime = paste(as.Date(dateTime), hour(dateTime)))]
   }
   if(method  == 'sum') {
-    Hourly <- x[, .(Hourly_Sum = sum(volume, na.rm = TRUE)), .(Hourly = paste(as.Date(dateTime), hour(dateTime)))]
+    Hourly <- x[, .(Hourly_Sum = sum(volume, na.rm = TRUE)), .(dateTime = paste(as.Date(dateTime), hour(dateTime)))]
   }
   return(Hourly)
 }

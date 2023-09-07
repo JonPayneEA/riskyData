@@ -22,19 +22,19 @@ dailyAgg <- function(x, method = 'mean', ...) {
 #' @export
 dailyAgg.data.table <- function(x, method = 'mean', ...){
   if(method  == 'mean') {
-    Daily <- x[, .(Daily_Mean = mean(value, na.rm = TRUE)), .(Daily = as.Date(dateTime))]
+    Daily <- x[, .(Daily_Mean = mean(value, na.rm = TRUE)), .(dateTime = as.Date(dateTime))]
   }
   if(method  == 'median') {
-    Daily <- x[, .(Daily_Median = median(value, na.rm = TRUE)), .(Daily = as.Date(dateTime))]
+    Daily <- x[, .(Daily_Median = median(value, na.rm = TRUE)), .(dateTime = as.Date(dateTime))]
   }
   if(method  == 'min') {
-    Daily <- x[, .(Daily_Min = min(value, na.rm = TRUE)), .(Daily = as.Date(dateTime))]
+    Daily <- x[, .(Daily_Min = min(value, na.rm = TRUE)), .(dateTime = as.Date(dateTime))]
   }
   if(method  == 'max') {
-    Daily <- x[, .(Daily_Max = max(value, na.rm = TRUE)), .(Daily = as.Date(dateTime))]
+    Daily <- x[, .(Daily_Max = max(value, na.rm = TRUE)), .(dateTime = as.Date(dateTime))]
   }
   if(method  == 'sum') {
-    Daily <- x[, .(Daily_Sum = sum(volume, na.rm = TRUE)), .(Daily = as.Date(dateTime))]
+    Daily <- x[, .(Daily_Sum = sum(volume, na.rm = TRUE)), .(dateTime = as.Date(dateTime))]
   }
   return(Daily)
 }

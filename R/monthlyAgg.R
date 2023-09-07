@@ -22,19 +22,19 @@ monthlyAgg <- function(x, method = 'mean', ...) {
 #' @export
 monthlyAgg.data.table <- function(x, method = 'mean', ...){
   if(method  == 'mean') {
-    Monthly <- x[, .(Monthly_Mean = mean(value, na.rm = TRUE)), .(Year_Month = paste(year(dateTime), month(dateTime)))]
+    Monthly <- x[, .(Monthly_Mean = mean(value, na.rm = TRUE)), .(dateTime = paste(year(dateTime), month(dateTime)))]
   }
   if(method  == 'median') {
-    Monthly <- x[, .(Monthly_Median = median(value, na.rm = TRUE)), .(Year_Month = paste(year(dateTime), month(dateTime)))]
+    Monthly <- x[, .(Monthly_Median = median(value, na.rm = TRUE)), .(dateTime = paste(year(dateTime), month(dateTime)))]
   }
   if(method  == 'min') {
-    Monthly <- x[, .(Monthly_Min = min(value, na.rm = TRUE)), .(Year_Month = paste(year(dateTime), month(dateTime)))]
+    Monthly <- x[, .(Monthly_Min = min(value, na.rm = TRUE)), .(dateTime = paste(year(dateTime), month(dateTime)))]
   }
   if(method  == 'max') {
-    Monthly <- x[, .(Monthly_Max = max(value, na.rm = TRUE)), .(Year_Month = paste(year(dateTime), month(dateTime)))]
+    Monthly <- x[, .(Monthly_Max = max(value, na.rm = TRUE)), .(dateTime = paste(year(dateTime), month(dateTime)))]
   }
   if(method  == 'sum') {
-    Monthly <- x[, .(Monthly_Sum = sum(volume, na.rm = TRUE)), .(Year_Month = paste(year(dateTime), month(dateTime)))]
+    Monthly <- x[, .(Monthly_Sum = sum(volume, na.rm = TRUE)), .(dateTime = paste(year(dateTime), month(dateTime)))]
   }
   return(Monthly)
 }

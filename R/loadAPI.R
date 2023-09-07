@@ -276,7 +276,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     boreholeDepth = metaD$Data[[20]],
                                     aquifer = metaD$Data[[21]],
                                     timeZone = metaD$Data[[22]])
-      cli::cli_alert_success("All data collated to class: hydroLoad")
+      cli::cli_alert_success("All data collated to class: HydroImport")
       return(out)
     }
   }else{
