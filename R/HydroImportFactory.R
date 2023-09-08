@@ -114,7 +114,7 @@ HydroImportFactory <- R6::R6Class(
     #' Display the R6 object
     #' @param . (ignored).
     print = function(.) {
-      cli::cli_h1("Class: hydroLoad")
+      cli::cli_h1("Class: HydroImport")
       cli::cli_h2("Private:")
       cli::cli_text(paste("{.strong Data Type:}", private$dataType))
       cli::cli_text(paste("{.strong Station name:}", private$stationName))
@@ -255,11 +255,14 @@ HydroImportFactory <- R6::R6Class(
     hourlyAgg = function(method = 'mean') {
       dt <- hourlyAgg(x = self$data, method = method)
       return(HydroAggsFactory$new(data = dt,
-                                  dataType = c('Aggregated', paste('Hourly', method)),
+                                  dataType = paste('Aggregated',
+                                                   paste('Hourly', method),
+                                                   sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
                                                          paste('Hourly', method),
                                                          append(private$modifications,
                                                                 paste('Hourly', method))),
+                                  timeStep = 'Hourly',
                                   stationName = private$stationName,
                                   riverName = private$riverName,
                                   WISKI = private$WISKI,
@@ -288,7 +291,9 @@ HydroImportFactory <- R6::R6Class(
     dailyAgg = function(method = 'mean') {
       dt <- dailyAgg(x = self$data, method = method)
       return(HydroAggsFactory$new(data = dt,
-                                  dataType = c('Aggregated', paste('Daily', method)),
+                                  dataType = paste('Aggregated',
+                                                   paste('Daily', method),
+                                                   sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
                                                          paste('Daily', method),
                                                          append(private$modifications,
@@ -322,7 +327,9 @@ HydroImportFactory <- R6::R6Class(
     monthlyAgg = function(method = 'mean') {
       dt <- monthlyAgg(x = self$data, method = method)
       return(HydroAggsFactory$new(data = dt,
-                                  dataType = c('Aggregated', paste('Monthly', method)),
+                                  dataType = paste('Aggregated',
+                                                   paste('Monthly', method),
+                                                   sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
                                                          paste('Monthly', method),
                                                          append(private$modifications,
@@ -356,7 +363,9 @@ HydroImportFactory <- R6::R6Class(
     annualAgg = function(method = 'mean') {
       dt <- annualAgg(x = self$data, method = method)
       return(HydroAggsFactory$new(data = dt,
-                                  dataType = c('Aggregated', paste('Annual', method)),
+                                  dataType = paste('Aggregated',
+                                                   paste('Annual', method),
+                                                   sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
                                                          paste('Annual', method),
                                                          append(private$modifications,
@@ -390,7 +399,9 @@ HydroImportFactory <- R6::R6Class(
     hydroYearAgg = function(method = 'mean') {
       dt <- hydroYearAgg(x = self$data, method = method)
       return(HydroAggsFactory$new(data = dt,
-                                  dataType = c('Aggregated', paste('hydroYear', method)),
+                                  dataType = paste('Aggregated',
+                                                   paste('Hydrological Year', method),
+                                                   sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
                                                          paste('hydroYear', method),
                                                          append(private$modifications,
@@ -474,6 +485,32 @@ HydroImportFactory <- R6::R6Class(
       }
     },
     #' @description
+    #' Flow duration curve of data
+    #' @param perc Determine flow percentiles. Set to c(5, 25, 75, 95)
+    flowDuration = function(perc = c(5, 25, 75, 95)){
+      dataClean <- na.omit(self$data, cols = 'value')
+      quant <- quantile(dataClean$value, 1-(perc/100))
+      dt <- data.table(percentile = perc, value = quant)
+      plot(seq(from = 0, to = 100, length.out = length(dataClean$value)),
+           dataClean[order(value, decreasing = TRUE)]$value,
+           type = 'l',
+           xlab = 'Percentile',
+           ylab = 'Flow')
+      segments(x0 = -10,
+               x1 = perc,
+               y0 = quant,
+               y1 = quant,
+               col = 'red',
+               lty = 2)
+      segments(x0 = perc,
+               x1 = perc,
+               y0 = -100,
+               y1 = quant,
+               col = 'red',
+               lty = 2)
+      return(dt)
+    },
+    #' @description
     #' Displays the number of observations under each quality flag
     #' @param . (ignored).
     quality = function(.) {
@@ -497,17 +534,42 @@ HydroImportFactory <- R6::R6Class(
       }
       return(max(self$data$dateTime))
     },
+    # timeStep = function(){
+    #   if (is.null(dim(self$data))){
+    #     return(NA)
+    #   } else {
+    #     return(as.numeric(difftime(self$data$dateTime[2],
+    #                                self$data$dateTime[1],
+    #                                units = 'secs')))
+    #   }
+    #   # return(as.numeric(difftime(self$data$dateTime[2],
+    #   #                            self$data$dateTime[1],
+    #   #                            units = 'secs')))
+    # },
     timeStep = function(){
       if (is.null(dim(self$data))){
         return(NA)
-      } else {
+      }
+      if (grepl('Hourly', private$dataType)){
+        return('Hourly Unstable')
+      }
+      if (grepl('Daily', private$dataType)){
+        return('Daily Unstable')
+      }
+      if (grepl('Monthly', private$dataType)){
+        return('Monthly Unstable')
+      }
+      if (grepl('Annual', private$dataType)){
+        return('Annual Unstable')
+      }
+      if (grepl('hydroYear', private$dataType)){
+        return('Hydrological Year Unstable')
+      }
+      if (private$dataType == 'Raw Import') {
         return(as.numeric(difftime(self$data$dateTime[2],
                                    self$data$dateTime[1],
                                    units = 'secs')))
       }
-      # return(as.numeric(difftime(self$data$dateTime[2],
-      #                            self$data$dateTime[1],
-      #                            units = 'secs')))
     },
     riverName = NULL,
     dataType = NULL,
@@ -540,4 +602,5 @@ HydroImportFactory <- R6::R6Class(
     }
   )
 )
+
 

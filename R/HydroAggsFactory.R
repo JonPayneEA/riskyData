@@ -7,6 +7,7 @@
 #' @param dataType Details the type of data in this environment
 #' @param stationName Name of gauge
 #' @param riverName River name
+#' @param modifications Details modifications made to the data
 #' @param WISKI WISKI ID
 #' @param RLOID River Levels on the Internet ID
 #' @param stationGuide Station Unique Identifier
@@ -56,8 +57,7 @@ HydroAggsFactory <- R6::R6Class(
     print = function(.) {
       cli::cli_h1("Class: HydroAggs")
       cli::cli_h2("Private:")
-      cli::cli_text(paste("{.strong Data Type:}", paste(private$dataType,
-                                                        collapse = ' - ')))
+      cli::cli_text(paste("{.strong Data Type:}", paste(private$dataType)))
       cli::cli_text(paste("{.strong Station name:}", private$stationName))
       cli::cli_text(paste("{.strong WISKI ID:}", private$WISKI))
       cli::cli_text(paste("{.strong Data Type:}", private$parameter))
@@ -76,11 +76,10 @@ HydroAggsFactory <- R6::R6Class(
       cli::cli_text(paste("{.strong For more details use the $methods() function, the format should be as `Object_name`$methods()}"))
 
     }
-  ),
-  private = list(
-    dataType = 'Aggregated'
   )
 )
+
+
 
 # HydroAggsFactory$new(gauge$data)
 #

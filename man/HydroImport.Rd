@@ -39,6 +39,7 @@ This is the base class for all data imported via the API. A HydroImport contains
 \item \href{#method-HydroImport-rollingAggs}{\code{HydroImportFactory$rollingAggs()}}
 \item \href{#method-HydroImport-meta}{\code{HydroImportFactory$meta()}}
 \item \href{#method-HydroImport-dayStats}{\code{HydroImportFactory$dayStats()}}
+\item \href{#method-HydroImport-flowDuration}{\code{HydroImportFactory$flowDuration()}}
 \item \href{#method-HydroImport-quality}{\code{HydroImportFactory$quality()}}
 \item \href{#method-HydroImport-clone}{\code{HydroImportFactory$clone()}}
 }
@@ -456,6 +457,23 @@ Daily statistics for imported data
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{plot}}{Set to TRUE, will produce a plot of the statistics}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-flowDuration"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-flowDuration}{}}}
+\subsection{Method \code{flowDuration()}}{
+Flow duration curve of data
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$flowDuration(perc = c(5, 25, 75, 95))}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{perc}}{Determine flow percentiles. Set to c(5, 25, 75, 95)}
 }
 \if{html}{\out{</div>}}
 }
