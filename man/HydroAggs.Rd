@@ -23,19 +23,15 @@ This is the base class for all data imported via the API. A HydroAggs contains p
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="annualAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-annualAgg'><code>riskyData::HydroImport$annualAgg()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="asVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-asVol'><code>riskyData::HydroImport$asVol()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="coords"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-coords'><code>riskyData::HydroImport$coords()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="dailyAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-dailyAgg'><code>riskyData::HydroImport$dailyAgg()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="dataAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-dataAgg'><code>riskyData::HydroImport$dataAgg()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="dayStats"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-dayStats'><code>riskyData::HydroImport$dayStats()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="flowDuration"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-flowDuration'><code>riskyData::HydroImport$flowDuration()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="hourlyAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-hourlyAgg'><code>riskyData::HydroImport$hourlyAgg()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="hydroYearAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-hydroYearAgg'><code>riskyData::HydroImport$hydroYearAgg()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="hydroYearDay"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-hydroYearDay'><code>riskyData::HydroImport$hydroYearDay()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="initialize"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-initialize'><code>riskyData::HydroImport$initialize()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="meta"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-meta'><code>riskyData::HydroImport$meta()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="methods"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-methods'><code>riskyData::HydroImport$methods()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="monthlyAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-monthlyAgg'><code>riskyData::HydroImport$monthlyAgg()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="nrfa"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-nrfa'><code>riskyData::HydroImport$nrfa()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="quality"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-quality'><code>riskyData::HydroImport$quality()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHY"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHY'><code>riskyData::HydroImport$rmHY()</code></a></span></li>

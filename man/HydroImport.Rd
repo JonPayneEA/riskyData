@@ -31,11 +31,7 @@ This is the base class for all data imported via the API. A HydroImport contains
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
 \item \href{#method-HydroImport-coords}{\code{HydroImportFactory$coords()}}
 \item \href{#method-HydroImport-nrfa}{\code{HydroImportFactory$nrfa()}}
-\item \href{#method-HydroImport-hourlyAgg}{\code{HydroImportFactory$hourlyAgg()}}
-\item \href{#method-HydroImport-dailyAgg}{\code{HydroImportFactory$dailyAgg()}}
-\item \href{#method-HydroImport-monthlyAgg}{\code{HydroImportFactory$monthlyAgg()}}
-\item \href{#method-HydroImport-annualAgg}{\code{HydroImportFactory$annualAgg()}}
-\item \href{#method-HydroImport-hydroYearAgg}{\code{HydroImportFactory$hydroYearAgg()}}
+\item \href{#method-HydroImport-dataAgg}{\code{HydroImportFactory$dataAgg()}}
 \item \href{#method-HydroImport-rollingAggs}{\code{HydroImportFactory$rollingAggs()}}
 \item \href{#method-HydroImport-meta}{\code{HydroImportFactory$meta()}}
 \item \href{#method-HydroImport-dayStats}{\code{HydroImportFactory$dayStats()}}
@@ -318,86 +314,20 @@ Return the NRFA details of the gauge
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-HydroImport-hourlyAgg"></a>}}
-\if{latex}{\out{\hypertarget{method-HydroImport-hourlyAgg}{}}}
-\subsection{Method \code{hourlyAgg()}}{
-Return the hourly aggregated data
+\if{html}{\out{<a id="method-HydroImport-dataAgg"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-dataAgg}{}}}
+\subsection{Method \code{dataAgg()}}{
+Return aggregated data
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$hourlyAgg(method = "mean")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$dataAgg(type = NULL, method = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-HydroImport-dailyAgg"></a>}}
-\if{latex}{\out{\hypertarget{method-HydroImport-dailyAgg}{}}}
-\subsection{Method \code{dailyAgg()}}{
-Return the daily aggregated data
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$dailyAgg(method = "mean")}\if{html}{\out{</div>}}
-}
+\item{\code{type}}{Set the aggrgegation level to either hourly', 'daily', 'monthly', 'annual', or 'hydroYear'}
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-HydroImport-monthlyAgg"></a>}}
-\if{latex}{\out{\hypertarget{method-HydroImport-monthlyAgg}{}}}
-\subsection{Method \code{monthlyAgg()}}{
-Return the monthly aggregated data
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$monthlyAgg(method = "mean")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-HydroImport-annualAgg"></a>}}
-\if{latex}{\out{\hypertarget{method-HydroImport-annualAgg}{}}}
-\subsection{Method \code{annualAgg()}}{
-Return the annually aggregated data
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$annualAgg(method = "mean")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-HydroImport-hydroYearAgg"></a>}}
-\if{latex}{\out{\hypertarget{method-HydroImport-hydroYearAgg}{}}}
-\subsection{Method \code{hydroYearAgg()}}{
-Return the aggregated data by hydrological year
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$hydroYearAgg(method = "mean")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
+\item{\code{method}}{Available aggregation methods include 'min', 'max', 'mean', 'median', and 'sum'}
 }
 \if{html}{\out{</div>}}
 }

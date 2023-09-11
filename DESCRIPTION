@@ -18,14 +18,15 @@ Imports:
     tidyr,
     ggplot2
 Collate: 
+    'HydroAggsFactory.R'
+    'HydroImportFactory.R'
     'annualAgg.R'
     'asVol.R'
     'dailyAgg.R'
+    'dataAgg.R'
     'dayStats.R'
     'getMeta.R'
     'hourlyAgg.R'
-    'HydroAggsFactory.R'
-    'HydroImportFactory.R'
     'hydroAggregate.R'
     'hydroYearAgg.R'
     'hydroYearDay.R'

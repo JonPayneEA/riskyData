@@ -33,11 +33,7 @@
 #' @param timeZone Time zone used in data, defaults to GMT
 #' @param records Function calculates the number of records
 #'
-#' @param  hourlyAgg See [hourlyAgg]
-#' @param  dailyAgg See [dailyAgg]
-#' @param  monthlyAgg See [monthlyAgg]
-#' @param  annualAgg See [annualAgg]
-#' @param  hydroYearAgg See [hydroYearAgg]
+#' @param  dataAgg See [dataAgg]
 #' @param  rollingAggs See [rollingAggs]
 #'
 #' @import R6
@@ -250,54 +246,23 @@ HydroImportFactory <- R6::R6Class(
       return(dt)
     },
     #' @description
-    #' Return the hourly aggregated data
-    #' @param method Choose mean, median, min, max, and sum for volumes
-    hourlyAgg = function(method = 'mean') {
-      dt <- hourlyAgg(x = self$data, method = method)
+    #' Return aggregated data
+    #' @param type Set the aggrgegation level to either hourly', 'daily', 'monthly', 'annual', or 'hydroYear'
+    #' @param method Available aggregation methods include 'min', 'max', 'mean', 'median', and 'sum'
+    dataAgg = function(type = NULL, method = NULL) {
+      dt <- dataAgg(x = self$data,
+                    type = type,
+                    method = method)
+
       return(HydroAggsFactory$new(data = dt,
                                   dataType = paste('Aggregated',
-                                                   paste('Hourly', method),
+                                                   paste(type, method),
                                                    sep = ' - '),
                                   modifications = ifelse(is.na(private$modifications),
-                                                         paste('Hourly', method),
+                                                         paste(type, method),
                                                          append(private$modifications,
-                                                                paste('Hourly', method))),
-                                  timeStep = 'Hourly',
-                                  stationName = private$stationName,
-                                  riverName = private$riverName,
-                                  WISKI = private$WISKI,
-                                  RLOID = private$RLOID,
-                                  stationGuide = private$stationGuide,
-                                  baseURL = private$baseURL,
-                                  dataURL = private$dataURL,
-                                  measureURL = private$measureURL,
-                                  idNRFA = private$idNRFA,
-                                  urlNRFA = private$urlNRFA,
-                                  easting = private$easting,
-                                  northing = private$northing,
-                                  latitude = private$latitude,
-                                  longitude = private$longitude,
-                                  area = private$area,
-                                  parameter = private$parameter,
-                                  unitName = private$unitName,
-                                  unit = private$unit,
-                                  datum = private$datum,
-                                  boreholeDepth = private$boreholeDepth,
-                                  aquifer = private$aquifer,
-                                  timeZone = private$timeZone))    },
-    #' @description
-    #' Return the daily aggregated data
-    #' @param method Choose mean, median, min, max, and sum for volumes
-    dailyAgg = function(method = 'mean') {
-      dt <- dailyAgg(x = self$data, method = method)
-      return(HydroAggsFactory$new(data = dt,
-                                  dataType = paste('Aggregated',
-                                                   paste('Daily', method),
-                                                   sep = ' - '),
-                                  modifications = ifelse(is.na(private$modifications),
-                                                         paste('Daily', method),
-                                                         append(private$modifications,
-                                                                paste('Daily', method))),
+                                                                paste(type, method))),
+                                  timeStep = type,
                                   stationName = private$stationName,
                                   riverName = private$riverName,
                                   WISKI = private$WISKI,
@@ -321,114 +286,6 @@ HydroImportFactory <- R6::R6Class(
                                   aquifer = private$aquifer,
                                   timeZone = private$timeZone))
       },
-    #' @description
-    #' Return the monthly aggregated data
-    #' @param method Choose mean, median, min, max, and sum for volumes
-    monthlyAgg = function(method = 'mean') {
-      dt <- monthlyAgg(x = self$data, method = method)
-      return(HydroAggsFactory$new(data = dt,
-                                  dataType = paste('Aggregated',
-                                                   paste('Monthly', method),
-                                                   sep = ' - '),
-                                  modifications = ifelse(is.na(private$modifications),
-                                                         paste('Monthly', method),
-                                                         append(private$modifications,
-                                                                paste('Monthly', method))),
-                                  stationName = private$stationName,
-                                  riverName = private$riverName,
-                                  WISKI = private$WISKI,
-                                  RLOID = private$RLOID,
-                                  stationGuide = private$stationGuide,
-                                  baseURL = private$baseURL,
-                                  dataURL = private$dataURL,
-                                  measureURL = private$measureURL,
-                                  idNRFA = private$idNRFA,
-                                  urlNRFA = private$urlNRFA,
-                                  easting = private$easting,
-                                  northing = private$northing,
-                                  latitude = private$latitude,
-                                  longitude = private$longitude,
-                                  area = private$area,
-                                  parameter = private$parameter,
-                                  unitName = private$unitName,
-                                  unit = private$unit,
-                                  datum = private$datum,
-                                  boreholeDepth = private$boreholeDepth,
-                                  aquifer = private$aquifer,
-                                  timeZone = private$timeZone))
-    },
-    #' @description
-    #' Return the annually aggregated data
-    #' @param method Choose mean, median, min, max, and sum for volumes
-    annualAgg = function(method = 'mean') {
-      dt <- annualAgg(x = self$data, method = method)
-      return(HydroAggsFactory$new(data = dt,
-                                  dataType = paste('Aggregated',
-                                                   paste('Annual', method),
-                                                   sep = ' - '),
-                                  modifications = ifelse(is.na(private$modifications),
-                                                         paste('Annual', method),
-                                                         append(private$modifications,
-                                                                paste('Annual', method))),
-                                  stationName = private$stationName,
-                                  riverName = private$riverName,
-                                  WISKI = private$WISKI,
-                                  RLOID = private$RLOID,
-                                  stationGuide = private$stationGuide,
-                                  baseURL = private$baseURL,
-                                  dataURL = private$dataURL,
-                                  measureURL = private$measureURL,
-                                  idNRFA = private$idNRFA,
-                                  urlNRFA = private$urlNRFA,
-                                  easting = private$easting,
-                                  northing = private$northing,
-                                  latitude = private$latitude,
-                                  longitude = private$longitude,
-                                  area = private$area,
-                                  parameter = private$parameter,
-                                  unitName = private$unitName,
-                                  unit = private$unit,
-                                  datum = private$datum,
-                                  boreholeDepth = private$boreholeDepth,
-                                  aquifer = private$aquifer,
-                                  timeZone = private$timeZone))
-    },
-    #' @description
-    #' Return the aggregated data by hydrological year
-    #' @param method Choose mean, median, min, max, and sum for volumes
-    hydroYearAgg = function(method = 'mean') {
-      dt <- hydroYearAgg(x = self$data, method = method)
-      return(HydroAggsFactory$new(data = dt,
-                                  dataType = paste('Aggregated',
-                                                   paste('Hydrological Year', method),
-                                                   sep = ' - '),
-                                  modifications = ifelse(is.na(private$modifications),
-                                                         paste('hydroYear', method),
-                                                         append(private$modifications,
-                                                                paste('hydroYear', method))),
-                                  stationName = private$stationName,
-                                  riverName = private$riverName,
-                                  WISKI = private$WISKI,
-                                  RLOID = private$RLOID,
-                                  stationGuide = private$stationGuide,
-                                  baseURL = private$baseURL,
-                                  dataURL = private$dataURL,
-                                  measureURL = private$measureURL,
-                                  idNRFA = private$idNRFA,
-                                  urlNRFA = private$urlNRFA,
-                                  easting = private$easting,
-                                  northing = private$northing,
-                                  latitude = private$latitude,
-                                  longitude = private$longitude,
-                                  area = private$area,
-                                  parameter = private$parameter,
-                                  unitName = private$unitName,
-                                  unit = private$unit,
-                                  datum = private$datum,
-                                  boreholeDepth = private$boreholeDepth,
-                                  aquifer = private$aquifer,
-                                  timeZone = private$timeZone))
-    },
     #' @description
     #' Return the different user selecting rolling aggregations
     #' @param method Choose mean, median, min, max, and sum for volumes
