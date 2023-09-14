@@ -192,8 +192,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   # Main data export ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if (!is.null(ID)&!is.null(measure)&!is.null(period)){
-    cli::cli_alert_info("About to start download")
-    sb <- cli::cli_status("{symbol$arrow_right} Downloading raw data")
+    cli::cli_progress_step('Compiling parameters for raw download')
     link <- paste0(baselink, '?wiskiID=', ID)
     data <- jsonlite::fromJSON(link)
     data_level <- jsonlite::fromJSON(as.character(data$items[1]))
@@ -229,6 +228,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       datalinkAppend <- paste0(measImp, '/readings.json?mineq-date=',
                                minDate, '&max-date=',maxDate)
     }
+    cli::cli_progress_step('Downloading raw data')
     series <- data.table(jsonlite::fromJSON(datalinkAppend)[[2]])
     ## For clarity all dates are coerced to POSIXct ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~
@@ -242,17 +242,13 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     format = '%Y-%m-%dT%H:%M',
                                     tz = 'GMT')
     }
-    cli::cli_status_update(id = sb, "{symbol$arrow_right} Downloading")
-    cli::cli_status_clear(id = sb)
-    cli::cli_alert_success("Raw data downloaded")
     if(meta == TRUE){
-      cli::cli_alert_info("Collating metadata")
+      cli::cli_progress_step('Collating metadata')
       metaD <- getMeta(ID = ID,
                        mainLink = datalinkAppend,
                        measureLink = measImp,
                        import = series[,-1:-2])
-      cli::cli_alert_success("Metadata downloaded")
-
+      cli::cli_progress_step('Exporting data to HydroImport container')
       out <- HydroImportFactory$new(data = series[,-1:-2],
                                     stationName = metaD$Data[[1]],
                                     riverName = metaD$Data[[2]],
@@ -276,7 +272,6 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     boreholeDepth = metaD$Data[[20]],
                                     aquifer = metaD$Data[[21]],
                                     timeZone = metaD$Data[[22]])
-      cli::cli_alert_success("All data collated to class: HydroImport")
       return(out)
     }
   }else{

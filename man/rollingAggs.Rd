@@ -3,54 +3,20 @@
 \name{rollingAggs}
 \alias{rollingAggs}
 \alias{rollingAggs.data.table}
-\alias{rollingAggs.flowLoad}
-\alias{rollingAggs.rainLoad}
-\alias{rollingAggs.stageLoad}
 \title{rollingAggs}
 \usage{
-rollingAggs(
-  x,
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
-  interval = 0.25,
-  method = "mean"
-)
+rollingAggs(x, aggregations = NULL, interval = 0.25, method = "mean")
 
-\method{rollingAggs}{data.table}(
-  x,
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
-  interval = 0.25,
-  method = "mean"
-)
-
-\method{rollingAggs}{flowLoad}(
-  x,
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
-  interval = 0.25,
-  method = "mean"
-)
-
-\method{rollingAggs}{rainLoad}(
-  x,
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
-  interval = 0.25,
-  method = "mean"
-)
-
-\method{rollingAggs}{stageLoad}(
-  x,
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
-  interval = 0.25,
-  method = "mean"
-)
+\method{rollingAggs}{data.table}(x, aggregations = NULL, interval = 0.25, method = "mean")
 }
 \arguments{
-\item{rolling_aggregations}{User defined periods of aggregation}
-
 \item{interval}{Set as 0.25 to represent 15 minute data, for hourly change to 1 etc.}
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 
 \item{dt}{flowLoad, rainLoad, or stageLoad data}
+
+\item{rolling_aggregations}{User defined periods of aggregation}
 }
 \value{
 A dataset containg numerous aggregations on a roll

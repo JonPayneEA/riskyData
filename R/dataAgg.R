@@ -34,21 +34,20 @@ dataAgg <- function(x = NULL, type = NULL, method = NULL){
     stop('Please check the aggregation method')
   }
 
+  ## Start notifications
+  cli::cli_progress_step(paste0("Allocating function {.strong ",
+                                paste0('riskyData::',
+                                       type,
+                                       'Agg'),
+                                "}"))
   ## Parse function name to
   func <- eval(parse(text=paste0('riskyData::', type, 'Agg')))
 
-  ## Notification start
-  cli::cli_alert_info(paste0("{.strong ",
-                             paste0('riskyData::', type, 'Agg'),
-                             "}"))
-  sb <- cli::cli_status(paste("{symbol$arrow_right}", 'Computing', type, method))
-
+  ## Notification to indicate function application
+  cli::cli_progress_step(paste('Computing', type, method))
   # Apply function
   dt <- func(x, method = method)
 
-  ## Notification end
-  cli::cli_status_clear(id = sb)
-  cli::cli_alert_success("Computation completed")
   return(dt)
 }
 

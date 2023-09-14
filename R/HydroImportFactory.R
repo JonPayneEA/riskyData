@@ -193,6 +193,7 @@ HydroImportFactory <- R6::R6Class(
     #' Calculate the volume of water for flow or rainfall data
     #' @param . (ignored).
     asVol = function(.){
+      cli::cli_progress_step('Calculating volumes')
       asVol(x = self$data)
       invisible(self)
     },
@@ -200,6 +201,7 @@ HydroImportFactory <- R6::R6Class(
     #' Calculate hydrological year and day
     #' @param . (ignored).
     hydroYearDay = function(.){
+      cli::cli_progress_step('Calculating hydrological year and day')
       dt <- hydroYearDay(x = self$data)
       self$data <- data.table(self$data, dt)
       invisible(self)
@@ -208,6 +210,7 @@ HydroImportFactory <- R6::R6Class(
     #' Remove the calculated volume
     #' @param . (ignored).
     rmVol = function(.){
+      cli::cli_progress_step('Removing volum column')
       rmVol(x = self$data)
       invisible(self)
     },
@@ -215,6 +218,7 @@ HydroImportFactory <- R6::R6Class(
     #' Remove the calculated hydroYear
     #' @param . (ignored).
     rmHY = function(.){
+      cli::cli_progress_step('Removing hydroYear column')
       rmHY(x = self$data)
       invisible(self)
     },
@@ -222,6 +226,7 @@ HydroImportFactory <- R6::R6Class(
     #' Remove the calculated hydrological day
     #' @param . (ignored).
     rmHYD = function(.){
+      cli::cli_progress_step('Removing hydroYearDay column')
       rmHYD(x = self$data)
       invisible(self)
     },
@@ -253,7 +258,7 @@ HydroImportFactory <- R6::R6Class(
       dt <- dataAgg(x = self$data,
                     type = type,
                     method = method)
-
+      cli::cli_progress_step('Exporting to HydroAggs container')
       return(HydroAggsFactory$new(data = dt,
                                   dataType = paste('Aggregated',
                                                    paste(type, method),
@@ -285,6 +290,7 @@ HydroImportFactory <- R6::R6Class(
                                   boreholeDepth = private$boreholeDepth,
                                   aquifer = private$aquifer,
                                   timeZone = private$timeZone))
+      cli::cli_progress_step()
       },
     #' @description
     #' Return the different user selecting rolling aggregations
@@ -345,26 +351,30 @@ HydroImportFactory <- R6::R6Class(
     #' Flow duration curve of data
     #' @param perc Determine flow percentiles. Set to c(5, 25, 75, 95)
     flowDuration = function(perc = c(5, 25, 75, 95)){
+      cli::cli_progress_step('Calculating quartiles')
       dataClean <- na.omit(self$data, cols = 'value')
       quant <- quantile(dataClean$value, 1-(perc/100))
       dt <- data.table(percentile = perc, value = quant)
+      cli::cli_progress_step('Generating plot')
       plot(seq(from = 0, to = 100, length.out = length(dataClean$value)),
            dataClean[order(value, decreasing = TRUE)]$value,
            type = 'l',
            xlab = 'Percentile',
-           ylab = 'Flow')
-      segments(x0 = -10,
-               x1 = perc,
-               y0 = quant,
-               y1 = quant,
-               col = 'red',
-               lty = 2)
+           ylab = 'Flow',
+           lwd = 2)
+      # segments(x0 = -10,
+      #          x1 = perc,
+      #          y0 = quant,
+      #          y1 = quant,
+      #          col = 'red',
+      #          lty = 2)
       segments(x0 = perc,
                x1 = perc,
                y0 = -100,
                y1 = quant,
                col = 'red',
-               lty = 2)
+               lty = 2,
+               lwd = 2)
       return(dt)
     },
     #' @description
