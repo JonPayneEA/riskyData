@@ -380,13 +380,15 @@ Returns the metadata as a data.table
 \subsection{Method \code{dayStats()}}{
 Daily statistics for imported data
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$dayStats(plot = TRUE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$dayStats(plot = TRUE, year = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{plot}}{Set to TRUE, will produce a plot of the statistics}
+
+\item{\code{year}}{Set to NULL, overlays the mean daily flow for a chosen hydrological year}
 }
 \if{html}{\out{</div>}}
 }

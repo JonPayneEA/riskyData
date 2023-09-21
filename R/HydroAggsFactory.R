@@ -74,7 +74,6 @@ HydroAggsFactory <- R6::R6Class(
       print(self$data)
       cat("\n")
       cli::cli_text(paste("{.strong For more details use the $methods() function, the format should be as `Object_name`$methods()}"))
-
     }
   )
 )

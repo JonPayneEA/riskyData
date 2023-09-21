@@ -22,5 +22,5 @@ A data.table of gauge metadata, for adding to the R6 \code{hydroLoad}
 Import metadata for a gauge
 }
 \examples{
-#getMeta(2001)
+# getMeta(2001)
 }

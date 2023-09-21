@@ -19,47 +19,48 @@
 loadPE <- function(link,
                    skip = 0,
                    meta_rows = 10,
-                   impute = TRUE
-                   ){
+                   impute = TRUE) {
   type <- fread(link,
-                nrows = 2,
-                skip = skip,
-                sep = ',',
-                header = FALSE,
-                fill = TRUE
-  )[,1:2]
-  if(type[2,2] == "Single per row"){
-    cat('Importing meta data\n')
+    nrows = 2,
+    skip = skip,
+    sep = ",",
+    header = FALSE,
+    fill = TRUE
+  )[, 1:2]
+  if (type[2, 2] == "Single per row") {
+    cat("Importing meta data\n")
     meta <- fread(link,
-                  nrows = meta_rows,
-                  skip = 3,
-                  sep = ',',
-                  header = FALSE,
-                  na.strings = c('#N/A', 'NA'),
-                  fill = TRUE
-    )[,1:3]
-    colnames(meta) <- c('Parameter', 'Details', 'Details2')
+      nrows = meta_rows,
+      skip = 3,
+      sep = ",",
+      header = FALSE,
+      na.strings = c("#N/A", "NA"),
+      fill = TRUE
+    )[, 1:3]
+    colnames(meta) <- c("Parameter", "Details", "Details2")
     main <- fread(link,
-                   skip = 18,
-                   sep = ',',
-                   header = TRUE,
-                   col.names = c('ID', ' Year', 'Month', 'Day', 'Minutes',
-                                 'Date', 'Time', 'PE', 'Coverage'),
-                   na.strings = c('#N/A', 'NA')
+      skip = 18,
+      sep = ",",
+      header = TRUE,
+      col.names = c(
+        "ID", " Year", "Month", "Day", "Minutes",
+        "Date", "Time", "PE", "Coverage"
+      ),
+      na.strings = c("#N/A", "NA")
     )
-    if(impute == TRUE){
+    if (impute == TRUE) {
       main$PE <- forecast::na.interp(main$PE)
     }
     date_time <- paste(main$Date, main$Time)
-    date_time <- gsub(' GMT', '', date_time)
+    date_time <- gsub(" GMT", "", date_time)
     main$DateTime <- as.POSIXct(date_time, format = "%d-%b-%y %H:%M", tz = "GMT")
     data <- list()
-    data[['Metadata']] <- meta
-    data[['RemoteData']] <- main
+    data[["Metadata"]] <- meta
+    data[["RemoteData"]] <- main
 
-    class(data) <- append(class(data), 'PELoad')
+    class(data) <- append(class(data), "PELoad")
     return(data)
-    } else {
-      stop('PE data is not supported in this function when of the type; ', type[2,2])
+  } else {
+    stop("PE data is not supported in this function when of the type; ", type[2, 2])
   }
 }

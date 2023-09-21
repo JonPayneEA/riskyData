@@ -19,5 +19,5 @@ The hydroYearDay column removed from the \code{obj$data}
 Remove hydrological day of year from hydroYear class
 }
 \examples{
- # obj$rmHYD()
+# obj$rmHYD()
 }

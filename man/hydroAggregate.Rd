@@ -31,5 +31,5 @@ Wrapper function for the various aggregation methods employed in
 riskyData
 }
 \examples{
-#hydroAggregate(buildwas)
+# hydroAggregate(buildwas)
 }

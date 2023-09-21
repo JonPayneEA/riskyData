@@ -17,21 +17,4 @@ Imports:
     cli,
     tidyr,
     ggplot2
-Collate: 
-    'HydroAggsFactory.R'
-    'HydroImportFactory.R'
-    'annualAgg.R'
-    'asVol.R'
-    'dailyAgg.R'
-    'dataAgg.R'
-    'dayStats.R'
-    'getMeta.R'
-    'hourlyAgg.R'
-    'hydroAggregate.R'
-    'hydroYearAgg.R'
-    'hydroYearDay.R'
-    'loadAPI.R'
-    'loadPE.R'
-    'monthlyAgg.R'
-    'rmFunctions.R'
-    'rollingAggs.R'
+

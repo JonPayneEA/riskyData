@@ -14,26 +14,26 @@
 #'
 #' @examples
 #' hydroYearAgg(Buildwas)
-hydroYearAgg <- function(x, method = 'mean', ...) {
-  UseMethod('hydroYearAgg', x)
+hydroYearAgg <- function(x, method = "mean", ...) {
+  UseMethod("hydroYearAgg", x)
 }
 
 #' @rdname hydroYearAgg
 #' @export
-hydroYearAgg.data.table <- function(x, method = 'mean', ...){
-  if(method  == 'mean') {
+hydroYearAgg.data.table <- function(x, method = "mean", ...) {
+  if (method == "mean") {
     Hydro_year <- x[, .(hydroYearMean = mean(value, na.rm = TRUE)), hydroYear]
   }
-  if(method  == 'median') {
+  if (method == "median") {
     Hydro_year <- x[, .(hydroYearMedian = median(value, na.rm = TRUE)), hydroYear]
   }
-  if(method  == 'min') {
+  if (method == "min") {
     Hydro_year <- x[, .(hydroYearMin = min(value, na.rm = TRUE)), hydroYear]
   }
-  if(method  == 'max') {
+  if (method == "max") {
     Hydro_year <- x[, .(hydroYearMax = max(value, na.rm = TRUE)), hydroYear]
   }
-  if(method  == 'sum') {
+  if (method == "sum") {
     Hydro_year <- x[, .(hydroYearSum = sum(volume, na.rm = TRUE)), hydroYear]
   }
   return(Hydro_year)
@@ -41,20 +41,20 @@ hydroYearAgg.data.table <- function(x, method = 'mean', ...){
 
 #' @rdname hydroYearAgg
 #' @export
-hydroYearAgg.flowLoad <- function(x, method = 'mean', ...){
-  if(method  == 'mean') {
+hydroYearAgg.flowLoad <- function(x, method = "mean", ...) {
+  if (method == "mean") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Mean = mean(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'median') {
+  if (method == "median") {
     Hydro_year <- x$GaugeData[, .(Monthly_Median = median(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'min') {
+  if (method == "min") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Min = min(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'max') {
+  if (method == "max") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Max = max(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'sum') {
+  if (method == "sum") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Sum = sum(Volume, na.rm = TRUE)), HydrologicalYear]
   }
   return(Hydro_year)
@@ -62,20 +62,20 @@ hydroYearAgg.flowLoad <- function(x, method = 'mean', ...){
 
 #' @rdname hydroYearAgg
 #' @export
-hydroYearAgg.rainLoad <- function(x, method = 'mean', ...){
-  if(method  == 'mean') {
+hydroYearAgg.rainLoad <- function(x, method = "mean", ...) {
+  if (method == "mean") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Mean = mean(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'median') {
+  if (method == "median") {
     Hydro_year <- x$GaugeData[, .(Monthly_Median = median(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'min') {
+  if (method == "min") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Min = min(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'max') {
+  if (method == "max") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Max = max(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'sum') {
+  if (method == "sum") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Sum = sum(Volume, na.rm = TRUE)), HydrologicalYear]
   }
   return(Hydro_year)
@@ -83,21 +83,21 @@ hydroYearAgg.rainLoad <- function(x, method = 'mean', ...){
 
 #' @rdname hydroYearAgg
 #' @export
-hydroYearAgg.stageLoad <- function(x, method = 'mean', ...){
-  if(method  == 'mean') {
+hydroYearAgg.stageLoad <- function(x, method = "mean", ...) {
+  if (method == "mean") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Mean = mean(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'median') {
+  if (method == "median") {
     Hydro_year <- x$GaugeData[, .(Monthly_Median = median(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'min') {
+  if (method == "min") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Min = min(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'max') {
+  if (method == "max") {
     Hydro_year <- x$GaugeData[, .(Hydro_year_Max = max(Value, na.rm = TRUE)), HydrologicalYear]
   }
-  if(method  == 'sum') {
-    print('Stage data are not suitable for sumation')
+  if (method == "sum") {
+    print("Stage data are not suitable for sumation")
   }
   return(Hydro_year)
 }

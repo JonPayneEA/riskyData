@@ -27,5 +27,5 @@ Creates fields for hydrological year and hydrological day.
 Speed is slow, needs conversion to C++ in future iterrations.
 }
 \examples{
-hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = 'oct_us_gb')
+hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = "oct_us_gb")
 }

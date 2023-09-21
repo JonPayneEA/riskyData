@@ -40,104 +40,121 @@
 #' @examples
 #' loadAPI()
 #'
-#' loadAPI(easting = 378235 , northing = 276165, dist = 30, ID = 'nrfa')
+#' loadAPI(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
 #'
-#' loadAPI(ID = 'L1207')
+#' loadAPI(ID = "L1207")
 #'
-#' loadAPI(ID = 'L1207',
-#' measure = 'level',
-#' period = 900,
-#' type = 'instantaneous',
-#' datapoints = 'earliest')
+#' loadAPI(
+#'   ID = "L1207",
+#'   measure = "level",
+#'   period = 900,
+#'   type = "instantaneous",
+#'   datapoints = "earliest"
+#' )
 #'
-#' dt <- loadAPI(ID = 'L1207',
-#' measure = 'level',
-#' period = 900,
-#' type = 'instantaneous',
-#' datapoints = 'all')
+#' dt <- loadAPI(
+#'   ID = "L1207",
+#'   measure = "level",
+#'   period = 900,
+#'   type = "instantaneous",
+#'   datapoints = "all"
+#' )
 #'
 #' with(dt, plot(value ~ dateTime,
-#'type = 'l',
-#'xlab = 'Time',
-#'ylab = 'Stage (mAoD)'))
+#'   type = "l",
+#'   xlab = "Time",
+#'   ylab = "Stage (mAoD)"
+#' ))
 loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
-                    type = NULL, datapoints = 'standard',
+                    type = NULL, datapoints = "standard",
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
-                    obsProperty = NULL, meta = TRUE){
-  #Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  obsVars <- c('waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel',
-               'ammonium', 'dissolved-oxygen', 'conductivity', 'ph',
-               'temperature', 'turbidity', 'nitrate', 'chlorophyll', 'salinity',
-               'bga', 'fdom')
-  if (!is.null(obsProperty) &&!obsProperty %in% obsVars){
-    return(warning('Observed property does not match those available'))
+                    obsProperty = NULL, meta = TRUE) {
+  # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  obsVars <- c(
+    "waterFlow", "waterLevel", "rainfall", "groundwaterLevel",
+    "ammonium", "dissolved-oxygen", "conductivity", "ph",
+    "temperature", "turbidity", "nitrate", "chlorophyll", "salinity",
+    "bga", "fdom"
+  )
+  if (!is.null(obsProperty) && !obsProperty %in% obsVars) {
+    return(warning("Observed property does not match those available"))
   }
 
   # Start up of main function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   dataType <- type # Fixes data.table filter issue
   timestep <- period # Fixes data.table filter issue
   # Base link for the EAs API
-  baselink <- 'http://environment.data.gov.uk/hydrology/id/stations.json'
+  baselink <- "http://environment.data.gov.uk/hydrology/id/stations.json"
 
   # Return all available stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if ((is.null(ID)|| ID %in% c('all', 'wiski', 'nrfa')) &
-      is.null(easting) & is.null(lat) &  is.null(long) & is.null(northing) &
-      is.null(dist)){
+  if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
+    is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
+    is.null(dist)) {
     ## Limit set to 20,000 (current API is ~8,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    datalink <- paste0(baselink, '?_limit=20000')
+    datalink <- paste0(baselink, "?_limit=20000")
     dt <- data.table(jsonlite::fromJSON(datalink)$items)
     ## Unnesting observed property is slightly more difficult ~~~~~~~~~~~~~~~~~~
     ## Stored as dataframe list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Remove URL and convert dataframes to string ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     dt_obs <- dt$observedProperty
     lst <- list()
-    for (i in seq_along(dt_obs)){
+    for (i in seq_along(dt_obs)) {
       lst[[i]] <- basename(dt_obs[[i]]$`@id`)
     }
     dt$observedProperty <- lst
     ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    if ('list' %in% sapply(dt, class)){
-      dt <- data.table(tidyr::unnest(dt, c(wiskiID, label,
-                                           riverName, easting, northing, lat,
-                                           long, observedProperty),
-                                     keep_empty = TRUE))
+    if ("list" %in% sapply(dt, class)) {
+      dt <- data.table(tidyr::unnest(dt, c(
+        wiskiID, label,
+        riverName, easting, northing, lat,
+        long, observedProperty
+      ),
+      keep_empty = TRUE
+      ))
     }
 
     ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    data_level <- dt[, .(wiskiID, label, riverName,
-                         observedProperty, easting, northing, lat,
-                         long, dateOpened, catchmentArea, nrfaStationID),]
+    data_level <- dt[, .(
+      wiskiID, label, riverName,
+      observedProperty, easting, northing, lat,
+      long, dateOpened, catchmentArea, nrfaStationID
+    ), ]
     # data_level$observedProperty <- unlist(lst)
-    if (!is.null(ID) && ID == 'wiski')
-      data_level <- na.omit(data_level, cols = 'wiskiID')
-    if (!is.null(ID) && ID == 'nrfa')
-      data_level <- na.omit(data_level, cols = 'nrfaStationID')
-    if(is.null(obsProperty)){
+    if (!is.null(ID) && ID == "wiski") {
+      data_level <- na.omit(data_level, cols = "wiskiID")
+    }
+    if (!is.null(ID) && ID == "nrfa") {
+      data_level <- na.omit(data_level, cols = "nrfaStationID")
+    }
+    if (is.null(obsProperty)) {
       return(data_level)
     } else {
-      return(data_level[observedProperty == obsProperty,,])
+      return(data_level[observedProperty == obsProperty, , ])
     }
   }
 
   # Find available stations within a set distance ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if ((is.null(ID)|| ID %in% c('all', 'wiski', 'nrfa')) &
-      (!is.null(easting) | !is.null(lat)) &
-      (!is.null(northing) | !is.null(long)) &
-      !is.null(dist)){
+  if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
+    (!is.null(easting) | !is.null(lat)) &
+    (!is.null(northing) | !is.null(long)) &
+    !is.null(dist)) {
     ## Checking for duplicate coordinates ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    if((!is.null(easting)|!is.null(northing)) &
-       (!is.null(lat) & !is.null(long)))
-      return(warning('Conflicting coordinate systems, please use  lat-long OR
-                     easting-northing'))
+    if ((!is.null(easting) | !is.null(northing)) &
+      (!is.null(lat) & !is.null(long))) {
+      return(warning("Conflicting coordinate systems, please use  lat-long OR
+                     easting-northing"))
+    }
     ## Create different links depending of coordinates used ~~~~~~~~~~~~~~~~~~~~
     if (!is.null(easting) & !is.null(northing)) {
-      datalink <- paste0(baselink, '?easting=', easting,
-                         '&northing=', northing, '&dist=', dist)
-    } else if  (!is.null(lat) & !is.null(long)){
-      datalink <- paste0(baselink, '?lat=', lat, '&long=',long, '&dist=', dist)
+      datalink <- paste0(
+        baselink, "?easting=", easting,
+        "&northing=", northing, "&dist=", dist
+      )
+    } else if (!is.null(lat) & !is.null(long)) {
+      datalink <- paste0(baselink, "?lat=", lat, "&long=", long, "&dist=", dist)
     } else {
-      return(warning('Please check your coordinate data'))
+      return(warning("Please check your coordinate data"))
     }
     dt <- data.table(jsonlite::fromJSON(datalink)$items)
     ## Unnesting observed property is slightly more difficult ~~~~~~~~~~~~~~~~~~
@@ -145,136 +162,164 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     ## Remove URL and convert dataframes to string ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     dt_obs <- dt$observedProperty
     lst <- list()
-    for (i in seq_along(dt_obs)){
+    for (i in seq_along(dt_obs)) {
       lst[[i]] <- basename(dt_obs[[i]]$`@id`)
     }
     dt$observedProperty <- lst
     ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    if ('list' %in% sapply(dt, class)){
-      dt <- data.table(tidyr::unnest(dt, c(wiskiID, label,
-                                           riverName, easting, northing, lat,
-                                           long, observedProperty),
-                                     keep_empty = TRUE))
+    if ("list" %in% sapply(dt, class)) {
+      dt <- data.table(tidyr::unnest(dt, c(
+        wiskiID, label,
+        riverName, easting, northing, lat,
+        long, observedProperty
+      ),
+      keep_empty = TRUE
+      ))
     }
     ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Catchment area is sometimes a missing field ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Replicated as NAs for consistency ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    if (!'catchmentArea' %in% colnames(dt))
-      dt$catchmentArea <- rep('NA', times = dim(dt)[1])
-    data_level <- dt[, .(wiskiID, label, riverName,
-                         observedProperty, easting, northing, lat,
-                         long, dateOpened, catchmentArea, nrfaStationID),]
+    if (!"catchmentArea" %in% colnames(dt)) {
+      dt$catchmentArea <- rep("NA", times = dim(dt)[1])
+    }
+    data_level <- dt[, .(
+      wiskiID, label, riverName,
+      observedProperty, easting, northing, lat,
+      long, dateOpened, catchmentArea, nrfaStationID
+    ), ]
     ## Additional is.null(ID) level, resolves problems with needless arguments ~
-    if (is.null(ID)){
+    if (is.null(ID)) {
       return(data_level)
     }
-    if (!is.null(ID) && ID == 'wiski')
-      data_level <- na.omit(data_level, cols = 'wiskiID')
-    if (!is.null(ID) && ID == 'nrfa')
-      data_level <- na.omit(data_level, cols = 'nrfaStationID')
-    if(is.null(obsProperty)){
+    if (!is.null(ID) && ID == "wiski") {
+      data_level <- na.omit(data_level, cols = "wiskiID")
+    }
+    if (!is.null(ID) && ID == "nrfa") {
+      data_level <- na.omit(data_level, cols = "nrfaStationID")
+    }
+    if (is.null(obsProperty)) {
       return(data_level)
     } else {
-      return(data_level[observedProperty == obsProperty,,])
+      return(data_level[observedProperty == obsProperty, , ])
     }
   }
 
   # Return options for available data at specified ID site ~~~~~~~~~~~~~~~~~~
-  if (!is.null(ID)&is.null(measure)&is.null(timestep)){
-    link <- paste0(baselink, '?wiskiID=', ID)
+  if (!is.null(ID) & is.null(measure) & is.null(timestep)) {
+    link <- paste0(baselink, "?wiskiID=", ID)
     data <- jsonlite::fromJSON(link)
     data_level <- jsonlite::fromJSON(as.character(data$items[1]))
-    params <- data.table(parameter = data_level$items$measures[[1]]$parameter,
-                         period = data_level$items$measures[[1]]$period,
-                         type = data_level$items$measures[[1]]$valueType)
+    params <- data.table(
+      parameter = data_level$items$measures[[1]]$parameter,
+      period = data_level$items$measures[[1]]$period,
+      type = data_level$items$measures[[1]]$valueType
+    )
     return(params)
   }
 
   # Main data export ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if (!is.null(ID)&!is.null(measure)&!is.null(period)){
-    cli::cli_progress_step('Compiling parameters for raw download')
-    link <- paste0(baselink, '?wiskiID=', ID)
+  if (!is.null(ID) & !is.null(measure) & !is.null(period)) {
+    cli::cli_progress_step("Compiling parameters for raw download")
+    link <- paste0(baselink, "?wiskiID=", ID)
     data <- jsonlite::fromJSON(link)
     data_level <- jsonlite::fromJSON(as.character(data$items[1]))
-    params <- data.table(parameter = data_level$items$measures[[1]]$parameter,
-                         period = data_level$items$measures[[1]]$period,
-                         type = data_level$items$measures[[1]]$valueType,
-                         note = data_level$items$measures[[1]]$notation)
+    params <- data.table(
+      parameter = data_level$items$measures[[1]]$parameter,
+      period = data_level$items$measures[[1]]$period,
+      type = data_level$items$measures[[1]]$valueType,
+      note = data_level$items$measures[[1]]$notation
+    )
     ## Insert criteria on what data to extract ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Merges into URL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    datalink <- params[parameter == measure &
-                         period == timestep &
-                         type == dataType,
-                       note,]
-    measImp <- paste0('http://environment.data.gov.uk/hydrology/id/measures/',
-                      datalink)
+    datalink <- params[
+      parameter == measure &
+        period == timestep &
+        type == dataType,
+      note,
+    ]
+    measImp <- paste0(
+      "http://environment.data.gov.uk/hydrology/id/measures/",
+      datalink
+    )
 
     ## Additional URL commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    if (datapoints == 'all')
-      datalinkAppend <- paste0(measImp, '/readings.json?_limit=2000000')
-    if (datapoints == 'earliest')
-      datalinkAppend <- paste0(measImp, '/readings.json?earliest')
-    if (datapoints == 'latest')
-      datalinkAppend <- paste0(measImp, '/readings.json?latest')
-    if (datapoints == 'standard')
-      datalinkAppend <- paste0(measImp, '/readings.json')
-    if (datapoints == 'day'){
-      minDate <- as.Date(from)
-      datalinkAppend <- paste0(measImp, '/readings.json?date=', minDate)
+    if (datapoints == "all") {
+      datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000")
     }
-    if (datapoints == 'range'){
+    if (datapoints == "earliest") {
+      datalinkAppend <- paste0(measImp, "/readings.json?earliest")
+    }
+    if (datapoints == "latest") {
+      datalinkAppend <- paste0(measImp, "/readings.json?latest")
+    }
+    if (datapoints == "standard") {
+      datalinkAppend <- paste0(measImp, "/readings.json")
+    }
+    if (datapoints == "day") {
+      minDate <- as.Date(from)
+      datalinkAppend <- paste0(measImp, "/readings.json?date=", minDate)
+    }
+    if (datapoints == "range") {
       minDate <- as.Date(from)
       maxDate <- as.Date(to)
-      datalinkAppend <- paste0(measImp, '/readings.json?mineq-date=',
-                               minDate, '&max-date=',maxDate)
+      datalinkAppend <- paste0(
+        measImp, "/readings.json?mineq-date=",
+        minDate, "&max-date=", maxDate
+      )
     }
-    cli::cli_progress_step('Downloading raw data')
+    cli::cli_progress_step("Downloading raw data")
     series <- data.table(jsonlite::fromJSON(datalinkAppend)[[2]])
     ## For clarity all dates are coerced to POSIXct ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~
-    if (timestep == 900){
+    if (timestep == 900) {
       series$dateTime <- as.POSIXct(series$dateTime,
-                                    format = '%Y-%m-%dT%H:%M',
-                                    tz = 'GMT')
+        format = "%Y-%m-%dT%H:%M",
+        tz = "GMT"
+      )
     }
-    if (timestep == 86400){
+    if (timestep == 86400) {
       series$dateTime <- as.POSIXct(series$dateTime,
-                                    format = '%Y-%m-%dT%H:%M',
-                                    tz = 'GMT')
+        format = "%Y-%m-%dT%H:%M",
+        tz = "GMT"
+      )
     }
-    if(meta == TRUE){
-      cli::cli_progress_step('Collating metadata')
-      metaD <- getMeta(ID = ID,
-                       mainLink = datalinkAppend,
-                       measureLink = measImp,
-                       import = series[,-1:-2])
-      cli::cli_progress_step('Exporting data to HydroImport container')
-      out <- HydroImportFactory$new(data = series[,-1:-2],
-                                    stationName = metaD$Data[[1]],
-                                    riverName = metaD$Data[[2]],
-                                    WISKI = metaD$Data[[3]],
-                                    RLOID = metaD$Data[[4]],
-                                    stationGuide = metaD$Data[[5]],
-                                    baseURL = metaD$Data[[6]],
-                                    dataURL = metaD$Data[[7]],
-                                    measureURL = metaD$Data[[8]],
-                                    idNRFA = metaD$Data[[9]],
-                                    urlNRFA = metaD$Data[[10]],
-                                    easting = metaD$Data[[11]],
-                                    northing = metaD$Data[[12]],
-                                    latitude = metaD$Data[[13]],
-                                    longitude = metaD$Data[[14]],
-                                    area = metaD$Data[[15]],
-                                    parameter = metaD$Data[[16]],
-                                    unitName = metaD$Data[[17]],
-                                    unit = metaD$Data[[18]],
-                                    datum = metaD$Data[[19]],
-                                    boreholeDepth = metaD$Data[[20]],
-                                    aquifer = metaD$Data[[21]],
-                                    timeZone = metaD$Data[[22]])
+    if (meta == TRUE) {
+      cli::cli_progress_step("Collating metadata")
+      metaD <- getMeta(
+        ID = ID,
+        mainLink = datalinkAppend,
+        measureLink = measImp,
+        import = series[, -1:-2]
+      )
+      cli::cli_progress_step("Exporting data to HydroImport container")
+      out <- HydroImportFactory$new(
+        data = series[, -1:-2],
+        stationName = metaD$Data[[1]],
+        riverName = metaD$Data[[2]],
+        WISKI = metaD$Data[[3]],
+        RLOID = metaD$Data[[4]],
+        stationGuide = metaD$Data[[5]],
+        baseURL = metaD$Data[[6]],
+        dataURL = metaD$Data[[7]],
+        measureURL = metaD$Data[[8]],
+        idNRFA = metaD$Data[[9]],
+        urlNRFA = metaD$Data[[10]],
+        easting = metaD$Data[[11]],
+        northing = metaD$Data[[12]],
+        latitude = metaD$Data[[13]],
+        longitude = metaD$Data[[14]],
+        area = metaD$Data[[15]],
+        parameter = metaD$Data[[16]],
+        unitName = metaD$Data[[17]],
+        unit = metaD$Data[[18]],
+        datum = metaD$Data[[19]],
+        boreholeDepth = metaD$Data[[20]],
+        aquifer = metaD$Data[[21]],
+        timeZone = metaD$Data[[22]]
+      )
       return(out)
     }
-  }else{
-    return(series[,-1:-2])
+  } else {
+    return(series[, -1:-2])
   }
 }

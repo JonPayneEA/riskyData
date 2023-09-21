@@ -9,15 +9,18 @@ dataAgg(x = NULL, type = NULL, method = NULL)
 \arguments{
 \item{x}{A data.table that sits within an R6 \code{HydroImport} object}
 
-\item{type}{Set the aggregation level to either hourly', 'daily', 'monthly', 'annual', or 'hydroYear'}
+\item{type}{Set the aggregation level to either hourly', 'daily', 'monthly',
+'annual', or 'hydroYear'}
 
-\item{method}{Available aggregation methods include 'min', 'max', 'mean', 'median', and 'sum'}
+\item{method}{Available aggregation methods include 'min', 'max', 'mean',
+'median', and 'sum'}
 }
 \value{
 Aggregated dataset determined from the input \code{type} and \code{method}
 }
 \description{
-This acts as a wrapper function for all the aggregation functions that sit within riskyData
+This acts as a wrapper function for all the aggregation
+functions that sit within riskyData
 }
 \examples{
 # Do not run

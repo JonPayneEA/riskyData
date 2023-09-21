@@ -69,24 +69,29 @@ datasets can be pulled.
 \examples{
 loadAPI()
 
-loadAPI(easting = 378235 , northing = 276165, dist = 30, ID = 'nrfa')
+loadAPI(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
 
-loadAPI(ID = 'L1207')
+loadAPI(ID = "L1207")
 
-loadAPI(ID = 'L1207',
-measure = 'level',
-period = 900,
-type = 'instantaneous',
-datapoints = 'earliest')
+loadAPI(
+  ID = "L1207",
+  measure = "level",
+  period = 900,
+  type = "instantaneous",
+  datapoints = "earliest"
+)
 
-dt <- loadAPI(ID = 'L1207',
-measure = 'level',
-period = 900,
-type = 'instantaneous',
-datapoints = 'all')
+dt <- loadAPI(
+  ID = "L1207",
+  measure = "level",
+  period = 900,
+  type = "instantaneous",
+  datapoints = "all"
+)
 
 with(dt, plot(value ~ dateTime,
-type = 'l',
-xlab = 'Time',
-ylab = 'Stage (mAoD)'))
+  type = "l",
+  xlab = "Time",
+  ylab = "Stage (mAoD)"
+))
 }

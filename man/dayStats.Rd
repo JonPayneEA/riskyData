@@ -15,7 +15,7 @@ dayStats(
 )
 
 \method{dayStats}{data.table}(
-  x,
+  x = NULL,
   methods = c("mean", "median", "min", "max"),
   percentiles = c(5, 25, 75, 95),
   hydroDay = TRUE,
@@ -43,5 +43,5 @@ Data are aggregated to a daily resolution
 Daily statistics for imported data
 }
 \examples{
-#dayStats(Buildwas)
+# dayStats(Buildwas)
 }

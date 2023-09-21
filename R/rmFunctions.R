@@ -7,17 +7,17 @@
 #'
 #' @examples
 #' # obj$rmHY()
-rmHY <- function(x){
-  UseMethod('rmHY', x)
+rmHY <- function(x) {
+  UseMethod("rmHY", x)
 }
 
 #' @rdname rmHY
 #' @export
-rmHY.data.table <- function(x){
-  if ('hydroYear' %in% colnames(x)){
-    x[, hydroYear := NULL,]
+rmHY.data.table <- function(x) {
+  if ("hydroYear" %in% colnames(x)) {
+    x[, hydroYear := NULL, ]
   } else {
-    cat('hydroYear field is not present in the data.table\n')
+    cat("hydroYear field is not present in the data.table\n")
   }
 }
 
@@ -29,18 +29,18 @@ rmHY.data.table <- function(x){
 #' @export
 #'
 #' @examples
-#'  # obj$rmHYD()
-rmHYD <- function(x){
-  UseMethod('rmHYD', x)
+#' # obj$rmHYD()
+rmHYD <- function(x) {
+  UseMethod("rmHYD", x)
 }
 
 #' @rdname rmHYD
 #' @export
-rmHYD.data.table <- function(x){
-  if ('hydroYearDay' %in% colnames(x)){
-    x[, hydroYearDay := NULL,]
+rmHYD.data.table <- function(x) {
+  if ("hydroYearDay" %in% colnames(x)) {
+    x[, hydroYearDay := NULL, ]
   } else {
-    cat('hydroYearDay field is not present in the data.table\n')
+    cat("hydroYearDay field is not present in the data.table\n")
   }
 }
 
@@ -53,14 +53,14 @@ rmHYD.data.table <- function(x){
 #'
 #' @examples
 #' # obj$rmVol()
-rmVol <- function(x){
-  UseMethod('rmVol', x)
+rmVol <- function(x) {
+  UseMethod("rmVol", x)
 }
 
-rmVol.data.table <- function(x){
-  if ('volume' %in% colnames(x)){
-    x[, volume := NULL,]
+rmVol.data.table <- function(x) {
+  if ("volume" %in% colnames(x)) {
+    x[, volume := NULL, ]
   } else {
-    cat('Volume field is not present in the data.table\n')
+    cat("Volume field is not present in the data.table\n")
   }
 }

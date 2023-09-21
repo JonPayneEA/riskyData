@@ -15,37 +15,36 @@
 #'
 #' @examples
 #' rollingAggs(Buildwas)
-rollingAggs <- function(x, aggregations = NULL, interval = 0.25, method = 'mean') {
-  UseMethod('rollingAggs', x)
+rollingAggs <- function(x, aggregations = NULL, interval = 0.25, method = "mean") {
+  UseMethod("rollingAggs", x)
 }
 
 #' @rdname rollingAggs
 #' @export
-rollingAggs.data.table <- function(x, aggregations = NULL, interval = 0.25, method = 'mean'){
-  if(is.null(aggregations)){
+rollingAggs.data.table <- function(x, aggregations = NULL, interval = 0.25, method = "mean") {
+  if (is.null(aggregations)) {
     aggregations <- c(1, 2, 3, 4, 8, 24, 120)
   }
-  roller <- eval(parse(text=paste0("RcppRoll::roll_", method)))
+  roller <- eval(parse(text = paste0("RcppRoll::roll_", method)))
   agg <- length(aggregations)
-  if(method == 'sum'){
+  if (method == "sum") {
     Rolling_Aggregations <- data.table(dateTime = x$dateTime, hydroYear = x$hydroYear, hydroYearDay = x$hydroYearDay, Raw = x$volume)
   } else {
     # Rolling_Aggregations <- data.table(dateTime = x$dateTime, hydroYear = x$hydroYear, hydroYearDay = x$hydroYearDay, Raw = x$value)
     Rolling_Aggregations <- data.table(dateTime = x$dateTime, Raw = x$value)
-
   }
-  for(i in seq_along(aggregations)){
-    window <- aggregations[i]/interval
-    if(aggregations[i] %% interval > 0){
+  for (i in seq_along(aggregations)) {
+    window <- aggregations[i] / interval
+    if (aggregations[i] %% interval > 0) {
       cat("Using a rolling aggregation of ", aggregations[i], "is not divisible by 0.25, skipping for next accumulation\n")
-      Rolling_Aggregations[, paste("roll",aggregations[i], "Hr", method, sep = "") := rep(NA, length(Rolling_Aggregations$dateTime))]
+      Rolling_Aggregations[, paste("roll", aggregations[i], "Hr", method, sep = "") := rep(NA, length(Rolling_Aggregations$dateTime))]
       next
     } else {
-      window <- aggregations[i]/interval
+      window <- aggregations[i] / interval
     }
 
     # cat(paste("====================== Rolling ",method," of ", rolling_aggregations[i], " hours ===========================\n"))
-    Rolling_Aggregations[,paste("roll",aggregations[i], "Hr", sep = ""):= roller(Rolling_Aggregations$Raw, window, fill = NA)]
+    Rolling_Aggregations[, paste("roll", aggregations[i], "Hr", sep = "") := roller(Rolling_Aggregations$Raw, window, fill = NA)]
   }
   dt <- data.table(Rolling_Aggregations)
   return(dt)

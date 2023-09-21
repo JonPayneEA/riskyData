@@ -7,13 +7,13 @@
 \alias{asVol.rainLoad}
 \title{Add convert flow or rainfall data to a volume}
 \usage{
-asVol(x, area_km)
+asVol(x, area)
 
-\method{asVol}{data.table}(x, area_km = NULL)
+\method{asVol}{data.table}(x, area = NULL)
 
-\method{asVol}{flowLoad}(x, area_km = NULL)
+\method{asVol}{flowLoad}(x, area = NULL)
 
-\method{asVol}{rainLoad}(x, area_km = NULL)
+\method{asVol}{rainLoad}(x, area = NULL)
 }
 \arguments{
 \item{x}{Data set of 'flowLoad' or 'rainLoad' class}
@@ -31,6 +31,7 @@ Add convert flow or rainfall data to a volume
 # oundle
 # asVol.rainLoad(oundle, area = 40)
 # oundle
+#
 #
 # link <- 'C:/Users/jpayne05/Desktop/Buildwas_15min_Flow.csv'
 # Buildwas <- loadWISKI(link)
