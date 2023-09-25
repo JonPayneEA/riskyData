@@ -41,7 +41,7 @@ asVol.flowLoad <- function(x, area = NULL) {
     units = "mins"
   )
   tDiff <- as.numeric(tDiff)
-  x$GaugeData[, Volume := Value * tDiff * 60]
+  x$GaugeData[, volume := value * tDiff * 60]
   return(x)
 }
 
@@ -57,6 +57,6 @@ asVol.rainLoad <- function(x, area = NULL) {
     units = "mins"
   )
   tDiff <- as.numeric(tDiff)
-  x$GaugeData[, Volume := (Value / 1000) * area]
+  x$GaugeData[, volume := (value / 1000) * area]
   return(x)
 }

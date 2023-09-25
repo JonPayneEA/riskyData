@@ -8,7 +8,7 @@
 #'
 #' @param link Link to the specified file for import
 #' @param skip Stet to zero, denotes the number off rows you wish to skip
-#' @param meta_rows Set to 10, determines the amount of rows set as metadata
+#' @param metaRows Set to 10, determines the amount of rows set as metadata
 #' @param impute Set to TRUE, this fills in missing data using the
 #' 'forecast::na.interp()' function
 #'
@@ -18,7 +18,7 @@
 #'
 loadPE <- function(link,
                    skip = 0,
-                   meta_rows = 10,
+                   metaRows = 10,
                    impute = TRUE) {
   type <- fread(link,
     nrows = 2,
@@ -30,7 +30,7 @@ loadPE <- function(link,
   if (type[2, 2] == "Single per row") {
     cat("Importing meta data\n")
     meta <- fread(link,
-      nrows = meta_rows,
+      nrows = metaRows,
       skip = 3,
       sep = ",",
       header = FALSE,
@@ -51,9 +51,11 @@ loadPE <- function(link,
     if (impute == TRUE) {
       main$PE <- forecast::na.interp(main$PE)
     }
-    date_time <- paste(main$Date, main$Time)
-    date_time <- gsub(" GMT", "", date_time)
-    main$DateTime <- as.POSIXct(date_time, format = "%d-%b-%y %H:%M", tz = "GMT")
+    dateTime <- paste(main$Date, main$Time)
+    dateTime <- gsub(" GMT", "", dateTime)
+    main$DateTime <- as.POSIXct(dateTime,
+                                format = "%d-%b-%y %H:%M",
+                                tz = "GMT")
     data <- list()
     data[["Metadata"]] <- meta
     data[["RemoteData"]] <- main
@@ -61,6 +63,7 @@ loadPE <- function(link,
     class(data) <- append(class(data), "PELoad")
     return(data)
   } else {
-    stop("PE data is not supported in this function when of the type; ", type[2, 2])
+    stop("PE data is not supported in this function when of the type; ",
+         type[2, 2])
   }
 }

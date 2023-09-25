@@ -3,23 +3,11 @@
 \name{dailyAgg}
 \alias{dailyAgg}
 \alias{dailyAgg.data.table}
-\alias{dailyAgg.flowLoad}
-\alias{dailyAgg.rainLoad}
-\alias{dailyAgg.stageLoad}
-\alias{dailyAgg.rainAll}
 \title{dailyAgg}
 \usage{
 dailyAgg(x, method = "mean", ...)
 
 \method{dailyAgg}{data.table}(x, method = "mean", ...)
-
-\method{dailyAgg}{flowLoad}(x, method = "mean", ...)
-
-\method{dailyAgg}{rainLoad}(x, method = "mean", ...)
-
-\method{dailyAgg}{stageLoad}(x, method = "mean", ...)
-
-\method{dailyAgg}{rainAll}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}

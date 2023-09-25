@@ -4,14 +4,14 @@
 \alias{loadPE}
 \title{Load potential evaporation data}
 \usage{
-loadPE(link, skip = 0, meta_rows = 10, impute = TRUE)
+loadPE(link, skip = 0, metaRows = 10, impute = TRUE)
 }
 \arguments{
 \item{link}{Link to the specified file for import}
 
 \item{skip}{Stet to zero, denotes the number off rows you wish to skip}
 
-\item{meta_rows}{Set to 10, determines the amount of rows set as metadata}
+\item{metaRows}{Set to 10, determines the amount of rows set as metadata}
 
 \item{impute}{Set to TRUE, this fills in missing data using the
 'forecast::na.interp()' function}

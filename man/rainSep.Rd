@@ -11,17 +11,23 @@ rainSep(dateTime = NULL, precip = NULL, threshold = 0, minTotal = 0, roll = 0)
 
 \item{precip}{Observed rainfall data.}
 
-\item{threshold}{Used to tidy averaged and radar data where very low accumulations can be recorded, defaults to 0mm.}
+\item{threshold}{Used to tidy averaged and radar data where very low
+accumulations can be recorded, defaults to 0mm.}
 
-\item{minTotal}{Used to help tidy the total number of events. Sets a minimum event total rainfall.}
+\item{minTotal}{Used to help tidy the total number of events. Sets a
+minimum event total rainfall.}
 
 \item{roll}{Number of time steps so use in the \code{RcppRoll::roll_sum()}.}
 }
 \value{
-Function returns a data table with event ID, start and end times of the events, and the total accumulation for the events
+Function returns a data table with event ID, start and end times of
+the events, and the total accumulation for the events
 }
 \description{
-The \code{rainSep()} function uses run length encoding to find consecutive rainfall periods. To avoid biref timesteps of no rain from splitting events, the use of \code{RcppRoll::roll_sum()} can pad out the event durations.
+The \code{rainSep()} function uses run length encoding to find
+consecutive rainfall periods. To avoid brief timesteps of no rain from
+splitting events, the use of \code{RcppRoll::roll_sum()} can pad out the event d
+urations.
 }
 \examples{
 ## Do not run
@@ -51,7 +57,8 @@ The \code{rainSep()} function uses run length encoding to find consecutive rainf
 #                    minTotal = 4,
 #                    roll = 20)
 # for (i in seq_along(dayRain$id)){
-#   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i], dayRain$end[i]),
+#   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],
+#                 dayRain$end[i]),
 #           y = c(0, 12, 12, 0),
 #           col = scales::alpha('red', 0.5),
 #           border = NA)

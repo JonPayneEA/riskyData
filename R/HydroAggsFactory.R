@@ -1,7 +1,8 @@
 #' @title R6 object for imported data via the EA API
 #'
 #' @description
-#' This is the base class for all data imported via the API. A HydroAggs contains public raw data and private metadata.
+#' This is the base class for all data imported via the API. A HydroAggs
+#' contains public raw data and private metadata.
 #'
 #' @param data Raw data
 #' @param dataType Details the type of data in this environment
@@ -73,35 +74,9 @@ HydroAggsFactory <- R6::R6Class(
       cli::cli_h2("Public:")
       print(self$data)
       cat("\n")
-      cli::cli_text(paste("{.strong For more details use the $methods() function, the format should be as `Object_name`$methods()}"))
+      cli::cli_text(paste("{.strong For more details use the $methods()
+                          function, the format should be as
+                          `Object_name`$methods()}"))
     }
   )
 )
-
-
-
-# HydroAggsFactory$new(gauge$data)
-#
-# HydroAggsFactory$new(data = series[,-1:-2],
-#                      stationName = metaD$Data[[1]],
-#                      riverName = metaD$Data[[2]],
-#                      WISKI = metaD$Data[[3]],
-#                      RLOID = metaD$Data[[4]],
-#                      stationGuide = metaD$Data[[5]],
-#                      baseURL = metaD$Data[[6]],
-#                      dataURL = metaD$Data[[7]],
-#                      measureURL = metaD$Data[[8]],
-#                      idNRFA = metaD$Data[[9]],
-#                      urlNRFA = metaD$Data[[10]],
-#                      easting = metaD$Data[[11]],
-#                      northing = metaD$Data[[12]],
-#                      latitude = metaD$Data[[13]],
-#                      longitude = metaD$Data[[14]],
-#                      area = metaD$Data[[15]],
-#                      parameter = metaD$Data[[16]],
-#                      unitName = metaD$Data[[17]],
-#                      unit = metaD$Data[[18]],
-#                      datum = metaD$Data[[19]],
-#                      boreholeDepth = metaD$Data[[20]],
-#                      aquifer = metaD$Data[[21]],
-#                      timeZone = metaD$Data[[22]])

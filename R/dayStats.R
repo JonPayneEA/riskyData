@@ -32,12 +32,13 @@ dayStats.data.table <- function(x = NULL,
                                 percentiles = c(5, 25, 75, 95),
                                 hydroDay = TRUE,
                                 plot = TRUE,
+                                year = NULL,
                                 ...) {
   dt <- x
   if (hydroDay == TRUE) {
     dt$dayYear <- dt$hydroYearDay
   } else {
-    dt$dayYear <- yday(gauge$data$dateTime)
+    dt$dayYear <- yday(x$data$dateTime)
   }
 
   if (any(methods %in% "mean")) {
@@ -55,6 +56,11 @@ dayStats.data.table <- function(x = NULL,
     ]
     names(ptile)[names(ptile) == "Percentile"] <- paste0("Perc", i)
     dt1 <- merge(dt1, ptile, by = "dayYear")
+  }
+  if (!is.null(year)){
+    meanYear <- dt[, .(meanYear = mean(value, na.rm = TRUE),
+                       medianYear = median(value, na.rm = TRUE)),
+                   'dayYear']
   }
   if (plot == TRUE) {
     a <- dt1[-366, , ]

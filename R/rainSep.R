@@ -1,14 +1,20 @@
 #' @title Rainfall event seperation
 #'
-#' @description The `rainSep()` function uses run length encoding to find consecutive rainfall periods. To avoid biref timesteps of no rain from splitting events, the use of `RcppRoll::roll_sum()` can pad out the event durations.
+#' @description The `rainSep()` function uses run length encoding to find
+#' consecutive rainfall periods. To avoid brief timesteps of no rain from
+#' splitting events, the use of `RcppRoll::roll_sum()` can pad out the event d
+#' urations.
 #'
 #' @param dateTime DateTime variable from time series.
 #' @param precip Observed rainfall data.
-#' @param threshold Used to tidy averaged and radar data where very low accumulations can be recorded, defaults to 0mm.
-#' @param minTotal Used to help tidy the total number of events. Sets a minimum event total rainfall.
+#' @param threshold Used to tidy averaged and radar data where very low
+#' accumulations can be recorded, defaults to 0mm.
+#' @param minTotal Used to help tidy the total number of events. Sets a
+#' minimum event total rainfall.
 #' @param roll Number of time steps so use in the `RcppRoll::roll_sum()`.
 #'
-#' @return Function returns a data table with event ID, start and end times of the events, and the total accumulation for the events
+#' @return Function returns a data table with event ID, start and end times of
+#' the events, and the total accumulation for the events
 #' @export
 #'
 #' @examples
@@ -39,7 +45,8 @@
 #' #                    minTotal = 4,
 #' #                    roll = 20)
 #' # for (i in seq_along(dayRain$id)){
-#' #   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i], dayRain$end[i]),
+#' #   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],
+#' #                 dayRain$end[i]),
 #' #           y = c(0, 12, 12, 0),
 #' #           col = scales::alpha('red', 0.5),
 #' #           border = NA)
@@ -72,7 +79,10 @@ rainSep <- function(dateTime = NULL,
   ## Collate start and end dates of events
   end <- cumsum(consecPrecip$lengths)
   start <- c(1, data.table::shift(end, type = "lag")[-1] + 1)
-  dt <- data.table(id = seq_along(start), start, end, precip = consecPrecip$values)
+  dt <- data.table(id = seq_along(start),
+                   start,
+                   end,
+                   precip = consecPrecip$values)
   ## Calculate totals
   aggID <- data.table(
     id = rep(dt$id, times = consecPrecip$lengths),

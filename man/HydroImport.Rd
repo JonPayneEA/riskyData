@@ -8,7 +8,8 @@
 A class containing raw data, metadata and methods
 }
 \description{
-This is the base class for all data imported via the API. A HydroImport contains public raw data and private metadata.
+This is the base class for all data imported via the API. A HydroImport
+contains public raw data and private metadata.
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -325,9 +326,11 @@ Return aggregated data
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{type}}{Set the aggrgegation level to either hourly', 'daily', 'monthly', 'annual', or 'hydroYear'}
+\item{\code{type}}{Set the aggrgegation level to either hourly', 'daily',
+'monthly', 'annual', or 'hydroYear'}
 
-\item{\code{method}}{Available aggregation methods include 'min', 'max', 'mean', 'median', and 'sum'}
+\item{\code{method}}{Available aggregation methods include 'min', 'max',
+'mean', 'median', and 'sum'}
 }
 \if{html}{\out{</div>}}
 }
@@ -340,7 +343,7 @@ Return the different user selecting rolling aggregations
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$rollingAggs(
   method = "mean",
-  rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120),
+  rolls = c(1, 2, 3, 4, 8, 24, 120),
   interval = 0.25
 )}\if{html}{\out{</div>}}
 }
@@ -350,7 +353,7 @@ Return the different user selecting rolling aggregations
 \describe{
 \item{\code{method}}{Choose mean, median, min, max, and sum for volumes}
 
-\item{\code{rolling_aggregations}}{The hourly aggregations selected by the user}
+\item{\code{rolls}}{The hourly aggregations selected by the user}
 
 \item{\code{interval}}{Corrects for the time step of the data, set to 0.25 hours}
 }
@@ -388,7 +391,8 @@ Daily statistics for imported data
 \describe{
 \item{\code{plot}}{Set to TRUE, will produce a plot of the statistics}
 
-\item{\code{year}}{Set to NULL, overlays the mean daily flow for a chosen hydrological year}
+\item{\code{year}}{Set to NULL, overlays the mean daily flow for a chosen
+hydrological year}
 }
 \if{html}{\out{</div>}}
 }

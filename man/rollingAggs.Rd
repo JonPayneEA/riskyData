@@ -5,18 +5,19 @@
 \alias{rollingAggs.data.table}
 \title{rollingAggs}
 \usage{
-rollingAggs(x, aggregations = NULL, interval = 0.25, method = "mean")
+rollingAggs(x, rolls = NULL, interval = 0.25, method = "mean")
 
-\method{rollingAggs}{data.table}(x, aggregations = NULL, interval = 0.25, method = "mean")
+\method{rollingAggs}{data.table}(x, rolls = NULL, interval = 0.25, method = "mean")
 }
 \arguments{
-\item{interval}{Set as 0.25 to represent 15 minute data, for hourly change to 1 etc.}
+\item{rolls}{User defined periods of aggregation}
+
+\item{interval}{Set as 0.25 to represent 15 minute data, for hourly change
+to 1 etc.}
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 
 \item{dt}{flowLoad, rainLoad, or stageLoad data}
-
-\item{rolling_aggregations}{User defined periods of aggregation}
 }
 \value{
 A dataset containg numerous aggregations on a roll

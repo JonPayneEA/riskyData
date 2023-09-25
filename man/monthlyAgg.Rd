@@ -3,23 +3,11 @@
 \name{monthlyAgg}
 \alias{monthlyAgg}
 \alias{monthlyAgg.data.table}
-\alias{monthlyAgg.flowLoad}
-\alias{monthlyAgg.rainLoad}
-\alias{monthlyAgg.stageLoad}
-\alias{monthlyAgg.rainAll}
 \title{monthlyAgg}
 \usage{
 monthlyAgg(x, method = "mean", ...)
 
 \method{monthlyAgg}{data.table}(x, method = "mean", ...)
-
-\method{monthlyAgg}{flowLoad}(x, method = mean, ...)
-
-\method{monthlyAgg}{rainLoad}(x, method = mean, ...)
-
-\method{monthlyAgg}{stageLoad}(x, method = mean, ...)
-
-\method{monthlyAgg}{rainAll}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}

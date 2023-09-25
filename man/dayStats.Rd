@@ -20,6 +20,7 @@ dayStats(
   percentiles = c(5, 25, 75, 95),
   hydroDay = TRUE,
   plot = TRUE,
+  year = NULL,
   ...
 )
 }

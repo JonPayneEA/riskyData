@@ -8,7 +8,8 @@
 A class containing raw data, metadata and methods
 }
 \description{
-This is the base class for all data imported via the API. A HydroAggs contains public raw data and private metadata.
+This is the base class for all data imported via the API. A HydroAggs
+contains public raw data and private metadata.
 }
 \section{Super class}{
 \code{\link[riskyData:HydroImport]{riskyData::HydroImport}} -> \code{HydroAggs}

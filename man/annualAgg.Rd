@@ -3,23 +3,11 @@
 \name{annualAgg}
 \alias{annualAgg}
 \alias{annualAgg.data.table}
-\alias{annualAgg.flowLoad}
-\alias{annualAgg.rainLoad}
-\alias{annualAgg.stageLoad}
-\alias{annualAgg.rainAll}
 \title{annualAgg}
 \usage{
 annualAgg(x, method = "mean", ...)
 
 \method{annualAgg}{data.table}(x, method = "mean", ...)
-
-\method{annualAgg}{flowLoad}(x, method = "mean", ...)
-
-\method{annualAgg}{rainLoad}(x, method = "mean", ...)
-
-\method{annualAgg}{stageLoad}(x, method = "mean", ...)
-
-\method{annualAgg}{rainAll}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}

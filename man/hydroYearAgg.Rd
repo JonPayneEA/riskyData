@@ -3,20 +3,11 @@
 \name{hydroYearAgg}
 \alias{hydroYearAgg}
 \alias{hydroYearAgg.data.table}
-\alias{hydroYearAgg.flowLoad}
-\alias{hydroYearAgg.rainLoad}
-\alias{hydroYearAgg.stageLoad}
 \title{hydroYearAgg}
 \usage{
 hydroYearAgg(x, method = "mean", ...)
 
 \method{hydroYearAgg}{data.table}(x, method = "mean", ...)
-
-\method{hydroYearAgg}{flowLoad}(x, method = "mean", ...)
-
-\method{hydroYearAgg}{rainLoad}(x, method = "mean", ...)
-
-\method{hydroYearAgg}{stageLoad}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -29,8 +20,9 @@ hydroYearAgg(x, method = "mean", ...)
 Data are aggregated to the hydrological year
 }
 \description{
-Aggregates sub annual time series into a hydrological year resolution,
-aggregations are carried out to the calendar day not a rolling time period.
+Aggregates sub annual time series into a hydrological year
+resolution, aggregations are carried out to the calendar day not a rolling
+time period.
 }
 \examples{
 hydroYearAgg(Buildwas)

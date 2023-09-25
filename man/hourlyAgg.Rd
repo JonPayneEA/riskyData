@@ -3,23 +3,11 @@
 \name{hourlyAgg}
 \alias{hourlyAgg}
 \alias{hourlyAgg.data.table}
-\alias{hourlyAgg.flowLoad}
-\alias{hourlyAgg.stageLoad}
-\alias{hourlyAgg.rainLoad}
-\alias{hourlyAgg.rainAll}
 \title{hourlyAgg}
 \usage{
 hourlyAgg(x, method = "mean", ...)
 
 \method{hourlyAgg}{data.table}(x, method = "mean", ...)
-
-\method{hourlyAgg}{flowLoad}(x, method = "mean", ...)
-
-\method{hourlyAgg}{stageLoad}(x, method = "mean", ...)
-
-\method{hourlyAgg}{rainLoad}(x, method = "mean", ...)
-
-\method{hourlyAgg}{rainAll}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}

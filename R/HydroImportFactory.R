@@ -1,7 +1,8 @@
 #' @title R6 object for imported data via the EA API
 #'
 #' @description
-#' This is the base class for all data imported via the API. A HydroImport contains public raw data and private metadata.
+#' This is the base class for all data imported via the API. A HydroImport
+#' contains public raw data and private metadata.
 #'
 #' @param data Raw data
 #' @param dataType Details the type of data in this environment
@@ -128,7 +129,9 @@ HydroImportFactory <- R6::R6Class(
       cli::cli_h2("Public:")
       print(self$data)
       cat("\n")
-      cli::cli_text(paste("{.strong For more details use the $methods() function, the format should be as `Object_name`$methods()}"))
+      cli::cli_text(paste("{.strong For more details use the $methods()
+                          function, the format should be as
+                          `Object_name`$methods()}"))
     },
     #' @description
     #' Display the methods available in the R6 object
@@ -138,10 +141,8 @@ HydroImportFactory <- R6::R6Class(
       usage <- c(
         "obj$data", "obj$meta()", "obj$asVol()", "obj$hydroYearDay()",
         "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()", "obj$summary()",
-        "obj$coords()", "obj$nrfa()", "obj$hourlyAgg()",
-        "obj$dailyAgg()", "obj$monthlyAgg()", "obj$annualAgg()",
-        "obj$hydroYearAgg()", "obj$rollingAggs()", "obj$dayStats()",
-        "obj$quality()"
+        "obj$coords()", "obj$nrfa()", "obj$dataAgg()", "obj$rollingAggs()",
+        "obj$dayStats()", "obj$quality()"
       )
 
       desc <- c(
@@ -155,13 +156,9 @@ HydroImportFactory <- R6::R6Class(
         "Provides a quick summary of the raw data",
         "Returns coordinates from the metadata",
         "Returns the NRFA data from the metadata",
-        "Aggregates data by the calendar hours, see ?hourlyAgg",
-        "Aggregates data by the calendar days, see ?dailyAgg",
-        "Aggregates data by the calendar months, see ?monthlyAgg",
-        "Aggregates data by the calendar year, see ?annualAgg",
-        "Aggregates data by the hydrological year, see ?hydroYearAgg",
+        "Aggregate data by, hour, day, month calendar year and hydroYear",
         "Uses user specified aggregation timings, see ?rollingAggs",
-        "Produces daily statistics of flow, carried out on hydrological of calendar days",
+        "Daily statistics of flow, carried out on hydrological or calendar day",
         "Provides a quick summary table of the data qualiity flags"
       )
 
@@ -183,7 +180,8 @@ HydroImportFactory <- R6::R6Class(
         sep = "    "
       )
       ## Create the box for the table
-      boxx(fmt, padding = c(0, 1, 0, 1), header = style_bold(col_blue("Methods")))
+      boxx(fmt, padding = c(0, 1, 0, 1),
+           header = style_bold(col_blue("Methods")))
     },
     #' @description
     #' Display a summary of the R6 object
@@ -266,8 +264,10 @@ HydroImportFactory <- R6::R6Class(
     },
     #' @description
     #' Return aggregated data
-    #' @param type Set the aggrgegation level to either hourly', 'daily', 'monthly', 'annual', or 'hydroYear'
-    #' @param method Available aggregation methods include 'min', 'max', 'mean', 'median', and 'sum'
+    #' @param type Set the aggrgegation level to either hourly', 'daily',
+    #' 'monthly', 'annual', or 'hydroYear'
+    #' @param method Available aggregation methods include 'min', 'max',
+    #' 'mean', 'median', and 'sum'
     dataAgg = function(type = NULL, method = NULL) {
       dt <- dataAgg(
         x = self$data,
@@ -317,9 +317,11 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Return the different user selecting rolling aggregations
     #' @param method Choose mean, median, min, max, and sum for volumes
-    #' @param rolling_aggregations The hourly aggregations selected by the user
+    #' @param rolls The hourly aggregations selected by the user
     #' @param interval Corrects for the time step of the data, set to 0.25 hours
-    rollingAggs = function(method = "mean", rolling_aggregations = c(1, 2, 3, 4, 8, 24, 120), interval = 0.25) {
+    rollingAggs = function(method = "mean",
+                           rolls = c(1, 2, 3, 4, 8, 24, 120),
+                           interval = 0.25) {
       dt <- rollingAggs(x = self$data, method = method)
       return(dt)
     },
@@ -362,14 +364,16 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Daily statistics for imported data
     #' @param plot Set to TRUE, will produce a plot of the statistics
-    #' @param year Set to NULL, overlays the mean daily flow for a chosen hydrological year
+    #' @param year Set to NULL, overlays the mean daily flow for a chosen
+    #' hydrological year
     dayStats = function(plot = TRUE, year = NULL) {
       yearOI <- year
       if ("hydroYearDay" %in% colnames(self$data)) {
         dt <- dayStats(x = self$data, plot = plot, year = yearOI)
         return(dt)
       } else {
-        stop("Please run the `obj$hydroYearDay()` function to generate the hydrological day of the year")
+        stop("Please run the `obj$hydroYearDay()` function to generate the
+             hydrological day of the year")
       }
     },
     #' @description
@@ -388,12 +392,6 @@ HydroImportFactory <- R6::R6Class(
         ylab = "Flow",
         lwd = 2
       )
-      # segments(x0 = -10,
-      #          x1 = perc,
-      #          y0 = quant,
-      #          y1 = quant,
-      #          col = 'red',
-      #          lty = 2)
       segments(
         x0 = perc,
         x1 = perc,
@@ -429,18 +427,6 @@ HydroImportFactory <- R6::R6Class(
       }
       return(max(self$data$dateTime))
     },
-    # timeStep = function(){
-    #   if (is.null(dim(self$data))){
-    #     return(NA)
-    #   } else {
-    #     return(as.numeric(difftime(self$data$dateTime[2],
-    #                                self$data$dateTime[1],
-    #                                units = 'secs')))
-    #   }
-    #   # return(as.numeric(difftime(self$data$dateTime[2],
-    #   #                            self$data$dateTime[1],
-    #   #                            units = 'secs')))
-    # },
     timeStep = function() {
       if (is.null(dim(self$data))) {
         return(NA)
@@ -461,10 +447,8 @@ HydroImportFactory <- R6::R6Class(
         return("Hydrological Year Unstable")
       }
       if (private$dataType == "Raw Import") {
-        return(as.numeric(difftime(self$data$dateTime[2],
-          self$data$dateTime[1],
-          units = "secs"
-        )))
+        return(as.numeric(difftime(self$data$dateTime[2], self$data$dateTime[1],
+                                   units = "secs")))
       }
     },
     riverName = NULL,
