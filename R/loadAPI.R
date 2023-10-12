@@ -60,7 +60,7 @@
 #'   datapoints = "all"
 #' )
 #'
-#' with(dt, plot(value ~ dateTime,
+#' with(dt$data, plot(value ~ dateTime,
 #'   type = "l",
 #'   xlab = "Time",
 #'   ylab = "Stage (mAoD)"
