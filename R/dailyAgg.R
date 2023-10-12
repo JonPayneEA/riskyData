@@ -13,7 +13,8 @@
 #' @import data.table
 #'
 #' @examples
-#' dailyAgg(Buildwas)
+#' ## Do not run
+#' # dailyAgg(Buildwas)
 dailyAgg <- function(x, method = "mean", ...) {
   UseMethod("dailyAgg", x)
 }

@@ -2,20 +2,21 @@
 #'
 #' @description Provides a rolling aggregation of a user defined periods.
 #'
-#' @param dt flowLoad, rainLoad, or stageLoad data
+#' @param dt Input dat in R6 object
 #' @param rolls User defined periods of aggregation
 #' @param interval Set as 0.25 to represent 15 minute data, for hourly change
 #' to 1 etc.
 #' @param method 'min', 'max', 'mean', 'median', and 'sum' options available
 #'
-#' @return A dataset containg numerous aggregations on a roll
+#' @return A dataset containing numerous aggregations on a roll
 #' @export
 #'
 #' @import data.table
 #' @import RcppRoll
 #'
 #' @examples
-#' rollingAggs(Buildwas)
+#' ## Do not run
+#' # rollingAggs(Buildwas)
 rollingAggs <- function(x,
                         rolls = NULL,
                         interval = 0.25,

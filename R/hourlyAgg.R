@@ -13,7 +13,8 @@
 #' @import data.table
 #'
 #' @examples
-#' hourlyAgg(Buildwas)
+#' ## Do not run
+#' # hourlyAgg(Buildwas)
 hourlyAgg <- function(x, method = "mean", ...) {
   UseMethod("hourlyAgg", x)
 }

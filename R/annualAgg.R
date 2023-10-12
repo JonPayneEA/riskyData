@@ -13,7 +13,8 @@
 #' @import data.table
 #'
 #' @examples
-#' annualAgg(Buildwas)
+#' ## Do not run
+#' # annualAgg(Buildwas)
 annualAgg <- function(x, method = "mean", ...) {
   UseMethod("annualAgg", x)
 }
