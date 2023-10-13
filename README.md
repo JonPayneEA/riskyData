@@ -10,7 +10,7 @@ License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-b
 [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
 <!-- badges: end -->
 
-# Welcome to HydroEnR!
+# Welcome to riskyData!
 
 This package is part of the fleet of flode tools designed for members of
 Evidence and Risk. This package, riskyData, is used to interact with the
