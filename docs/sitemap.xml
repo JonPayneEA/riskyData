@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/404.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/reference/annualAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/annualAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/asVol.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/asVol.html</loc>
   </url>
   <url>
-    <loc>/reference/cumsumNA.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/cumsumNA.html</loc>
   </url>
   <url>
-    <loc>/reference/dailyAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/dailyAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/dataAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/dataAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/dayStats.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/dayStats.html</loc>
   </url>
   <url>
-    <loc>/reference/getMeta.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/getMeta.html</loc>
   </url>
   <url>
-    <loc>/reference/hourlyAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/hourlyAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/HydroAggs.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/HydroAggs.html</loc>
   </url>
   <url>
-    <loc>/reference/HydroImport.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/HydroImport.html</loc>
   </url>
   <url>
-    <loc>/reference/hydroYearAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/hydroYearAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/hydroYearDay.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/hydroYearDay.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/loadAPI.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/loadAPI.html</loc>
   </url>
   <url>
-    <loc>/reference/loadPE.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/loadPE.html</loc>
   </url>
   <url>
-    <loc>/reference/mergeData.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/mergeData.html</loc>
   </url>
   <url>
-    <loc>/reference/monthlyAgg.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/monthlyAgg.html</loc>
   </url>
   <url>
-    <loc>/reference/rainSep.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/rainSep.html</loc>
   </url>
   <url>
-    <loc>/reference/rmHY.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/rmHY.html</loc>
   </url>
   <url>
-    <loc>/reference/rmHYD.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/rmHYD.html</loc>
   </url>
   <url>
-    <loc>/reference/rmVol.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/rmVol.html</loc>
   </url>
   <url>
-    <loc>/reference/rollingAggs.html</loc>
+    <loc>https://jonpayneea.github.io/riskyData/reference/rollingAggs.html</loc>
   </url>
 </urlset>
