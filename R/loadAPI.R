@@ -38,7 +38,7 @@
 #' @export
 #'
 #' @examples
-#' loadAPI()
+#' #loadAPI()
 #'
 #' loadAPI(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
 #'

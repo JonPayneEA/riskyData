@@ -24,5 +24,6 @@ Aggregates sub annual time series into an annual resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-annualAgg(Buildwas)
+## Do not run
+# annualAgg(Buildwas)
 }

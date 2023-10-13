@@ -141,8 +141,7 @@ Available metrics;
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tidyr::unnest(dt, c(wiskiID, label, riverName, easting, northing,     lat, long, observedProperty), keep_empty = TRUE):</span> In row 282, can't recycle input of size 2 to size 3.</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#loadAPI()</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span>easting <span class="op">=</span> <span class="fl">378235</span>, northing <span class="op">=</span> <span class="fl">276165</span>, dist <span class="op">=</span> <span class="fl">30</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    wiskiID        label      riverName observedProperty easting northing</span>
@@ -166,8 +165,8 @@ Available metrics;
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"L1207"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    parameter period          type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     level  86400           max</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     level    900 instantaneous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     level    900 instantaneous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     level  86400           max</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3:     level  86400           min</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span></span></span>
@@ -178,16 +177,16 @@ Available metrics;
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"earliest"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[205ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[170ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[134ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[147ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[248ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[206ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[26ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[21ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span>
@@ -225,24 +224,24 @@ Available metrics;
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"all"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[122ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[126ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[42s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[26.5s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[359ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[194ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[163ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[102ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dt</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">value</span> <span class="op">~</span> <span class="va">dateTime</span>,</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">data</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">value</span> <span class="op">~</span> <span class="va">dateTime</span>,</span></span>
 <span class="r-in"><span>  type <span class="op">=</span> <span class="st">"l"</span>,</span></span>
 <span class="r-in"><span>  xlab <span class="op">=</span> <span class="st">"Time"</span>,</span></span>
 <span class="r-in"><span>  ylab <span class="op">=</span> <span class="st">"Stage (mAoD)"</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in plot(value ~ dateTime, type = "l", xlab = "Time", ylab = "Stage (mAoD)"):</span> could not find function "plot"</span>
+<span class="r-plt img"><img src="loadAPI-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </div>

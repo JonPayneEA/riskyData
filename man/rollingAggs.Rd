@@ -17,14 +17,15 @@ to 1 etc.}
 
 \item{method}{'min', 'max', 'mean', 'median', and 'sum' options available}
 
-\item{dt}{flowLoad, rainLoad, or stageLoad data}
+\item{dt}{Input dat in R6 object}
 }
 \value{
-A dataset containg numerous aggregations on a roll
+A dataset containing numerous aggregations on a roll
 }
 \description{
 Provides a rolling aggregation of a user defined periods.
 }
 \examples{
-rollingAggs(Buildwas)
+## Do not run
+# rollingAggs(Buildwas)
 }

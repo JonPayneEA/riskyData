@@ -24,5 +24,6 @@ Aggregates sub daily time series into a daily resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-dailyAgg(Buildwas)
+## Do not run
+# dailyAgg(Buildwas)
 }

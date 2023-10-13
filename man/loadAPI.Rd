@@ -67,7 +67,7 @@ all station can be pulled, or when specified to a single site various
 datasets can be pulled.
 }
 \examples{
-loadAPI()
+#loadAPI()
 
 loadAPI(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
 
@@ -89,7 +89,7 @@ dt <- loadAPI(
   datapoints = "all"
 )
 
-with(dt, plot(value ~ dateTime,
+with(dt$data, plot(value ~ dateTime,
   type = "l",
   xlab = "Time",
   ylab = "Stage (mAoD)"

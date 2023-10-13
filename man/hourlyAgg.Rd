@@ -24,5 +24,6 @@ Aggregates sub hourly time series into an hourly resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-hourlyAgg(Buildwas)
+## Do not run
+# hourlyAgg(Buildwas)
 }

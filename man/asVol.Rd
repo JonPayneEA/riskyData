@@ -27,15 +27,6 @@ Calculated volume of flow or rainfall
 Add convert flow or rainfall data to a volume
 }
 \examples{
-# oundle <- loadWISKI(files[4])
-# oundle
-# asVol.rainLoad(oundle, area = 40)
-# oundle
-#
-#
-# link <- 'C:/Users/jpayne05/Desktop/Buildwas_15min_Flow.csv'
-# Buildwas <- loadWISKI(link)
-# Buildwas
-# asVol.flowLoad(Buildwas)
-# Buildwas
+## Do not run
+# asVol(obj)
 }
