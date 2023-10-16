@@ -24,5 +24,15 @@ Creates fields for hydrological year and hydrological day.
 Speed is slow, needs conversion to C++ in future iterations.
 }
 \examples{
-hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = "oct_us_gb")
+#' # Load bewdley dataset
+data(bewdley)
+
+# Inspect the data
+bewdley$data
+
+# Add hydrological year and hydrological day columns
+bewdley$hydroYearDay()
+
+# Print the bewdley dataset
+bewdley
 }

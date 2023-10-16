@@ -14,7 +14,6 @@
 #'
 #' @examples
 #' ## Do not run
-#' # hourlyAgg(Buildwas)
 hourlyAgg <- function(x, method = "mean", ...) {
   UseMethod("hourlyAgg", x)
 }

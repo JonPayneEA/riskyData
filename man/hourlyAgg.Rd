@@ -25,5 +25,4 @@ aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
 ## Do not run
-# hourlyAgg(Buildwas)
 }

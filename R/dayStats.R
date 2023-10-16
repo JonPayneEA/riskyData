@@ -15,7 +15,14 @@
 #' @import data.table
 #'
 #' @examples
-#' # dayStats(Buildwas)
+#' # Load data
+#' data(bewdley)
+#'
+#' # Calculate hydrological year
+#' bewdley$hydroYearDay()
+#'
+#' # Calculate daily statistics
+#' bewdley$dayStats(plot = TRUE)
 dayStats <- function(x,
                      methods = c("mean", "median", "min", "max"),
                      percentiles = c(5, 25, 75, 95),

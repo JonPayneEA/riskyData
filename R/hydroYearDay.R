@@ -12,7 +12,17 @@
 #' @export
 #'
 #' @examples
-#' hydroYearDay(Buildwas$GaugeData$DateTime, hy_cal = "oct_us_gb")
+#' #' # Load bewdley dataset
+#' data(bewdley)
+#'
+#' # Inspect the data
+#' bewdley$data
+#'
+#' # Add hydrological year and hydrological day columns
+#' bewdley$hydroYearDay()
+#'
+#' # Print the bewdley dataset
+#' bewdley
 hydroYearDay <- function(x, calendar = "oct_us_gb", ...) {
   UseMethod("hydroYearDay", x)
 }

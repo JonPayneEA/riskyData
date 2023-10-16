@@ -16,15 +16,35 @@ dataAgg(x = NULL, type = NULL, method = NULL)
 'median', and 'sum'}
 }
 \value{
-Aggregated dataset determined from the input \code{type} and \code{method}
+Aggregated dataset determined from the input \code{type} and \code{method}. Data are placed within a \code{HydroAggs} type container
 }
 \description{
 This acts as a wrapper function for all the aggregation
 functions that sit within riskyData
 }
 \examples{
-# Do not run
-# obj$dataAgg(type = 'hourly', method = 'max')
+# Load bewdley dataset
+data(bewdley)
+
+# Calculate mean hourly flows
+bewdley$dataAgg(type = "hourly", method = "mean")
+
+# Calculate median daily flows
+bewdley$dataAgg(type = "daily", method = "median")
+
+# Calculate min
+bewdley$dataAgg(type = "monthly", method = "min")
+
+# Calculate annual (calendar year) max
+bewdley$dataAgg(type = "annual", method = "max")
+
+# Calculate hydroYear max
+# Hydrological years need to be calculated for this. The `hydroYearDay()` function can be piped into the operation.
+bewdley$hydroYearDay()$dataAgg(type = "hydroYear", method = "max")
+
+# Calculate total hourly flow
+# Flow has to be converted to volume. The `asVol()` function can be piped into the operation.
+bewdley$asVol()$dataAgg(type = "hourly", method = "sum")
 }
 \seealso{
 \link{hourlyAgg}
