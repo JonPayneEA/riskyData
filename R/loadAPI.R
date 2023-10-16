@@ -257,13 +257,13 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     }
     if (datapoints == "day") {
       minDate <- as.Date(from)
-      datalinkAppend <- paste0(measImp, "/readings.json?date=", minDate)
+      datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000&date=", minDate)
     }
     if (datapoints == "range") {
       minDate <- as.Date(from)
       maxDate <- as.Date(to)
       datalinkAppend <- paste0(
-        measImp, "/readings.json?mineq-date=",
+        measImp, "/readings.json?_limit=2000000&mineq-date=",
         minDate, "&max-date=", maxDate
       )
     }
