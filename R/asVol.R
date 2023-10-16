@@ -7,8 +7,17 @@
 #' @export
 #'
 #' @examples
-#' ## Do not run
-#' # asVol(obj)
+#' # Load bewdley dataset
+#' data(bewdley)
+#'
+#' # Inspect the data
+#' bewdley$data
+#'
+#' # Add a volume column
+#' bewdley$asVol()
+#'
+#' # Print the bewdley dataset
+#' bewdley
 asVol <- function(x, area) {
   UseMethod("asVol", x)
 }

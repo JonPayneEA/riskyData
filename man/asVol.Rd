@@ -27,6 +27,15 @@ Calculated volume of flow or rainfall
 Add convert flow or rainfall data to a volume
 }
 \examples{
-## Do not run
-# asVol(obj)
+# Load bewdley dataset
+data(bewdley)
+
+# Inspect the data
+bewdley$data
+
+# Add a volume column
+bewdley$asVol()
+
+# Print the bewdley dataset
+bewdley
 }
