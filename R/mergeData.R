@@ -48,7 +48,7 @@
 #'              from = '2023-06-12 09:00',
 #'              to = '2023-07-12 09:00')
 #'
-#' z <- mergeData(a, b, c, metadata = FALSE)
+#' z <- mergeData(a, b, c, d, metadata = FALSE)
 #' z
 mergeData <- function(..., metadata = FALSE){
   # Compile list of the objects inputted
