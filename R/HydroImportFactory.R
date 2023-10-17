@@ -136,6 +136,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Display the methods available in the R6 object
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$methods()
     methods = function(.) {
       ## Collate the methods
       usage <- c(
@@ -186,6 +189,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Display a summary of the R6 object
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$summary()
     summary = function(.) {
       cat("hydroLoad: \n")
       cat("\tData Type: ", private$dataType, "\n", sep = "")
@@ -242,6 +248,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Return the coordinates of the gauge
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$coords()
     coords = function(.) {
       dt <- data.table(
         Easting = private$easting,
@@ -254,6 +263,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Return the NRFA details of the gauge
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$nrfa()
     nrfa = function(.) {
       dt <- data.table(
         WISKI = private$WISKI,
@@ -328,6 +340,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Returns the metadata as a data.table
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$meta()
     meta = function(.) {
       dt <- data.table(
         dataType = private$dataType,
@@ -406,6 +421,9 @@ HydroImportFactory <- R6::R6Class(
     #' @description
     #' Displays the number of observations under each quality flag
     #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$quality()
     quality = function(.) {
       dt <- self$data[, .(count = .N), by = quality]
       return(dt)

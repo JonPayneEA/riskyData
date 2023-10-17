@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' #' # Load bewdley dataset
+#' # Load bewdley dataset
 #' data(bewdley)
 #'
 #' # Inspect the data

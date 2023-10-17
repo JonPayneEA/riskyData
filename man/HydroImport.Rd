@@ -11,6 +11,50 @@ A class containing raw data, metadata and methods
 This is the base class for all data imported via the API. A HydroImport
 contains public raw data and private metadata.
 }
+\examples{
+
+## ------------------------------------------------
+## Method `HydroImportFactory$methods`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$methods()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$summary`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$summary()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$coords`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$coords()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$nrfa`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$nrfa()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$meta`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$meta()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$quality`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$quality()
+}
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
@@ -177,6 +221,15 @@ Display the methods available in the R6 object
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$methods()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-summary"></a>}}
@@ -194,6 +247,15 @@ Display a summary of the R6 object
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$summary()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-asVol"></a>}}
@@ -296,6 +358,15 @@ Return the coordinates of the gauge
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$coords()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-nrfa"></a>}}
@@ -313,6 +384,15 @@ Return the NRFA details of the gauge
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$nrfa()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-dataAgg"></a>}}
@@ -376,6 +456,15 @@ Returns the metadata as a data.table
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$meta()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-dayStats"></a>}}
@@ -430,6 +519,15 @@ Displays the number of observations under each quality flag
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$quality()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-clone"></a>}}
