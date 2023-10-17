@@ -3,11 +3,14 @@
 \name{dailyAgg}
 \alias{dailyAgg}
 \alias{dailyAgg.data.table}
+\alias{dailyAgg.HydroImport}
 \title{dailyAgg}
 \usage{
 dailyAgg(x, method = "mean", ...)
 
 \method{dailyAgg}{data.table}(x, method = "mean", ...)
+
+\method{dailyAgg}{HydroImport}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -17,13 +20,15 @@ dailyAgg(x, method = "mean", ...)
 \item{...}{Other variables as required}
 }
 \value{
-Data are aggregated to a daily resolution
+An aggregated dataset taken to the daily resolution, data are not stored in a \code{HydroAggs} container.
 }
 \description{
 Aggregates sub daily time series into a daily resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-## Do not run
-# dailyAgg(Buildwas)
+data(bewdley)
+
+# Daily maximum flows
+dailyAgg(bewdley, method = "max")
 }

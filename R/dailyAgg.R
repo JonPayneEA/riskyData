@@ -7,14 +7,16 @@
 #' @param method 'mean', 'median', 'max', 'min', or 'sum'
 #' @param ... Other variables as required
 #'
-#' @return Data are aggregated to a daily resolution
+#' @return An aggregated dataset taken to the daily resolution, data are not stored in a `HydroAggs` container.
 #' @export
 #'
 #' @import data.table
 #'
 #' @examples
-#' ## Do not run
-#' # dailyAgg(Buildwas)
+#' data(bewdley)
+#'
+#' # Daily maximum flows
+#' dailyAgg(bewdley, method = "max")
 dailyAgg <- function(x, method = "mean", ...) {
   UseMethod("dailyAgg", x)
 }
@@ -23,24 +25,50 @@ dailyAgg <- function(x, method = "mean", ...) {
 #' @export
 dailyAgg.data.table <- function(x, method = "mean", ...) {
   if (method == "mean") {
-    Daily <- x[, .(dailyMean = mean(value, na.rm = TRUE)),
+    dt <- x[, .(dailyMean = mean(value, na.rm = TRUE)),
                .(dateTime = as.Date(dateTime))]
   }
   if (method == "median") {
-    Daily <- x[, .(dailyMedian = median(value, na.rm = TRUE)),
+    dt <- x[, .(dailyMedian = median(value, na.rm = TRUE)),
                .(dateTime = as.Date(dateTime))]
   }
   if (method == "min") {
-    Daily <- x[, .(dailyMin = min(value, na.rm = TRUE)),
+    dt <- x[, .(dailyMin = min(value, na.rm = TRUE)),
                .(dateTime = as.Date(dateTime))]
   }
   if (method == "max") {
-    Daily <- x[, .(dailyMax = max(value, na.rm = TRUE)),
+    dt <- x[, .(dailyMax = max(value, na.rm = TRUE)),
                .(dateTime = as.Date(dateTime))]
   }
   if (method == "sum") {
-    Daily <- x[, .(dailySum = sum(volume, na.rm = TRUE)),
+    dt <- x[, .(dailySum = sum(volume, na.rm = TRUE)),
                .(dateTime = as.Date(dateTime))]
   }
-  return(Daily)
+  return(dt)
+}
+
+#' @rdname dailyAgg
+#' @export
+dailyAgg.HydroImport <- function(x, method = "mean", ...) {
+  if (method == "mean") {
+    dt <- x$data[, .(dailyMean = mean(value, na.rm = TRUE)),
+                 .(dateTime = as.Date(dateTime))]
+  }
+  if (method == "median") {
+    dt <- x$data[, .(dailyMedian = median(value, na.rm = TRUE)),
+                 .(dateTime = as.Date(dateTime))]
+  }
+  if (method == "min") {
+    dt <- x$data[, .(dailyMin = min(value, na.rm = TRUE)),
+                 .(dateTime = as.Date(dateTime))]
+  }
+  if (method == "max") {
+    dt <- x$data[, .(dailyMax = max(value, na.rm = TRUE)),
+                 .(dateTime = as.Date(dateTime))]
+  }
+  if (method == "sum") {
+    dt <- x$data[, .(dailySum = sum(volume, na.rm = TRUE)),
+                 .(dateTime = as.Date(dateTime))]
+  }
+  return(dt)
 }

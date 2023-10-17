@@ -3,11 +3,14 @@
 \name{annualAgg}
 \alias{annualAgg}
 \alias{annualAgg.data.table}
+\alias{annualAgg.HydroImport}
 \title{annualAgg}
 \usage{
 annualAgg(x, method = "mean", ...)
 
 \method{annualAgg}{data.table}(x, method = "mean", ...)
+
+\method{annualAgg}{HydroImport}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -17,13 +20,15 @@ annualAgg(x, method = "mean", ...)
 \item{...}{Other variables as required}
 }
 \value{
-A dataset of annually aggregated data
+A dataset of annually aggregated data, data are not stored in a \code{HydroAggs} container.
 }
 \description{
 Aggregates sub annual time series into an annual resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-## Do not run
-# annualAgg(Buildwas)
+data(bewdley)
+
+# Calculate the mean annual (calendar year) flows
+annualAgg(bewdley)
 }

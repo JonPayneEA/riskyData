@@ -48,6 +48,9 @@ aggregations are carried out to the calendar day not a rolling time period.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">annualAgg</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"mean"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for data.table</span></span>
+<span><span class="fu">annualAgg</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"mean"</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for HydroImport</span></span>
 <span><span class="fu">annualAgg</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"mean"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -69,14 +72,31 @@ aggregations are carried out to the calendar day not a rolling time period.</p>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A dataset of annually aggregated data</p>
+<p>A dataset of annually aggregated data, data are not stored in a <code>HydroAggs</code> container.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Do not run</span></span></span>
-<span class="r-in"><span><span class="co"># annualAgg(Buildwas)</span></span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Calculate the mean annual (calendar year) flows</span></span></span>
+<span class="r-in"><span><span class="fu">annualAgg</span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     dateTime annualMean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:     2008   89.49173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:     2009   52.69865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:     2010   39.04404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:     2011   39.62156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:     2012   78.88227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:     2013   65.46530</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:     2014   76.83255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:     2015   59.09761</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:     2016   61.14972</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:     2017   48.04278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:     2018   60.52330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:     2019   78.14450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:     2020   80.21779</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:     2021   63.70356</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:     2022   44.46631</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

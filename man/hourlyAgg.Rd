@@ -3,11 +3,14 @@
 \name{hourlyAgg}
 \alias{hourlyAgg}
 \alias{hourlyAgg.data.table}
+\alias{hourlyAgg.HydroImport}
 \title{hourlyAgg}
 \usage{
 hourlyAgg(x, method = "mean", ...)
 
 \method{hourlyAgg}{data.table}(x, method = "mean", ...)
+
+\method{hourlyAgg}{HydroImport}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -17,12 +20,15 @@ hourlyAgg(x, method = "mean", ...)
 \item{...}{Other variables as required}
 }
 \value{
-Hourly aggregated data.table
+A dataset of hourly aggregated, data are not stored in a \code{HydroAggs} container.
 }
 \description{
 Aggregates sub hourly time series into an hourly resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-## Do not run
+data(bewdley)
+
+## Calculate median flow
+hourlyAgg(bewdley, method = "median")
 }

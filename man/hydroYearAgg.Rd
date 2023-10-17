@@ -3,11 +3,14 @@
 \name{hydroYearAgg}
 \alias{hydroYearAgg}
 \alias{hydroYearAgg.data.table}
+\alias{hydroYearAgg.HydroImport}
 \title{hydroYearAgg}
 \usage{
 hydroYearAgg(x, method = "mean", ...)
 
 \method{hydroYearAgg}{data.table}(x, method = "mean", ...)
+
+\method{hydroYearAgg}{HydroImport}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -17,7 +20,7 @@ hydroYearAgg(x, method = "mean", ...)
 \item{...}{Other variables as required}
 }
 \value{
-Data are aggregated to the hydrological year
+Data are aggregated to the hydrological year, data are not stored in a \code{HydroAggs} container.
 }
 \description{
 Aggregates sub annual time series into a hydrological year
@@ -25,5 +28,11 @@ resolution, aggregations are carried out to the calendar day not a rolling
 time period.
 }
 \examples{
-hydroYearAgg(Buildwas)
+data(bewdley)
+
+# Calculate the hydrological year
+bewdley$hydroYearDay()
+
+# Calculate the annual maximum flows for Bewdley (hydrological year)
+hydroYearAgg(bewdley, method = "max")
 }

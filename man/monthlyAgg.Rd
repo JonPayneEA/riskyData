@@ -3,11 +3,14 @@
 \name{monthlyAgg}
 \alias{monthlyAgg}
 \alias{monthlyAgg.data.table}
+\alias{monthlyAgg.HydroImport}
 \title{monthlyAgg}
 \usage{
 monthlyAgg(x, method = "mean", ...)
 
 \method{monthlyAgg}{data.table}(x, method = "mean", ...)
+
+\method{monthlyAgg}{HydroImport}(x, method = "mean", ...)
 }
 \arguments{
 \item{x}{Data generated in the riskyData package}
@@ -17,12 +20,15 @@ monthlyAgg(x, method = "mean", ...)
 \item{...}{Other variables as required}
 }
 \value{
-An aggregated dataset taken to the calendar month
+An aggregated dataset taken to the calendar month, data are not stored in a \code{HydroAggs} container.
 }
 \description{
 Aggregates sub monthly time series into a monthly resolution,
 aggregations are carried out to the calendar day not a rolling time period.
 }
 \examples{
-monthlyAgg(Buildwas)
+data(bewdley)
+
+## Monthly minimum flow
+monthlyAgg(bewdley, method = "min")
 }
