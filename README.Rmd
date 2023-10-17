@@ -39,11 +39,8 @@ devtools::install_github("JonPayne88/riskyData")
 ```{r example}
 library(riskyData)
 ## basic example code
-x <- mtcars$wt
-y <- mtcars$mpg
+data(bewdley)
 
-plot(x, y, main = "Main title",
-     xlab = "X axis title", ylab = "Y axis title",
-     pch = 19, frame = FALSE)
+bewdley$hydroYearDay()$dayStats(plot = TRUE)
      
 ```

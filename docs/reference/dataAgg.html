@@ -87,13 +87,13 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Calculate mean hourly flows</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"hourly"</span>, method <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span> <span style="color: #B2B2B2;">[14ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span> <span style="color: #B2B2B2;">[18ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing hourly mean</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hourly mean <span style="color: #B2B2B2;">[5.5s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hourly mean <span style="color: #B2B2B2;">[1.1s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[18ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[24ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -106,7 +106,7 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Flow</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> hourly mean</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2008-10-01 0</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2022-09-30 9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2011-08-08 9</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 378235</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 276165</span>
@@ -116,18 +116,18 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              dateTime hourlyMean</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1:  2008-10-01 0     26.500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2:  2008-10-01 1     26.150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      3:  2008-10-01 2     24.850</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4:  2008-10-01 3     23.750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5:  2008-10-01 4     23.250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ---                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122708: 2022-09-30 19     10.725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122709: 2022-09-30 20     10.750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122710: 2022-09-30 21     11.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122711: 2022-09-30 22     11.200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122712: 2022-09-30 23     11.225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             dateTime hourlyMean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1:  2008-10-01 0    26.5000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     2:  2008-10-01 1    26.1500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     3:  2008-10-01 2    24.8500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     4:  2008-10-01 3    23.7500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5:  2008-10-01 4    23.2500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ---                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24996: 2011-08-08 11     9.5975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24997: 2011-08-08 12     9.7050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24998: 2011-08-08 13     9.6500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24999: 2011-08-08 14     9.2325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25000: 2011-08-08 15     9.1650</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
@@ -135,13 +135,13 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Calculate median daily flows</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"daily"</span>, method <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::dailyAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::dailyAgg</span> <span style="color: #B2B2B2;">[34ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::dailyAgg</span> <span style="color: #B2B2B2;">[16ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing daily median</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing daily median <span style="color: #B2B2B2;">[713ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing daily median <span style="color: #B2B2B2;">[41ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[190ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[12ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -154,7 +154,7 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Flow</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> daily median</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2008-10-01</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2022-09-30</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2011-08-08</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 378235</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 276165</span>
@@ -171,11 +171,11 @@ functions that sit within riskyData</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    4: 2008-10-04       95.50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    5: 2008-10-05      122.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ---                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5109: 2022-09-26       10.50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5110: 2022-09-27       10.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5111: 2022-09-28       10.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5112: 2022-09-29       11.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5113: 2022-09-30       11.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1038: 2011-08-04       10.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1039: 2011-08-05        9.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1040: 2011-08-06        9.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1041: 2011-08-07       10.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1042: 2011-08-08        9.70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
@@ -183,13 +183,13 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Calculate min</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"monthly"</span>, method <span class="op">=</span> <span class="st">"min"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::monthlyAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::monthlyAgg</span> <span style="color: #B2B2B2;">[34ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::monthlyAgg</span> <span style="color: #B2B2B2;">[15ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing monthly min</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing monthly min <span style="color: #B2B2B2;">[766ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing monthly min <span style="color: #B2B2B2;">[107ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[16ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[12ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -202,7 +202,7 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Flow</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> monthly min</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2008 10</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2022 9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2011 8</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 378235</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 276165</span>
@@ -212,18 +212,43 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      dateTime Monthly_Min</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1:  2008 10       23.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   2:  2008 11       49.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   3:  2008 12       37.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   4:   2009 1       21.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   5:   2009 2       27.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ---                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 164:   2022 5        9.66</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 165:   2022 6        8.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 166:   2022 7        8.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 167:   2022 8        7.91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 168:   2022 9        7.99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     dateTime Monthly_Min</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:  2008 10       23.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:  2008 11       49.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:  2008 12       37.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:   2009 1       21.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:   2009 2       27.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:   2009 3       22.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:   2009 4       15.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:   2009 5       12.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:   2009 6       10.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:   2009 7       11.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:   2009 8       12.70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:   2009 9        9.64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:  2009 10        9.26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:  2009 11       19.90</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:  2009 12       35.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:   2010 1       32.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:   2010 2       32.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:   2010 3       19.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:   2010 4       13.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:   2010 5        8.69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:   2010 6        8.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22:   2010 7        8.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:   2010 8        9.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:   2010 9        9.03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25:  2010 10       15.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26:  2010 11       26.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27:  2010 12       14.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28:   2011 1       32.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29:   2011 2       27.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30:   2011 3       14.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31:   2011 4        8.52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32:   2011 5        7.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33:   2011 6        7.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34:   2011 7        9.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35:   2011 8        8.98</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     dateTime Monthly_Min</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
@@ -231,13 +256,13 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Calculate annual (calendar year) max</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"annual"</span>, method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::annualAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::annualAgg</span> <span style="color: #B2B2B2;">[28ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::annualAgg</span> <span style="color: #B2B2B2;">[15ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing annual max</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing annual max <span style="color: #B2B2B2;">[153ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing annual max <span style="color: #B2B2B2;">[39ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[29ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[11ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -250,7 +275,7 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Flow</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> annual max</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2008</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2022</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2011</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 378235</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 276165</span>
@@ -260,22 +285,11 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     dateTime Annual_Max</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:     2008        213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:     2009        312</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:     2010        248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:     2011        346</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:     2012        360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:     2013        376</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:     2014        443</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:     2015        320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:     2016        323</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:     2017        221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:     2018        255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:     2019        375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:     2020        523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:     2021        496</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:     2022        470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    dateTime Annual_Max</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     2008        213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     2009        312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     2010        248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:     2011        346</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
@@ -284,16 +298,16 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Hydrological years need to be calculated for this. The `hydroYearDay()` function can be piped into the operation.</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"hydroYear"</span>, method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[7s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[1.2s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::hydroYearAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hydroYearAgg</span> <span style="color: #B2B2B2;">[16ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hydroYearAgg</span> <span style="color: #B2B2B2;">[12ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing hydroYear max</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hydroYear max <span style="color: #B2B2B2;">[56ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hydroYear max <span style="color: #B2B2B2;">[37ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[11ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[10ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -318,21 +332,10 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     hydroYear hydroYearMax</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:      2009          213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:      2010          312</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:      2011          346</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:      2012          266</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:      2013          376</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:      2014          443</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:      2015          250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:      2016          323</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:      2017          208</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:      2018          255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:      2019          291</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:      2020          523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:      2021          496</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:      2022          470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    hydroYear hydroYearMax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:      2009          213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:      2010          312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      2011          346</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
@@ -341,16 +344,16 @@ functions that sit within riskyData</p>
 <span class="r-in"><span><span class="co"># Flow has to be converted to volume. The `asVol()` function can be piped into the operation.</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">asVol</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"hourly"</span>, method <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Calculating volumes</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating volumes <span style="color: #B2B2B2;">[15ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating volumes <span style="color: #B2B2B2;">[10ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span> <span style="color: #B2B2B2;">[15ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Allocating function <span style="font-weight: bold;">riskyData::hourlyAgg</span> <span style="color: #B2B2B2;">[13ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing hourly sum</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hourly sum <span style="color: #B2B2B2;">[4.7s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Computing hourly sum <span style="color: #B2B2B2;">[989ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting to HydroAggs container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[12ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting to HydroAggs container <span style="color: #B2B2B2;">[9ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span>
@@ -363,7 +366,7 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Flow</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> hourly sum</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2008-10-01 0</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2022-09-30 9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2011-08-08 9</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 378235</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 276165</span>
@@ -373,18 +376,18 @@ functions that sit within riskyData</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              dateTime hourlySum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1:  2008-10-01 0     95400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2:  2008-10-01 1     94140</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      3:  2008-10-01 2     89460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4:  2008-10-01 3     85500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5:  2008-10-01 4     83700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ---                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122708: 2022-09-30 19     38610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122709: 2022-09-30 20     38700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122710: 2022-09-30 21     39600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122711: 2022-09-30 22     40320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122712: 2022-09-30 23     40410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             dateTime hourlySum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1:  2008-10-01 0     95400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     2:  2008-10-01 1     94140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     3:  2008-10-01 2     89460</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     4:  2008-10-01 3     85500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5:  2008-10-01 4     83700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ---                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24996: 2011-08-08 11     34551</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24997: 2011-08-08 12     34938</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24998: 2011-08-08 13     34740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24999: 2011-08-08 14     33237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25000: 2011-08-08 15     32994</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
