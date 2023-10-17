@@ -1,0 +1,39 @@
+---
+title: "riskyData-Welcome"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{riskyData-Welcome}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+Welcome to riskyData!  
+
+The package `riskyData` has been developed for the Evidence and Risk colleagues to cleanly and reliably import data from the Environment Agencies API. 
+
+## Using the package
+
+```{r setup}
+library(riskyData)
+```
+
+The `loadAPI()` function forms the basis of riskyData. Most operations relate in some mannner to this. To load a list of all the sites use;
+
+```{r loadAll, eval = FALSE}
+loadAPI()
+```
+
+Once you have identified a dataset of interest, such as Bewdley, we can inform the API to return all the available datasets assigned to the WISKI ID;
+
+```{r datasets}
+loadAPI(ID = '2001') #! It's good practice to input the ID as a character string
+```
