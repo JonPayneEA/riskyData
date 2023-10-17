@@ -3,17 +3,17 @@
 \name{asVol}
 \alias{asVol}
 \alias{asVol.data.table}
-\alias{asVol.flowLoad}
-\alias{asVol.rainLoad}
+\alias{asVol.HydroImport}
+\alias{asVol.HydroAggs}
 \title{Add convert flow or rainfall data to a volume}
 \usage{
 asVol(x, area)
 
 \method{asVol}{data.table}(x, area = NULL)
 
-\method{asVol}{flowLoad}(x, area = NULL)
+\method{asVol}{HydroImport}(x, area = NULL)
 
-\method{asVol}{rainLoad}(x, area = NULL)
+\method{asVol}{HydroAggs}(x, area = NULL)
 }
 \arguments{
 \item{x}{Data set of 'flowLoad' or 'rainLoad' class}
@@ -30,11 +30,8 @@ Add convert flow or rainfall data to a volume
 # Load bewdley dataset
 data(bewdley)
 
-# Inspect the data
-bewdley$data
-
-# Add a volume column
-bewdley$asVol()
+# Calculate volumes
+asVol(bewdley)
 
 # Print the bewdley dataset
 bewdley

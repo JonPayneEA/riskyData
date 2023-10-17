@@ -2,11 +2,18 @@
 % Please edit documentation in R/cumSkipNA.R
 \name{cumsumNA}
 \alias{cumsumNA}
+\alias{cumsumNA.default}
+\alias{cumsumNA.HydroImport}
+\alias{cumsumNA.HydroAggs}
 \title{cumsumNA}
 \usage{
-cumsumNA(x)
+cumsumNA(x, ...)
 
-cumsumNA(x)
+\method{cumsumNA}{default}(x)
+
+\method{cumsumNA}{HydroImport}(x)
+
+\method{cumsumNA}{HydroAggs}(x)
 }
 \arguments{
 \item{x}{Raw rain gauge data or merged dataset}
@@ -21,5 +28,15 @@ Provides a cumulative sum of rain gauge data while excluding NA
 values.
 }
 \examples{
-cumsumNA(rain)
+data(chesterton)
+
+# Apply cumulative sum
+dt <- cumsumNA(chesterton)
+
+plot(dt$dateTime,
+     dt$cumSum,
+     main = "Cumulative rainfall plot for Chesterton Gauge (WISKI: 164163)",
+     xla = "Date Time",
+     ylab = "Cumulative rainfall (mm)",
+     type = "l")
 }
