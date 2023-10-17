@@ -3,21 +3,28 @@
 \name{rmHYD}
 \alias{rmHYD}
 \alias{rmHYD.data.table}
+\alias{rmHYD.HydroImport}
+\alias{rmHYD.HydroAggs}
 \title{Remove hydrological day of year from hydroYear class}
 \usage{
 rmHYD(x)
 
 \method{rmHYD}{data.table}(x)
+
+\method{rmHYD}{HydroImport}(x)
+
+\method{rmHYD}{HydroAggs}(x)
 }
 \arguments{
 \item{x}{Raw data in data.table format in hydroLoad class}
 }
 \value{
-The hydroYearDay column removed from the \code{obj$data}
+The hydroYearDay column removed from the \code{HydroImport} or \code{HydroAggs} containers public fields \code{obj$data}
 }
 \description{
 Remove hydrological day of year from hydroYear class
 }
 \examples{
+## Do not run
 # obj$rmHYD()
 }

@@ -2,19 +2,29 @@
 % Please edit documentation in R/rmFunctions.R
 \name{rmVol}
 \alias{rmVol}
+\alias{rmVol.data.table}
+\alias{rmVol.HydroImport}
+\alias{rmVol.HydroAggs}
 \title{Remove calculated volume from hydroYear class}
 \usage{
 rmVol(x)
+
+\method{rmVol}{data.table}(x)
+
+\method{rmVol}{HydroImport}(x)
+
+\method{rmVol}{HydroAggs}(x)
 }
 \arguments{
 \item{x}{Raw data in data.table format in hydroLoad class}
 }
 \value{
-The volume column removed from the \code{obj$data}
+The volume column removed from the \code{HydroImport} or \code{HydroAggs} containers public fields \code{obj$data}
 }
 \description{
 Remove calculated volume from hydroYear class
 }
 \examples{
+## Do not run
 # obj$rmVol()
 }

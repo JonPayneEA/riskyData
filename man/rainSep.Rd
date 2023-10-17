@@ -46,7 +46,7 @@ rainSep(dateTime = chesterton$data$dateTime,
 ## Window plots
 plot(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000],
      ylim = rev(range(chesterton$data$value[1:200000], na.rm = TRUE)),
-     type = 'h')
+     type = 'h', ylab = "Rainfall (mm)", xlab = "Date Time")
 dayRain <- rainSep(dateTime = chesterton$data$dateTime[1:200000],
                    precip = chesterton$data$value[1:200000],
                    threshold = 0,
@@ -59,5 +59,5 @@ for (i in seq_along(dayRain$id)){
           col = scales::alpha('red', 0.5),
           border = NA)
 }
-# lines(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000])
+lines(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000])
 }

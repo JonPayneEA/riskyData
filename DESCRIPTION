@@ -1,5 +1,5 @@
 Package: riskyData
-Title: What the Package Does (One Line, Title Case)
+Title: Welcome to riskyData the tool for pulling observed data from the EAs API
 Version: 0.1.0
 Authors@R: 
     person("Jonathan", "Payne", , "jon.payne@environment-agency.gov.uk", role = c("aut", "cre"),

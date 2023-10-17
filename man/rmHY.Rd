@@ -3,21 +3,28 @@
 \name{rmHY}
 \alias{rmHY}
 \alias{rmHY.data.table}
-\title{Remove hydrological year from hydroYear class}
+\alias{rmHY.HydroImport}
+\alias{rmHY.HydroAggs}
+\title{Remove hydrological year from HydroImport and HydroAggs classes}
 \usage{
 rmHY(x)
 
 \method{rmHY}{data.table}(x)
+
+\method{rmHY}{HydroImport}(x)
+
+\method{rmHY}{HydroAggs}(x)
 }
 \arguments{
-\item{x}{Raw data in data.table format in hydroLoad class}
+\item{x}{Raw data in data.table format in \code{HydroImport} or \code{HydroAggs} classes}
 }
 \value{
-The hydroYear column removed from the \code{obj$data}
+The hydroYear column removed from the \code{HydroImport} or \code{HydroAggs} containers public fields \code{obj$data}
 }
 \description{
-Remove hydrological year from hydroYear class
+Remove hydrological year from HydroImport and HydroAggs classes
 }
 \examples{
+## Do not run
 # obj$rmHY()
 }
