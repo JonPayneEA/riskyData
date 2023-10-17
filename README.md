@@ -12,11 +12,11 @@ License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-b
 
 # Welcome to riskyData!
 
-This package is part of the fleet of flode tools designed for members of
-Evidence and Risk. This package, riskyData, is used to interact with the
-EAs API. Hydrometric data can be pulled using in built functions. Data
-are stored in containers that implement strict quality controls. Data
-can be interrogated using a range of inbuilt tools.
+This package is part of the fleet of `flode` tools designed for members
+of Evidence and Risk. This package, `riskyData`, is used to interact
+with the EAs API. Hydrometric data can be pulled using in built
+functions. Data are stored in containers that implement strict quality
+controls. Data can be interrogated using a range of inbuilt tools.
 
 ## Installation
 
@@ -36,7 +36,7 @@ library(riskyData)
 data(bewdley)
 
 bewdley$hydroYearDay()$dayStats(plot = TRUE)
-#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [1.2s]
+#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [1.4s]
 #> Warning in `[.data.table`(dt1, -366, , ): Item 1 of i is -366 but there are
 #> only 365 rows. Ignoring this and 0 more like it out of 1.
 ```
