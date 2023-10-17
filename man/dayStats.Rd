@@ -44,5 +44,12 @@ Data are aggregated to a daily resolution
 Daily statistics for imported data
 }
 \examples{
-# dayStats(Buildwas)
+# Load data
+data(bewdley)
+
+# Calculate hydrological year
+bewdley$hydroYearDay()
+
+# Calculate daily statistics
+bewdley$dayStats(plot = TRUE)
 }
