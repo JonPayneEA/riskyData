@@ -30,38 +30,34 @@ splitting events, the use of \code{RcppRoll::roll_sum()} can pad out the event d
 urations.
 }
 \examples{
-## Do not run
 ## No accumulation applied, minimum total set to 2mm
-# start_time <- Sys.time()
-# rainSep(dateTime = chesterton$data$dateTime,
-#       precip = chesterton$data$value,
-#       threshold = 0,
-#       minTotal = 2,
-#       roll = 0)
-# end_time <- Sys.time()
-# end_time - start_time
+rainSep(dateTime = chesterton$data$dateTime,
+      precip = chesterton$data$value,
+      threshold = 0,
+      minTotal = 2,
+      roll = 0)
 
 ## 2 hr rolling accumulation
-# rainSep(dateTime = chesterton$data$dateTime,
-#         precip = chesterton$data$value,
-#         threshold = 0,
-#         roll = 8)
+rainSep(dateTime = chesterton$data$dateTime,
+        precip = chesterton$data$value,
+        threshold = 0,
+        roll = 8)
 
 ## Window plots
-# plot(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000],
-#      ylim = rev(range(chesterton$data$value[1:200000], na.rm = TRUE)),
-#      type = 'h')
-# dayRain <- rainSep(dateTime = chesterton$data$dateTime[1:200000],
-#                    precip = chesterton$data$value[1:200000],
-#                    threshold = 0,
-#                    minTotal = 4,
-#                    roll = 20)
-# for (i in seq_along(dayRain$id)){
-#   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],
-#                 dayRain$end[i]),
-#           y = c(0, 12, 12, 0),
-#           col = scales::alpha('red', 0.5),
-#           border = NA)
-# }
+plot(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000],
+     ylim = rev(range(chesterton$data$value[1:200000], na.rm = TRUE)),
+     type = 'h')
+dayRain <- rainSep(dateTime = chesterton$data$dateTime[1:200000],
+                   precip = chesterton$data$value[1:200000],
+                   threshold = 0,
+                   minTotal = 4,
+                   roll = 20)
+for (i in seq_along(dayRain$id)){
+  polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],
+                dayRain$end[i]),
+          y = c(0, 12, 12, 0),
+          col = scales::alpha('red', 0.5),
+          border = NA)
+}
 # lines(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000])
 }

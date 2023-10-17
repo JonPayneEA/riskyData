@@ -88,41 +88,61 @@ the events, and the total accumulation for the events</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Do not run</span></span></span>
-<span class="r-in"><span><span class="co">## No accumulation applied, minimum total set to 2mm</span></span></span>
-<span class="r-in"><span><span class="co"># start_time &lt;- Sys.time()</span></span></span>
-<span class="r-in"><span><span class="co"># rainSep(dateTime = chesterton$data$dateTime,</span></span></span>
-<span class="r-in"><span><span class="co">#       precip = chesterton$data$value,</span></span></span>
-<span class="r-in"><span><span class="co">#       threshold = 0,</span></span></span>
-<span class="r-in"><span><span class="co">#       minTotal = 2,</span></span></span>
-<span class="r-in"><span><span class="co">#       roll = 0)</span></span></span>
-<span class="r-in"><span><span class="co"># end_time &lt;- Sys.time()</span></span></span>
-<span class="r-in"><span><span class="co"># end_time - start_time</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## No accumulation applied, minimum total set to 2mm</span></span></span>
+<span class="r-in"><span><span class="fu">rainSep</span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>,</span></span>
+<span class="r-in"><span>      precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>,</span></span>
+<span class="r-in"><span>      threshold <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>      minTotal <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>      roll <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       id               start                 end total</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1:   1 2011-01-07 08:30:00 2011-01-07 10:00:00   6.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2:   2 2011-01-11 02:15:00 2011-01-11 03:00:00   2.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3:   3 2011-01-13 20:30:00 2011-01-13 22:15:00   5.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4:   4 2011-02-19 06:45:00 2011-02-19 08:30:00   4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5:   5 2011-02-26 00:30:00 2011-02-26 01:15:00   3.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 861: 861 2022-09-09 14:30:00 2022-09-09 14:45:00   8.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 862: 862 2022-09-09 15:30:00 2022-09-09 16:15:00   6.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 863: 863 2022-09-26 10:00:00 2022-09-26 10:15:00   3.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 864: 864 2022-09-30 14:15:00 2022-09-30 17:00:00   5.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 865: 865 2022-09-30 18:00:00 2022-09-30 19:30:00   3.8</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## 2 hr rolling accumulation</span></span></span>
-<span class="r-in"><span><span class="co"># rainSep(dateTime = chesterton$data$dateTime,</span></span></span>
-<span class="r-in"><span><span class="co">#         precip = chesterton$data$value,</span></span></span>
-<span class="r-in"><span><span class="co">#         threshold = 0,</span></span></span>
-<span class="r-in"><span><span class="co">#         roll = 8)</span></span></span>
+<span class="r-in"><span><span class="fu">rainSep</span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>,</span></span>
+<span class="r-in"><span>        precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>,</span></span>
+<span class="r-in"><span>        threshold <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>        roll <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         id               start                 end total</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1:    1 2011-01-01 11:15:00 2011-01-01 13:00:00   0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2:    2 2011-01-05 12:15:00 2011-01-05 15:00:00   1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3:    3 2011-01-07 07:30:00 2011-01-07 10:45:00   6.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4:    4 2011-01-07 16:30:00 2011-01-07 18:30:00   1.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    5:    5 2011-01-08 04:30:00 2011-01-08 06:15:00   0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3069: 3069 2022-09-26 17:45:00 2022-09-26 19:45:00   0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3070: 3070 2022-09-29 02:15:00 2022-09-29 06:15:00   1.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3071: 3071 2022-09-30 00:45:00 2022-09-30 02:30:00   0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3072: 3072 2022-09-30 13:15:00 2022-09-30 20:15:00   9.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3073: 3073 2022-09-30 21:45:00 2022-09-30 22:45:00   0.2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Window plots</span></span></span>
-<span class="r-in"><span><span class="co"># plot(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000],</span></span></span>
-<span class="r-in"><span><span class="co">#      ylim = rev(range(chesterton$data$value[1:200000], na.rm = TRUE)),</span></span></span>
-<span class="r-in"><span><span class="co">#      type = 'h')</span></span></span>
-<span class="r-in"><span><span class="co"># dayRain &lt;- rainSep(dateTime = chesterton$data$dateTime[1:200000],</span></span></span>
-<span class="r-in"><span><span class="co">#                    precip = chesterton$data$value[1:200000],</span></span></span>
-<span class="r-in"><span><span class="co">#                    threshold = 0,</span></span></span>
-<span class="r-in"><span><span class="co">#                    minTotal = 4,</span></span></span>
-<span class="r-in"><span><span class="co">#                    roll = 20)</span></span></span>
-<span class="r-in"><span><span class="co"># for (i in seq_along(dayRain$id)){</span></span></span>
-<span class="r-in"><span><span class="co">#   polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],</span></span></span>
-<span class="r-in"><span><span class="co">#                 dayRain$end[i]),</span></span></span>
-<span class="r-in"><span><span class="co">#           y = c(0, 12, 12, 0),</span></span></span>
-<span class="r-in"><span><span class="co">#           col = scales::alpha('red', 0.5),</span></span></span>
-<span class="r-in"><span><span class="co">#           border = NA)</span></span></span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000</span><span class="op">]</span>, <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>     type <span class="op">=</span> <span class="st">'h'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dayRain</span> <span class="op">&lt;-</span> <span class="fu">rainSep</span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                   precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">200000</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                   threshold <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>                   minTotal <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>                   roll <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">dayRain</span><span class="op">$</span><span class="va">id</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">dayRain</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">dayRain</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">dayRain</span><span class="op">$</span><span class="va">end</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>                <span class="va">dayRain</span><span class="op">$</span><span class="va">end</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span>, <span class="fl">12</span>, <span class="fl">0</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          col <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">'red'</span>, <span class="fl">0.5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="rainSep-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># lines(chesterton$data$dateTime[1:200000], chesterton$data$value[1:200000])</span></span></span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
