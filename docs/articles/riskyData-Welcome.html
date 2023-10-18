@@ -78,35 +78,388 @@
     
     
 <div class="section level2">
-<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+<h2 id="introduction-to-data-importing">Introduction to data importing<a class="anchor" aria-label="anchor" href="#introduction-to-data-importing"></a>
 </h2>
-<p>Welcome to riskyData!</p>
+<div class="section level4">
+<h4 id="welcome-to-riskydata">
+<strong>Welcome to riskyData!</strong><a class="anchor" aria-label="anchor" href="#welcome-to-riskydata"></a>
+</h4>
 <p>The package <code>riskyData</code> has been developed for the
 Evidence and Risk colleagues to cleanly and reliably import data from
 the Environment Agencies API.</p>
+</div>
 <div class="section level3">
-<h3 id="using-the-package">Using the package<a class="anchor" aria-label="anchor" href="#using-the-package"></a>
+<h3 id="loading-the-package">Loading the package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/riskyData/">riskyData</a></span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="../reference/loadAPI.html">loadAPI()</a></code> function forms the basis of riskyData.
-Most operations relate in some mannner to this. To load a list of all
-the sites use;</p>
+Most operations relate in some mannner to this.</p>
+</div>
+<div class="section level3">
+<h3 id="example-i---list-all-sites-in-api">Example I - List all sites in API<a class="anchor" aria-label="anchor" href="#example-i---list-all-sites-in-api"></a>
+</h3>
+<p>Running the code with no parameters or <code>ID= NULL</code> will
+return the station list</p>
+<p>This is not just limited to WISKI sites, some water quality data are
+also present. This functionality will be expanded upon in future
+versions.</p>
+<p>Note this can take some time to load</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>If you wish to constrain these data to NRFA or WISKI sites only add
+‘nrfa’ or ‘wiski’ to the <code>ID</code> argument.</p>
+<p>Using these in the <code>obsProperty</code>argument you can filter
+your results to certain types of gauges. With this you are limited
+to;</p>
+<p><em>waterFlow, waterLevel, rainfall, groundwaterLevel, ammonium,
+dissolved-oxygen, conductivity, ph, temperature, turbidity, nitrate,
+chlorophyll, salinity, bga, and fdom</em></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Note code not run</span></span>
+<span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="co"># does the same as loadAPI()</span></span>
+<span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"wiski"</span>, obsProperty <span class="op">=</span> <span class="st">"waterFlow"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="example-ii---find-nearby-gauges">Example II - Find nearby gauges<a class="anchor" aria-label="anchor" href="#example-ii---find-nearby-gauges"></a>
+</h3>
+<p>Assuming we had a site of interest and wished to see the available
+nearby gauges. We can search for sites with coordinates within a certain
+range.</p>
+<p>Using the following arguments we can search the api for nearby data;
+<code>easting</code>, <code>northing</code>, <code>lat</code>,
+<code>long</code>, and <code>dist.</code></p>
+<p>When we have easting and northing coordinates of 378235 and 276165
+respectively and wish to find NRFA gauges within 30km;</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>easting <span class="op">=</span> <span class="fl">378235</span> , northing <span class="op">=</span> <span class="fl">276165</span>, dist <span class="op">=</span> <span class="fl">30</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    wiskiID        label      riverName observedProperty easting northing</span></span>
+<span><span class="co">#&gt; 1:    2001      Bewdley   River Severn       waterLevel  378235   276165</span></span>
+<span><span class="co">#&gt; 2:    2001      Bewdley   River Severn        waterFlow  378235   276165</span></span>
+<span><span class="co">#&gt; 3:    2034  Oak Cottage   Dowles Brook       waterLevel  377105   276425</span></span>
+<span><span class="co">#&gt; 4:    2034  Oak Cottage   Dowles Brook        waterFlow  377105   276425</span></span>
+<span><span class="co">#&gt; 5:    2063    Prestwood    River Stour        waterFlow  386705   286155</span></span>
+<span><span class="co">#&gt; 6:    2193 Wards Bridge   Hadley Brook        waterFlow  387025   263145</span></span>
+<span><span class="co">#&gt; 7:    2011 Harford Hill River Salwarpe       waterLevel  386865   261935</span></span>
+<span><span class="co">#&gt; 8:    2011 Harford Hill River Salwarpe        waterFlow  386865   261935</span></span>
+<span><span class="co">#&gt;         lat      long dateOpened catchmentArea nrfaStationID</span></span>
+<span><span class="co">#&gt; 1: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
+<span><span class="co">#&gt; 2: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
+<span><span class="co">#&gt; 3: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
+<span><span class="co">#&gt; 4: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
+<span><span class="co">#&gt; 5: 52.47315 -2.197148 1972-08-01          89.9         54063</span></span>
+<span><span class="co">#&gt; 6: 52.26630 -2.191539 1987-12-10          53.0         54096</span></span>
+<span><span class="co">#&gt; 7: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span>
+<span><span class="co">#&gt; 8: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span></code></pre></div>
+<p>Alternatively, find all groundwater data within 10km of lat-long
+coordinates; 52.58302, -0.40656</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">52.58302</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">0.40656</span>, dist <span class="op">=</span> <span class="fl">100</span>, obsProperty <span class="op">=</span> <span class="st">"groundwaterLevel"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      wiskiID                    label  riverName observedProperty easting</span></span>
+<span><span class="co">#&gt;   1:  U32610        Wansford Combined River Nene        waterFlow  508060</span></span>
+<span><span class="co">#&gt;   2:   8_913           Sutton Wetland       &lt;NA&gt; groundwaterLevel  508845</span></span>
+<span><span class="co">#&gt;   3:   3_032 Sutton Top Field Spinney       &lt;NA&gt; groundwaterLevel  509075</span></span>
+<span><span class="co">#&gt;   4:   3_034        Sutton Heath Road       &lt;NA&gt; groundwaterLevel  509035</span></span>
+<span><span class="co">#&gt;   5:   3_004                  Barnack       &lt;NA&gt; groundwaterLevel  507345</span></span>
+<span><span class="co">#&gt;  ---                                                                     </span></span>
+<span><span class="co">#&gt; 163:  176751                   Yelden       &lt;NA&gt;         rainfall  501501</span></span>
+<span><span class="co">#&gt; 164:   3_516              Skillington       &lt;NA&gt; groundwaterLevel  490105</span></span>
+<span><span class="co">#&gt; 165:  151674                  Dingley       &lt;NA&gt;         rainfall  477390</span></span>
+<span><span class="co">#&gt; 166:  032004                Harrowden  River Ise       waterLevel  489920</span></span>
+<span><span class="co">#&gt; 167:  032004                Harrowden  River Ise        waterFlow  489920</span></span>
+<span><span class="co">#&gt;      northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
+<span><span class="co">#&gt;   1:   299550 52.58302 -0.406558 1996-01-16            NA         32010</span></span>
+<span><span class="co">#&gt;   2:   300065 52.58749 -0.394808 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   3:   300045 52.58727 -0.391421 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   4:   300235 52.58898 -0.391949 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   5:   305125 52.63326 -0.415299 1971-04-23            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;  ---                                                                   </span></span>
+<span><span class="co">#&gt; 163:   267450 52.29580 -0.513069 1991-07-31            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 164:   327025 52.83321 -0.663951 1978-02-27            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 165:   286760 52.47329 -0.862077 1984-11-12            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 166:   271250 52.33197 -0.681820 1943-12-01           194         32004</span></span>
+<span><span class="co">#&gt; 167:   271250 52.33197 -0.681820 1943-12-01           194         32004</span></span></code></pre></div>
+<p><strong>Note</strong> the function will not allow you to mix
+easting-northing with lat-long.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>easting<span class="op">=</span><span class="fl">247613</span>, lat <span class="op">=</span> <span class="fl">50.5</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">4.15</span>, dist <span class="op">=</span> <span class="fl">10</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in loadAPI(easting = 247613, lat = 50.5, long = -4.15, dist = 10, : Conflicting coordinate systems, please use  lat-long OR</span></span>
+<span><span class="co">#&gt;                      easting-northing</span></span></code></pre></div>
 <p>Once you have identified a dataset of interest, such as Bewdley, we
 can inform the API to return all the available datasets assigned to the
 WISKI ID;</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+</div>
+<div class="section level3">
+<h3 id="example-iii---known-wiski-id">Example III - Known WISKI ID<a class="anchor" aria-label="anchor" href="#example-iii---known-wiski-id"></a>
+</h3>
+<p>Say we wish to see what data are available for a given site, in this
+case Bewdley (WISKI 2001)</p>
+<p>We can now use the WISKI ID in the <code>ID</code> argument in
+<code><a href="../reference/loadAPI.html">loadAPI()</a></code></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    parameter period          type</span></span>
-<span><span class="co">#&gt; 1:      flow  86400           max</span></span>
-<span><span class="co">#&gt; 2:     level  86400           max</span></span>
-<span><span class="co">#&gt; 3:     level  86400           min</span></span>
-<span><span class="co">#&gt; 4:     level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 5:      flow  86400           min</span></span>
+<span><span class="co">#&gt; 1:      flow  86400           min</span></span>
+<span><span class="co">#&gt; 2:     level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 3:      flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 4:     level  86400           max</span></span>
+<span><span class="co">#&gt; 5:      flow  86400           max</span></span>
 <span><span class="co">#&gt; 6:      flow  86400          mean</span></span>
-<span><span class="co">#&gt; 7:      flow    900 instantaneous</span></span></code></pre></div>
+<span><span class="co">#&gt; 7:     level  86400           min</span></span></code></pre></div>
+<p>As you can see there are 3 level and 4 flow series available. Of
+these there are are 2 time steps or periods available. Daily data are
+86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
+type “instantaneous” - these data are used in our flood models. For both
+flow and stage there are daily minimum and maximum values, for flow
+there is also a daily mean available.</p>
+<p>We wish to now drill into the instantaneous data a bit more.</p>
+</div>
+<div class="section level3">
+<h3 id="example-iv---using-the-datapoints-argument">Example IV - using the datapoints argument<a class="anchor" aria-label="anchor" href="#example-iv---using-the-datapoints-argument"></a>
+</h3>
+<p>The datapoints argument gives us a lot of control as to what we wish
+to pull from the API.</p>
+<table class="table">
+<caption>Available datapoint options</caption>
+<colgroup>
+<col width="12%">
+<col width="87%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">datapoints</th>
+<th align="left">info</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">earliest</td>
+<td align="left">Returns the first available timestep</td>
+</tr>
+<tr class="even">
+<td align="left">latest</td>
+<td align="left">Returns the last available timestep</td>
+</tr>
+<tr class="odd">
+<td align="left">day</td>
+<td align="left">Provides a full days worth of data, uses the from
+argument to specify the date</td>
+</tr>
+<tr class="even">
+<td align="left">range</td>
+<td align="left">Exports all data between to dates, uses from and to
+arguments</td>
+</tr>
+<tr class="odd">
+<td align="left">standard</td>
+<td align="left">Default extraction of up to 200,000 rows</td>
+</tr>
+<tr class="even">
+<td align="left">all</td>
+<td align="left">Increases the data pull to cover everything
+available</td>
+</tr>
+</tbody>
+</table>
+<p>To find the first time step of the instantaneous series we need to
+include more arguments; <code>measure</code>, <code>period</code>,
+<code>type</code>, and <code>datapoints</code> .</p>
+<p>All data are exported in the <code>HydroImport</code> class, with
+this gauge metadata is pulled simultaneously with the observed data.
+More details on these classes can be seen in VIGNETTE XXXX</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loadAPI</span>(<span class="at">ID =</span> <span class="st">'2001'</span>, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">measure =</span> <span class="st">'flow'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">period =</span> <span class="dv">900</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">'instantaneous'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">datapoints =</span> <span class="st">'earliest'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Compiling parameters <span class="cf">for</span> raw download</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Compiling parameters <span class="cf">for</span> raw download  [<span class="dv">38</span>;<span class="dv">5</span>;249m[154ms] [39m</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Downloading raw data</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Downloading raw data  [<span class="dv">38</span>;<span class="dv">5</span>;249m[160ms] [39m</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Collating metadata</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Collating metadata  [<span class="dv">38</span>;<span class="dv">5</span>;249m[241ms] [39m</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Exporting data to HydroImport container</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Exporting data to HydroImport container  [<span class="dv">38</span>;<span class="dv">5</span>;249m[54ms] [39m</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [36m── [39m  [1mClass: HydroImport [22m  [36m────────────────────────────────────────────────────────── [39m</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ──  [1m [1mPrivate: [1m [22m ──</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mData Type: [22m Raw Import</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mStation name: [22m Bewdley</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mWISKI ID: [22m 2001</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mData Type: [22m Flow</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mModifications: [22m NA</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mStart: [22m 1982-11-01 09:00:00</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mEnd: [22m 1982-11-01 09:00:00</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mTime Step: [22m NA</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mObservations: [22m 1</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mEasting: [22m 378235</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mNorthing: [22m 276165</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mLongitude: [22m -2.321186</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mLatitude: [22m 52.383072</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ──  [1m [1mPublic: [1m [22m ──</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               dateTime value quality</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1982-11-01 09:00:00  30.9    Good</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mFor more details use the $methods() function, the format should be as [22m</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1m`Object_name`$methods() [22m</span></span></code></pre></div>
+<p>For the latest we can change the text of the <code>datapoints</code>
+argument to <strong>‘latest’</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loadAPI</span>(<span class="at">ID =</span> <span class="st">'2001'</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">measure =</span> <span class="st">'flow'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">period =</span> <span class="dv">900</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">'instantaneous'</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">datapoints =</span> <span class="st">'latest'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Compiling parameters <span class="cf">for</span> raw download</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Compiling parameters <span class="cf">for</span> raw download  [<span class="dv">38</span>;<span class="dv">5</span>;249m[127ms] [39m</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Downloading raw data</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Downloading raw data  [<span class="dv">38</span>;<span class="dv">5</span>;249m[117ms] [39m</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Collating metadata</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Collating metadata  [<span class="dv">38</span>;<span class="dv">5</span>;249m[173ms] [39m</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Exporting data to HydroImport container</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Exporting data to HydroImport container  [<span class="dv">38</span>;<span class="dv">5</span>;249m[39ms] [39m</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [36m── [39m  [1mClass: HydroImport [22m  [36m────────────────────────────────────────────────────────── [39m</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ──  [1m [1mPrivate: [1m [22m ──</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mData Type: [22m Raw Import</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mStation name: [22m Bewdley</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mWISKI ID: [22m 2001</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mData Type: [22m Flow</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mModifications: [22m NA</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mStart: [22m 2023-10-13 09:45:00</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mEnd: [22m 2023-10-13 09:45:00</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mTime Step: [22m NA</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mObservations: [22m 1</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mEasting: [22m 378235</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mNorthing: [22m 276165</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mLongitude: [22m -2.321186</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mLatitude: [22m 52.383072</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ──  [1m [1mPublic: [1m [22m ──</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               dateTime value   quality</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2023-10-13 09:45:00  98.8 Unchecked</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1mFor more details use the $methods() function, the format should be as [22m</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1m`Object_name`$methods() [22m</span></span></code></pre></div>
+<p>Now say we wished to look at a specific day
+<strong>‘2022-06-11’</strong>. To do this we will change the
+<code>datapoints</code> argument and add the <code>from</code> one. We
+will also plot the data for this;</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">loadAPI</span>(<span class="at">ID =</span> <span class="st">'2001'</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">measure =</span> <span class="st">'flow'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">period =</span> <span class="dv">900</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="st">'instantaneous'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">datapoints =</span> <span class="st">'day'</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">from =</span> <span class="st">'2022-06-11'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Compiling parameters <span class="cf">for</span> raw download</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Compiling parameters <span class="cf">for</span> raw download  [<span class="dv">38</span>;<span class="dv">5</span>;249m[184ms] [39m</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Downloading raw data</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Downloading raw data  [<span class="dv">38</span>;<span class="dv">5</span>;249m[146ms] [39m</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Collating metadata</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Collating metadata  [<span class="dv">38</span>;<span class="dv">5</span>;249m[187ms] [39m</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Exporting data to HydroImport container</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Exporting data to HydroImport container  [<span class="dv">38</span>;<span class="dv">5</span>;249m[51ms] [39m</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dt<span class="sc">$</span>data, <span class="fu">plot</span>(dateTime, value, <span class="at">type =</span> <span class="st">'l'</span>, <span class="at">xlab =</span> <span class="st">"Date Time"</span>, <span class="at">ylab =</span> <span class="st">"Flow (cumecs)"</span>))</span></code></pre></div>
+<p><img src="riskyData-Welcome_files/figure-html/day-1.png" width="700"></p>
+<p>If we wished to extend this we can use the <strong>‘range’</strong>
+option in datapoints. For this we a beginning and end date, these are
+expressed with <code>from</code> and <code>to</code> arguments</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">loadAPI</span>(<span class="at">ID =</span> <span class="st">'2001'</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">measure =</span> <span class="st">'flow'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">period =</span> <span class="dv">900</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="st">'instantaneous'</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">datapoints =</span> <span class="st">'range'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">from =</span> <span class="st">'2022-05-09 00:00'</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">to =</span> <span class="st">'2022-06-25 00:00'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Compiling parameters <span class="cf">for</span> raw download</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Compiling parameters <span class="cf">for</span> raw download  [<span class="dv">38</span>;<span class="dv">5</span>;249m[127ms] [39m</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Downloading raw data</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Downloading raw data  [<span class="dv">38</span>;<span class="dv">5</span>;249m[353ms] [39m</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Collating metadata</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Collating metadata  [<span class="dv">38</span>;<span class="dv">5</span>;249m[213ms] [39m</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Exporting data to HydroImport container</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Exporting data to HydroImport container  [<span class="dv">38</span>;<span class="dv">5</span>;249m[45ms] [39m</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dt<span class="sc">$</span>data, <span class="fu">plot</span>(dateTime, value, <span class="at">type =</span> <span class="st">'l'</span>, <span class="at">xlab =</span> <span class="st">"Date Time"</span>, <span class="at">ylab =</span> <span class="st">"Flow (cumecs)"</span>))</span></code></pre></div>
+<p><img src="riskyData-Welcome_files/figure-html/range-1.png" width="700"></p>
+<p>To pull all the data we can use the “all” option.</p>
+<p><strong>Note</strong> this can take a long time as there is a lot of
+data!</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
+<span>        measure <span class="op">=</span> <span class="st">'level'</span>,</span>
+<span>        period <span class="op">=</span> <span class="fl">900</span>,</span>
+<span>        type <span class="op">=</span> <span class="st">'instantaneous'</span>,</span>
+<span>        datapoints <span class="op">=</span> <span class="st">'all'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2008-10-01</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2022-09-30 23:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 490848</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
+<span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                        </span></span>
+<span><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -14,26 +14,165 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+# Introduction to data importing
 
-Welcome to riskyData!  
+### **Welcome to riskyData!**
 
-The package `riskyData` has been developed for the Evidence and Risk colleagues to cleanly and reliably import data from the Environment Agencies API. 
+The package `riskyData` has been developed for the Evidence and Risk colleagues to cleanly and reliably import data from the Environment Agencies API.
 
-## Using the package
+## Loading the package
 
 ```{r setup}
 library(riskyData)
 ```
 
-The `loadAPI()` function forms the basis of riskyData. Most operations relate in some mannner to this. To load a list of all the sites use;
+The `loadAPI()` function forms the basis of riskyData. Most operations relate in some mannner to this. 
+
+## Example I - List all sites in API
+
+Running the code with no parameters or `ID= NULL` will return the station list
+
+This is not just limited to WISKI sites, some water quality data are also present. This functionality will be expanded upon in future versions.
+
+Note this can take some time to load
 
 ```{r loadAll, eval = FALSE}
 loadAPI()
 ```
 
+If you wish to constrain these data to NRFA or WISKI sites only add 'nrfa' or 'wiski' to the `ID` argument.
+
+Using these in the `obsProperty`argument you can filter your results to certain types of gauges. With this you are limited to;
+
+*waterFlow, waterLevel, rainfall, groundwaterLevel, ammonium, dissolved-oxygen, conductivity, ph, temperature, turbidity, nitrate, chlorophyll, salinity, bga, and fdom*
+
+```{r, eval = FALSE}
+# Note code not run
+loadAPI(ID = "all") # does the same as loadAPI()
+loadAPI(ID = "wiski", obsProperty = "waterFlow")
+loadAPI(ID = "nrfa")
+```
+
+## Example II - Find nearby gauges
+
+Assuming we had a site of interest and wished to see the available nearby gauges. We can search for sites with coordinates within a certain range.
+
+Using the following arguments we can search the api for nearby data; `easting`, `northing`, `lat`, `long`, and `dist.`
+
+When we have easting and northing coordinates of 378235 and 276165 respectively and wish to find NRFA gauges within 30km;
+
+```{r distance1}
+loadAPI(easting = 378235 , northing = 276165, dist = 30, ID = "nrfa")
+```
+
+Alternatively, find all groundwater data within 10km of lat-long coordinates; 52.58302, -0.40656
+
+```{r distance2}
+loadAPI(lat = 52.58302, long = -0.40656, dist = 100, obsProperty = "groundwaterLevel")
+```
+
+**Note** the function will not allow you to mix easting-northing with lat-long.
+
+```{r distance3}
+loadAPI(easting=247613, lat = 50.5, long = -4.15, dist = 10, ID = "nrfa")
+```
+
 Once you have identified a dataset of interest, such as Bewdley, we can inform the API to return all the available datasets assigned to the WISKI ID;
+
+## Example III - Known WISKI ID
+
+Say we wish to see what data are available for a given site, in this case Bewdley (WISKI 2001)
+
+We can now use the WISKI ID in the `ID` argument in `loadAPI()`
 
 ```{r datasets}
 loadAPI(ID = '2001') #! It's good practice to input the ID as a character string
+```
+
+As you can see there are 3 level and 4 flow series available. Of these there are are 2 time steps or periods available. Daily data are 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of type "instantaneous" - these data are used in our flood models. For both flow and stage there are daily minimum and maximum values, for flow there is also a daily mean available.
+
+We wish to now drill into the instantaneous data a bit more.
+
+## Example IV - using the datapoints argument
+
+The datapoints argument gives us a lot of control as to what we wish to pull from the API.
+
+```{r table, echo = FALSE}
+datapoints <- c('earliest', 'latest', 'day', 'range', 'standard', 'all')
+info <- c('Returns the first available timestep',
+          'Returns the last available timestep',
+          'Provides a full days worth of data, uses the from argument to specify the date',
+          'Exports all data between to dates, uses from and to arguments',
+          'Default extraction of up to 200,000 rows',
+          'Increases the data pull to cover everything available')
+df <- data.frame(datapoints, info)
+
+knitr::kable(df, caption = "Available datapoint options")
+
+```
+
+To find the first time step of the instantaneous series we need to include more arguments; `measure`, `period`, `type`, and `datapoints` .
+
+All data are exported in the `HydroImport` class, with this gauge metadata is pulled simultaneously with the observed data. More details on these classes can be seen in VIGNETTE XXXX
+
+```{r earliest}
+loadAPI(ID = '2001', 
+        measure = 'flow',
+        period = 900,
+        type = 'instantaneous',
+        datapoints = 'earliest')
+```
+
+For the latest we can change the text of the `datapoints` argument to **'latest'**
+
+```{r latest}
+loadAPI(ID = '2001', 
+        measure = 'flow',
+        period = 900,
+        type = 'instantaneous',
+        datapoints = 'latest')
+```
+
+Now say we wished to look at a specific day **'2022-06-11'**. To do this we will change the `datapoints` argument and add the `from` one. We will also plot the data for this;
+
+```{r day}
+dt <- loadAPI(ID = '2001', 
+              measure = 'flow',
+              period = 900,
+              type = 'instantaneous',
+              datapoints = 'day',
+              from = '2022-06-11')
+
+with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+```
+
+If we wished to extend this we can use the **'range'** option in datapoints. For this we a beginning and end date, these are expressed with `from` and `to` arguments
+
+```{r range}
+dt <- loadAPI(ID = '2001', 
+              measure = 'flow',
+              period = 900,
+              type = 'instantaneous',
+              datapoints = 'range',
+              from = '2022-05-09 00:00',
+              to = '2022-06-25 00:00')
+
+with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+```
+
+To pull all the data we can use the "all" option.
+
+**Note** this can take a long time as there is a lot of data!
+
+```{r all, eval = FALSE}
+loadAPI(ID = '2001', 
+        measure = 'level',
+        period = 900,
+        type = 'instantaneous',
+        datapoints = 'all')
+```
+
+```{r fakeall, echo = FALSE}
+data(bewdley)
+bewdley
 ```
