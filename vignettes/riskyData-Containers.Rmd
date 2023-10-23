@@ -82,3 +82,25 @@ cat("Error in bewdley$start <- now() : cannot add bindings to a locked environme
 The data are protected, this ensures that they can be used at all times in other dependent functions. There is only one way to interact with the private metadata and that is through functions built into the container.
 
 ## Container functions
+
+Functions specific to the data stored within R6 containers are called methods. To use these you interact with them in a different manner to how you normally do in R. They can all be applied using the `$` operator, meaning that you don't have to encapsulate an object within parenthesis.
+
+Do find all the methods available to you use `$methods()` after the object name. For example;
+
+```{r methods}
+bewdley$methods()
+```
+
+Using methods inbuilt to the containers, you can interact with the private metadata;
+
+```{r metadataInteract}
+# Return NRFA details
+bewdley$nrfa()
+
+# Return gauge coordinate data
+bewdley$coords()
+
+# Return all the metadata
+bewdley$meta()
+```
+
