@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/Containers.html">riskyData-Containers</a>
     <a class="dropdown-item" href="../articles/riskyData-Welcome.html">riskyData-Welcome</a>
   </div>
 </li>
@@ -157,9 +158,9 @@ to;</p>
 <table class="table">
 <caption>Available datapoint options</caption>
 <thead><tr class="header">
-<th align="left">fullname</th>
+<th align="left">Parameter</th>
 <th align="left">observedProperty</th>
-<th align="left">unit</th>
+<th align="left">Unit</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -380,13 +381,13 @@ case Bewdley (WISKI 2001)</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    parameter period          type</span></span>
-<span><span class="co">#&gt; 1:      flow  86400           min</span></span>
-<span><span class="co">#&gt; 2:      flow  86400          mean</span></span>
-<span><span class="co">#&gt; 3:      flow  86400           max</span></span>
-<span><span class="co">#&gt; 4:     level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 1:      flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 2:      flow  86400           max</span></span>
+<span><span class="co">#&gt; 3:     level  86400           max</span></span>
+<span><span class="co">#&gt; 4:      flow  86400          mean</span></span>
 <span><span class="co">#&gt; 5:     level  86400           min</span></span>
-<span><span class="co">#&gt; 6:     level  86400           max</span></span>
-<span><span class="co">#&gt; 7:      flow    900 instantaneous</span></span></code></pre></div>
+<span><span class="co">#&gt; 6:     level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 7:      flow  86400           min</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
