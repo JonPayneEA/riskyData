@@ -590,23 +590,22 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">methods</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + <span style="color: #0000BB; font-weight: bold;">Methods</span> -----------------------------------------------------------------------------------+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$data</span>    &gt;    Returns the raw data imported via the API                                 |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    &gt;    Returns the metadata associated with the object                         |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    &gt;    Calculates the volume of water relative to the time step, see ?asVo    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    &gt;    Calculates the hydrological year and day, see ?hydroYearDay     |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    &gt;    Removes the volume column                                              |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    &gt;    Removes the hydroYear column                                            |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    &gt;    Removes the hydroYearDay column                                        |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    &gt;    Provides a quick summary of the raw data                             |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    &gt;    Returns coordinates from the metadata                                 |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    &gt;    Returns the NRFA data from the metadata                                 |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    &gt;    Aggregate data by, hour, day, month calendar year and hydroYear      |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    &gt;    Uses user specified aggregation timings, see ?rollingAggs        |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    &gt;    Daily statistics of flow, carried out on hydrological or calenda... |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    &gt;    Provides a quick summary table of the data qualiity flags            |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> +--------------------------------------------------------------------------------------------+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    →    Returns the metadata associated with the object                         │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    →    Calculates the volume of water relative to the time step, see ?asVol   │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    →    Calculates the hydrological year and day, see ?hydroYearDay     │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    →    Removes the volume column                                              │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    →    Removes the hydroYear column                                            │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    →    Removes the hydroYearDay column                                        │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    →    Provides a quick summary of the raw data                             │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    →    Returns coordinates from the metadata                                 │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    →    Returns the NRFA data from the metadata                                 │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    →    Aggregate data by, hour, day, month calendar year and hydroYear      │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    →    Uses user specified aggregation timings, see ?rollingAggs        │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    →    Daily statistics of flow, carried out on hydrological or calendar … │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> └────────────────────────────────────────────────────────────────────────────────────────────┘</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `HydroImportFactory$summary`</span></span></span>
@@ -614,7 +613,6 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> hydroLoad: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Data Type: Raw Import</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Station ID: 2001</span>
@@ -632,7 +630,6 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Easting Northing Latitude Longitude</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:  378235   276165 52.38307 -2.321186</span>
 <span class="r-in"><span></span></span>
@@ -642,7 +639,6 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    WISKI codeNRFA                                             urlNRFA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:  2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span>
 <span class="r-in"><span></span></span>
@@ -652,7 +648,6 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      dataType modifications stationName    riverName WISKI RLOID stationGuide</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: Raw Import            NA     Bewdley River Severn  2001  2001           NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                  baseURL</span>
@@ -676,7 +671,6 @@ hydrological year</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      quality  count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:      Good 457101</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: Estimated  12019</span>

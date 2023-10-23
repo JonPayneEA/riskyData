@@ -156,7 +156,7 @@ dt <- loadAPI(ID = '2001',
 with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
 ```
 
-If we wished to extend this we can use the **'range'** option in datapoints. For this we a beginning and end date, these are expressed with `from` and `to` arguments
+If we wished to extend this we can use the **'range'** option in `datapoints`. For this we a beginning and end date, these are expressed with `from` and `to` arguments
 
 ```{r range}
 dt <- loadAPI(ID = '2001', 
@@ -164,10 +164,11 @@ dt <- loadAPI(ID = '2001',
               period = 900,
               type = 'instantaneous',
               datapoints = 'range',
-              from = '2022-05-09 00:00',
-              to = '2022-06-25 00:00')
+              from = '2019-10-01 00:00',
+              to = '2020-02-27 00:00')
 
 with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+
 ```
 
 To pull all the data we can use the "all" option.
