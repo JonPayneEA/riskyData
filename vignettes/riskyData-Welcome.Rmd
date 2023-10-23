@@ -51,19 +51,18 @@ If you wish to constrain these data to NRFA or WISKI sites only add 'nrfa' or 'w
 Using these in the `obsProperty` argument you can filter your results to certain types of gauges. With this you are limited to;
 
 ```{r observedPs, echo = FALSE}
-fullname <- c('Flow', 'Stage/Level', 'Rainfall', 'Groundwater Level', 'Ammonium',
+Parameter <- c('Flow', 'Stage/Level', 'Rainfall', 'Groundwater Level', 'Ammonium',
           'Disolved Oxygen', 'Conductivity', 'pH', ' Temperature', 'Turbidity',
           'Nitrate', 'Chlorophyll', 'Salinity', 'Blue Green Algae',
           'Fluorescent Dissolved Organic Matter')
 
 observedProperty <- c('waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium', 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity', 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom')
 
-unit <- c('m3S-1', 'm', 'mm', 'mAOD', 'mg/L', 'mg/L or %', '$\\mu/S cm', '', 'C',
-          'NTU', 'mg/L (as N)', '$\\mu/L', 'g/L', 'RFU', 'RFU')
-df <- data.frame(fullname, observedProperty, unit)
+Unit <- c('m3S-1', 'm', 'mm', 'mAOD', 'mg/L', 'mg/L or %', '$\\mu /S$ cm', '', 'C',
+          'NTU', 'mg/L (as N)', '$\\mu /L$', 'g/L', 'RFU', 'RFU')
+df <- data.frame(Parameter, observedProperty, Unit)
 
 knitr::kable(df, caption = "Available datapoint options")
-
 ```
 
 To load all data you can also use;
