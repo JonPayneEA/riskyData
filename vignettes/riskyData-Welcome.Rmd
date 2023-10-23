@@ -22,15 +22,21 @@ The package `riskyData` has been developed for the Evidence and Risk colleagues 
 
 ## Loading the package
 
+The `riskyData` package is part of a group of tools called `flode`. To load all these packages, the easiest way is to use;
+
+```{r flode, eval = FALSE}
+library(flode)
+```
+
+However, if you only require just the `riskyData` package you can just use;
+
 ```{r setup}
 library(riskyData)
 ```
 
-The `loadAPI()` function forms the basis of riskyData. Most operations relate in some mannner to this. 
-
 ## Example I - List all sites in API
 
-Running the code with no parameters or `ID= NULL` will return the station list
+The `loadAPI()` function forms the basis of `riskyData.` Most operations relate in some manner to this. Running the code with no parameters or `ID = NULL` or `ID = "all"` will return the station list
 
 This is not just limited to WISKI sites, some water quality data are also present. This functionality will be expanded upon in future versions.
 
@@ -42,9 +48,25 @@ loadAPI()
 
 If you wish to constrain these data to NRFA or WISKI sites only add 'nrfa' or 'wiski' to the `ID` argument.
 
-Using these in the `obsProperty`argument you can filter your results to certain types of gauges. With this you are limited to;
+Using these in the `obsProperty` argument you can filter your results to certain types of gauges. With this you are limited to;
 
-*waterFlow, waterLevel, rainfall, groundwaterLevel, ammonium, dissolved-oxygen, conductivity, ph, temperature, turbidity, nitrate, chlorophyll, salinity, bga, and fdom*
+```{r observedPs, echo = FALSE}
+fullname <- c('Flow', 'Stage/Level', 'Rainfall', 'Groundwater Level', 'Ammonium',
+          'Disolved Oxygen', 'Conductivity', 'pH', ' Temperature', 'Turbidity',
+          'Nitrate', 'Chlorophyll', 'Salinity', 'Blue Green Algae',
+          'Fluorescent Dissolved Organic Matter')
+
+observedProperty <- c('waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium', 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity', 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom')
+
+unit <- c('m3S-1', 'm', 'mm', 'mAOD', 'mg/L', 'mg/L or %', '$\\mu/S cm', '', 'C',
+          'NTU', 'mg/L (as N)', '$\\mu/L', 'g/L', 'RFU', 'RFU')
+df <- data.frame(fullname, observedProperty, unit)
+
+knitr::kable(df, caption = "Available datapoint options")
+
+```
+
+To load all data you can also use;
 
 ```{r alternateLoads, eval = FALSE}
 # Note code not run

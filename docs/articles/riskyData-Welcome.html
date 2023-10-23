@@ -90,21 +90,28 @@ the Environment Agencies API.</p>
 <div class="section level3">
 <h3 id="loading-the-package">Loading the package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
 </h3>
+<p>The <code>riskyData</code> package is part of a group of tools called
+<code>flode</code>. To load all these packages, the easiest way is to
+use;</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">flode</span><span class="op">)</span></span></code></pre></div>
+<p>However, if you only require just the <code>riskyData</code> package
+you can just use;</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/riskyData/">riskyData</a></span><span class="op">)</span></span></code></pre></div>
-<p>The <code><a href="../reference/loadAPI.html">loadAPI()</a></code> function forms the basis of riskyData.
-Most operations relate in some mannner to this.</p>
 </div>
 <div class="section level3">
 <h3 id="example-i---list-all-sites-in-api">Example I - List all sites in API<a class="anchor" aria-label="anchor" href="#example-i---list-all-sites-in-api"></a>
 </h3>
-<p>Running the code with no parameters or <code>ID= NULL</code> will
-return the station list</p>
+<p>The <code><a href="../reference/loadAPI.html">loadAPI()</a></code> function forms the basis of
+<code>riskyData.</code> Most operations relate in some manner to this.
+Running the code with no parameters or <code>ID = NULL</code> or
+<code>ID = "all"</code> will return the station list</p>
 <p>This is not just limited to WISKI sites, some water quality data are
 also present. This functionality will be expanded upon in future
 versions.</p>
 <p>Note this can take some time to load</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        wiskiID                        label      riverName observedProperty</span></span>
 <span><span class="co">#&gt;     1: 037048U              Ulting Sarasota  River Chelmer        waterFlow</span></span>
@@ -144,18 +151,84 @@ versions.</p>
 <span><span class="co">#&gt; 16939:          &lt;NA&gt;</span></span></code></pre></div>
 <p>If you wish to constrain these data to NRFA or WISKI sites only add
 ‘nrfa’ or ‘wiski’ to the <code>ID</code> argument.</p>
-<p>Using these in the <code>obsProperty</code>argument you can filter
+<p>Using these in the <code>obsProperty</code> argument you can filter
 your results to certain types of gauges. With this you are limited
 to;</p>
-<p><em>waterFlow, waterLevel, rainfall, groundwaterLevel, ammonium,
-dissolved-oxygen, conductivity, ph, temperature, turbidity, nitrate,
-chlorophyll, salinity, bga, and fdom</em></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<table class="table">
+<caption>Available datapoint options</caption>
+<colgroup>
+<col width="56%">
+<col width="25%">
+<col width="18%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">fullname</th>
+<th align="left">observedProperty</th>
+<th align="left">unit</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Flow</td>
+<td align="left">waterFlow</td>
+<td align="left">m3S-1</td>
+</tr>
+<tr class="even">
+<td align="left">Stage/Level</td>
+<td align="left">waterLevel</td>
+<td align="left">m</td>
+</tr>
+<tr class="odd">
+<td align="left">Rainfall</td>
+<td align="left">rainfall</td>
+<td align="left">mm</td>
+</tr>
+<tr class="even">
+<td align="left">Groundwater Level</td>
+<td align="left">groundwaterLevel</td>
+<td align="left">mAOD</td>
+</tr>
+<tr class="odd">
+<td align="left">Ammonium</td>
+<td align="left">ammonium</td>
+<td align="left">mg/L</td>
+</tr>
+<tr class="even">
+<td align="left">Disolved Oxygen</td>
+<td align="left">dissolved-oxygen</td>
+<td align="left">mg/L or %</td>
+</tr>
+<tr class="odd">
+<td align="left">Conductivity</td>
+<td align="left">conductivity</td>
+<td align="left">
+<span class="math inline">\(\mu/S cm | |pH |ph | |
+|Temperature |temperature |C | |Turbidity |turbidity |NTU | |Nitrate
+|nitrate |mg/L (as N) | |Chlorophyll |chlorophyll |\)</span>/L</td>
+</tr>
+<tr class="even">
+<td align="left">Salinity</td>
+<td align="left">salinity</td>
+<td align="left">g/L</td>
+</tr>
+<tr class="odd">
+<td align="left">Blue Green Algae</td>
+<td align="left">bga</td>
+<td align="left">RFU</td>
+</tr>
+<tr class="even">
+<td align="left">Fluorescent Dissolved Organic Matter</td>
+<td align="left">fdom</td>
+<td align="left">RFU</td>
+</tr>
+</tbody>
+</table>
+<p>To load all data you can also use;</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Note code not run</span></span>
 <span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="co"># does the same as loadAPI()</span></span></code></pre></div>
 <p>If we wished to load all the flow sites with WISKI data available we
 can use;</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"wiski"</span>, obsProperty <span class="op">=</span> <span class="st">"waterFlow"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       wiskiID                label        riverName observedProperty easting</span></span>
 <span><span class="co">#&gt;   1:  037048U      Ulting Sarasota    River Chelmer        waterFlow  581271</span></span>
@@ -183,7 +256,7 @@ can use;</p>
 <span><span class="co">#&gt; 945:   443349 53.88387 -2.765383       &lt;NA&gt;            NA          &lt;NA&gt;</span></span></code></pre></div>
 <p>Or if we wished to load the sites that are used within the National
 River Flow Archive (NRFA);</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       wiskiID                label      riverName observedProperty easting</span></span>
 <span><span class="co">#&gt;    1:  510810       Beggearn Huish Washford River       waterLevel  304007</span></span>
@@ -221,7 +294,7 @@ range.</p>
 <code>long</code>, and <code>dist.</code></p>
 <p>When we have easting and northing coordinates of 378235 and 276165
 respectively and wish to find NRFA gauges within 30km;</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>easting <span class="op">=</span> <span class="fl">378235</span> , northing <span class="op">=</span> <span class="fl">276165</span>, dist <span class="op">=</span> <span class="fl">30</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    wiskiID        label      riverName observedProperty easting northing</span></span>
 <span><span class="co">#&gt; 1:    2001      Bewdley   River Severn       waterLevel  378235   276165</span></span>
@@ -243,7 +316,7 @@ respectively and wish to find NRFA gauges within 30km;</p>
 <span><span class="co">#&gt; 8: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span></code></pre></div>
 <p>Alternatively, find all groundwater data within 10km of lat-long
 coordinates; 52.58302, -0.40656</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">52.58302</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">0.40656</span>, dist <span class="op">=</span> <span class="fl">100</span>, obsProperty <span class="op">=</span> <span class="st">"groundwaterLevel"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      wiskiID                    label  riverName observedProperty easting</span></span>
 <span><span class="co">#&gt;   1:  U32610        Wansford Combined River Nene        waterFlow  508060</span></span>
@@ -271,7 +344,7 @@ coordinates; 52.58302, -0.40656</p>
 <span><span class="co">#&gt; 167:   271250 52.33197 -0.681820 1943-12-01           194         32004</span></span></code></pre></div>
 <p><strong>Note</strong> the function will not allow you to mix
 easting-northing with lat-long.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>easting<span class="op">=</span><span class="fl">247613</span>, lat <span class="op">=</span> <span class="fl">50.5</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">4.15</span>, dist <span class="op">=</span> <span class="fl">10</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in loadAPI(easting = 247613, lat = 50.5, long = -4.15, dist = 10, : Conflicting coordinate systems, please use  lat-long OR</span></span>
 <span><span class="co">#&gt;                      easting-northing</span></span></code></pre></div>
@@ -286,7 +359,7 @@ WISKI ID;</p>
 case Bewdley (WISKI 2001)</p>
 <p>We can now use the WISKI ID in the <code>ID</code> argument in
 <code><a href="../reference/loadAPI.html">loadAPI()</a></code></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    parameter period          type</span></span>
 <span><span class="co">#&gt; 1:     level  86400           max</span></span>
@@ -355,7 +428,7 @@ include more arguments; <code>measure</code>, <code>period</code>,
 <p>All data are exported in the <code>HydroImport</code> class, with
 this gauge metadata is pulled simultaneously with the observed data.
 More details on these classes can be seen in VIGNETTE XXXX</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
 <span>        measure <span class="op">=</span> <span class="st">'flow'</span>,</span>
 <span>        period <span class="op">=</span> <span class="fl">900</span>,</span>
@@ -388,7 +461,7 @@ More details on these classes can be seen in VIGNETTE XXXX</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre>
 <p>For the latest we can change the text of the <code>datapoints</code>
 argument to <strong>‘latest’</strong></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
 <span>        measure <span class="op">=</span> <span class="st">'flow'</span>,</span>
 <span>        period <span class="op">=</span> <span class="fl">900</span>,</span>
@@ -423,7 +496,7 @@ argument to <strong>‘latest’</strong></p>
 <strong>‘2022-06-11’</strong>. To do this we will change the
 <code>datapoints</code> argument and add the <code>from</code> one. We
 will also plot the data for this;</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
 <span>              measure <span class="op">=</span> <span class="st">'flow'</span>,</span>
 <span>              period <span class="op">=</span> <span class="fl">900</span>,</span>
@@ -437,7 +510,7 @@ will also plot the data for this;</p>
 option in <code>datapoints</code>. For this we a beginning and end date,
 these are expressed with <code>from</code> and <code>to</code>
 arguments</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
 <span>              measure <span class="op">=</span> <span class="st">'flow'</span>,</span>
 <span>              period <span class="op">=</span> <span class="fl">900</span>,</span>
@@ -451,7 +524,7 @@ arguments</p>
 <p>To pull all the data we can use the “all” option.</p>
 <p><strong>Note</strong> this can take a long time as there is a lot of
 data!</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span>, </span>
 <span>        measure <span class="op">=</span> <span class="st">'level'</span>,</span>
 <span>        period <span class="op">=</span> <span class="fl">900</span>,</span>

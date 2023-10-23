@@ -171,9 +171,9 @@ Available metrics;
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"L1207"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    parameter period          type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     level    900 instantaneous</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     level  86400           max</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     level  86400           min</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     level  86400           min</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     level    900 instantaneous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     level  86400           max</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  ID <span class="op">=</span> <span class="st">"L1207"</span>,</span></span>
@@ -183,44 +183,13 @@ Available metrics;
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"earliest"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[106ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[95ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[120ms]</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>URL 'http://environment.data.gov.uk/hydrology/id/measures/ad5eff9a-061b-4d37-86c7-3e77cb93bb18-level-i-900-m-qualified/readings.json?earliest': Timeout of 60 seconds was reached</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in open.connection(con, "rb"):</span> cannot open the connection to 'http://environment.data.gov.uk/hydrology/id/measures/ad5eff9a-061b-4d37-86c7-3e77cb93bb18-level-i-900-m-qualified/readings.json?earliest'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Downloading raw data <span style="color: #B2B2B2;">[1m 0.1s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[234ms]</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[19ms]</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Private:</span> ──</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Raw Import</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Station name:</span> Todmorden Salford</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">WISKI ID:</span> L1207</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Level</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Modifications:</span> NA</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Start:</span> 2003-03-09</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">End:</span> 2003-03-09</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Time Step:</span> NA</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Observations:</span> 1</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Easting:</span> 393380</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Northing:</span> 423770</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Longitude:</span> -2.101764</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Latitude:</span> 53.710296</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      dateTime value quality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 2003-03-09 0.811    Good</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">`Object_name`$methods()</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu">loadAPI</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  ID <span class="op">=</span> <span class="st">"L1207"</span>,</span></span>
@@ -230,16 +199,12 @@ Available metrics;
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"all"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[105ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[205ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[54.5s]</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[235ms]</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[73ms]</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>URL 'http://environment.data.gov.uk/hydrology/id/measures/ad5eff9a-061b-4d37-86c7-3e77cb93bb18-level-i-900-m-qualified/readings.json?_limit=2000000': Timeout of 60 seconds was reached</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in readBin(structure(4L, class = c("url", "connection"), conn_id = &lt;pointer: 0x0000000000000663&gt;),     raw(0), 32768L):</span> cannot read from connection</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Downloading raw data <span style="color: #B2B2B2;">[1m]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">data</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">value</span> <span class="op">~</span> <span class="va">dateTime</span>,</span></span>
@@ -247,7 +212,7 @@ Available metrics;
 <span class="r-in"><span>  xlab <span class="op">=</span> <span class="st">"Time"</span>,</span></span>
 <span class="r-in"><span>  ylab <span class="op">=</span> <span class="st">"Stage (mAoD)"</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="loadAPI-1.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in dt$data:</span> object of type 'closure' is not subsettable</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
