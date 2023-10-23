@@ -24,7 +24,7 @@ Creates fields for hydrological year and hydrological day.
 Speed is slow, needs conversion to C++ in future iterations.
 }
 \examples{
-#' # Load bewdley dataset
+# Load bewdley dataset
 data(bewdley)
 
 # Inspect the data

@@ -106,9 +106,14 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ("list" %in% sapply(dt, class)) {
       dt <- data.table(tidyr::unnest(dt, c(
-        wiskiID, label,
-        riverName, easting, northing, lat,
-        long, observedProperty
+        wiskiID, label, riverName, easting, northing, lat, long
+      ),
+      keep_empty = TRUE
+      ))
+
+      # Unnesting again on observedproperty resolves issue with too many variables
+      dt <- data.table(tidyr::unnest(dt, c(
+        observedProperty
       ),
       keep_empty = TRUE
       ))

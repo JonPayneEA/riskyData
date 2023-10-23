@@ -77,11 +77,12 @@ but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#' # Load bewdley dataset</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Load bewdley dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Inspect the data</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>strings not representable in native encoding will be translated to UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    dateTime value quality qcode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span>
@@ -97,16 +98,16 @@ but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Add hydrological year and hydrological day columns</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[5.2s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">i</span> Calculating hydrological year and day</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[3.7s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Print the bewdley dataset</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">--</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">----------------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Private:</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Private:</span> --</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Data Type:</span> Raw Import</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Station name:</span> Bewdley</span>
@@ -123,7 +124,7 @@ but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Latitude:</span> 52.383072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Public:</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Public:</span> --</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    dateTime value quality qcode hydroYear hydroYearDay</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;      2009            1</span>

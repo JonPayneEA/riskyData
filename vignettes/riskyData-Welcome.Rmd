@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # Introduction to data importing
 
-### **Welcome to riskyData!**
+### Welcome to riskyData!
 
 The package `riskyData` has been developed for the Evidence and Risk colleagues to cleanly and reliably import data from the Environment Agencies API.
 
@@ -36,7 +36,7 @@ This is not just limited to WISKI sites, some water quality data are also presen
 
 Note this can take some time to load
 
-```{r loadAll, eval = FALSE}
+```{r loadAll}
 loadAPI()
 ```
 
@@ -46,10 +46,20 @@ Using these in the `obsProperty`argument you can filter your results to certain 
 
 *waterFlow, waterLevel, rainfall, groundwaterLevel, ammonium, dissolved-oxygen, conductivity, ph, temperature, turbidity, nitrate, chlorophyll, salinity, bga, and fdom*
 
-```{r, eval = FALSE}
+```{r alternateLoads, eval = FALSE}
 # Note code not run
 loadAPI(ID = "all") # does the same as loadAPI()
+```
+
+If we wished to load all the flow sites with WISKI data available we can use;
+
+```{r WISKI}
 loadAPI(ID = "wiski", obsProperty = "waterFlow")
+```
+
+Or if we wished to load the sites that are used within the National River Flow Archive (NRFA);
+
+```{r NRFA}
 loadAPI(ID = "nrfa")
 ```
 
