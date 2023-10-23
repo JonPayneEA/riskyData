@@ -1,6 +1,6 @@
 #' @title Add convert flow or rainfall data to a volume
 #'
-#' @param x Data set of 'flowLoad' or 'rainLoad' class
+#' @param x Data set of classes `HydroImport` or ¬`HydroAggs`
 #' @param area_km Area of coverage for rain gauges
 #'
 #' @return Calculated volume of flow or rainfall

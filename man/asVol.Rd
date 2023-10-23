@@ -16,7 +16,7 @@ asVol(x, area)
 \method{asVol}{HydroAggs}(x, area = NULL)
 }
 \arguments{
-\item{x}{Data set of 'flowLoad' or 'rainLoad' class}
+\item{x}{Data set of classes \code{HydroImport} or ¬\code{HydroAggs}}
 
 \item{area_km}{Area of coverage for rain gauges}
 }

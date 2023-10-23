@@ -119,7 +119,7 @@ Initialise the new HydroImport object
   start = NA,
   end = NA,
   timeStep = NA,
-  timeZone = "GMT - UTC±00:00",
+  timeZone = "GMT - UTC<U+00B1>00:00",
   records = NA
 )}\if{html}{\out{</div>}}
 }

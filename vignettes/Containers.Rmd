@@ -1,0 +1,84 @@
+---
+title: "riskyData-Containers"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Containers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Containers in riskyData
+
+If you have seen the previous vignette `riskyData-Welcome` you might have recognised that when data are pulled from the API they aren't in a conventional format. When data are scraped using the `loadAPI()` function , gauge metadata are also pulled simultaneously.
+
+Using the `bewdley` dataset we can investigate;
+
+```{r setup}
+library(riskyData)
+data(bewdley)
+bewdley
+```
+
+When the dataset is printed there are 2 sections: **private** and **public**. These are both grouped into a container called bewdley, and have a class of `HydroImport` and `R6`.
+
+```{r r6}
+class(bewdley)
+```
+
+Using R6 allows you to define private fields and methods, in addition to the public ones. What private means is that fields and methods can only be accessed within the class, and not from the outside. Whereas with public, you can interact and modify the fields.
+
+R6 is an implemention of encapsulated object-oriented programming for R, and is a simpler, faster, lighter-weight alternative to R\'s built-in reference classes. This style of programming is also sometimes referred to as classical object-oriented programming.
+
+Some features of R6:
+
+-   R6 objects have reference semantics.
+
+-   R6 cleanly supports inheritance across packages.
+
+-   R6 classes have public and private members.
+
+In contrast to R\'s reference classes, R6 is not built on the S4 class system, so it does not require the *methods* package. Unlike reference classes, R6 classes can be cleanly inherited across different packages.Public data
+
+## Public data
+
+Insert some public examples
+
+To call the raw data in `riskyData` you can call it with `$data` this does add one level of complexity against a normal data frame but the benefits outstrip the negatives.
+
+To call up the data on the bewdley dataset use;
+
+```{r public1}
+bewdley$data
+```
+
+As with a normal dataframe we can interact with functions from outside of the `riskyData` package;
+
+```{r public2}
+mean(bewdley$data$value, na.rm = TRUE)
+max(bewdley$data$value, na.rm = TRUE)
+min(bewdley$data$value, na.rm = TRUE)
+with(bewdley$data, plot(x = dateTime, y = value, type = 'l'))
+```
+
+## Private data
+
+All the gauge metadata are stored within the private section, with this you cannot directly interact with or edit these data. For example let's say I wished to change the catchment area of the bewdley dataset
+
+```{r privateError, eval = FALSE}
+bewdley$start <- now()
+```
+
+```{r privateError1, echo = FALSE}
+cat("Error in bewdley$start <- now() : cannot add bindings to a locked environment\n")
+```
+
+The data are protected, this ensures that they can be used at all times in other dependent functions. There is only one way to interact with the private metadata and that is through functions built into the container.
+
+## Container functions
