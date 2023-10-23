@@ -125,7 +125,7 @@ To find the first time step of the instantaneous series we need to include more 
 
 All data are exported in the `HydroImport` class, with this gauge metadata is pulled simultaneously with the observed data. More details on these classes can be seen in VIGNETTE XXXX
 
-```{r earliest}
+```{r earliest, eval = FALSE}
 loadAPI(ID = '2001', 
         measure = 'flow',
         period = 900,
@@ -133,9 +133,17 @@ loadAPI(ID = '2001',
         datapoints = 'earliest')
 ```
 
+```{r earliestBodge, echo = FALSE}
+data(bewdley)
+
+a <- bewdley$clone()
+a$data <- a$data[1,]
+a
+```
+
 For the latest we can change the text of the `datapoints` argument to **'latest'**
 
-```{r latest}
+```{r latest, eval = FALSE}
 loadAPI(ID = '2001', 
         measure = 'flow',
         period = 900,
@@ -143,9 +151,17 @@ loadAPI(ID = '2001',
         datapoints = 'latest')
 ```
 
+```{r latestBodge, echo = FALSE}
+data(bewdley)
+
+b <- bewdley$clone()
+b$data <- tail(b$data, 1)
+b
+```
+
 Now say we wished to look at a specific day **'2022-06-11'**. To do this we will change the `datapoints` argument and add the `from` one. We will also plot the data for this;
 
-```{r day}
+```{r day, eval = FALSE}
 dt <- loadAPI(ID = '2001', 
               measure = 'flow',
               period = 900,
@@ -156,19 +172,36 @@ dt <- loadAPI(ID = '2001',
 with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
 ```
 
+```{r dayBodge, echo = FALSE}
+data(bewdley)
+
+c <- bewdley$clone()
+c$data <- c$data[dateTime >= '2022-06-11 00:00' & dateTime <= '2022-06-12 00:00',]
+
+with(c$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+```
+
 If we wished to extend this we can use the **'range'** option in `datapoints`. For this we a beginning and end date, these are expressed with `from` and `to` arguments
 
-```{r range}
+```{r range, eval = FALSE}
 dt <- loadAPI(ID = '2001', 
               measure = 'flow',
               period = 900,
               type = 'instantaneous',
               datapoints = 'range',
               from = '2019-10-01 00:00',
-              to = '2020-02-27 00:00')
+              to = '2020-03-30 00:00')
 
 with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+```
 
+```{r rangeBodge, echo = FALSE}
+data(bewdley)
+
+d <- bewdley$clone()
+d$data <- d$data[dateTime >= '2019-10-01 00:00' & dateTime <= '2020-03-30 00:00',]
+
+with(d$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
 ```
 
 To pull all the data we can use the "all" option.
@@ -183,7 +216,7 @@ loadAPI(ID = '2001',
         datapoints = 'all')
 ```
 
-```{r fakeall, echo = FALSE}
+```{r allBodge, echo = FALSE}
 data(bewdley)
 bewdley
 ```
