@@ -49,6 +49,13 @@ data(bewdley)
 bewdley$meta()
 
 ## ------------------------------------------------
+## Method `HydroImportFactory$plot`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$plot()
+
+## ------------------------------------------------
 ## Method `HydroImportFactory$quality`
 ## ------------------------------------------------
 
@@ -527,6 +534,15 @@ there should be}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$plot()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-flowDuration"></a>}}
