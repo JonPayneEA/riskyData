@@ -246,6 +246,44 @@ HydroImportFactory <- R6::R6Class(
       invisible(self)
     },
     #' @description
+    #' Extract windows of data from object using start and end date/times
+    #' @param from Start date/time
+    #' @param to end date/time, if kept blank will default to last time step
+    #' @param export Set as "dt", this exports a data.table of public data. If
+    #' set to "snip" then the R6 object is modified.
+    window = function(from = NULL, to = NULL, export = "dt"){
+      if (is.null(from)){
+        stop("Please include a start date for the from argument")
+      }
+
+      #! R assumes that dates are BST during the summer months
+      #! This causes an hour shift when running queries
+
+      ## Constrain dates to GMT
+      start <- as.POSIXct(from,
+                          format = "%Y-%m-%d %H:%M",
+                          tz = "GMT"
+      )
+
+      # If the to argument is null the last record is assumed
+      if (is.null(to)){
+        end <- tail(self$data$dateTime, 1)
+      } else {
+        end <- as.POSIXct(to,
+                          format = "%Y-%m-%d %H:%M",
+                          tz = "GMT"
+        )
+      }
+      ## Snipping the data
+      dt <- self$data[dateTime >= start & dateTime <= end,,]
+      if(export == 'dt'){
+        return(dt)
+      } else {
+        self$data <- dt
+        invisible(self)
+      }
+    },
+    #' @description
     #' Return the coordinates of the gauge
     #' @param . (ignored).
     #' @examples
@@ -390,6 +428,47 @@ HydroImportFactory <- R6::R6Class(
         stop("Please run the `obj$hydroYearDay()` function to generate the
              hydrological day of the year")
       }
+    },
+    #' @description
+    #' Plot the data by years
+    #' @param cols Set to 3, use this to specify how many of columns of graphs
+    #' there should be
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$plot()
+    plot = function(cols = 3){
+      # Function runs on hydrological year
+      ## Assert whether hydroYear has been calculated
+      if (!"hydroYear" %in% colnames(self$data)) {
+        stop("hydroYear field is not present in the data.table\n")
+      }
+
+      # Find the years present in the data
+      years <- unique(self$data$hydroYear)
+
+      # Construct the y axis label using the private metadata
+      yAxis <- paste0(private$parameter, " (", private$unitName, ")")
+
+      # Loop through the years, ggplots are stored in a list
+      for(i in seq_along(years)) {
+        if(i == 1){
+          plotlistH <- {} #!! Set condition to first year in the range
+        }
+
+        ## Subset by year in loop
+        dt <- self$data[hydroYear == years[i],]
+
+        plotlistH[[ length(plotlistH)+1 ]] <- ggplot(dt, aes(dateTime, value)) +
+          geom_line(size = 0.1) +
+          labs(x = NULL, y = yAxis) +
+          scale_x_datetime(labels = scales::date_format("%b")) + # this sets it to
+          #only show the month. Lord knows why month ended up at "%b"
+          ggtitle(paste(toString(years[i])))
+      }
+      # Put each plot into a grid
+      grd <- cowplot::plot_grid(plotlist = plotlistH, ncol = 3)
+      # Return grd object
+      return(grd)
     },
     #' @description
     #' Flow duration curve of data

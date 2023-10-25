@@ -34,12 +34,14 @@ contains public raw data and private metadata.
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="meta"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-meta'><code>riskyData::HydroImport$meta()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="methods"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-methods'><code>riskyData::HydroImport$methods()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="nrfa"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-nrfa'><code>riskyData::HydroImport$nrfa()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="plot"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-plot'><code>riskyData::HydroImport$plot()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="quality"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-quality'><code>riskyData::HydroImport$quality()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHY"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHY'><code>riskyData::HydroImport$rmHY()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHYD"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHYD'><code>riskyData::HydroImport$rmHYD()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmVol'><code>riskyData::HydroImport$rmVol()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rollingAggs"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rollingAggs'><code>riskyData::HydroImport$rollingAggs()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="summary"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-summary'><code>riskyData::HydroImport$summary()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="window"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-window'><code>riskyData::HydroImport$window()</code></a></span></li>
 </ul>
 </details>
 }}

@@ -74,12 +74,14 @@ bewdley$quality()
 \item \href{#method-HydroImport-rmVol}{\code{HydroImportFactory$rmVol()}}
 \item \href{#method-HydroImport-rmHY}{\code{HydroImportFactory$rmHY()}}
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
+\item \href{#method-HydroImport-window}{\code{HydroImportFactory$window()}}
 \item \href{#method-HydroImport-coords}{\code{HydroImportFactory$coords()}}
 \item \href{#method-HydroImport-nrfa}{\code{HydroImportFactory$nrfa()}}
 \item \href{#method-HydroImport-dataAgg}{\code{HydroImportFactory$dataAgg()}}
 \item \href{#method-HydroImport-rollingAggs}{\code{HydroImportFactory$rollingAggs()}}
 \item \href{#method-HydroImport-meta}{\code{HydroImportFactory$meta()}}
 \item \href{#method-HydroImport-dayStats}{\code{HydroImportFactory$dayStats()}}
+\item \href{#method-HydroImport-plot}{\code{HydroImportFactory$plot()}}
 \item \href{#method-HydroImport-flowDuration}{\code{HydroImportFactory$flowDuration()}}
 \item \href{#method-HydroImport-quality}{\code{HydroImportFactory$quality()}}
 \item \href{#method-HydroImport-clone}{\code{HydroImportFactory$clone()}}
@@ -119,7 +121,7 @@ Initialise the new HydroImport object
   start = NA,
   end = NA,
   timeStep = NA,
-  timeZone = "GMT - UTC<U+00B1>00:00",
+  timeZone = "GMT - UTC±00:00",
   records = NA
 )}\if{html}{\out{</div>}}
 }
@@ -343,6 +345,28 @@ Remove the calculated hydrological day
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-window"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-window}{}}}
+\subsection{Method \code{window()}}{
+Extract windows of data from object using start and end date/times
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$window(from = NULL, to = NULL, export = "dt")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{from}}{Start date/time}
+
+\item{\code{to}}{end date/time, if kept blank will default to last time step}
+
+\item{\code{export}}{Set as "dt", this exports a data.table of public data. If
+set to "snip" then the R6 object is modified.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-HydroImport-coords"></a>}}
 \if{latex}{\out{\hypertarget{method-HydroImport-coords}{}}}
 \subsection{Method \code{coords()}}{
@@ -482,6 +506,24 @@ Daily statistics for imported data
 
 \item{\code{year}}{Set to NULL, overlays the mean daily flow for a chosen
 hydrological year}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-plot"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-plot}{}}}
+\subsection{Method \code{plot()}}{
+Plot the data by years
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$plot(cols = 3)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cols}}{Set to 3, use this to specify how many of columns of graphs
+there should be}
 }
 \if{html}{\out{</div>}}
 }
