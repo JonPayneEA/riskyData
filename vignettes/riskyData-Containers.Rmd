@@ -2,7 +2,7 @@
 title: "riskyData-Containers"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Containers}
+  %\VignetteIndexEntry{riskyData-Containers}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
