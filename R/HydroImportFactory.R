@@ -466,7 +466,7 @@ HydroImportFactory <- R6::R6Class(
           ggtitle(paste(toString(years[i])))
       }
       # Put each plot into a grid
-      grd <- cowplot::plot_grid(plotlist = plotlistH, ncol = 3)
+      grd <- cowplot::plot_grid(plotlist = plotlistH, ncol = cols)
       # Return grd object
       return(grd)
     },
