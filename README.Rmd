@@ -13,12 +13,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# riskyData <img src="logo.png" align="right" width="120" />
+\newline \newline \newline
+
+# riskyData <img src="logo.png" align="right" width="120"/>
 
 <!-- badges: start -->
 
-[![License: GNU General Public License](https://img.shields.io/badge/license-GNU General Public License-blue.svg)](https://cran.r-project.org/web/licenses/GNU General Public License)
-[![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
+[![License: GNU General Public License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License) [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
+
 <!-- badges: end -->
 
 # Welcome to riskyData!

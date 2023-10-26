@@ -1,13 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# riskyData <img src="logo.png" align="right" width="120" />
+# riskyData <img src="logo.png" align="right" width="120"/>
 
 <!-- badges: start -->
 
 [![License: GNU General Public
 License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License)
 [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
+
 <!-- badges: end -->
 
 # Welcome to riskyData!
@@ -36,22 +37,20 @@ library(riskyData)
 data(bewdley)
 
 bewdley$hydroYearDay()$dayStats(plot = TRUE)
-#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [1.4s]
-#> Warning in `[.data.table`(dt1, -366, , ): Item 1 of i is -366 but there are
-#> only 365 rows. Ignoring this and 0 more like it out of 1.
+#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [6.5s]
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-    #>      dayYear     Mean Median   Min   Max   Perc5 Perc25  Perc75  Perc95
-    #>   1:       1 24.10660  25.70 11.10  37.7 11.4350 13.275  32.425  36.895
-    #>   2:       2 35.88368  30.60 10.20  75.1 10.7350 13.200  55.400  74.100
-    #>   3:       3 44.31712  58.60  9.26  83.2  9.3535 10.800  64.250  71.600
-    #>   4:       4 67.23299  85.70  9.65 140.0  9.9440 10.800 103.000 123.650
-    #>   5:       5 90.21354 120.00 10.30 157.0 10.4000 11.700 135.000 150.000
-    #>  ---                                                                   
-    #> 361:     361 22.47500  22.45 10.10  37.0 10.4000 11.500  31.900  36.300
-    #> 362:     362 20.31781  20.35  9.64  30.4 10.4000 13.100  27.700  29.945
-    #> 363:     363 17.46755  16.95  9.75  26.4  9.9775 10.750  24.325  26.000
-    #> 364:     364 16.98958  16.95 10.30  23.7 10.7000 13.775  20.900  22.590
-    #> 365:     365 16.72240  16.90 10.00  24.4 10.2550 12.800  20.400  23.890
+    #>      dayYear     Mean Median  Min Max   Perc5 Perc25  Perc75 Perc95
+    #>   1:       1 39.17188  19.30 9.68 210 10.4000 12.200  35.600 192.00
+    #>   2:       2 47.99227  25.80 9.64 225 10.2000 12.400  62.500 215.00
+    #>   3:       3 53.14900  34.55 9.26 255  9.9715 11.600  67.725 228.00
+    #>   4:       4 59.77555  40.65 9.39 252  9.9400 10.900  87.425 240.00
+    #>   5:       5 63.06871  34.70 9.76 228 10.2000 11.700 106.000 189.85
+    #>  ---                                                               
+    #> 361:     361 33.29305  15.05 9.26 222 10.1000 10.975  35.925 163.85
+    #> 362:     362 36.36758  15.85 8.77 254  9.8800 11.300  28.500 245.00
+    #> 363:     363 38.64064  16.10 9.53 254  9.8115 11.000  26.100 250.00
+    #> 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85
+    #> 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00
