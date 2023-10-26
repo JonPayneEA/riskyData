@@ -145,7 +145,7 @@ HydroImportFactory <- R6::R6Class(
         "obj$data", "obj$meta()", "obj$asVol()", "obj$hydroYearDay()",
         "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()", "obj$summary()",
         "obj$coords()", "obj$nrfa()", "obj$dataAgg()", "obj$rollingAggs()",
-        "obj$dayStats()", "obj$quality()"
+        "obj$dayStats()", "obj$quality()", "obj$plot()", "obj$window()"
       )
 
       desc <- c(
@@ -162,7 +162,9 @@ HydroImportFactory <- R6::R6Class(
         "Aggregate data by, hour, day, month calendar year and hydroYear",
         "Uses user specified aggregation timings, see ?rollingAggs",
         "Daily statistics of flow, carried out on hydrological or calendar day",
-        "Provides a quick summary table of the data qualiity flags"
+        "Provides a quick summary table of the data qualiity flags",
+        "Create a plot of each year of data, by hydrological year",
+        "Extracts the subset of data observed between the times start and end."
       )
 
       ## Set the box interior up
@@ -251,8 +253,8 @@ HydroImportFactory <- R6::R6Class(
     #' @param to end date/time, if kept blank will default to last time step
     #' @param export Set as "dt", this exports a data.table of public data. If
     #' set to "snip" then the R6 object is modified.
-    window = function(from = NULL, to = NULL, export = "dt"){
-      if (is.null(from)){
+    window = function(start = NULL, end = NULL, export = "dt"){
+      if (is.null(start)){
         stop("Please include a start date for the from argument")
       }
 
@@ -260,16 +262,16 @@ HydroImportFactory <- R6::R6Class(
       #! This causes an hour shift when running queries
 
       ## Constrain dates to GMT
-      start <- as.POSIXct(from,
+      start <- as.POSIXct(start,
                           format = "%Y-%m-%d %H:%M",
                           tz = "GMT"
       )
 
       # If the to argument is null the last record is assumed
-      if (is.null(to)){
+      if (is.null(end)){
         end <- tail(self$data$dateTime, 1)
       } else {
-        end <- as.POSIXct(to,
+        end <- as.POSIXct(end,
                           format = "%Y-%m-%d %H:%M",
                           tz = "GMT"
         )
@@ -280,6 +282,12 @@ HydroImportFactory <- R6::R6Class(
         return(dt)
       } else {
         self$data <- dt
+        mod <- paste0("Data window of ", start, " - ", end)
+        if (is.na(private$modifications)){
+          private$modifications <- mod
+        } else {
+          private$modifications <- paste0(private$modifications, ", ", mod)
+        }
         invisible(self)
       }
     },

@@ -215,7 +215,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     data <- jsonlite::fromJSON(link)
     data_level <- jsonlite::fromJSON(as.character(data$items[1]))
     params <- data.table(
-      parameter = data_level$items$measures[[1]]$parameter,
+      measure = data_level$items$measures[[1]]$parameter,
       period = data_level$items$measures[[1]]$period,
       type = data_level$items$measures[[1]]$valueType
     )

@@ -46,9 +46,9 @@ Some features of R6:
 
 In contrast to R\'s reference classes, R6 is not built on the S4 class system, so it does not require the *methods* package. Unlike reference classes, R6 classes can be cleanly inherited across different packages.Public data
 
-## Public data
+## Public members
 
-Insert some public examples
+Public members are accessible from outside the class and can be used and modified directly.
 
 To call the raw data in `riskyData` you can call it with `$data` this does add one level of complexity against a normal data frame but the benefits outstrip the negatives.
 
@@ -69,6 +69,8 @@ with(bewdley$data, plot(x = dateTime, y = value, type = 'l'))
 
 ## Private data
 
+Private members are only accessible from within the class, and they are encapsulated to ensure data integrity.
+
 All the gauge metadata are stored within the private section, with this you cannot directly interact with or edit these data. For example let's say I wished to change the catchment area of the bewdley dataset
 
 ```{r privateError, eval = FALSE}
@@ -80,6 +82,10 @@ cat("Error in bewdley$start <- now() : cannot add bindings to a locked environme
 ```
 
 The data are protected, this ensures that they can be used at all times in other dependent functions. There is only one way to interact with the private metadata and that is through functions built into the container.
+
+## Active Bindings
+
+Active bindings are special methods that allow you to compute values on-the-fly when accessing an attribute.
 
 ## Container functions
 
@@ -104,3 +110,26 @@ bewdley$coords()
 bewdley$meta()
 ```
 
+More details on methods will be covered in the methods vignette.
+
+## Inherited Members
+
+Inherited members are methods and fields inherited from the parent class if your R6 class inherits from another.
+
+When data are imported with the `loadAPI()` function, the container used is `HydroImport`. This is the parent class. If an aggregation method applied, it can fundamentally change the data structure. For this reason a child class was developed called `HydroAggs`. Most functionality is inherited from the `HydroImport` parent class, however some methods had to be amended to ensure that they would still work.
+
+To generate a `HydroAggs` dataset we can use the `$dataAgg()` function. Here we will calculate the hourly maximum data from the bewdley dataset and export it as class `HydroAggs`;
+
+```{r HydroAggs1, eval = FALSE}
+bewdley$dataAgg(type = "hourly", method = "max")
+```
+
+```{r HydroAggs2, echo = FALSE, message = FALSE}
+dt <- bewdley$dataAgg(type = "hourly", method = "max")
+```
+
+```{r HydroAggs3, echo = FALSE}
+dt
+```
+
+Though there quite a lot of changes under the hood the output looks very similar to class `HydroImport`. The public data is different as we have applied an aggregation, with the private metadata the start and end times of the series differ. One of the key changes is the modifications line, all the containers used in `riskyData` track changes made to the data, in this case it indicates that an "hourly max" aggregation has been applied.

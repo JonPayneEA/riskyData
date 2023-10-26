@@ -357,18 +357,22 @@ Remove the calculated hydrological day
 \subsection{Method \code{window()}}{
 Extract windows of data from object using start and end date/times
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$window(from = NULL, to = NULL, export = "dt")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$window(start = NULL, end = NULL, export = "dt")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{from}}{Start date/time}
+\item{\code{start}}{Function calculates the date of the first imported record}
 
-\item{\code{to}}{end date/time, if kept blank will default to last time step}
+\item{\code{end}}{Function calculates the date of the last imported record}
 
 \item{\code{export}}{Set as "dt", this exports a data.table of public data. If
 set to "snip" then the R6 object is modified.}
+
+\item{\code{from}}{Start date/time}
+
+\item{\code{to}}{end date/time, if kept blank will default to last time step}
 }
 \if{html}{\out{</div>}}
 }
