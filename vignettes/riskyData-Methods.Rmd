@@ -133,6 +133,7 @@ bewdley$rmHYD()
 
 Currently the containers only support plotting in one way....
 
-```{r plot1, fig.width = 4, fig.height = 8}
+```{r plot1, fig.width = 8, fig.height = 12}
 bewdley$hydroYearDay()$plot()
 ```
+

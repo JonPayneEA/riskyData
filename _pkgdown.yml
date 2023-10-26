@@ -1,4 +1,4 @@
 url: https://jonpayneea.github.io/riskyData/
 template:
   bootstrap: 5
-
+  bootswatch: lux
