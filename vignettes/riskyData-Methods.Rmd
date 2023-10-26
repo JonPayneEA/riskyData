@@ -122,10 +122,17 @@ bewdley$hydroYearDay()
 bewdley$data
 ```
 
+Similarly to remove the columns you can remove the hydrological year with `$rmHY()` and the hydrological day with `$rmHYD()`;
+
+```{r rmHYD}
+bewdley$rmHY()
+bewdley$rmHYD()
+```
+
 ### Plotting data
 
 Currently the containers only support plotting in one way....
 
-```{r plot1}
-chesterton$hydroYearDay()$plot()
+```{r plot1, fig.width = 4, fig.height = 8}
+bewdley$hydroYearDay()$plot()
 ```
