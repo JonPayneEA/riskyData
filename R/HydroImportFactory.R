@@ -227,7 +227,7 @@ HydroImportFactory <- R6::R6Class(
     #' Remove the calculated volume
     #' @param . (ignored).
     rmVol = function(.) {
-      cli::cli_progress_step("Removing volum column")
+      cli::cli_progress_step("Removing volume column")
       rmVol(x = self$data)
       invisible(self)
     },
@@ -385,11 +385,12 @@ HydroImportFactory <- R6::R6Class(
     },
     #' @description
     #' Returns the metadata as a data.table
-    #' @param . (ignored).
+    #' @param transform Set to FALSE. If TRUE the data.table is transformed
+    #' which increases readability in the console.
     #' @examples
     #' data(bewdley)
     #' bewdley$meta()
-    meta = function(.) {
+    meta = function(transform = FALSE) {
       dt <- data.table(
         dataType = private$dataType,
         modifications = private$modifications,
@@ -420,7 +421,11 @@ HydroImportFactory <- R6::R6Class(
         timeZone = private$timeZone,
         records = private$records()
       )
-      return(dt)
+      if (transform == FALSE){
+        return(dt)
+      } else {
+        return(t(dt))
+      }
     },
     #' @description
     #' Daily statistics for imported data

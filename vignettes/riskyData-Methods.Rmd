@@ -1,0 +1,131 @@
+---
+title: "riskyData-Methods"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{riskyData-Methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# The riskyData approach
+
+As mentioned in the containers vignette, functions specific to the data stored the `riskyData` R6 containers are called methods. Interaction with them is slightly different to the conventional methods in R. They can all be applied using the `$` operator, meaning that you don't have to encapsulate an object within parenthesis.
+
+## Available methods
+
+Once you have data imported into R via the `loadAPI()` function, the observed data and metadata should sit within an `HydroImport` container. Once this is available you can interrogate the methods available for your data analytics. Interrogation is very easy, simply apply `$methods()` to your imported object.
+
+Again we will use the bewdley example;
+
+```{r load, echo = FALSE}
+library(riskyData)
+```
+
+```{r methods}
+data(bewdley)
+bewdley$methods()
+```
+
+### Accessing data
+
+When the data are imported from the API, they are stored in a public pot within the container. These should be in a data.table format. These provide an enhanced version of data.frame which allows you to do carry out incredibly fast data manipulations. Due to the large size of our datasets it is much more computationally efficient to use over other methods.
+
+To call the data we use `$data` as you are directly calling the data and not using a method (or function) we can drop the parentheses.
+
+```{r bewdleyData}
+bewdley$data
+```
+
+The data available in these can differ between gauge types, the bewdley data in this case is flow. We can see the differences if we look at the chesterton rain gauge dataset;
+
+```{r chestertonData}
+data(chesterton)
+chesterton$data
+```
+
+As you can see the rain gauge data has extra columns. For most analytics the dateTime and value fields are what is used, however it is worth checking if you need to use the extra parameters.
+
+### Basic methods
+
+Using the `$print()` or `$summary()` methods can give a quick insight as to what data you have.
+
+```{r summary}
+bewdley$summary()
+```
+
+Print works slightly differently, the containers inbuilt print function overules the one in base R. This means you don't need to run `$print()` you can simply just return the object name.
+
+```{r print1, eval = FALSE}
+bewdley
+```
+
+```{r print2}
+## Works the same as
+bewdley$print()
+```
+
+For a quick snapshot on the data quality of the imported data use `$quality()`
+
+```{r quality}
+chesterton$quality()
+```
+
+### Accessing the metadata
+
+As mentioned in the container vignette, you can directly interact with the metadata. This is part of the strict data quality elements that `riskyData` enforces. However, should you wish to inspect all the available metadata for an imported dataset this is simply done with `$meta()`. For clarity the table has been transposed by setting `transform = TRUE`
+
+```{r metadata}
+bewdley$meta(transform = TRUE)
+```
+
+Other metadata functions include;
+
+```{r extraMeta}
+## Coordinates of gauges
+chesterton$coords()
+
+## NRFA details
+bewdley$nrfa()
+```
+
+### Adding to the public data
+
+Though you could add any number of extra elements to the public data, the `riskyData` containers currently have a couple of useful methods.
+
+If you wished to convert flow into a volume us the `$asVol` method;
+
+```{r asVol, eval = FALSE}
+bewdley$asVol()
+```
+
+This adds a volume column to the data table. It uses the metadata to derive the suitable values based on the difference in time between observations. If you wished to remove the column use \`\``$rmVol()`;
+
+```{r rmVol, eval = FALSE}
+bewdley$rmVol()
+```
+
+The other useful method is `$hydroYearDay()` this generates 2 things;
+
+-   Hydrological year (defaults to 1^st^ October to 30 September)
+
+-   Hydrological day
+
+```{r hyd}
+bewdley$hydroYearDay()
+bewdley$data
+```
+
+### Plotting data
+
+Currently the containers only support plotting in one way....
+
+```{r plot1}
+chesterton$hydroYearDay()$plot()
+```

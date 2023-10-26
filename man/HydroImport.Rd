@@ -481,13 +481,14 @@ Return the different user selecting rolling aggregations
 \subsection{Method \code{meta()}}{
 Returns the metadata as a data.table
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$meta(.)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$meta(transform = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{.}}{(ignored).}
+\item{\code{transform}}{Set to FALSE. If TRUE the data.table is transformed
+which increases readability in the console.}
 }
 \if{html}{\out{</div>}}
 }
