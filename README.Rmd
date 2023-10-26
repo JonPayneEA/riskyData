@@ -13,17 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-\newline \newline \newline
-
-# riskyData <img src="logo.png" align="right" width="120"/>
+# Welcome to riskyData! <img src="logo.png" align="right" alt="" width="120"/>
 
 <!-- badges: start -->
 
 [![License: GNU General Public License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License) [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
 
 <!-- badges: end -->
-
-# Welcome to riskyData!
 
 This package is part of the fleet of `flode` tools designed for members of Evidence and Risk. This package, `riskyData`, is used to interact with the EAs API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.
 

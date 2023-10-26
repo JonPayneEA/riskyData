@@ -1,7 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+# 
 
-# riskyData <img src="logo.png" align="right" width="120"/>
+# Welcome to riskyData! <img src="logo.png" align="right" width="120"/>
 
 <!-- badges: start -->
 
@@ -10,8 +11,6 @@ License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-b
 [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
 
 <!-- badges: end -->
-
-# Welcome to riskyData!
 
 This package is part of the fleet of `flode` tools designed for members
 of Evidence and Risk. This package, `riskyData`, is used to interact
@@ -37,7 +36,7 @@ library(riskyData)
 data(bewdley)
 
 bewdley$hydroYearDay()$dayStats(plot = TRUE)
-#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [6.5s]
+#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [7.1s]
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
