@@ -50,7 +50,7 @@ In contrast to R\'s reference classes, R6 is not built on the S4 class system, s
 
 Public members are accessible from outside the class and can be used and modified directly.
 
-To call the raw data in `riskyData` you can call it with `$data` this does add one level of complexity against a normal data frame but the benefits outstrip the negatives.
+To call the raw data in `riskyData` you can do so with `$data`, this does add one level of complexity against a normal data frame but the benefits outstrip the negatives.
 
 To call up the data on the bewdley dataset use;
 
