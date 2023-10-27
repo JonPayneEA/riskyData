@@ -1,10 +1,13 @@
 Package: riskyData
 Title: Welcome to riskyData the tool for pulling observed data from the EAs API
 Version: 0.2.1
-Authors@R: 
+Authors@R: c(
     person("Jonathan", "Payne", , "jon.payne@environment-agency.gov.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-2551-5353"))
-Description: What the package does (one paragraph).
+           comment = c(ORCID = "0000-0003-2551-5353")),
+    person("Oliver", "Dyer", , "oliver.dyer@environment-agency.gov.uk", role = c("aut"),
+           comment = c(ORCID = "0000-0003-2773-6731"))
+           )
+Description: The package riskyData has been developed for the Evidence and Risk colleagues to cleanly and reliably import data from the Environment Agencies API.
 License: GPL (>= 3)
 Encoding: UTF-8
 Language: es
