@@ -53,7 +53,7 @@ bewdley$hydroYearDay()$dayStats(plot = TRUE)
 ## Import the Chesterton rain gauge data
 data(chesterton)
 
-## Calculate rain seperation use RLE, minimum total event must be at least 2mm
+## Calculate rain separation use RLE, minimum total event must be at least 2mm
 rainSep(dateTime = chesterton$data$dateTime,
         precip = chesterton$data$value,
         threshold = 0,
