@@ -17,7 +17,7 @@ Imports:
     cli,
     tidyr,
     ggplot2
-URL: https://jonpayneea.github.io/riskyData/
+URL: https://jonpayneea.github.io/riskyData/, https://github.com/JonPayneEA/riskyData
 Depends: 
     R (>= 2.10)
 LazyData: true

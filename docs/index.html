@@ -58,7 +58,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/JonPayneEA/riskyData/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -67,16 +74,17 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="section"></h1>
-</div>
-</div>
-<div class="section level1">
-<h1 id="welcome-to-riskydata-">Welcome to riskyData! <a class="anchor" aria-label="anchor" href="#welcome-to-riskydata-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="riskydata-">riskyData! <a class="anchor" aria-label="anchor" href="#riskydata-"></a>
 </h1>
+</div>
 <!-- badges: start -->
 
 <!-- badges: end -->
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>This package is part of the fleet of <code>flode</code> tools designed for members of Evidence and Risk. This package, <code>riskyData</code>, is used to interact with the EAs API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -86,15 +94,17 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"JonPayne88/riskyData"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example-1---loading-data">Example 1 - Loading data<a class="anchor" aria-label="anchor" href="#example-1---loading-data"></a>
+<h2 id="example-1---compile-daily-flow-statistics">Example 1 - compile daily flow statistics<a class="anchor" aria-label="anchor" href="#example-1---compile-daily-flow-statistics"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/riskyData/">riskyData</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span>
+<span></span>
+<span><span class="co">## Import the Bewdley dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co">## Using a pipe calculate the hydrological year and then calculate statistics</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">dayStats</span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [7.1s]</span></span></code></pre></div>
+<span><span class="co">#&gt; ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [11.8s]</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      dayYear     Mean Median  Min Max   Perc5 Perc25  Perc75 Perc95</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:       1 39.17188  19.30 9.68 210 10.4000 12.200  35.600 192.00</span></span>
@@ -109,9 +119,67 @@
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00</span></span></code></pre></div>
 </div>
+<div class="section level2">
+<h2 id="example-2---use-run-length-encoding-to-seperate-rainfall-events">Example 2 - Use run length encoding to seperate rainfall events<a class="anchor" aria-label="anchor" href="#example-2---use-run-length-encoding-to-seperate-rainfall-events"></a>
+</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Import the Chesterton rain gauge data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Calculate rain seperation use RLE, minimum total event must be at least 2mm</span></span>
+<span><span class="fu"><a href="reference/rainSep.html">rainSep</a></span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>,</span>
+<span>        precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>,</span>
+<span>        threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        minTotal <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>        roll <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       id               start                 end total</span></span>
+<span><span class="co">#&gt;   1:   1 2011-01-07 08:30:00 2011-01-07 10:00:00   6.5</span></span>
+<span><span class="co">#&gt;   2:   2 2011-01-11 02:15:00 2011-01-11 03:00:00   2.0</span></span>
+<span><span class="co">#&gt;   3:   3 2011-01-13 20:30:00 2011-01-13 22:15:00   5.0</span></span>
+<span><span class="co">#&gt;   4:   4 2011-02-19 06:45:00 2011-02-19 08:30:00   4.0</span></span>
+<span><span class="co">#&gt;   5:   5 2011-02-26 00:30:00 2011-02-26 01:15:00   3.0</span></span>
+<span><span class="co">#&gt;  ---                                                  </span></span>
+<span><span class="co">#&gt; 861: 861 2022-09-09 14:30:00 2022-09-09 14:45:00   8.4</span></span>
+<span><span class="co">#&gt; 862: 862 2022-09-09 15:30:00 2022-09-09 16:15:00   6.0</span></span>
+<span><span class="co">#&gt; 863: 863 2022-09-26 10:00:00 2022-09-26 10:15:00   3.6</span></span>
+<span><span class="co">#&gt; 864: 864 2022-09-30 14:15:00 2022-09-30 17:00:00   5.8</span></span>
+<span><span class="co">#&gt; 865: 865 2022-09-30 18:00:00 2022-09-30 19:30:00   3.8</span></span></code></pre></div>
+<p>These can be integrated into plots;</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Plot the base data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>, <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
+<span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">30000</span><span class="op">:</span><span class="fl">40000</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    type <span class="op">=</span> <span class="st">'h'</span>, ylab <span class="op">=</span> <span class="st">"Rainfall (mm)"</span>, xlab <span class="op">=</span> <span class="st">"Date Time"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Calculate the rain profiles using a 5hr aggregation</span></span>
+<span><span class="va">dayRain</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rainSep.html">rainSep</a></span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
+<span>                   precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
+<span>                   threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                   minTotal <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                   roll <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Plot the identified windows</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">dayRain</span><span class="op">$</span><span class="va">id</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">dayRain</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">dayRain</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">dayRain</span><span class="op">$</span><span class="va">end</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>               <span class="va">dayRain</span><span class="op">$</span><span class="va">end</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>         y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span>, <span class="fl">12</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>         col <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">'red'</span>, <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>         border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co">## Overlay the original rainfall for clarity</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>, <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-rainsep2-1.png" width="100%"></p>
+</div>
+</div>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/JonPayneEA/riskyData/" class="external-link">Browse source code</a></li>
+</ul>
 </div>
 
-  </main><aside class="col-md-3"><div class="license">
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>

@@ -1,8 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-# 
 
-# Welcome to riskyData! <img src="logo.png" align="right" width="120"/>
+# riskyData! <img src="logo.png" align="right" alt="" width="120"/>
 
 <!-- badges: start -->
 
@@ -11,6 +10,8 @@ License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-b
 [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
 
 <!-- badges: end -->
+
+## Introduction
 
 This package is part of the fleet of `flode` tools designed for members
 of Evidence and Risk. This package, `riskyData`, is used to interact
@@ -28,15 +29,17 @@ You can install the development version of riskyData from
 devtools::install_github("JonPayne88/riskyData")
 ```
 
-## Example 1 - Loading data
+## Example 1 - compile daily flow statistics
 
 ``` r
 library(riskyData)
-## basic example code
+
+## Import the Bewdley dataset
 data(bewdley)
 
+## Using a pipe calculate the hydrological year and then calculate statistics
 bewdley$hydroYearDay()$dayStats(plot = TRUE)
-#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [7.1s]
+#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [11.8s]
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -53,3 +56,59 @@ bewdley$hydroYearDay()$dayStats(plot = TRUE)
     #> 363:     363 38.64064  16.10 9.53 254  9.8115 11.000  26.100 250.00
     #> 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85
     #> 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00
+
+## Example 2 - Use run length encoding to seperate rainfall events
+
+``` r
+## Import the Chesterton rain gauge data
+data(chesterton)
+
+## Calculate rain seperation use RLE, minimum total event must be at least 2mm
+rainSep(dateTime = chesterton$data$dateTime,
+        precip = chesterton$data$value,
+        threshold = 0,
+        minTotal = 2,
+        roll = 0)
+#>       id               start                 end total
+#>   1:   1 2011-01-07 08:30:00 2011-01-07 10:00:00   6.5
+#>   2:   2 2011-01-11 02:15:00 2011-01-11 03:00:00   2.0
+#>   3:   3 2011-01-13 20:30:00 2011-01-13 22:15:00   5.0
+#>   4:   4 2011-02-19 06:45:00 2011-02-19 08:30:00   4.0
+#>   5:   5 2011-02-26 00:30:00 2011-02-26 01:15:00   3.0
+#>  ---                                                  
+#> 861: 861 2022-09-09 14:30:00 2022-09-09 14:45:00   8.4
+#> 862: 862 2022-09-09 15:30:00 2022-09-09 16:15:00   6.0
+#> 863: 863 2022-09-26 10:00:00 2022-09-26 10:15:00   3.6
+#> 864: 864 2022-09-30 14:15:00 2022-09-30 17:00:00   5.8
+#> 865: 865 2022-09-30 18:00:00 2022-09-30 19:30:00   3.8
+```
+
+These can be integrated into plots;
+
+``` r
+## Plot the base data
+plot(chesterton$data$dateTime[34000:44000], chesterton$data$value[34000:44000],
+     ylim = rev(range(chesterton$data$value[30000:40000], na.rm = TRUE)),
+    type = 'h', ylab = "Rainfall (mm)", xlab = "Date Time")
+
+## Calculate the rain profiles using a 5hr aggregation
+dayRain <- rainSep(dateTime = chesterton$data$dateTime[34000:44000],
+                   precip = chesterton$data$value[34000:44000],
+                   threshold = 0,
+                   minTotal = 4,
+                   roll = 20)
+
+## Plot the identified windows
+for (i in seq_along(dayRain$id)){
+ polygon(x = c(dayRain$start[i], dayRain$start[i], dayRain$end[i],
+               dayRain$end[i]),
+         y = c(0, 12, 12, 0),
+         col = scales::alpha('red', 0.5),
+         border = NA)
+}
+
+## Overlay the original rainfall for clarity
+lines(chesterton$data$dateTime[34000:44000], chesterton$data$value[34000:44000])
+```
+
+<img src="man/figures/README-rainsep2-1.png" width="100%" />
