@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This package is part of the fleet of `flode` tools designed for members of Evidence and Risk. This package, `riskyData`, is used to interact with the EAs API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.
+This package is part of the fleet of `flode` tools designed for members of Evidence and Risk. This package, `riskyData`, is used to interact with the EAs Hydrology Data Explorer via the API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.
 
 ## Installation and loading
 

@@ -16,7 +16,7 @@ License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-b
 
 This package is part of the fleet of `flode` tools designed for members
 of Evidence and Risk. This package, `riskyData`, is used to interact
-with the EAs API. Hydrometric data can be pulled using in built
+with the EAs Hydrology Data Explorer via the API. Hydrometric data can be pulled using in built
 functions. Data are stored in containers that implement strict quality
 controls. Data can be interrogated using a range of inbuilt tools.
 
