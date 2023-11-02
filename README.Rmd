@@ -13,11 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# riskyData! <img src="logo.png" align="right" alt="" width="120"/>
+# riskyData <img src="logo.png" align="right" alt="" width="120"/>
 
 <!-- badges: start -->
 
-[![License: GNU General Public License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License) [![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
+[![License: GNU General Public License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License) [![](https://img.shields.io/github/languages/code-size/JonPayneEA/riskyData.svg)](https://github.com/JonPayneEA/riskyData)
+[![](https://img.shields.io/github/last-commit/JonPayneEA/riskyData.svg)](https://github.com/JonPayneEA/riskyData/commits/main)
 
 <!-- badges: end -->
 
@@ -25,7 +26,7 @@ knitr::opts_chunk$set(
 
 This package is part of the fleet of `flode` tools designed for members of Evidence and Risk. This package, `riskyData`, is used to interact with the EAs API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.
 
-## Installation
+## Installation and loading
 
 You can install the development version of riskyData from [GitHub](https://github.com/) with:
 
@@ -34,11 +35,48 @@ You can install the development version of riskyData from [GitHub](https://githu
 devtools::install_github("JonPayne88/riskyData")
 ```
 
-## Example 1 - compile daily flow statistics
+To load the package use;
+
+```{r load}
+library(riskyData)
+```
+
+## Example 1 - Importing data
+
+To find the data available for a gauge;
+
+```{r data}
+## WISKI ID 2002
+loadAPI(ID = '2002')
+```
+
+To drill further into the data use;
+
+```{r drill, eval = FALSE}
+loadAPI(ID = '2002',
+        measure = 'flow',
+        period = 900,
+        type = 'instantaneous',
+        datapoints = 'range',
+        from = '2012-10-01 00:00',-
+        to = '2013-10-01 00:00')
+
+```
+
+```{r drill2, messages = FALSE, echo = FALSE}
+dt <- loadAPI(ID = '2002',
+              measure = 'flow',
+              period = 900,
+              type = 'instantaneous',
+              datapoints = 'range',
+              from = '2012-10-01 00:00',
+              to = '2013-10-01 00:00')
+dt
+```
+
+## Example 2 - compile daily flow statistics
 
 ```{r example}
-library(riskyData)
-
 ## Import the Bewdley dataset
 data(bewdley)
 
@@ -47,7 +85,7 @@ bewdley$hydroYearDay()$dayStats(plot = TRUE)
 ```
 
 
-## Example 2 - Use run length encoding to seperate rainfall events
+## Example 3 - Use run length encoding to seperate rainfall events
 
 ```{r rainsep1}
 ## Import the Chesterton rain gauge data

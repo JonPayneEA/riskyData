@@ -74,7 +74,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="riskydata-">riskyData! <a class="anchor" aria-label="anchor" href="#riskydata-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="riskydata-">riskyData <a class="anchor" aria-label="anchor" href="#riskydata-"></a>
 </h1>
 </div>
 <!-- badges: start -->
@@ -86,47 +86,110 @@
 <p>This package is part of the fleet of <code>flode</code> tools designed for members of Evidence and Risk. This package, <code>riskyData</code>, is used to interact with the EAs API. Hydrometric data can be pulled using in built functions. Data are stored in containers that implement strict quality controls. Data can be interrogated using a range of inbuilt tools.</p>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="installation-and-loading">Installation and loading<a class="anchor" aria-label="anchor" href="#installation-and-loading"></a>
 </h2>
 <p>You can install the development version of riskyData from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"JonPayne88/riskyData"</span><span class="op">)</span></span></code></pre></div>
+<p>To load the package use;</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/riskyData/">riskyData</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example-1---compile-daily-flow-statistics">Example 1 - compile daily flow statistics<a class="anchor" aria-label="anchor" href="#example-1---compile-daily-flow-statistics"></a>
+<h2 id="example-1---importing-data">Example 1 - Importing data<a class="anchor" aria-label="anchor" href="#example-1---importing-data"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/riskyData/">riskyData</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Import the Bewdley dataset</span></span>
+<p>To find the data available for a gauge;</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## WISKI ID 2002</span></span>
+<span><span class="fu"><a href="reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2002'</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    measure period          type</span></span>
+<span><span class="co">#&gt; 1:    flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 2:    flow  86400           min</span></span>
+<span><span class="co">#&gt; 3:    flow  86400          mean</span></span>
+<span><span class="co">#&gt; 4:   level  86400           max</span></span>
+<span><span class="co">#&gt; 5:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 6:   level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 7:   level  86400           min</span></span></code></pre></div>
+<p>To drill further into the data use;</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loadAPI</span>(<span class="at">ID =</span> <span class="st">'2002'</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">measure =</span> <span class="st">'flow'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">period =</span> <span class="dv">900</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">'instantaneous'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">datapoints =</span> <span class="st">'range'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">from =</span> <span class="st">'2012-10-01 00:00'</span>,<span class="sc">-</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">to =</span> <span class="st">'2013-10-01 00:00'</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Compiling parameters for raw download✔ Compiling parameters for raw download [621ms]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Downloading raw data✔ Downloading raw data [2.8s]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Collating metadata✔ Collating metadata [663ms]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Exporting data to HydroImport container✔ Exporting data to HydroImport container [396ms]</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Class: HydroImport ──────────────────────────────────────────────────────────</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Private: ──</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Data Type: Raw Import</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Station name: Evesham</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WISKI ID: 2002</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Data Type: Flow</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Modifications: NA</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Start: 2012-10-01</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; End: 2013-09-30 23:45:00</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time Step: 900</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Observations: 35040</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Easting: 404007</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Northing: 243741</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Longitude: -1.94292</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latitude: 52.091994</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Public: ──</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   dateTime value quality</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1: 2012-10-01 00:00:00 10.50    Good</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     2: 2012-10-01 00:15:00 10.40    Good</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     3: 2012-10-01 00:30:00 10.40    Good</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     4: 2012-10-01 00:45:00 10.40    Good</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5: 2012-10-01 01:00:00 10.40    Good</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ---                                  </span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35036: 2013-09-30 22:45:00  4.64    Good</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35037: 2013-09-30 23:00:00  4.64    Good</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35038: 2013-09-30 23:15:00  4.64    Good</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35039: 2013-09-30 23:30:00  4.64    Good</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35040: 2013-09-30 23:45:00  4.64    Good</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; For more details use the $methods() function, the format should be as</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `Object_name`$methods()</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example-2---compile-daily-flow-statistics">Example 2 - compile daily flow statistics<a class="anchor" aria-label="anchor" href="#example-2---compile-daily-flow-statistics"></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Import the Bewdley dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Using a pipe calculate the hydrological year and then calculate statistics</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">dayStats</span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [11.8s]</span></span></code></pre></div>
+<span><span class="co">#&gt; ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [12.9s]</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      dayYear     Mean Median  Min Max   Perc5 Perc25  Perc75 Perc95</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:       1 39.17188  19.30 9.68 210 10.4000 12.200  35.600 192.00</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:       2 47.99227  25.80 9.64 225 10.2000 12.400  62.500 215.00</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:       3 53.14900  34.55 9.26 255  9.9715 11.600  67.725 228.00</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:       4 59.77555  40.65 9.39 252  9.9400 10.900  87.425 240.00</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:       5 63.06871  34.70 9.76 228 10.2000 11.700 106.000 189.85</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                                                               </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 361:     361 33.29305  15.05 9.26 222 10.1000 10.975  35.925 163.85</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 362:     362 36.36758  15.85 8.77 254  9.8800 11.300  28.500 245.00</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 363:     363 38.64064  16.10 9.53 254  9.8115 11.000  26.100 250.00</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      dayYear     Mean Median  Min Max   Perc5 Perc25  Perc75 Perc95</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:       1 39.17188  19.30 9.68 210 10.4000 12.200  35.600 192.00</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:       2 47.99227  25.80 9.64 225 10.2000 12.400  62.500 215.00</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:       3 53.14900  34.55 9.26 255  9.9715 11.600  67.725 228.00</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:       4 59.77555  40.65 9.39 252  9.9400 10.900  87.425 240.00</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:       5 63.06871  34.70 9.76 228 10.2000 11.700 106.000 189.85</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                                                               </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 361:     361 33.29305  15.05 9.26 222 10.1000 10.975  35.925 163.85</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 362:     362 36.36758  15.85 8.77 254  9.8800 11.300  28.500 245.00</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 363:     363 38.64064  16.10 9.53 254  9.8115 11.000  26.100 250.00</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example-2---use-run-length-encoding-to-seperate-rainfall-events">Example 2 - Use run length encoding to seperate rainfall events<a class="anchor" aria-label="anchor" href="#example-2---use-run-length-encoding-to-seperate-rainfall-events"></a>
+<h2 id="example-3---use-run-length-encoding-to-seperate-rainfall-events">Example 3 - Use run length encoding to seperate rainfall events<a class="anchor" aria-label="anchor" href="#example-3---use-run-length-encoding-to-seperate-rainfall-events"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Import the Chesterton rain gauge data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Calculate rain seperation use RLE, minimum total event must be at least 2mm</span></span>
+<span><span class="co">## Calculate rain separation use RLE, minimum total event must be at least 2mm</span></span>
 <span><span class="fu"><a href="reference/rainSep.html">rainSep</a></span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>,</span>
 <span>        precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>,</span>
 <span>        threshold <span class="op">=</span> <span class="fl">0</span>,</span>
@@ -145,7 +208,7 @@
 <span><span class="co">#&gt; 864: 864 2022-09-30 14:15:00 2022-09-30 17:00:00   5.8</span></span>
 <span><span class="co">#&gt; 865: 865 2022-09-30 18:00:00 2022-09-30 19:30:00   3.8</span></span></code></pre></div>
 <p>These can be integrated into plots;</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Plot the base data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>, <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">30000</span><span class="op">:</span><span class="fl">40000</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -155,7 +218,7 @@
 <span><span class="va">dayRain</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rainSep.html">rainSep</a></span><span class="op">(</span>dateTime <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
 <span>                   precip <span class="op">=</span> <span class="va">chesterton</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="fl">34000</span><span class="op">:</span><span class="fl">44000</span><span class="op">]</span>,</span>
 <span>                   threshold <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                   minTotal <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                   minTotal <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>                   roll <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Plot the identified windows</span></span>
@@ -207,7 +270,8 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License" class="external-link"><img src="https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg" alt="License: GNU General Public License"></a></li>
-<li><a href="https://github.com/JonPayneEA/HydroEnR" class="external-link"><img src="https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg"></a></li>
+<li><a href="https://github.com/JonPayneEA/riskyData" class="external-link"><img src="https://img.shields.io/github/languages/code-size/JonPayneEA/riskyData.svg"></a></li>
+<li><a href="https://github.com/JonPayneEA/riskyData/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/JonPayneEA/riskyData.svg"></a></li>
 </ul>
 </div>
 

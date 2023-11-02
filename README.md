@@ -1,13 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# riskyData! <img src="logo.png" align="right" alt="" width="120"/>
+# riskyData <img src="logo.png" align="right" alt="" width="120"/>
 
 <!-- badges: start -->
 
 [![License: GNU General Public
 License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-blue.svg)](https://cran.r-project.org/web/licenses/GNU%20General%20Public%20License)
-[![](https://img.shields.io/github/languages/code-size/JonPayneEA/HydroEnR.svg)](https://github.com/JonPayneEA/HydroEnR)
+[![](https://img.shields.io/github/languages/code-size/JonPayneEA/riskyData.svg)](https://github.com/JonPayneEA/riskyData)
+[![](https://img.shields.io/github/last-commit/JonPayneEA/riskyData.svg)](https://github.com/JonPayneEA/riskyData/commits/main)
 
 <!-- badges: end -->
 
@@ -19,7 +20,7 @@ with the EAs API. Hydrometric data can be pulled using in built
 functions. Data are stored in containers that implement strict quality
 controls. Data can be interrogated using a range of inbuilt tools.
 
-## Installation
+## Installation and loading
 
 You can install the development version of riskyData from
 [GitHub](https://github.com/) with:
@@ -29,17 +30,89 @@ You can install the development version of riskyData from
 devtools::install_github("JonPayne88/riskyData")
 ```
 
-## Example 1 - compile daily flow statistics
+To load the package use;
 
 ``` r
 library(riskyData)
+```
 
+## Example 1 - Importing data
+
+To find the data available for a gauge;
+
+``` r
+## WISKI ID 2002
+loadAPI(ID = '2002')
+#>    measure period          type
+#> 1:    flow    900 instantaneous
+#> 2:    flow  86400           min
+#> 3:    flow  86400          mean
+#> 4:   level  86400           max
+#> 5:    flow  86400           max
+#> 6:   level    900 instantaneous
+#> 7:   level  86400           min
+```
+
+To drill further into the data use;
+
+``` r
+loadAPI(ID = '2002',
+        measure = 'flow',
+        period = 900,
+        type = 'instantaneous',
+        datapoints = 'range',
+        from = '2012-10-01 00:00',-
+        to = '2013-10-01 00:00')
+```
+
+    #> ℹ Compiling parameters for raw download✔ Compiling parameters for raw download [621ms]
+    #> ℹ Downloading raw data✔ Downloading raw data [2.8s]
+    #> ℹ Collating metadata✔ Collating metadata [663ms]
+    #> ℹ Exporting data to HydroImport container✔ Exporting data to HydroImport container [396ms]
+    #> 
+    #> ── Class: HydroImport ──────────────────────────────────────────────────────────
+    #> 
+    #> ── Private: ──
+    #> 
+    #> Data Type: Raw Import
+    #> Station name: Evesham
+    #> WISKI ID: 2002
+    #> Data Type: Flow
+    #> Modifications: NA
+    #> Start: 2012-10-01
+    #> End: 2013-09-30 23:45:00
+    #> Time Step: 900
+    #> Observations: 35040
+    #> Easting: 404007
+    #> Northing: 243741
+    #> Longitude: -1.94292
+    #> Latitude: 52.091994
+    #> 
+    #> ── Public: ──
+    #>                   dateTime value quality
+    #>     1: 2012-10-01 00:00:00 10.50    Good
+    #>     2: 2012-10-01 00:15:00 10.40    Good
+    #>     3: 2012-10-01 00:30:00 10.40    Good
+    #>     4: 2012-10-01 00:45:00 10.40    Good
+    #>     5: 2012-10-01 01:00:00 10.40    Good
+    #>    ---                                  
+    #> 35036: 2013-09-30 22:45:00  4.64    Good
+    #> 35037: 2013-09-30 23:00:00  4.64    Good
+    #> 35038: 2013-09-30 23:15:00  4.64    Good
+    #> 35039: 2013-09-30 23:30:00  4.64    Good
+    #> 35040: 2013-09-30 23:45:00  4.64    Good
+    #> For more details use the $methods() function, the format should be as
+    #> `Object_name`$methods()
+
+## Example 2 - compile daily flow statistics
+
+``` r
 ## Import the Bewdley dataset
 data(bewdley)
 
 ## Using a pipe calculate the hydrological year and then calculate statistics
 bewdley$hydroYearDay()$dayStats(plot = TRUE)
-#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [11.8s]
+#> ℹ Calculating hydrological year and day✔ Calculating hydrological year and day [12.9s]
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -57,13 +130,13 @@ bewdley$hydroYearDay()$dayStats(plot = TRUE)
     #> 364:     364 42.81338  16.20 9.35 247  9.8445 12.175  38.125 214.85
     #> 365:     365 40.54762  15.70 9.65 196 10.8000 12.500  31.550 172.00
 
-## Example 2 - Use run length encoding to seperate rainfall events
+## Example 3 - Use run length encoding to seperate rainfall events
 
 ``` r
 ## Import the Chesterton rain gauge data
 data(chesterton)
 
-## Calculate rain seperation use RLE, minimum total event must be at least 2mm
+## Calculate rain separation use RLE, minimum total event must be at least 2mm
 rainSep(dateTime = chesterton$data$dateTime,
         precip = chesterton$data$value,
         threshold = 0,
@@ -95,7 +168,7 @@ plot(chesterton$data$dateTime[34000:44000], chesterton$data$value[34000:44000],
 dayRain <- rainSep(dateTime = chesterton$data$dateTime[34000:44000],
                    precip = chesterton$data$value[34000:44000],
                    threshold = 0,
-                   minTotal = 4,
+                   minTotal = 2,
                    roll = 20)
 
 ## Plot the identified windows

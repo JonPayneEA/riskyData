@@ -657,24 +657,24 @@ there should be</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">methods</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    →    Returns the metadata associated with the object                         │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    →    Calculates the volume of water relative to the time step, see ?asVol   │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    →    Calculates the hydrological year and day, see ?hydroYearDay     │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    →    Removes the volume column                                              │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    →    Removes the hydroYear column                                            │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    →    Removes the hydroYearDay column                                        │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    →    Provides a quick summary of the raw data                             │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    →    Returns coordinates from the metadata                                 │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    →    Returns the NRFA data from the metadata                                 │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    →    Aggregate data by, hour, day, month calendar year and hydroYear      │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    →    Uses user specified aggregation timings, see ?rollingAggs        │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    →    Daily statistics of flow, carried out on hydrological or calendar … │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    →    Create a plot of each year of data, by hydrological year                │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> │ <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    →    Extracts the subset of data observed between the times start and end  │</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> └────────────────────────────────────────────────────────────────────────────────────────────┘</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + <span style="color: #0000BB; font-weight: bold;">Methods</span> -----------------------------------------------------------------------------------+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$data</span>    &gt;    Returns the raw data imported via the API                                 |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    &gt;    Returns the metadata associated with the object                         |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    &gt;    Calculates the volume of water relative to the time step, see ?asVo    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    &gt;    Calculates the hydrological year and day, see ?hydroYearDay     |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    &gt;    Removes the volume column                                              |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    &gt;    Removes the hydroYear column                                            |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    &gt;    Removes the hydroYearDay column                                        |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    &gt;    Provides a quick summary of the raw data                             |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    &gt;    Returns coordinates from the metadata                                 |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    &gt;    Returns the NRFA data from the metadata                                 |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    &gt;    Aggregate data by, hour, day, month calendar year and hydroYear      |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    &gt;    Uses user specified aggregation timings, see ?rollingAggs        |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    &gt;    Daily statistics of flow, carried out on hydrological or calenda... |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    &gt;    Provides a quick summary table of the data qualiity flags            |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    &gt;    Create a plot of each year of data, by hydrological year                |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> | <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    &gt;    Extracts the subset of data observed between the times start and e    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +--------------------------------------------------------------------------------------------+</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `HydroImportFactory$summary`</span></span></span>

@@ -122,42 +122,42 @@ versions.</p>
 <p>Note this can take some time to load</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        wiskiID                                   label      riverName</span></span>
-<span><span class="co">#&gt;     1: 037048U                         Ulting Sarasota  River Chelmer</span></span>
-<span><span class="co">#&gt;     2:  510810                          Beggearn Huish Washford River</span></span>
-<span><span class="co">#&gt;     3:  510810                          Beggearn Huish Washford River</span></span>
-<span><span class="co">#&gt;     4:   F0803                                  Adwick   River Dearne</span></span>
-<span><span class="co">#&gt;     5:   F0803                                  Adwick   River Dearne</span></span>
-<span><span class="co">#&gt;    ---                                                               </span></span>
-<span><span class="co">#&gt; 16937:    &lt;NA&gt;            GW_OTTER CATCHEMENT_E_202211           &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16938:    &lt;NA&gt; MIDDLETON STOP_IDB WATERCOURSE_E_202202  MIDDLETONSTOP</span></span>
-<span><span class="co">#&gt; 16939:    &lt;NA&gt; MIDDLETON STOP_IDB WATERCOURSE_E_202202  MIDDLETONSTOP</span></span>
-<span><span class="co">#&gt; 16940:    &lt;NA&gt; MIDDLETON STOP_IDB WATERCOURSE_E_202202  MIDDLETONSTOP</span></span>
-<span><span class="co">#&gt; 16941:    &lt;NA&gt; MIDDLETON STOP_IDB WATERCOURSE_E_202202  MIDDLETONSTOP</span></span>
-<span><span class="co">#&gt;        observedProperty easting northing      lat      long dateOpened</span></span>
-<span><span class="co">#&gt;     1:        waterFlow  581271   208591 51.74668  0.624437 2008-10-31</span></span>
-<span><span class="co">#&gt;     2:       waterLevel  304007   139460 51.14632 -3.373695 1967-01-01</span></span>
-<span><span class="co">#&gt;     3:        waterFlow  304007   139460 51.14632 -3.373695 1967-01-01</span></span>
-<span><span class="co">#&gt;     4:       waterLevel  447677   402022 53.51271 -1.282505 1956-10-29</span></span>
-<span><span class="co">#&gt;     5:        waterFlow  447677   402022 53.51271 -1.282505 1956-10-29</span></span>
-<span><span class="co">#&gt;    ---                                                                </span></span>
-<span><span class="co">#&gt; 16937:          nitrate  317196   106312 50.85037 -3.177620 2022-12-01</span></span>
-<span><span class="co">#&gt; 16938: dissolved-oxygen  566342   317869 52.73286  0.462153 2022-03-10</span></span>
-<span><span class="co">#&gt; 16939:     conductivity  566342   317869 52.73286  0.462153 2022-03-10</span></span>
-<span><span class="co">#&gt; 16940:      temperature  566342   317869 52.73286  0.462153 2022-03-10</span></span>
-<span><span class="co">#&gt; 16941:        turbidity  566342   317869 52.73286  0.462153 2022-03-10</span></span>
-<span><span class="co">#&gt;        catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt;     1:            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     2:          36.3         51003</span></span>
-<span><span class="co">#&gt;     3:          36.3         51003</span></span>
-<span><span class="co">#&gt;     4:         311.0         27030</span></span>
-<span><span class="co">#&gt;     5:         311.0         27030</span></span>
-<span><span class="co">#&gt;    ---                            </span></span>
-<span><span class="co">#&gt; 16937:            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16938:            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16939:            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16940:            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16941:            NA          &lt;NA&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;        wiskiID                       label      riverName observedProperty</span></span>
+<span><span class="co">#&gt;     1: 037048U             Ulting Sarasota  River Chelmer        waterFlow</span></span>
+<span><span class="co">#&gt;     2:  510810              Beggearn Huish Washford River       waterLevel</span></span>
+<span><span class="co">#&gt;     3:  510810              Beggearn Huish Washford River        waterFlow</span></span>
+<span><span class="co">#&gt;     4:   F0803                      Adwick   River Dearne       waterLevel</span></span>
+<span><span class="co">#&gt;     5:   F0803                      Adwick   River Dearne        waterFlow</span></span>
+<span><span class="co">#&gt;    ---                                                                    </span></span>
+<span><span class="co">#&gt; 16964:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE     conductivity</span></span>
+<span><span class="co">#&gt; 16965:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE             fdom</span></span>
+<span><span class="co">#&gt; 16966:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE               ph</span></span>
+<span><span class="co">#&gt; 16967:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE      temperature</span></span>
+<span><span class="co">#&gt; 16968:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE        turbidity</span></span>
+<span><span class="co">#&gt;        easting northing      lat      long dateOpened catchmentArea</span></span>
+<span><span class="co">#&gt;     1:  581271   208591 51.74668  0.624437 2008-10-31            NA</span></span>
+<span><span class="co">#&gt;     2:  304007   139460 51.14632 -3.373695 1967-01-01          36.3</span></span>
+<span><span class="co">#&gt;     3:  304007   139460 51.14632 -3.373695 1967-01-01          36.3</span></span>
+<span><span class="co">#&gt;     4:  447677   402022 53.51271 -1.282505 1956-10-29         311.0</span></span>
+<span><span class="co">#&gt;     5:  447677   402022 53.51271 -1.282505 1956-10-29         311.0</span></span>
+<span><span class="co">#&gt;    ---                                                             </span></span>
+<span><span class="co">#&gt; 16964:  377747   601222 55.30457 -2.352064 2023-11-30            NA</span></span>
+<span><span class="co">#&gt; 16965:  377747   601222 55.30457 -2.352064 2023-11-30            NA</span></span>
+<span><span class="co">#&gt; 16966:  377747   601222 55.30457 -2.352064 2023-11-30            NA</span></span>
+<span><span class="co">#&gt; 16967:  377747   601222 55.30457 -2.352064 2023-11-30            NA</span></span>
+<span><span class="co">#&gt; 16968:  377747   601222 55.30457 -2.352064 2023-11-30            NA</span></span>
+<span><span class="co">#&gt;        nrfaStationID</span></span>
+<span><span class="co">#&gt;     1:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     2:         51003</span></span>
+<span><span class="co">#&gt;     3:         51003</span></span>
+<span><span class="co">#&gt;     4:         27030</span></span>
+<span><span class="co">#&gt;     5:         27030</span></span>
+<span><span class="co">#&gt;    ---              </span></span>
+<span><span class="co">#&gt; 16964:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16965:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16966:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16967:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16968:          &lt;NA&gt;</span></span></code></pre></div>
 <p>If you wish to constrain these data to NRFA or WISKI sites only add
 ‘nrfa’ or ‘wiski’ to the <code>ID</code> argument.</p>
 <p>Using these in the <code>obsProperty</code> argument you can filter
@@ -292,11 +292,11 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:   F0803               Adwick   River Dearne        waterFlow  447677</span></span>
 <span><span class="co">#&gt;    5:    2048         Wellesbourne     River Dene       waterLevel  427271</span></span>
 <span><span class="co">#&gt;   ---                                                                     </span></span>
-<span><span class="co">#&gt; 1518:  034004       Costessey Mill   River Wensum        waterFlow  617682</span></span>
-<span><span class="co">#&gt; 1519:  033061         Fowlmere No1     River Shep        waterFlow  540214</span></span>
-<span><span class="co">#&gt; 1520:  033062         Fowlmere No2  Guilden Brook        waterFlow  540309</span></span>
-<span><span class="co">#&gt; 1521:    2052 Ternhill (Bailey Bk)   Bailey Brook        waterFlow  362855</span></span>
-<span><span class="co">#&gt; 1522:    2044      Ternhill (Tern)     River Tern        waterFlow  362855</span></span>
+<span><span class="co">#&gt; 1521:  034004       Costessey Mill   River Wensum        waterFlow  617682</span></span>
+<span><span class="co">#&gt; 1522:  033061         Fowlmere No1     River Shep        waterFlow  540214</span></span>
+<span><span class="co">#&gt; 1523:  033062         Fowlmere No2  Guilden Brook        waterFlow  540309</span></span>
+<span><span class="co">#&gt; 1524:    2052 Ternhill (Bailey Bk)   Bailey Brook        waterFlow  362855</span></span>
+<span><span class="co">#&gt; 1525:    2044      Ternhill (Tern)     River Tern        waterFlow  362855</span></span>
 <span><span class="co">#&gt;       northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
 <span><span class="co">#&gt;    1:   139460 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
 <span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
@@ -304,11 +304,11 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:   402022 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
 <span><span class="co">#&gt;    5:   255587 52.19784 -1.602416 1976-05-12         102.0         54048</span></span>
 <span><span class="co">#&gt;   ---                                                                   </span></span>
-<span><span class="co">#&gt; 1518:   312740 52.66862  1.217973 1960-02-01         570.9         34004</span></span>
-<span><span class="co">#&gt; 1519:   246000 52.09458  0.045386 1964-11-01            NA         33061</span></span>
-<span><span class="co">#&gt; 1520:   245563 52.09063  0.046592 1964-11-01            NA         33062</span></span>
-<span><span class="co">#&gt; 1521:   331495 52.87962 -2.553380 1972-09-14          34.4         54052</span></span>
-<span><span class="co">#&gt; 1522:   331485 52.87953 -2.553379 1972-09-14          92.6         54044</span></span></code></pre></div>
+<span><span class="co">#&gt; 1521:   312740 52.66862  1.217973 1960-02-01         570.9         34004</span></span>
+<span><span class="co">#&gt; 1522:   246000 52.09458  0.045386 1964-11-01            NA         33061</span></span>
+<span><span class="co">#&gt; 1523:   245563 52.09063  0.046592 1964-11-01            NA         33062</span></span>
+<span><span class="co">#&gt; 1524:   331495 52.87962 -2.553380 1972-09-14          34.4         54052</span></span>
+<span><span class="co">#&gt; 1525:   331485 52.87953 -2.553379 1972-09-14          92.6         54044</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="example-ii---find-nearby-gauges">Example II - Find nearby gauges<a class="anchor" aria-label="anchor" href="#example-ii---find-nearby-gauges"></a>
@@ -390,12 +390,12 @@ case Bewdley (WISKI 2001)</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    measure period          type</span></span>
 <span><span class="co">#&gt; 1:    flow  86400          mean</span></span>
-<span><span class="co">#&gt; 2:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 2:   level  86400           min</span></span>
 <span><span class="co">#&gt; 3:    flow    900 instantaneous</span></span>
-<span><span class="co">#&gt; 4:   level  86400           min</span></span>
-<span><span class="co">#&gt; 5:    flow  86400           min</span></span>
-<span><span class="co">#&gt; 6:   level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 7:   level  86400           max</span></span></code></pre></div>
+<span><span class="co">#&gt; 4:   level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 5:   level  86400           max</span></span>
+<span><span class="co">#&gt; 6:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 7:    flow  86400           min</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
@@ -462,10 +462,8 @@ More details on these classes can be seen in VIGNETTE XXXX</p>
 <span>        type <span class="op">=</span> <span class="st">'instantaneous'</span>,</span>
 <span>        datapoints <span class="op">=</span> <span class="st">'earliest'</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
@@ -480,8 +478,7 @@ More details on these classes can be seen in VIGNETTE XXXX</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;      dateTime value quality qcode</span></span>
 <span><span class="co">#&gt; 1: 2008-10-01  26.3    Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
@@ -495,10 +492,8 @@ argument to <strong>‘latest’</strong></p>
 <span>        type <span class="op">=</span> <span class="st">'instantaneous'</span>,</span>
 <span>        datapoints <span class="op">=</span> <span class="st">'latest'</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
@@ -513,8 +508,7 @@ argument to <strong>‘latest’</strong></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;               dateTime value quality qcode</span></span>
 <span><span class="co">#&gt; 1: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
@@ -558,10 +552,8 @@ data!</p>
 <span>        type <span class="op">=</span> <span class="st">'instantaneous'</span>,</span>
 <span>        datapoints <span class="op">=</span> <span class="st">'all'</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
@@ -576,8 +568,7 @@ data!</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span>m b<span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
 <span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span></span>
