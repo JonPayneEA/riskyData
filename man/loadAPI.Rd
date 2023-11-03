@@ -18,12 +18,15 @@ loadAPI(
   northing = NULL,
   dist = NULL,
   obsProperty = NULL,
-  meta = TRUE
+  meta = TRUE,
+  rtExt = FALSE
 )
 }
 \arguments{
 \item{ID}{Use to specify a particular WISKI ID or for when downloading all
-stations ' wiski' or 'nrfa' to filter results}
+stations 'wiski' or 'nrfa' to filter results. Additionally to access the
+real time APIs use "flood" for all critical sites and "tidal" for the
+category A tide gauges.}
 
 \item{measure}{Use this when exporting observations to select the available
 parameter. Generally 'flow', 'level', or 'groundwater'}
@@ -52,14 +55,18 @@ pulling the data from}
 
 \item{obsProperty}{Used to filter the stations when identifying sites.
 Available metrics;
-'waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium',
-'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity',
-'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom'}
+"waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
+"temperature", "ammonium", "dissolved-oxygen", "conductivity", "ph",
+"temperature", "turbidity", "nitrate", "chlorophyll", "salinity",
+"bga", "fdom"}
 
 \item{meta}{Set as TRUE, exports metadata for gauge with the data request}
+
+\item{rtExt}{Set to NULL, if TRUE hydrological data series are extended with
+the real time API}
 }
 \value{
-Vartious outputs see vignette
+Various outputs see vignettes
 }
 \description{
 The loadAPI function is used to interogate the EAs API. Data for

@@ -5,7 +5,9 @@
 #'  datasets can be pulled.
 #'
 #' @param ID Use to specify a particular WISKI ID or for when downloading all
-#' stations ' wiski' or 'nrfa' to filter results
+#' stations 'wiski' or 'nrfa' to filter results. Additionally to access the
+#' real time APIs use "flood" for all critical sites and "tidal" for the
+#' category A tide gauges.
 #' @param measure Use this when exporting observations to select the available
 #' parameter. Generally 'flow', 'level', or 'groundwater'
 #' @param period  This is so you can select the time steps available, generally
@@ -22,10 +24,13 @@
 #' @param dist Distance in km for how far you wish to search
 #' @param obsProperty Used to filter the stations when identifying sites.
 #' Available metrics;
-#' 'waterFlow', 'waterLevel', 'rainfall', 'groundwaterLevel', 'ammonium',
-#' 'dissolved-oxygen', 'conductivity', 'ph', 'temperature', 'turbidity',
-#' 'nitrate', 'chlorophyll', 'salinity', 'bga', 'fdom'
+#' "waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
+#' "temperature", "ammonium", "dissolved-oxygen", "conductivity", "ph",
+#' "temperature", "turbidity", "nitrate", "chlorophyll", "salinity",
+#' "bga", "fdom"
 #' @param meta Set as TRUE, exports metadata for gauge with the data request
+#' @param rtExt Set to NULL, if TRUE hydrological data series are extended with
+#' the real time API
 #'
 #' @import data.table
 #' @import jsonlite
@@ -34,7 +39,7 @@
 #' @import tidyr
 #' @import ggplot2
 #'
-#' @return Vartious outputs see vignette
+#' @return Various outputs see vignettes
 #' @export
 #'
 #' @examples
@@ -69,11 +74,11 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                     type = NULL, datapoints = "standard",
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
-                    obsProperty = NULL, meta = TRUE) {
+                    obsProperty = NULL, meta = TRUE, rtExt = FALSE) {
   # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obsVars <- c(
-    "waterFlow", "waterLevel", "rainfall", "groundwaterLevel",
-    "ammonium", "dissolved-oxygen", "conductivity", "ph",
+    "waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
+    "temperature", "ammonium", "dissolved-oxygen", "conductivity", "ph",
     "temperature", "turbidity", "nitrate", "chlorophyll", "salinity",
     "bga", "fdom"
   )
@@ -87,13 +92,19 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
   # Base link for the EAs API
   baselink <- "http://environment.data.gov.uk/hydrology/id/stations.json"
 
-  # Return all available stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #~~~~~~~~~~~~~~~~~~~~~~~~#
+  #~~~~ List all sites ~~~~#
+  #~~~~~~~~~~~~~~~~~~~~~~~~#
+
+  ##! Base hydrology API
+  ## Return all available stations from hydrology API ~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
-    is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
-    is.null(dist)) {
+      is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
+      is.null(dist)) {
     ## Limit set to 20,000 (current API is ~8,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     datalink <- paste0(baselink, "?_limit=20000")
     dt <- data.table(jsonlite::fromJSON(datalink)$items)
+
     ## Unnesting observed property is slightly more difficult ~~~~~~~~~~~~~~~~~~
     ## Stored as dataframe list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Remove URL and convert dataframes to string ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,14 +150,86 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     }
   }
 
+  ##! Base real time API
+  ## Return all sites from realtime API
+  if ((ID == 'flood') &
+      is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
+      is.null(dist)) {
+
+    ## Limit set to 20,000 (current API is ~5,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ## Change baselink
+    baselink <- "http://environment.data.gov.uk/flood-monitoring/id/stations.json"
+
+    datalink <- paste0(baselink, "?_limit=20000")
+    dt <- data.table(jsonlite::fromJSON(datalink)$items)
+
+    ## Change `@id` col name, it clashes with measures ~~~~~~~~~~~~~~~~~~~~~~~~~
+    colnames(dt)[1] <- 'stationID'
+
+    ## Only the measures column should be a list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    dt <- data.table(tidyr::unnest(dt, c(measures), keep_empty = TRUE))
+    ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    data_level <- dt[, .(
+      stationReference, label, parameter, parameterName, riverName,
+      catchmentName, easting, northing, lat, long, gridReference, dateOpened,
+      datumOffset
+    ), ]
+
+    ## Convert parameter values to match obsProperty criteria
+    data_level$parameter <- gsub("flow", "waterFlow", data_level$parameter)
+    data_level$parameter <- gsub("level", "waterLevel", data_level$parameter)
+
+    # filter on obsProperty
+    if (is.null(obsProperty)) {
+      return(data_level)
+    } else {
+      return(data_level[property == obsProperty, , ])
+    }
+  }
+
+  ##! Base tidal API
+  ## Return all tidal sites from realtime API
+  if ((ID == 'tidal') &
+      is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
+      is.null(dist)) {
+
+    ## Limit set to 20,000 (current API is ~5,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ## Change baselink
+    baselink <- "http://environment.data.gov.uk/flood-monitoring/id/stations.json?type=TideGauge"
+
+    datalink <- paste0(baselink, "&_limit=20000")
+    dt <- data.table(jsonlite::fromJSON(datalink)$items)
+
+    ## Change `@id` col name, it clashes with measures ~~~~~~~~~~~~~~~~~~~~~~~~~
+    colnames(dt)[1] <- 'stationID'
+
+    ## Only the measures column should be a list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    dt <- data.table(tidyr::unnest(dt, c(measures), keep_empty = TRUE))
+    ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    data_level <- dt[, .(
+      stationReference, label, parameter, parameterName, riverName,
+      catchmentName, easting, northing, lat, long, gridReference, dateOpened
+    ), ]
+
+    ## Convert parameter values to match obsProperty criteria
+    data_level$parameter <- gsub("level", "waterLevel", data_level$parameter)
+
+    # filter on obsProperty
+    if (is.null(obsProperty)) {
+      return(data_level)
+    } else {
+      return(data_level[property == obsProperty, , ])
+    }
+  }
+
   # Find available stations within a set distance ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
-    (!is.null(easting) | !is.null(lat)) &
-    (!is.null(northing) | !is.null(long)) &
-    !is.null(dist)) {
+      (!is.null(easting) | !is.null(lat)) &
+      (!is.null(northing) | !is.null(long)) &
+      !is.null(dist)) {
     ## Checking for duplicate coordinates ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ((!is.null(easting) | !is.null(northing)) &
-      (!is.null(lat) & !is.null(long))) {
+        (!is.null(lat) & !is.null(long))) {
       return(warning("Conflicting coordinate systems, please use  lat-long OR
                      easting-northing"))
     }
@@ -222,7 +305,28 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     return(params)
   }
 
-  # Main data export ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  #~~~~ Main data export ~~~~#
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+  ## Calculate real time elements first
+
+  rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/stations/'
+  rtLink <- paste0(rtStation, ID)
+
+  # Download the measures
+  rtSeries <- data.table(jsonlite::fromJSON(rtLink))
+  rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
+
+  ## Filter to the data used in the `loadAPI()` call
+  rtMeasure <- rtMeasures[period == period & parameter == measure, X.id,]
+
+  if (identical(rtMeasure, character(0))){
+    stop('There is no realtime data available for the measures required. If you
+       want flow data you might be able to convert stage data')
+  }
+
+  ## Download data from hydrology API
   if (!is.null(ID) & !is.null(measure) & !is.null(period)) {
     cli::cli_progress_step("Compiling parameters for raw download")
     link <- paste0(baselink, "?wiskiID=", ID)
@@ -274,20 +378,52 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     }
     cli::cli_progress_step("Downloading raw data")
     series <- data.table(jsonlite::fromJSON(datalinkAppend)[[2]])
+    ## Drop needless parameters
+    series <- series[,-1:-2]
     ## For clarity all dates are coerced to POSIXct ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~
     if (timestep == 900) {
       series$dateTime <- as.POSIXct(series$dateTime,
-        format = "%Y-%m-%dT%H:%M",
-        tz = "GMT"
+                                    format = "%Y-%m-%dT%H:%M",
+                                    tz = "GMT"
       )
     }
     if (timestep == 86400) {
       series$dateTime <- as.POSIXct(series$dateTime,
-        format = "%Y-%m-%dT%H:%M",
-        tz = "GMT"
+                                    format = "%Y-%m-%dT%H:%M",
+                                    tz = "GMT"
       )
     }
+
+    ## Download the realtime data
+    if (rtExt == TRUE){
+      ## Setting a limit of 4 weeks, 2688 recordings
+      ##! Longer data series tend to be corrupted
+      measureLink <- paste0(rtMeasure, '/readings.json?_sorted&_limit=2688')
+
+      ## Download data
+      cli::cli_progress_step("Downloading extended realtime data")
+      rtTS <- data.table(jsonlite::fromJSON(measureLink)[3][[1]])
+      rtTS <- rtTS[order(dateTime)] #! Helps combine data
+
+      ## Convert to consistant date time
+      rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
+                                          format = "%Y-%m-%dT%H:%M",
+                                          tz = "GMT"),
+                    value, quality = 'Unchecked', qcode = '<NA>' )]
+
+      ## Filter rt by anything after the latest hydrology API data point
+      hydrologyMax <- max(series$dateTime)
+      rt <- rt[dateTime > hydrologyMax,,]
+
+      ## Merge 2 time series
+      ##! Column presence can vary, particularly the qcode
+      ## Find intersecting columns and bind rows
+      inter <- intersect(names(dtex[[1]]), names(dtex[[2]]))
+      series <- rbind(dtex[[1]][,..inter],dtex[[2]][,..inter])
+    }
+
+    ## Download the metadata
     if (meta == TRUE) {
       cli::cli_progress_step("Collating metadata")
       metaD <- getMeta(
@@ -298,7 +434,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       )
       cli::cli_progress_step("Exporting data to HydroImport container")
       out <- HydroImportFactory$new(
-        data = series[, -1:-2],
+        data = series,
         stationName = metaD$Data[[1]],
         riverName = metaD$Data[[2]],
         WISKI = metaD$Data[[3]],
