@@ -419,8 +419,8 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       ## Merge 2 time series
       ##! Column presence can vary, particularly the qcode
       ## Find intersecting columns and bind rows
-      inter <- intersect(names(dtex[[1]]), names(dtex[[2]]))
-      series <- rbind(dtex[[1]][,..inter],dtex[[2]][,..inter])
+      inter <- intersect(names(series), names(rt))
+      series <- rbind(series[,..inter], rt[,..inter])
     }
 
     ## Download the metadata
