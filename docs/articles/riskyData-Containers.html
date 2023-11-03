@@ -100,8 +100,10 @@ simultaneously.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span>m b<span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
@@ -116,7 +118,8 @@ simultaneously.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span>m b<span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
 <span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span></span>
@@ -226,21 +229,23 @@ object within parenthesis.</p>
 after the object name. For example;</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">methods</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    →    Returns the metadata associated with the object                         │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    →    Calculates the volume of water relative to the time step, see ?asVol   │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    →    Calculates the hydrological year and day, see ?hydroYearDay     │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    →    Removes the volume column                                              │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    →    Removes the hydroYear column                                            │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    →    Removes the hydroYearDay column                                        │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    →    Provides a quick summary of the raw data                             │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    →    Returns coordinates from the metadata                                 │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    →    Returns the NRFA data from the metadata                                 │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    →    Aggregate data by, hour, day, month calendar year and hydroYear      │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    →    Uses user specified aggregation timings, see ?rollingAggs        │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    →    Daily statistics of flow, carried out on hydrological or calendar … │</span> b<span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    →    Create a plot of each year of data, by hydrological year                │</span>   b</span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    →    Extracts the subset of data observed between the times start and end  │</span>d  b</span>
+<span><span class="co">#&gt; ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    →    Returns the metadata associated with the object                         │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    →    Calculates the volume of water relative to the time step, see ?asVol   │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    →    Calculates the hydrological year and day, see ?hydroYearDay     │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmVol()</span>    →    Removes the volume column                                              │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmHY()</span>    →    Removes the hydroYear column                                            │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rmHYD()</span>    →    Removes the hydroYearDay column                                        │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$summary()</span>    →    Provides a quick summary of the raw data                             │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$coords()</span>    →    Returns coordinates from the metadata                                 │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$nrfa()</span>    →    Returns the NRFA data from the metadata                                 │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    →    Aggregate data by, hour, day, month calendar year and hydroYear      │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    →    Uses user specified aggregation timings, see ?rollingAggs        │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    →    Daily statistics of flow, carried out on hydrological or calendar … │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    →    Create a plot of each year of data, by hydrological year                │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    →    Extracts the subset of data observed between the times start and end  │</span></span>
 <span><span class="co">#&gt; └────────────────────────────────────────────────────────────────────────────────────────────┘</span></span></code></pre></div>
 <p>Using methods inbuilt to the containers, you can interact with the
 private metadata;</p>
@@ -294,8 +299,10 @@ maximum data from the bewdley dataset and export it as class
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"hourly"</span>, method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span>m b<span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Aggregated - hourly max</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
@@ -309,7 +316,8 @@ maximum data from the bewdley dataset and export it as class
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span>m b<span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;              dateTime hourlyMax</span></span>
 <span><span class="co">#&gt;      1:  2008-10-01 0      26.6</span></span>
 <span><span class="co">#&gt;      2:  2008-10-01 1      26.4</span></span>

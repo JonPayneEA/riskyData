@@ -46,7 +46,7 @@ Note this can take some time to load
 loadAPI()
 ```
 
-If you wish to constrain these data to NRFA or WISKI sites only add 'nrfa' or 'wiski' to the `ID` argument.
+If you wish to constrain these data to NRFA or WISKI sites only add "nrfa" or "wiski" to the `ID` argument. There's also an additional API that this function can connect to that contains real time data, for real time data use "flood" and for tidal sites use "tidal".
 
 Using these in the `obsProperty` argument you can filter your results to certain types of gauges. With this you are limited to;
 
@@ -83,7 +83,17 @@ Or if we wished to load the sites that are used within the National River Flow A
 ```{r NRFA}
 loadAPI(ID = "nrfa")
 ```
+To view sites that have realtime data available use;
 
+```{r flood}
+loadAPI(ID = "flood")
+```
+
+Finally for tidal sites use;
+
+```{r tidal}
+loadAPI(ID = "tidal")
+```
 ## Example II - Find nearby gauges
 
 Assuming we had a site of interest and wished to see the available nearby gauges. We can search for sites with coordinates within a certain range.
