@@ -170,7 +170,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     dt <- data.table(tidyr::unnest(dt, c(measures), keep_empty = TRUE))
     ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     data_level <- dt[, .(
-      stationReference, label, parameter, parameterName, riverName,
+      stationReference, wiskiID, label, parameter, parameterName, riverName,
       catchmentName, easting, northing, lat, long, gridReference, dateOpened,
       datumOffset
     ), ]
@@ -309,23 +309,6 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
   #~~~~ Main data export ~~~~#
   #~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-  ## Calculate real time elements first
-
-  rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/stations/'
-  rtLink <- paste0(rtStation, ID)
-
-  # Download the measures
-  rtSeries <- data.table(jsonlite::fromJSON(rtLink))
-  rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
-
-  ## Filter to the data used in the `loadAPI()` call
-  rtMeasure <- rtMeasures[period == period & parameter == measure, X.id,]
-
-  if (identical(rtMeasure, character(0))){
-    stop('There is no realtime data available for the measures required. If you
-       want flow data you might be able to convert stage data')
-  }
-
   ## Download data from hydrology API
   if (!is.null(ID) & !is.null(measure) & !is.null(period)) {
     cli::cli_progress_step("Compiling parameters for raw download")
@@ -395,8 +378,25 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       )
     }
 
-    ## Download the realtime data
     if (rtExt == TRUE){
+      ## Download the realtime data
+
+      rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/stations/'
+      rtLink <- paste0(rtStation, ID)
+
+      # Download the measures
+      rtSeries <- data.table(jsonlite::fromJSON(rtLink))
+      rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
+      colnames(rtMeasures)[1] <- 'measID'
+
+      ## Filter to the data used in the `loadAPI()` call
+      rtMeasure <- rtMeasures[period == period & parameter == measure, measID,]
+
+      if (identical(rtMeasure, character(0))){
+        stop('There is no realtime data available for the measures required. If you
+       want flow data you might be able to convert stage data')
+      }
+
       ## Setting a limit of 4 weeks, 2688 recordings
       ##! Longer data series tend to be corrupted
       measureLink <- paste0(rtMeasure, '/readings.json?_sorted&_limit=2688')
@@ -406,11 +406,24 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       rtTS <- data.table(jsonlite::fromJSON(measureLink)[3][[1]])
       rtTS <- rtTS[order(dateTime)] #! Helps combine data
 
-      ## Convert to consistant date time
-      rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
-                                          format = "%Y-%m-%dT%H:%M",
-                                          tz = "GMT"),
-                    value, quality = 'Unchecked', qcode = '<NA>' )]
+      ## Convert to consistent date time
+
+      if (measure == 'rainfall') {
+        rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
+                                             format = "%Y-%m-%dT%H:%M",
+                                             tz = "GMT"),
+                       value,
+                       valid = NA,
+                       invalid = NA,
+                       missing = NA,
+                       completeness = NA,
+                       quality = 'Unchecked')]
+      } else {
+        rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
+                                             format = "%Y-%m-%dT%H:%M",
+                                             tz = "GMT"),
+                       value, quality = 'Unchecked', qcode = '<NA>' )]
+      }
 
       ## Filter rt by anything after the latest hydrology API data point
       hydrologyMax <- max(series$dateTime)
