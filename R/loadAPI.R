@@ -75,7 +75,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
                     obsProperty = NULL, meta = TRUE, rtExt = FALSE) {
-  # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obsVars <- c(
     "waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
     "temperature", "ammonium", "dissolved-oxygen", "conductivity", "ph",
@@ -84,6 +84,11 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
   )
   if (!is.null(obsProperty) && !obsProperty %in% obsVars) {
     return(warning("Observed property does not match those available"))
+  }
+
+  if (rtExt == FALSE & period > 900){
+    stop("If you wish to use realtime dat in your exports, it must have
+         period = 900")
   }
 
   # Start up of main function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,9 +157,9 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   ##! Base real time API
   ## Return all sites from realtime API
-  if ((ID == 'flood') &
+  if (ID == 'flood' &&
       is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
-      is.null(dist)) {
+      is.null(dist)){
 
     ## Limit set to 20,000 (current API is ~5,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Change baselink
@@ -189,9 +194,9 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   ##! Base tidal API
   ## Return all tidal sites from realtime API
-  if ((ID == 'tidal') &
+  if (ID == 'tidal' &&
       is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
-      is.null(dist)) {
+      is.null(dist)){
 
     ## Limit set to 20,000 (current API is ~5,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ## Change baselink

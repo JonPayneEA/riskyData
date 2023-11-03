@@ -39,6 +39,7 @@
 #'
 #' @import R6
 #' @import cli
+#' @import cowplot
 #'
 #' @name HydroImport
 #' @rdname HydroImport
