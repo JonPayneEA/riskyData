@@ -1,7 +1,7 @@
 url: https://jonpayneea.github.io/riskyData/
 template:
   bootstrap: 5
-  bootswatch: lux
+  bootswatch: sandstone
   bslib:
     pkgdown-nav-height: 100px
   components:
