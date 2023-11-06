@@ -5,6 +5,7 @@
 #' contains public raw data and private metadata.
 #'
 #' @param data Raw data
+#' @param rating Set to blank, if data requires a rating add to here
 #' @param dataType Details the type of data in this environment
 #' @param modifications Details modifications made to the data
 #' @param stationName Name of gauge
@@ -50,9 +51,12 @@ HydroImportFactory <- R6::R6Class(
   public = list(
     #' @field data Imported data via the API tool. Uses data.table.
     data = NULL,
+    #' @field rating Rating parameters. Uses data.table. At the moment only 1 rating can be applied
+    rating = NULL,
     #' @description
     #' Initialise the new HydroImport object
     initialize = function(data = NA,
+                          rating = NULL,
                           dataType = "Raw Import",
                           modifications = NA,
                           stationName = NA,
@@ -79,9 +83,10 @@ HydroImportFactory <- R6::R6Class(
                           start = NA,
                           end = NA,
                           timeStep = NA,
-                          timeZone = "GMT - UTC±00:00",
+                          timeZone = NA,
                           records = NA) {
       self$data <- data
+      self$rating <- rating
       private$dataType <- dataType
       private$modifications <- modifications
       private$stationName <- stationName
@@ -105,14 +110,13 @@ HydroImportFactory <- R6::R6Class(
       private$datum <- datum
       private$boreholeDepth <- boreholeDepth
       private$aquifer <- aquifer
-      private$timeZone <- timeZone
     },
     #' @description
     #' Display the R6 object
     #' @param . (ignored).
     print = function(.) {
       cli::cli_h1("Class: HydroImport")
-      cli::cli_h2("Private:")
+      cli::cli_h2("Metadata:")
       cli::cli_text(paste("{.strong Data Type:}", private$dataType))
       cli::cli_text(paste("{.strong Station name:}", private$stationName))
       cli::cli_text(paste("{.strong WISKI ID:}", private$WISKI))
@@ -127,12 +131,20 @@ HydroImportFactory <- R6::R6Class(
       cli::cli_text(paste("{.strong Longitude:}", private$longitude))
       cli::cli_text(paste("{.strong Latitude:}", private$latitude))
       cat("\n")
-      cli::cli_h2("Public:")
+      cli::cli_h2("Observed data:")
       print(self$data)
+      cat("\n")
+      if (!is.null(self$rating)){
+        cat("\n")
+        cli::cli_h2("Rating data:")
+        cat("\n")
+        print(self$rating)
+      }
       cat("\n")
       cli::cli_text(paste("{.strong For more details use the $methods()
                           function, the format should be as
                           `Object_name`$methods()}"))
+
     },
     #' @description
     #' Display the methods available in the R6 object
@@ -143,14 +155,16 @@ HydroImportFactory <- R6::R6Class(
     methods = function(.) {
       ## Collate the methods
       usage <- c(
-        "obj$data", "obj$meta()", "obj$asVol()", "obj$hydroYearDay()",
-        "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()", "obj$summary()",
-        "obj$coords()", "obj$nrfa()", "obj$dataAgg()", "obj$rollingAggs()",
-        "obj$dayStats()", "obj$quality()", "obj$plot()", "obj$window()"
+        "obj$data", "obj$rating", "obj$meta()", "obj$asVol()",
+        "obj$hydroYearDay()", "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()",
+        "obj$summary()", "obj$coords()", "obj$nrfa()", "obj$dataAgg()",
+        "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$plot()",
+        "obj$window()", "rateFlow()"
       )
 
       desc <- c(
         "Returns the raw data imported via the API",
+        "Returns the user imported rating details",
         "Returns the metadata associated with the object",
         "Calculates the volume of water relative to the time step, see ?asVol",
         "Calculates the hydrological year and day, see ?hydroYearDay",
@@ -165,7 +179,8 @@ HydroImportFactory <- R6::R6Class(
         "Daily statistics of flow, carried out on hydrological or calendar day",
         "Provides a quick summary table of the data qualiity flags",
         "Create a plot of each year of data, by hydrological year",
-        "Extracts the subset of data observed between the times start and end."
+        "Extracts the subset of data observed between the times start and end.",
+        "Converts stage into a rated flow using the specified rating table"
       )
 
       ## Set the box interior up
@@ -201,7 +216,7 @@ HydroImportFactory <- R6::R6Class(
       cat("\tStation ID: ", private$WISKI, "\n", sep = "")
       cat("\tStart: ", as.character(private$start()), "\n", sep = "")
       cat("\tEnd: ", as.character(private$end()), "\n", sep = "")
-      cat("\tTime Zone: ", private$timeZone, "\n", sep = "")
+      cat("\tTime Zone: ", private$timeZone(), "\n", sep = "")
       cat("\tObservations: ", private$records(), "\n", sep = "")
       cat("\tParameter: ", private$parameter, "\n", sep = "")
       cat("\tUnit Type: ", private$unitName, "\n", sep = "")
@@ -247,6 +262,107 @@ HydroImportFactory <- R6::R6Class(
       cli::cli_progress_step("Removing hydroYearDay column")
       rmHYD(x = self$data)
       invisible(self)
+    },
+    #' @description
+    #' Add a rating table to the HydroImport or HydroAggs objects
+    #' @param C parameter
+    #' @param A parameter
+    #' @param B parameter
+    #' @param max parameter
+    addRating = function(C = NULL, A = NULL, B = NULL, max = NULL){
+      self$rating <- data.table(C, A, B, max)
+      invisible(self)
+    },
+    #' @description
+    #' Converts stage to flow using the supplied rating. It uses the following
+    #' equation;
+    #' Q = C(h- a)b
+    #' @param start defaults to 0, change to set a different start point in the
+    #' rating conversion.
+    #' @param full If set to FALSE (default) a data table of stage and flows
+    #' will be supplied. If set to TRUE a new `HydroImport` object is created.
+    rateFlow = function(start = 0, full = FALSE){
+      if(is.null(self$rating)){
+        stop("Please supply a rating table")
+      }
+      if(private$parameter != "Level"){
+        stop("Please ensure the supplied data is stage")
+      }
+      if(class(self)[1] != "HydroImport"){
+        stop("Please use the raw data import, only class HydroImport can have a
+             rating applied")
+      }
+
+      ## Set and identifier for each row
+      ratingTbl <- data.frame(row = seq_along(self$rating$C),
+                             # limb = paste0('Limb_', seq_along(ratings[,1])),
+                             self$rating)
+      ## Cut the stage data so it can identify a limb
+      cuts <- cut(self$data$value,
+                  breaks = c(start, ratingTbl$max),
+                  labels = ratingTbl$row)
+      ## Max number limb used
+      total <- max(ratingTbl$row)
+      ##! Sites beyond the max limb are NA
+      ## Extend the maximum limb replacing NAs with the max row from ratingTbl
+      limbs <- replace(cuts, is.na(cuts), total)
+
+      ## Calculate flow
+      flow <- c()
+      for(i in seq_along(self$data$value)){
+        A <- ratingTbl$A[limbs[i]]
+        B <- ratingTbl$B[limbs[i]]
+        C <- ratingTbl$C[limbs[i]]
+        # print(A * (data[i] - B)^C)
+        est <- C * (self$data$value[i] - A)^B
+        # print(est)
+        flow[i] <- est
+      }
+      dt <- self$data
+      dt$value <-  flow
+      if(full == TRUE){
+        # cli::cli_progress_step("Exporting to HydroImport container")
+        hI <- HydroImportFactory$new(
+          data = self$data,
+          dataType = "Rated flow based on stagee/discharge rating",
+          modifications = ifelse(is.na(private$modifications),
+                                 paste("Rated flow calculated"),
+                                 append(
+                                   private$modifications,
+                                   paste("Rated flow calculated")
+                                 )
+          ),
+          rating = self$rating,
+          timeStep = type,
+          stationName = private$stationName,
+          riverName = private$riverName,
+          WISKI = private$WISKI,
+          RLOID = private$RLOID,
+          stationGuide = private$stationGuide,
+          baseURL = private$baseURL,
+          dataURL = private$dataURL,
+          measureURL = private$measureURL,
+          idNRFA = private$idNRFA,
+          urlNRFA = private$urlNRFA,
+          easting = private$easting,
+          northing = private$northing,
+          latitude = private$latitude,
+          longitude = private$longitude,
+          area = private$area,
+          parameter = "Flow",
+          unitName = "m3/s",
+          unit = "http://qudt.org/1.1/vocab/unit#CubicMeterPerSecond",
+          datum = private$datum,
+          boreholeDepth = private$boreholeDepth,
+          aquifer = private$aquifer,
+          timeZone = private$timeZone
+        )
+        # cli::cli_progress_step()
+        return(hI)
+      } else {
+      dfAll <- data.table(stage = self$data$value, flow = flow, limb = limbs)
+      return(dfAll)
+      }
     },
     #' @description
     #' Extract windows of data from object using start and end date/times
@@ -347,6 +463,7 @@ HydroImportFactory <- R6::R6Class(
             paste(type, method)
           )
         ),
+        rating = self$rating,
         timeStep = type,
         stationName = private$stationName,
         riverName = private$riverName,
@@ -369,7 +486,6 @@ HydroImportFactory <- R6::R6Class(
         datum = private$datum,
         boreholeDepth = private$boreholeDepth,
         aquifer = private$aquifer,
-        timeZone = private$timeZone
       ))
       cli::cli_progress_step()
     },
@@ -419,7 +535,7 @@ HydroImportFactory <- R6::R6Class(
         start = private$start(),
         end = private$end(),
         timeStep = private$timeStep(),
-        timeZone = private$timeZone,
+        timeZone = private$timeZone(),
         records = private$records()
       )
       if (transform == FALSE){
@@ -530,28 +646,28 @@ HydroImportFactory <- R6::R6Class(
       if (is.null(dim(self$data))) {
         return(NA)
       }
-      return(min(self$data$dateTime))
+      return(head(self$data$dateTime, 1))
     },
     end = function() {
       if (is.null(dim(self$data))) {
         return(NA)
       }
-      return(max(self$data$dateTime))
+      return(tail(self$data$dateTime, 1))
     },
     timeStep = function() {
       if (is.null(dim(self$data))) {
         return(NA)
       }
-      if (grepl("Hourly", private$dataType)) {
+      if (grepl("hourly", private$dataType)) {
         return("Hourly Unstable")
       }
-      if (grepl("Daily", private$dataType)) {
+      if (grepl("daily", private$dataType)) {
         return("Daily Unstable")
       }
-      if (grepl("Monthly", private$dataType)) {
+      if (grepl("monthly", private$dataType)) {
         return("Monthly Unstable")
       }
-      if (grepl("Annual", private$dataType)) {
+      if (grepl("annual", private$dataType)) {
         return("Annual Unstable")
       }
       if (grepl("hydroYear", private$dataType)) {
@@ -584,7 +700,12 @@ HydroImportFactory <- R6::R6Class(
     datum = NULL,
     boreholeDepth = NULL,
     aquifer = NULL,
-    timeZone = NULL,
+    timeZone = function(){
+      if (is.null(dim(self$data))) {
+        return(NA)
+      }
+      return(attr(self$data$dateTime[1],"tzone"))
+    },
     records = function() {
       if (is.null(dim(self$data))) {
         return(NA)

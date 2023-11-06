@@ -86,7 +86,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     return(warning("Observed property does not match those available"))
   }
 
-  if (rtExt == FALSE & period > 900){
+  if (!is.null(period) && period > 900 && rtExt == TRUE){
     stop("If you wish to use realtime dat in your exports, it must have
          period = 900")
   }
@@ -382,7 +382,6 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     tz = "GMT"
       )
     }
-
     if (rtExt == TRUE){
       ## Download the realtime data
 
@@ -474,7 +473,6 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
         datum = metaD$Data[[19]],
         boreholeDepth = metaD$Data[[20]],
         aquifer = metaD$Data[[21]],
-        timeZone = metaD$Data[[22]]
       )
       return(out)
     }

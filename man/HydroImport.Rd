@@ -66,6 +66,8 @@ bewdley$quality()
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{data}}{Imported data via the API tool. Uses data.table.}
+
+\item{\code{rating}}{Rating parameters. Uses data.table. At the moment only 1 rating can be applied}
 }
 \if{html}{\out{</div>}}
 }
@@ -81,6 +83,8 @@ bewdley$quality()
 \item \href{#method-HydroImport-rmVol}{\code{HydroImportFactory$rmVol()}}
 \item \href{#method-HydroImport-rmHY}{\code{HydroImportFactory$rmHY()}}
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
+\item \href{#method-HydroImport-addRating}{\code{HydroImportFactory$addRating()}}
+\item \href{#method-HydroImport-rateFlow}{\code{HydroImportFactory$rateFlow()}}
 \item \href{#method-HydroImport-window}{\code{HydroImportFactory$window()}}
 \item \href{#method-HydroImport-coords}{\code{HydroImportFactory$coords()}}
 \item \href{#method-HydroImport-nrfa}{\code{HydroImportFactory$nrfa()}}
@@ -102,6 +106,7 @@ Initialise the new HydroImport object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$new(
   data = NA,
+  rating = NULL,
   dataType = "Raw Import",
   modifications = NA,
   stationName = NA,
@@ -128,7 +133,7 @@ Initialise the new HydroImport object
   start = NA,
   end = NA,
   timeStep = NA,
-  timeZone = "GMT - UTC±00:00",
+  timeZone = NA,
   records = NA
 )}\if{html}{\out{</div>}}
 }
@@ -137,6 +142,8 @@ Initialise the new HydroImport object
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{data}}{Raw data}
+
+\item{\code{rating}}{Set to blank, if data requires a rating add to here}
 
 \item{\code{dataType}}{Details the type of data in this environment}
 
@@ -347,6 +354,52 @@ Remove the calculated hydrological day
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-addRating"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-addRating}{}}}
+\subsection{Method \code{addRating()}}{
+Add a rating table to the HydroImport or HydroAggs objects
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$addRating(C = NULL, A = NULL, B = NULL, max = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{C}}{parameter}
+
+\item{\code{A}}{parameter}
+
+\item{\code{B}}{parameter}
+
+\item{\code{max}}{parameter}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-rateFlow"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-rateFlow}{}}}
+\subsection{Method \code{rateFlow()}}{
+Converts stage to flow using the supplied rating. It uses the following
+equation;
+Q = C(h- a)b
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$rateFlow(start = 0, full = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{start}}{defaults to 0, change to set a different start point in the
+rating conversion.}
+
+\item{\code{full}}{If set to FALSE (default) a data table of stage and flows
+will be supplied. If set to TRUE a new \code{HydroImport} object is created.}
 }
 \if{html}{\out{</div>}}
 }

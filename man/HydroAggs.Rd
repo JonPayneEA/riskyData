@@ -24,6 +24,7 @@ contains public raw data and private metadata.
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="addRating"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-addRating'><code>riskyData::HydroImport$addRating()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="asVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-asVol'><code>riskyData::HydroImport$asVol()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="coords"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-coords'><code>riskyData::HydroImport$coords()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="dataAgg"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-dataAgg'><code>riskyData::HydroImport$dataAgg()</code></a></span></li>
@@ -36,6 +37,7 @@ contains public raw data and private metadata.
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="nrfa"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-nrfa'><code>riskyData::HydroImport$nrfa()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="plot"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-plot'><code>riskyData::HydroImport$plot()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="quality"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-quality'><code>riskyData::HydroImport$quality()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rateFlow"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rateFlow'><code>riskyData::HydroImport$rateFlow()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHY"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHY'><code>riskyData::HydroImport$rmHY()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHYD"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHYD'><code>riskyData::HydroImport$rmHYD()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmVol'><code>riskyData::HydroImport$rmVol()</code></a></span></li>

@@ -80,8 +80,8 @@ getMeta <- function(ID = NULL,
       emptyField(metaRaw$items$datum),
       emptyField(metaRaw$items$boreholeDepth),
       emptyField(metaRaw$items$aquifer),
-      as.character(min(import$dateTime)),
-      as.character(max(import$dateTime)),
+      NA,
+      NA,
       "GMT - UTC±00:00",
       length(import$dateTime)
     )

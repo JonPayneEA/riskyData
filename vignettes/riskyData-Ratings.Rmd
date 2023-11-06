@@ -1,0 +1,87 @@
+---
+title: "riskyData-Ratings"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{riskyData-Ratings}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Ratings in riskyData
+
+Stage discharge rating tables can be added and be applied to data in the 
+`HydroImport` containers.
+
+Let's download some stage data;
+
+```{r load, echo = FALSE, messages = FALSE}
+library(riskyData)
+```
+
+```{r stage, eval = FALSE}
+bewdleyStage <- loadAPI(ID = "2001",
+                        measure = "level",
+                        period = 900,
+                        type = "instantaneous",
+                        datapoints = "range",
+                        from = '2022-10-01 00:00', 
+                        rtExt = TRUE)
+```
+
+```{r stage2, echo = FALSE, messages = FALSE, warning = FALSE}
+bewdleyStage <- loadAPI(ID = "2001",
+                        measure = "level",
+                        period = 900,
+                        type = "instantaneous",
+                        datapoints = "range",
+                        from = '2022-10-01 00:00', 
+                        rtExt = TRUE)
+
+bewdleyStage
+```
+
+To access the rating use; 
+
+```{r stage3}
+bewdleyStage$rating
+```
+
+As you can see the imported data doesn't yet have any rating. To add one we can 
+use the `addRating()` method. This method has four arguments that need to be 
+filled (C, A, B, and max).
+
+```{r addRating}
+bewdleyStage$addRating(C = c(43.3123, 43.3123, 47.6218, 0.000668, 0.000668),
+                       A = c(-0.171831, -0.171831, -0.117731, -8.604474, -8.604474),
+                       B = c(1.44155, 1.44155, 1.38813, 5.139, 5.139),
+                       # max = c(-0.171831, 0.359, 0.504, 5.23, 5.55)
+                       max = c(0.359, 0.504, 5.23, 5.55, 999)
+                       )
+```
+
+This will now be displayed whenever you call the `HydroImport` container or 
+using `$rating`;
+
+```{r callUp}
+bewdleyStage
+```
+
+To apply the rating to the stage data use the `rateFlow()` method;
+
+```{r applyRating}
+bewdleyStage$rateFlow()
+```
+
+To set reatin the outputs in a `HydroImport` container, set the full argument 
+to `TRUE`
+
+```{r applyRating2}
+bewdleyStage$rateFlow(full = TRUE)
+```
