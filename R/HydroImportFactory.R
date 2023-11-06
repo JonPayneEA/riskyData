@@ -415,6 +415,8 @@ HydroImportFactory <- R6::R6Class(
     #' bewdley$coords()
     coords = function(.) {
       dt <- data.table(
+        stationName = private$stationName,
+        WISKI = private$WISKI,
         Easting = private$easting,
         Northing = private$northing,
         Latitude = private$latitude,
