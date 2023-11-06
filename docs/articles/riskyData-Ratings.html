@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,23 +104,23 @@ the <code>HydroImport</code> containers.</p>
 <pre><code>#&gt; 
  [36mℹ [39m Compiling parameters for raw download
 
- [32m✔ [39m Compiling parameters for raw download  [38;5;249m[304ms] [39m
+ [32m✔ [39m Compiling parameters for raw download  [38;5;249m[176ms] [39m
 #&gt; 
  [36mℹ [39m Downloading raw data
 
- [32m✔ [39m Downloading raw data  [38;5;249m[2.6s] [39m
+ [32m✔ [39m Downloading raw data  [38;5;249m[1.6s] [39m
 #&gt; 
  [36mℹ [39m Downloading extended realtime data
 
- [32m✔ [39m Downloading extended realtime data  [38;5;249m[1.1s] [39m
+ [32m✔ [39m Downloading extended realtime data  [38;5;249m[719ms] [39m
 #&gt; 
  [36mℹ [39m Collating metadata
 
- [32m✔ [39m Collating metadata  [38;5;249m[230ms] [39m
+ [32m✔ [39m Collating metadata  [38;5;249m[201ms] [39m
 #&gt; 
  [36mℹ [39m Exporting data to HydroImport container
 
- [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[39ms] [39m
+ [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[22ms] [39m
 #&gt; 
 #&gt;  [36m── [39m  [1mClass: HydroImport [22m  [36m────────────────────────────────────────────────────────── [39m
 #&gt; 
@@ -132,9 +132,9 @@ the <code>HydroImport</code> containers.</p>
 #&gt;  [1mData Type: [22m Level
 #&gt;  [1mModifications: [22m NA
 #&gt;  [1mStart: [22m 2022-10-01
-#&gt;  [1mEnd: [22m 2023-11-06 12:15:00
+#&gt;  [1mEnd: [22m 2023-11-06 12:30:00
 #&gt;  [1mTime Step: [22m 900
-#&gt;  [1mObservations: [22m 38529
+#&gt;  [1mObservations: [22m 38530
 #&gt;  [1mEasting: [22m 378235
 #&gt;  [1mNorthing: [22m 276165
 #&gt;  [1mLongitude: [22m -2.321186
@@ -148,11 +148,11 @@ the <code>HydroImport</code> containers.</p>
 #&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good
 #&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good
 #&gt;    ---                                           
-#&gt; 38525: 2023-11-06 11:15:00 2.710   &lt;NA&gt; Unchecked
 #&gt; 38526: 2023-11-06 11:30:00 2.706   &lt;NA&gt; Unchecked
 #&gt; 38527: 2023-11-06 11:45:00 2.705   &lt;NA&gt; Unchecked
 #&gt; 38528: 2023-11-06 12:00:00 2.703   &lt;NA&gt; Unchecked
 #&gt; 38529: 2023-11-06 12:15:00 2.705   &lt;NA&gt; Unchecked
+#&gt; 38530: 2023-11-06 12:30:00 2.699   &lt;NA&gt; Unchecked
 #&gt;  [1mFor more details use the $methods() function, the format should be as [22m
 #&gt;  [1m`Object_name`$methods() [22m</code></pre>
 <p>To access the rating use;</p>
@@ -184,9 +184,9 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Level</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2022-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 12:15:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 12:30:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38529</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38530</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -201,11 +201,11 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;    ---                                           </span></span>
-<span><span class="co">#&gt; 38525: 2023-11-06 11:15:00 2.710   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38526: 2023-11-06 11:30:00 2.706   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38527: 2023-11-06 11:45:00 2.705   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38528: 2023-11-06 12:00:00 2.703   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38529: 2023-11-06 12:15:00 2.705   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38530: 2023-11-06 12:30:00 2.699   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max</span></span>
@@ -227,11 +227,11 @@ method;</p>
 <span><span class="co">#&gt;     4: 0.257  12.78007    1</span></span>
 <span><span class="co">#&gt;     5: 0.257  12.78007    1</span></span>
 <span><span class="co">#&gt;    ---                     </span></span>
-<span><span class="co">#&gt; 38525: 2.710 201.58609    3</span></span>
 <span><span class="co">#&gt; 38526: 2.706 201.19037    3</span></span>
 <span><span class="co">#&gt; 38527: 2.705 201.09147    3</span></span>
 <span><span class="co">#&gt; 38528: 2.703 200.89372    3</span></span>
-<span><span class="co">#&gt; 38529: 2.705 201.09147    3</span></span></code></pre></div>
+<span><span class="co">#&gt; 38529: 2.705 201.09147    3</span></span>
+<span><span class="co">#&gt; 38530: 2.699 200.49837    3</span></span></code></pre></div>
 <p>To set reatin the outputs in a <code>HydroImport</code> container,
 set the full argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -247,9 +247,9 @@ set the full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> Rated flow calculated</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2022-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 12:15:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 12:30:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38529</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38530</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -264,11 +264,11 @@ set the full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;    ---                                           </span></span>
-<span><span class="co">#&gt; 38525: 2023-11-06 11:15:00 2.710   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38526: 2023-11-06 11:30:00 2.706   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38527: 2023-11-06 11:45:00 2.705   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38528: 2023-11-06 12:00:00 2.703   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; 38529: 2023-11-06 12:15:00 2.705   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38530: 2023-11-06 12:30:00 2.699   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max</span></span>

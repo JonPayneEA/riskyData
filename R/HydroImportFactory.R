@@ -135,7 +135,6 @@ HydroImportFactory <- R6::R6Class(
       print(self$data)
       cat("\n")
       if (!is.null(self$rating)){
-        cat("\n")
         cli::cli_h2("Rating data:")
         cat("\n")
         print(self$rating)
