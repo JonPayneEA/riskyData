@@ -85,6 +85,7 @@ bewdley$quality()
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
 \item \href{#method-HydroImport-addRating}{\code{HydroImportFactory$addRating()}}
 \item \href{#method-HydroImport-rateFlow}{\code{HydroImportFactory$rateFlow()}}
+\item \href{#method-HydroImport-rateStage}{\code{HydroImportFactory$rateStage()}}
 \item \href{#method-HydroImport-window}{\code{HydroImportFactory$window()}}
 \item \href{#method-HydroImport-coords}{\code{HydroImportFactory$coords()}}
 \item \href{#method-HydroImport-nrfa}{\code{HydroImportFactory$nrfa()}}
@@ -387,9 +388,32 @@ Add a rating table to the HydroImport or HydroAggs objects
 \subsection{Method \code{rateFlow()}}{
 Converts stage to flow using the supplied rating. It uses the following
 equation;
-Q = C(h- a)b
+Q = C(h - a)^b
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$rateFlow(start = 0, full = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{start}}{defaults to 0, change to set a different start point in the
+rating conversion.}
+
+\item{\code{full}}{If set to FALSE (default) a data table of stage and flows
+will be supplied. If set to TRUE a new \code{HydroImport} object is created.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-rateStage"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-rateStage}{}}}
+\subsection{Method \code{rateStage()}}{
+Converts flow to stage using the supplied rating. It uses the following
+equation;
+h = ((Q/a)^(1/C))- b
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$rateStage(start = 0, full = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

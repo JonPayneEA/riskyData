@@ -158,7 +158,7 @@ HydroImportFactory <- R6::R6Class(
         "obj$hydroYearDay()", "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()",
         "obj$summary()", "obj$coords()", "obj$nrfa()", "obj$dataAgg()",
         "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$plot()",
-        "obj$window()", "rateFlow()"
+        "obj$window()", "obj$rateFlow()", "obj$rateStage()"
       )
 
       desc <- c(
@@ -179,7 +179,8 @@ HydroImportFactory <- R6::R6Class(
         "Provides a quick summary table of the data qualiity flags",
         "Create a plot of each year of data, by hydrological year",
         "Extracts the subset of data observed between the times start and end.",
-        "Converts stage into a rated flow using the specified rating table"
+        "Converts stage into a rated flow using the specified rating table",
+        "Converts flow into a rated stage using the specified rating table"
       )
 
       ## Set the box interior up
@@ -270,12 +271,13 @@ HydroImportFactory <- R6::R6Class(
     #' @param max parameter
     addRating = function(C = NULL, A = NULL, B = NULL, max = NULL){
       self$rating <- data.table(C, A, B, max)
+      self$rating$maxFlow <- C*(max - A)^ B
       invisible(self)
     },
     #' @description
     #' Converts stage to flow using the supplied rating. It uses the following
     #' equation;
-    #' Q = C(h- a)b
+    #' Q = C(h - a)^b
     #' @param start defaults to 0, change to set a different start point in the
     #' rating conversion.
     #' @param full If set to FALSE (default) a data table of stage and flows
@@ -323,7 +325,7 @@ HydroImportFactory <- R6::R6Class(
         # cli::cli_progress_step("Exporting to HydroImport container")
         hI <- HydroImportFactory$new(
           data = self$data,
-          dataType = "Rated flow based on stagee/discharge rating",
+          dataType = "Rated flow based on stage/discharge rating",
           modifications = ifelse(is.na(private$modifications),
                                  paste("Rated flow calculated"),
                                  append(
@@ -361,6 +363,97 @@ HydroImportFactory <- R6::R6Class(
       } else {
       dfAll <- data.table(stage = self$data$value, flow = flow, limb = limbs)
       return(dfAll)
+      }
+    },
+    #' @description
+    #' Converts flow to stage using the supplied rating. It uses the following
+    #' equation;
+    #' h = ((Q/a)^(1/C))- b
+    #' @param start defaults to 0, change to set a different start point in the
+    #' rating conversion.
+    #' @param full If set to FALSE (default) a data table of stage and flows
+    #' will be supplied. If set to TRUE a new `HydroImport` object is created.
+    rateStage = function(start = 0, full = FALSE){
+      if(is.null(self$rating)){
+        stop("Please supply a rating table")
+      }
+      if(private$parameter != "Flow"){
+        stop("Please ensure the supplied data is flow")
+      }
+      if(class(self)[1] != "HydroImport"){
+        stop("Please use the raw data import, only class HydroImport can have a
+             rating applied")
+      }
+
+      ## Set and identifier for each row
+      ratingTbl <- data.frame(row = seq_along(self$rating$C),
+                              # limb = paste0('Limb_', seq_along(ratings[,1])),
+                              self$rating)
+      ## Cut the stage data so it can identify a limb
+      cuts <- cut(self$data$value,
+                  breaks = c(start, ratingTbl$maxFlow),
+                  labels = ratingTbl$row)
+      ## Max number limb used
+      total <- max(ratingTbl$row)
+      ##! Sites beyond the max limb are NA
+      ## Extend the maximum limb replacing NAs with the max row from ratingTbl
+      limbs <- replace(cuts, is.na(cuts), total)
+
+      ## Calculate flow
+      stage <- c()
+      for(i in seq_along(self$data$value)){
+        A <- ratingTbl$A[limbs[i]]
+        B <- ratingTbl$B[limbs[i]]
+        C <- ratingTbl$C[limbs[i]]
+        # print(A * (data[i] - B)^C)
+        est <- ((self$data$value[i] / C) ^ (1 / B)) -A
+        # print(est)
+        stage[i] <- est
+      }
+      dt <- self$data
+      dt$value <-  stage
+      if(full == TRUE){
+        # cli::cli_progress_step("Exporting to HydroImport container")
+        hI <- HydroImportFactory$new(
+          data = self$data,
+          dataType = "Rated stage based on stage/discharge rating",
+          modifications = ifelse(is.na(private$modifications),
+                                 paste("Rated stage calculated"),
+                                 append(
+                                   private$modifications,
+                                   paste("Rated stage calculated")
+                                 )
+          ),
+          rating = self$rating,
+          timeStep = type,
+          stationName = private$stationName,
+          riverName = private$riverName,
+          WISKI = private$WISKI,
+          RLOID = private$RLOID,
+          stationGuide = private$stationGuide,
+          baseURL = private$baseURL,
+          dataURL = private$dataURL,
+          measureURL = private$measureURL,
+          idNRFA = private$idNRFA,
+          urlNRFA = private$urlNRFA,
+          easting = private$easting,
+          northing = private$northing,
+          latitude = private$latitude,
+          longitude = private$longitude,
+          area = private$area,
+          parameter = "Level",
+          unitName = "m",
+          unit = "http://qudt.org/1.1/vocab/unit#Meter",
+          datum = private$datum,
+          boreholeDepth = private$boreholeDepth,
+          aquifer = private$aquifer,
+          timeZone = private$timeZone
+        )
+        # cli::cli_progress_step()
+        return(hI)
+      } else {
+        dfAll <- data.table(stage = stage, flow = self$data$value, limb = limbs)
+        return(dfAll)
       }
     },
     #' @description
