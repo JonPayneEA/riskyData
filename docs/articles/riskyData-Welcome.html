@@ -51,6 +51,7 @@
     <a class="dropdown-item" href="../articles/riskyData-Containers.html">riskyData-Containers</a>
     <a class="dropdown-item" href="../articles/riskyData-Methods.html">riskyData-Methods</a>
     <a class="dropdown-item" href="../articles/riskyData-Ratings.html">riskyData-Ratings</a>
+    <a class="dropdown-item" href="../articles/riskyData-realtime.html">riskyData-realtime data</a>
     <a class="dropdown-item" href="../articles/riskyData-Welcome.html">riskyData-Welcome</a>
   </div>
 </li>
@@ -104,7 +105,7 @@ the Environment Agencies API.</p>
 <code>flode</code>. To load all these packages, the easiest way is to
 use;</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">flode</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonpayneea.github.io/flode/" class="external-link">flode</a></span><span class="op">)</span></span></code></pre></div>
 <p>However, if you only require just the <code>riskyData</code> package
 you can just use;</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -323,47 +324,35 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:            52119 520320_FW               Gaw Bridge waterLevel</span></span>
 <span><span class="co">#&gt;    5:           E21136    L33865               Hemingford waterLevel</span></span>
 <span><span class="co">#&gt;   ---                                                               </span></span>
-<span><span class="co">#&gt; 6028:            E7048    521510                  Wraxall waterLevel</span></span>
-<span><span class="co">#&gt; 6029:           067022             Tattenhall High Street waterLevel</span></span>
-<span><span class="co">#&gt; 6030:           E71772  ST00F009     Cullompton Langlands       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6031:             5087      2544 Bromsgrove Burcot Avenue       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6032:             5088      2545  Bromsgrove Factory Lane       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;       parameterName          riverName</span></span>
-<span><span class="co">#&gt;    1:   Water Level       River Dikler</span></span>
-<span><span class="co">#&gt;    2:   Water Level       River Dikler</span></span>
-<span><span class="co">#&gt;    3:   Water Level         River Glen</span></span>
-<span><span class="co">#&gt;    4:   Water Level      River Parrett</span></span>
-<span><span class="co">#&gt;    5:   Water Level   River Great Ouse</span></span>
-<span><span class="co">#&gt;   ---                                 </span></span>
-<span><span class="co">#&gt; 6028:   Water Level           Land Yeo</span></span>
-<span><span class="co">#&gt; 6029:   Water Level               &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6030:          &lt;NA&gt;  Crow Green Stream</span></span>
-<span><span class="co">#&gt; 6031:          &lt;NA&gt; Spadesbourne Brook</span></span>
-<span><span class="co">#&gt; 6032:          &lt;NA&gt; Spadesbourne Brook</span></span>
-<span><span class="co">#&gt;                                            catchmentName easting northing</span></span>
-<span><span class="co">#&gt;    1:                                          Cotswolds  417990   219610</span></span>
-<span><span class="co">#&gt;    2:                                          Cotswolds  417990   219610</span></span>
-<span><span class="co">#&gt;    3:                                            Welland  528000   329300</span></span>
-<span><span class="co">#&gt;    4:            Parrett, Brue and West Somerset Streams  344383   119926</span></span>
-<span><span class="co">#&gt;    5:                             Upper and Bedford Ouse  529500   271200</span></span>
-<span><span class="co">#&gt;   ---                                                                    </span></span>
-<span><span class="co">#&gt; 6028: Bristol Avon Little Avon Axe and North Somerset St  348294   171560</span></span>
-<span><span class="co">#&gt; 6029:                                               &lt;NA&gt;  348589   358320</span></span>
-<span><span class="co">#&gt; 6030:                                                Exe  301413   107348</span></span>
-<span><span class="co">#&gt; 6031:                       Worcestershire Middle Severn  396611   271641</span></span>
-<span><span class="co">#&gt; 6032:                       Worcestershire Middle Severn  395442   270367</span></span>
-<span><span class="co">#&gt;            lat      long gridReference dateOpened datumOffset</span></span>
-<span><span class="co">#&gt;    1: 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
-<span><span class="co">#&gt;    2: 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
-<span><span class="co">#&gt;    3: 52.84599 -0.100848          &lt;NA&gt; 1992-01-01         2.0</span></span>
-<span><span class="co">#&gt;    4: 50.97604 -2.793549          &lt;NA&gt; 1997-01-01        10.0</span></span>
-<span><span class="co">#&gt;    5: 52.32362 -0.101287  TL 2950 7120 1996-10-01         6.3</span></span>
-<span><span class="co">#&gt;   ---                                                        </span></span>
-<span><span class="co">#&gt; 6028: 51.44066 -2.745306  ST4830171565 2000-10-01          NA</span></span>
-<span><span class="co">#&gt; 6029: 53.11955  -2.76962  SJ4858958320                     NA</span></span>
-<span><span class="co">#&gt; 6030: 50.85721 -3.402036          &lt;NA&gt; 2008-01-25          NA</span></span>
-<span><span class="co">#&gt; 6031: 52.34283 -2.051161  SO9661171641 2021-05-06          NA</span></span>
-<span><span class="co">#&gt; 6032: 52.33136 -2.068303  SO9544270367 2021-05-06          NA</span></span></code></pre></div>
+<span><span class="co">#&gt; 6034:           E71772  ST00F009     Cullompton Langlands       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6035:             5087      2544 Bromsgrove Burcot Avenue       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6036:             5088      2545  Bromsgrove Factory Lane       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6037:           E15252                          HAWLEY GS  waterFlow</span></span>
+<span><span class="co">#&gt; 6038:             E552                   EAST FARLEIGH GS  waterFlow</span></span>
+<span><span class="co">#&gt;       parameterName          riverName                           catchmentName</span></span>
+<span><span class="co">#&gt;    1:   Water Level       River Dikler                               Cotswolds</span></span>
+<span><span class="co">#&gt;    2:   Water Level       River Dikler                               Cotswolds</span></span>
+<span><span class="co">#&gt;    3:   Water Level         River Glen                                 Welland</span></span>
+<span><span class="co">#&gt;    4:   Water Level      River Parrett Parrett, Brue and West Somerset Streams</span></span>
+<span><span class="co">#&gt;    5:   Water Level   River Great Ouse                  Upper and Bedford Ouse</span></span>
+<span><span class="co">#&gt;   ---                                                                         </span></span>
+<span><span class="co">#&gt; 6034:          &lt;NA&gt;  Crow Green Stream                                     Exe</span></span>
+<span><span class="co">#&gt; 6035:          &lt;NA&gt; Spadesbourne Brook            Worcestershire Middle Severn</span></span>
+<span><span class="co">#&gt; 6036:          &lt;NA&gt; Spadesbourne Brook            Worcestershire Middle Severn</span></span>
+<span><span class="co">#&gt; 6037:          Flow               &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6038:          Flow               &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;       easting northing      lat      long gridReference dateOpened datumOffset</span></span>
+<span><span class="co">#&gt;    1:  417990   219610 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
+<span><span class="co">#&gt;    2:  417990   219610 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
+<span><span class="co">#&gt;    3:  528000   329300 52.84599 -0.100848          &lt;NA&gt; 1992-01-01         2.0</span></span>
+<span><span class="co">#&gt;    4:  344383   119926 50.97604 -2.793549          &lt;NA&gt; 1997-01-01        10.0</span></span>
+<span><span class="co">#&gt;    5:  529500   271200 52.32362 -0.101287  TL 2950 7120 1996-10-01         6.3</span></span>
+<span><span class="co">#&gt;   ---                                                                         </span></span>
+<span><span class="co">#&gt; 6034:  301413   107348 50.85721 -3.402036          &lt;NA&gt; 2008-01-25          NA</span></span>
+<span><span class="co">#&gt; 6035:  396611   271641 52.34283 -2.051161  SO9661171641 2021-05-06          NA</span></span>
+<span><span class="co">#&gt; 6036:  395442   270367 52.33136 -2.068303  SO9544270367 2021-05-06          NA</span></span>
+<span><span class="co">#&gt; 6037:  555224   171841 51.42432  0.231228  TQ5522471841                     NA</span></span>
+<span><span class="co">#&gt; 6038:  573750   153750 51.25644  0.488613      TQ737537                     NA</span></span></code></pre></div>
 <p>Finally for tidal sites use;</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"tidal"</span><span class="op">)</span></span>
@@ -711,13 +700,13 @@ case Bewdley (WISKI 2001)</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    measure period          type</span></span>
-<span><span class="co">#&gt; 1:   level  86400           max</span></span>
-<span><span class="co">#&gt; 2:    flow  86400          mean</span></span>
-<span><span class="co">#&gt; 3:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 1:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 2:   level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 3:   level  86400           min</span></span>
 <span><span class="co">#&gt; 4:    flow  86400           min</span></span>
-<span><span class="co">#&gt; 5:   level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 6:    flow    900 instantaneous</span></span>
-<span><span class="co">#&gt; 7:   level  86400           min</span></span></code></pre></div>
+<span><span class="co">#&gt; 5:    flow  86400          mean</span></span>
+<span><span class="co">#&gt; 6:   level  86400           max</span></span>
+<span><span class="co">#&gt; 7:    flow    900 instantaneous</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
@@ -786,7 +775,7 @@ More details on these classes can be seen in VIGNETTE XXXX</p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Metadata:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
@@ -802,7 +791,7 @@ More details on these classes can be seen in VIGNETTE XXXX</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;      dateTime value quality qcode</span></span>
 <span><span class="co">#&gt; 1: 2008-10-01  26.3    Good  &lt;NA&gt;</span></span>
@@ -819,7 +808,7 @@ argument to <strong>‘latest’</strong></p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Metadata:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
@@ -835,7 +824,7 @@ argument to <strong>‘latest’</strong></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;               dateTime value quality qcode</span></span>
 <span><span class="co">#&gt; 1: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;</span></span>
@@ -882,7 +871,7 @@ data!</p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Metadata:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
@@ -898,7 +887,7 @@ data!</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
 <span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>

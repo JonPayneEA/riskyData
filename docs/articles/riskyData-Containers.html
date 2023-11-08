@@ -51,6 +51,7 @@
     <a class="dropdown-item" href="../articles/riskyData-Containers.html">riskyData-Containers</a>
     <a class="dropdown-item" href="../articles/riskyData-Methods.html">riskyData-Methods</a>
     <a class="dropdown-item" href="../articles/riskyData-Ratings.html">riskyData-Ratings</a>
+    <a class="dropdown-item" href="../articles/riskyData-realtime.html">riskyData-realtime data</a>
     <a class="dropdown-item" href="../articles/riskyData-Welcome.html">riskyData-Welcome</a>
   </div>
 </li>
@@ -103,7 +104,7 @@ simultaneously.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Private:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Metadata:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
@@ -119,7 +120,7 @@ simultaneously.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Latitude:</span> 52.383072</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Public:</span> ──</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
 <span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
@@ -232,6 +233,7 @@ after the object name. For example;</p>
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">methods</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rating</span>    →    Returns the user imported rating details                                │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$meta()</span>    →    Returns the metadata associated with the object                         │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$asVol()</span>    →    Calculates the volume of water relative to the time step, see ?asVol   │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$hydroYearDay()</span>    →    Calculates the hydrological year and day, see ?hydroYearDay     │</span></span>
@@ -247,6 +249,8 @@ after the object name. For example;</p>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    →    Create a plot of each year of data, by hydrological year                │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    →    Extracts the subset of data observed between the times start and end  │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rateFlow()</span>    →    Converts stage into a rated flow using the specified rating table   │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rateStage()</span>    →    Converts flow into a rated stage using the specified rating table  │</span></span>
 <span><span class="co">#&gt; └────────────────────────────────────────────────────────────────────────────────────────────┘</span></span></code></pre></div>
 <p>Using methods inbuilt to the containers, you can interact with the
 private metadata;</p>
@@ -258,8 +262,8 @@ private metadata;</p>
 <span></span>
 <span><span class="co"># Return gauge coordinate data</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    Easting Northing Latitude Longitude</span></span>
-<span><span class="co">#&gt; 1:  378235   276165 52.38307 -2.321186</span></span>
+<span><span class="co">#&gt;    stationName WISKI Easting Northing Latitude Longitude</span></span>
+<span><span class="co">#&gt; 1:     Bewdley  2001  378235   276165 52.38307 -2.321186</span></span>
 <span></span>
 <span><span class="co"># Return all the metadata</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span><span class="op">)</span></span>
@@ -277,8 +281,8 @@ private metadata;</p>
 <span><span class="co">#&gt; 1: 52.38307 -2.321186 4325      Flow     m3/s</span></span>
 <span><span class="co">#&gt;                                                  unit datum boreholeDepth</span></span>
 <span><span class="co">#&gt; 1: http://qudt.org/1.1/vocab/unit#CubicMeterPerSecond    NA            NA</span></span>
-<span><span class="co">#&gt;    aquifer      start                 end timeStep   timeZone records</span></span>
-<span><span class="co">#&gt; 1:      NA 2008-10-01 2022-09-30 23:45:00      900 2008-10-01  490848</span></span></code></pre></div>
+<span><span class="co">#&gt;    aquifer      start                 end timeStep timeZone records</span></span>
+<span><span class="co">#&gt; 1:      NA 2008-10-01 2022-09-30 23:45:00      900      GMT  490848</span></span></code></pre></div>
 <p>More details on methods will be covered in the methods vignette.</p>
 </div>
 <div class="section level3">

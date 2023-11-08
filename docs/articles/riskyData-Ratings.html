@@ -51,6 +51,7 @@
     <a class="dropdown-item" href="../articles/riskyData-Containers.html">riskyData-Containers</a>
     <a class="dropdown-item" href="../articles/riskyData-Methods.html">riskyData-Methods</a>
     <a class="dropdown-item" href="../articles/riskyData-Ratings.html">riskyData-Ratings</a>
+    <a class="dropdown-item" href="../articles/riskyData-realtime.html">riskyData-realtime data</a>
     <a class="dropdown-item" href="../articles/riskyData-Welcome.html">riskyData-Welcome</a>
   </div>
 </li>
@@ -104,7 +105,7 @@ the <code>HydroImport</code> containers.</p>
 <pre><code>#&gt; 
  [36mℹ [39m Compiling parameters for raw download
 
- [32m✔ [39m Compiling parameters for raw download  [38;5;249m[343ms] [39m
+ [32m✔ [39m Compiling parameters for raw download  [38;5;249m[392ms] [39m
 #&gt; 
  [36mℹ [39m Downloading raw data
 
@@ -112,15 +113,15 @@ the <code>HydroImport</code> containers.</p>
 #&gt; 
  [36mℹ [39m Downloading extended realtime data
 
- [32m✔ [39m Downloading extended realtime data  [38;5;249m[750ms] [39m
+ [32m✔ [39m Downloading extended realtime data  [38;5;249m[651ms] [39m
 #&gt; 
  [36mℹ [39m Collating metadata
 
- [32m✔ [39m Collating metadata  [38;5;249m[267ms] [39m
+ [32m✔ [39m Collating metadata  [38;5;249m[286ms] [39m
 #&gt; 
  [36mℹ [39m Exporting data to HydroImport container
 
- [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[54ms] [39m
+ [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[22ms] [39m
 #&gt; 
 #&gt;  [36m── [39m  [1mClass: HydroImport [22m  [36m────────────────────────────────────────────────────────── [39m
 #&gt; 
@@ -132,9 +133,9 @@ the <code>HydroImport</code> containers.</p>
 #&gt;  [1mData Type: [22m Level
 #&gt;  [1mModifications: [22m NA
 #&gt;  [1mStart: [22m 2022-10-01
-#&gt;  [1mEnd: [22m 2023-11-06 14:45:00
+#&gt;  [1mEnd: [22m 2023-11-08 14:00:00
 #&gt;  [1mTime Step: [22m 900
-#&gt;  [1mObservations: [22m 38539
+#&gt;  [1mObservations: [22m 38728
 #&gt;  [1mEasting: [22m 378235
 #&gt;  [1mNorthing: [22m 276165
 #&gt;  [1mLongitude: [22m -2.321186
@@ -148,11 +149,11 @@ the <code>HydroImport</code> containers.</p>
 #&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good
 #&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good
 #&gt;    ---                                           
-#&gt; 38535: 2023-11-06 13:45:00 2.700   &lt;NA&gt; Unchecked
-#&gt; 38536: 2023-11-06 14:00:00 2.702   &lt;NA&gt; Unchecked
-#&gt; 38537: 2023-11-06 14:15:00 2.698   &lt;NA&gt; Unchecked
-#&gt; 38538: 2023-11-06 14:30:00 2.702   &lt;NA&gt; Unchecked
-#&gt; 38539: 2023-11-06 14:45:00 2.702   &lt;NA&gt; Unchecked
+#&gt; 38724: 2023-11-08 13:00:00 2.334   &lt;NA&gt; Unchecked
+#&gt; 38725: 2023-11-08 13:15:00 2.328   &lt;NA&gt; Unchecked
+#&gt; 38726: 2023-11-08 13:30:00 2.332   &lt;NA&gt; Unchecked
+#&gt; 38727: 2023-11-08 13:45:00 2.331   &lt;NA&gt; Unchecked
+#&gt; 38728: 2023-11-08 14:00:00 2.326   &lt;NA&gt; Unchecked
 #&gt;  [1mFor more details use the $methods() function, the format should be as [22m
 #&gt;  [1m`Object_name`$methods() [22m</code></pre>
 <p>To access the rating use;</p>
@@ -184,9 +185,9 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Level</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2022-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 14:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-08 14:00:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38539</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38728</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -201,19 +202,19 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;    ---                                           </span></span>
-<span><span class="co">#&gt; 38535: 2023-11-06 13:45:00 2.700   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38536: 2023-11-06 14:00:00 2.702   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38537: 2023-11-06 14:15:00 2.698   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38538: 2023-11-06 14:30:00 2.702   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38539: 2023-11-06 14:45:00 2.702   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38724: 2023-11-08 13:00:00 2.334   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38725: 2023-11-08 13:15:00 2.328   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38726: 2023-11-08 13:30:00 2.332   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38727: 2023-11-08 13:45:00 2.331   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38728: 2023-11-08 14:00:00 2.326   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;            C         A       B     max</span></span>
-<span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359</span></span>
-<span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504</span></span>
-<span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230</span></span>
-<span><span class="co">#&gt; 4:  0.000668 -8.604474 5.13900   5.550</span></span>
-<span><span class="co">#&gt; 5:  0.000668 -8.604474 5.13900 999.000</span></span>
+<span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
+<span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
+<span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
+<span><span class="co">#&gt; 4:  0.000668 -8.604474 5.13900   5.550 5.485540e+02</span></span>
+<span><span class="co">#&gt; 5:  0.000668 -8.604474 5.13900 999.000 1.814196e+12</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre></div>
 <p>To apply the rating to the stage data use the <code>rateFlow()</code>
@@ -227,11 +228,11 @@ method;</p>
 <span><span class="co">#&gt;     4: 0.257  12.78007    1</span></span>
 <span><span class="co">#&gt;     5: 0.257  12.78007    1</span></span>
 <span><span class="co">#&gt;    ---                     </span></span>
-<span><span class="co">#&gt; 38535: 2.700 200.59719    3</span></span>
-<span><span class="co">#&gt; 38536: 2.702 200.79486    3</span></span>
-<span><span class="co">#&gt; 38537: 2.698 200.39957    3</span></span>
-<span><span class="co">#&gt; 38538: 2.702 200.79486    3</span></span>
-<span><span class="co">#&gt; 38539: 2.702 200.79486    3</span></span></code></pre></div>
+<span><span class="co">#&gt; 38724: 2.334 165.36542    3</span></span>
+<span><span class="co">#&gt; 38725: 2.328 164.80393    3</span></span>
+<span><span class="co">#&gt; 38726: 2.332 165.17820    3</span></span>
+<span><span class="co">#&gt; 38727: 2.331 165.08461    3</span></span>
+<span><span class="co">#&gt; 38728: 2.326 164.61688    3</span></span></code></pre></div>
 <p>To set reatin the outputs in a <code>HydroImport</code> container,
 set the full argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -241,15 +242,15 @@ set the full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Metadata:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Rated flow based on stagee/discharge rating</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Rated flow based on stage/discharge rating</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> Rated flow calculated</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2022-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-06 14:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-08 14:00:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38539</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 38728</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -264,19 +265,19 @@ set the full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt;     4: 2022-10-01 00:45:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;     5: 2022-10-01 01:00:00 0.257 Edited      Good</span></span>
 <span><span class="co">#&gt;    ---                                           </span></span>
-<span><span class="co">#&gt; 38535: 2023-11-06 13:45:00 2.700   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38536: 2023-11-06 14:00:00 2.702   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38537: 2023-11-06 14:15:00 2.698   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38538: 2023-11-06 14:30:00 2.702   &lt;NA&gt; Unchecked</span></span>
-<span><span class="co">#&gt; 38539: 2023-11-06 14:45:00 2.702   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38724: 2023-11-08 13:00:00 2.334   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38725: 2023-11-08 13:15:00 2.328   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38726: 2023-11-08 13:30:00 2.332   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38727: 2023-11-08 13:45:00 2.331   &lt;NA&gt; Unchecked</span></span>
+<span><span class="co">#&gt; 38728: 2023-11-08 14:00:00 2.326   &lt;NA&gt; Unchecked</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;            C         A       B     max</span></span>
-<span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359</span></span>
-<span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504</span></span>
-<span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230</span></span>
-<span><span class="co">#&gt; 4:  0.000668 -8.604474 5.13900   5.550</span></span>
-<span><span class="co">#&gt; 5:  0.000668 -8.604474 5.13900 999.000</span></span>
+<span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
+<span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
+<span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
+<span><span class="co">#&gt; 4:  0.000668 -8.604474 5.13900   5.550 5.485540e+02</span></span>
+<span><span class="co">#&gt; 5:  0.000668 -8.604474 5.13900 999.000 1.814196e+12</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre></div>
 </div>
