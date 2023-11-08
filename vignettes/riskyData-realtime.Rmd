@@ -1,8 +1,8 @@
 ---
-title: "riskyData-realtime data"
+title: "riskyData-Realtime data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{riskyData-realtime data}
+  %\VignetteIndexEntry{riskyData-Realtime data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,20 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo = FALSE}
 library(riskyData)
 ```
 
-```{r, echo = FALSE}
-# bewdL <- loadAPI(
-#   ID = "2001",
-#   measure = "level",
-#   period = 900,
-#   type = "instantaneous",
-#   datapoints = "range",
-#   from = '2022-10-01 00:00', 
-#   rtExt = TRUE)
+## Connecting to realtime data
 
+When connecting to the Hydrology Data Explorer, data are only updated at set intervals. This can result in a data gap of up to a month. If you wish to pad out his data, we can connect to the the real time flood data API. This can be done in the `loadAPI()` function by adding the argument `rtExt = TRUE`.
+
+```{r, echo = FALSE, messages = FALSE, warning = FALSE}
 bewdF <- loadAPI(
   ID = "2001",
   measure = "flow",
@@ -36,17 +31,10 @@ bewdF <- loadAPI(
   datapoints = "range",
   from = '2022-10-01 00:00', 
   rtExt = TRUE)
-
-# last data point row 36232
 ```
 
 
 ```{r}
-# par(mfrow = c(2,1))
-# plot(bewdL$data$dateTime, bewdL$data$value, type = 'l', main = 'Stage data for Bewdley', xlab = 'Date Time', ylab = 'Stage (m)', lwd = 2)
-# abline(v = bewdL$data$dateTime[36232], col = 'red', lwd = 2)
-
 plot(bewdF$data$dateTime, bewdF$data$value, type = 'l', main = 'Flow data for Bewdley', xlab = 'Date Time', ylab = 'Flow (m3 s-1)', lwd = 2)
 abline(v = bewdF$data$dateTime[36232], col = 'red', lwd = 2)
-
 ```
