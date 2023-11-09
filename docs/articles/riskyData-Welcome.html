@@ -131,11 +131,11 @@ versions.</p>
 <span><span class="co">#&gt;     4:   F0803                      Adwick   River Dearne       waterLevel</span></span>
 <span><span class="co">#&gt;     5:   F0803                      Adwick   River Dearne        waterFlow</span></span>
 <span><span class="co">#&gt;    ---                                                                    </span></span>
-<span><span class="co">#&gt; 16964:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE     conductivity</span></span>
-<span><span class="co">#&gt; 16965:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE             fdom</span></span>
-<span><span class="co">#&gt; 16966:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE               ph</span></span>
-<span><span class="co">#&gt; 16967:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE      temperature</span></span>
-<span><span class="co">#&gt; 16968:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE        turbidity</span></span>
+<span><span class="co">#&gt; 16854:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE     conductivity</span></span>
+<span><span class="co">#&gt; 16855:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE             fdom</span></span>
+<span><span class="co">#&gt; 16856:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE               ph</span></span>
+<span><span class="co">#&gt; 16857:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE      temperature</span></span>
+<span><span class="co">#&gt; 16858:    &lt;NA&gt; REDE_FOREST BRIDGE_E_202310     RIVER REDE        turbidity</span></span>
 <span><span class="co">#&gt;        easting northing      lat      long dateOpened catchmentArea</span></span>
 <span><span class="co">#&gt;     1:  581271   208591 51.74668  0.624437 2008-10-31            NA</span></span>
 <span><span class="co">#&gt;     2:  304007   139460 51.14632 -3.373695 1967-01-01          36.3</span></span>
@@ -143,11 +143,11 @@ versions.</p>
 <span><span class="co">#&gt;     4:  447677   402022 53.51271 -1.282505 1956-10-29         311.0</span></span>
 <span><span class="co">#&gt;     5:  447677   402022 53.51271 -1.282505 1956-10-29         311.0</span></span>
 <span><span class="co">#&gt;    ---                                                             </span></span>
-<span><span class="co">#&gt; 16964:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
-<span><span class="co">#&gt; 16965:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
-<span><span class="co">#&gt; 16966:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
-<span><span class="co">#&gt; 16967:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
-<span><span class="co">#&gt; 16968:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
+<span><span class="co">#&gt; 16854:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
+<span><span class="co">#&gt; 16855:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
+<span><span class="co">#&gt; 16856:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
+<span><span class="co">#&gt; 16857:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
+<span><span class="co">#&gt; 16858:  378502   600309 55.29640 -2.340101 2023-10-30            NA</span></span>
 <span><span class="co">#&gt;        nrfaStationID</span></span>
 <span><span class="co">#&gt;     1:          &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;     2:         51003</span></span>
@@ -155,11 +155,11 @@ versions.</p>
 <span><span class="co">#&gt;     4:         27030</span></span>
 <span><span class="co">#&gt;     5:         27030</span></span>
 <span><span class="co">#&gt;    ---              </span></span>
-<span><span class="co">#&gt; 16964:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16965:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16966:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16967:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 16968:          &lt;NA&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; 16854:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16855:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16856:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16857:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 16858:          &lt;NA&gt;</span></span></code></pre></div>
 <p>If you wish to constrain these data to NRFA or WISKI sites only add
 “nrfa” or “wiski” to the <code>ID</code> argument. There’s also an
 additional API that this function can connect to that contains real time
@@ -634,52 +634,56 @@ range.</p>
 respectively and wish to find NRFA gauges within 30km;</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>easting <span class="op">=</span> <span class="fl">378235</span> , northing <span class="op">=</span> <span class="fl">276165</span>, dist <span class="op">=</span> <span class="fl">30</span>, ID <span class="op">=</span> <span class="st">"nrfa"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    wiskiID        label      riverName observedProperty easting northing</span></span>
-<span><span class="co">#&gt; 1:    2001      Bewdley   River Severn       waterLevel  378235   276165</span></span>
-<span><span class="co">#&gt; 2:    2001      Bewdley   River Severn        waterFlow  378235   276165</span></span>
-<span><span class="co">#&gt; 3:    2034  Oak Cottage   Dowles Brook       waterLevel  377105   276425</span></span>
-<span><span class="co">#&gt; 4:    2034  Oak Cottage   Dowles Brook        waterFlow  377105   276425</span></span>
-<span><span class="co">#&gt; 5:    2063    Prestwood    River Stour        waterFlow  386705   286155</span></span>
-<span><span class="co">#&gt; 6:    2193 Wards Bridge   Hadley Brook        waterFlow  387025   263145</span></span>
-<span><span class="co">#&gt; 7:    2011 Harford Hill River Salwarpe       waterLevel  386865   261935</span></span>
-<span><span class="co">#&gt; 8:    2011 Harford Hill River Salwarpe        waterFlow  386865   261935</span></span>
-<span><span class="co">#&gt;         lat      long dateOpened catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt; 1: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
-<span><span class="co">#&gt; 2: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
-<span><span class="co">#&gt; 3: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
-<span><span class="co">#&gt; 4: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
-<span><span class="co">#&gt; 5: 52.47315 -2.197148 1972-08-01          89.9         54063</span></span>
-<span><span class="co">#&gt; 6: 52.26630 -2.191539 1987-12-10          53.0         54096</span></span>
-<span><span class="co">#&gt; 7: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span>
-<span><span class="co">#&gt; 8: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span></code></pre></div>
+<span><span class="co">#&gt;     wiskiID        label      riverName observedProperty easting northing</span></span>
+<span><span class="co">#&gt;  1:    2001      Bewdley   River Severn       waterLevel  378235   276165</span></span>
+<span><span class="co">#&gt;  2:    2001      Bewdley   River Severn        waterFlow  378235   276165</span></span>
+<span><span class="co">#&gt;  3:    2034  Oak Cottage   Dowles Brook       waterLevel  377105   276425</span></span>
+<span><span class="co">#&gt;  4:    2034  Oak Cottage   Dowles Brook        waterFlow  377105   276425</span></span>
+<span><span class="co">#&gt;  5:    2063    Prestwood    River Stour        waterFlow  386705   286155</span></span>
+<span><span class="co">#&gt;  6:    2193 Wards Bridge   Hadley Brook        waterFlow  387025   263145</span></span>
+<span><span class="co">#&gt;  7:    2011 Harford Hill River Salwarpe       waterLevel  386865   261935</span></span>
+<span><span class="co">#&gt;  8:    2011 Harford Hill River Salwarpe        waterFlow  386865   261935</span></span>
+<span><span class="co">#&gt;  9:    2024      Burcote    River Worfe       waterLevel  374605   295345</span></span>
+<span><span class="co">#&gt; 10:    2024      Burcote    River Worfe        waterFlow  374605   295345</span></span>
+<span><span class="co">#&gt;          lat      long dateOpened catchmentArea nrfaStationID</span></span>
+<span><span class="co">#&gt;  1: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
+<span><span class="co">#&gt;  2: 52.38307 -2.321186 1921-04-01        4325.0         54001</span></span>
+<span><span class="co">#&gt;  3: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
+<span><span class="co">#&gt;  4: 52.38536 -2.337805 1971-08-24          40.8         54034</span></span>
+<span><span class="co">#&gt;  5: 52.47315 -2.197148 1972-08-01          89.9         54063</span></span>
+<span><span class="co">#&gt;  6: 52.26630 -2.191539 1987-12-10          53.0         54096</span></span>
+<span><span class="co">#&gt;  7: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span>
+<span><span class="co">#&gt;  8: 52.25542 -2.193836 1960-12-19         184.0         54011</span></span>
+<span><span class="co">#&gt;  9: 52.55534 -2.375983 1969-03-21         258.0         54024</span></span>
+<span><span class="co">#&gt; 10: 52.55534 -2.375983 1969-03-21         258.0         54024</span></span></code></pre></div>
 <p>Alternatively, find all groundwater data within 10km of lat-long
 coordinates; 52.58302, -0.40656</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">52.58302</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">0.40656</span>, dist <span class="op">=</span> <span class="fl">100</span>, obsProperty <span class="op">=</span> <span class="st">"groundwaterLevel"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      wiskiID                    label  riverName observedProperty easting</span></span>
-<span><span class="co">#&gt;   1:  U32610        Wansford Combined River Nene        waterFlow  508060</span></span>
-<span><span class="co">#&gt;   2:   8_913           Sutton Wetland       &lt;NA&gt; groundwaterLevel  508845</span></span>
-<span><span class="co">#&gt;   3:   3_032 Sutton Top Field Spinney       &lt;NA&gt; groundwaterLevel  509075</span></span>
-<span><span class="co">#&gt;   4:   3_034        Sutton Heath Road       &lt;NA&gt; groundwaterLevel  509035</span></span>
-<span><span class="co">#&gt;   5:   3_004                  Barnack       &lt;NA&gt; groundwaterLevel  507345</span></span>
-<span><span class="co">#&gt;  ---                                                                     </span></span>
-<span><span class="co">#&gt; 163:  176751                   Yelden       &lt;NA&gt;         rainfall  501501</span></span>
-<span><span class="co">#&gt; 164:   3_516              Skillington       &lt;NA&gt; groundwaterLevel  490105</span></span>
-<span><span class="co">#&gt; 165:  151674                  Dingley       &lt;NA&gt;         rainfall  477390</span></span>
-<span><span class="co">#&gt; 166:  032004                Harrowden  River Ise       waterLevel  489920</span></span>
-<span><span class="co">#&gt; 167:  032004                Harrowden  River Ise        waterFlow  489920</span></span>
-<span><span class="co">#&gt;      northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt;   1:   299550 52.58302 -0.406558 1996-01-16            NA         32010</span></span>
-<span><span class="co">#&gt;   2:   300065 52.58749 -0.394808 1998-03-25            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   3:   300045 52.58727 -0.391421 1998-03-25            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   4:   300235 52.58898 -0.391949 1998-03-25            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   5:   305125 52.63326 -0.415299 1971-04-23            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;  ---                                                                   </span></span>
-<span><span class="co">#&gt; 163:   267450 52.29580 -0.513069 1991-07-31            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 164:   327025 52.83321 -0.663951 1978-02-27            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 165:   286760 52.47329 -0.862077 1984-11-12            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 166:   271250 52.33197 -0.681820 1943-12-01           194         32004</span></span>
-<span><span class="co">#&gt; 167:   271250 52.33197 -0.681820 1943-12-01           194         32004</span></span></code></pre></div>
+<span><span class="co">#&gt;      wiskiID                     label          riverName observedProperty</span></span>
+<span><span class="co">#&gt;   1:  U32610         Wansford Combined         River Nene        waterFlow</span></span>
+<span><span class="co">#&gt;   2:   8_913            Sutton Wetland               &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   3:   3_032  Sutton Top Field Spinney               &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   4:   3_034         Sutton Heath Road               &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   5:   3_004                   Barnack               &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;  ---                                                                      </span></span>
+<span><span class="co">#&gt; 168:    &lt;NA&gt; EYE_FREEBY BROOK_E_202105 RIVER EYE (WREAKE) dissolved-oxygen</span></span>
+<span><span class="co">#&gt; 169:    &lt;NA&gt; EYE_FREEBY BROOK_E_202105 RIVER EYE (WREAKE)     conductivity</span></span>
+<span><span class="co">#&gt; 170:    &lt;NA&gt; EYE_FREEBY BROOK_E_202105 RIVER EYE (WREAKE)               ph</span></span>
+<span><span class="co">#&gt; 171:    &lt;NA&gt; EYE_FREEBY BROOK_E_202105 RIVER EYE (WREAKE)      temperature</span></span>
+<span><span class="co">#&gt; 172:    &lt;NA&gt; EYE_FREEBY BROOK_E_202105 RIVER EYE (WREAKE)        turbidity</span></span>
+<span><span class="co">#&gt;      easting northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
+<span><span class="co">#&gt;   1:  508060   299550 52.58302 -0.406558 1996-01-16            NA         32010</span></span>
+<span><span class="co">#&gt;   2:  508845   300065 52.58749 -0.394808 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   3:  509075   300045 52.58727 -0.391421 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   4:  509035   300235 52.58898 -0.391949 1998-03-25            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   5:  507345   305125 52.63326 -0.415299 1971-04-23            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;  ---                                                                           </span></span>
+<span><span class="co">#&gt; 168:  480916   319518 52.76720 -0.802170 2021-05-10            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 169:  480916   319518 52.76720 -0.802170 2021-05-10            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 170:  480916   319518 52.76720 -0.802170 2021-05-10            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 171:  480916   319518 52.76720 -0.802170 2021-05-10            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 172:  480916   319518 52.76720 -0.802170 2021-05-10            NA          &lt;NA&gt;</span></span></code></pre></div>
 <p><strong>Note</strong> the function will not allow you to mix
 easting-northing with lat-long.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -700,13 +704,13 @@ case Bewdley (WISKI 2001)</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    measure period          type</span></span>
-<span><span class="co">#&gt; 1:    flow  86400          mean</span></span>
-<span><span class="co">#&gt; 2:    flow  86400           max</span></span>
-<span><span class="co">#&gt; 3:    flow    900 instantaneous</span></span>
-<span><span class="co">#&gt; 4:   level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 5:   level  86400           min</span></span>
-<span><span class="co">#&gt; 6:   level  86400           max</span></span>
-<span><span class="co">#&gt; 7:    flow  86400           min</span></span></code></pre></div>
+<span><span class="co">#&gt; 1:   level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 2:   level  86400           min</span></span>
+<span><span class="co">#&gt; 3:    flow  86400          mean</span></span>
+<span><span class="co">#&gt; 4:    flow  86400           min</span></span>
+<span><span class="co">#&gt; 5:   level  86400           max</span></span>
+<span><span class="co">#&gt; 6:    flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 7:    flow  86400           max</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
