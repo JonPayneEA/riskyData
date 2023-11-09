@@ -323,47 +323,34 @@ generates 2 things;</p>
 September)</p></li>
 <li><p>Hydrological day</p></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bewdley<span class="sc">$</span><span class="fu">hydroYearDay</span>()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Calculating hydrological year and day</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Calculating hydrological year and day  [<span class="dv">38</span>;<span class="dv">5</span>;249m[<span class="fl">4.9</span>s] [39m</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>bewdley<span class="sc">$</span>data</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    dateTime value quality qcode hydroYear hydroYearDay</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;      2009            1</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;      2009            1</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;      2009            1</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ---                                                               </span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;      2022          365</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span>
+<span><span class="co">#&gt;                    dateTime value quality qcode hydroYear hydroYearDay</span></span>
+<span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;     ---                                                               </span></span>
+<span><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span></code></pre></div>
 <p>Similarly to remove the columns you can remove the hydrological year
 with <code>$rmHY()</code> and the hydrological day with
 <code>$rmHYD()</code>;</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bewdley<span class="sc">$</span><span class="fu">rmHY</span>()</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Removing hydroYear column</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Removing hydroYear column  [<span class="dv">38</span>;<span class="dv">5</span>;249m[13ms] [39m</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>bewdley<span class="sc">$</span><span class="fu">rmHYD</span>()</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Removing hydroYearDay column</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Removing hydroYearDay column  [<span class="dv">38</span>;<span class="dv">5</span>;249m[7ms] [39m</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">rmHY</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">rmHYD</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="plotting-data">Plotting data<a class="anchor" aria-label="anchor" href="#plotting-data"></a>
 </h4>
 <p>Currently the containers only support plotting in one way….</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bewdley<span class="sc">$</span><span class="fu">hydroYearDay</span>()<span class="sc">$</span><span class="fu">plot</span>()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> [36mℹ [39m Calculating hydrological year and day</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a> [32m✔ [39m Calculating hydrological year and day  [<span class="dv">38</span>;<span class="dv">5</span>;249m[<span class="fl">4.9</span>s] [39m</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="riskyData-Methods_files/figure-html/plot1-1.png" width="768"></p>
 </div>
 </div>

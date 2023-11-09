@@ -101,13 +101,13 @@ Though you could add any number of extra elements to the public data, the `risky
 
 If you wished to convert flow into a volume us the `$asVol` method;
 
-```{r asVol, eval = FALSE}
+```{r asVol, eval = FALSE, message = FALSE}
 bewdley$asVol()
 ```
 
 This adds a volume column to the data table. It uses the metadata to derive the suitable values based on the difference in time between observations. If you wished to remove the column use \`\``$rmVol()`;
 
-```{r rmVol, eval = FALSE}
+```{r rmVol, eval = FALSE, message = FALSE}
 bewdley$rmVol()
 ```
 
@@ -117,14 +117,14 @@ The other useful method is `$hydroYearDay()` this generates 2 things;
 
 -   Hydrological day
 
-```{r hyd}
+```{r hyd, message = FALSE}
 bewdley$hydroYearDay()
 bewdley$data
 ```
 
 Similarly to remove the columns you can remove the hydrological year with `$rmHY()` and the hydrological day with `$rmHYD()`;
 
-```{r rmHYD}
+```{r rmHYD, message = FALSE}
 bewdley$rmHY()
 bewdley$rmHYD()
 ```
@@ -133,7 +133,7 @@ bewdley$rmHYD()
 
 Currently the containers only support plotting in one way....
 
-```{r plot1, fig.width = 8, fig.height = 12}
+```{r plot1, fig.width = 8, fig.height = 12, message = FALSE}
 bewdley$hydroYearDay()$plot()
 ```
 

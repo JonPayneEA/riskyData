@@ -96,28 +96,14 @@ at set intervals. This can result in a data gap of up to a month. If you
 wish to pad out his data, we can connect to the the real time flood data
 API. This can be done in the <code><a href="../reference/loadAPI.html">loadAPI()</a></code> function by adding
 the argument <code>rtExt = TRUE</code>.</p>
-<pre><code>#&gt; 
- [36mℹ [39m Compiling parameters for raw download
-
- [32m✔ [39m Compiling parameters for raw download  [38;5;249m[239ms] [39m
-#&gt; 
- [36mℹ [39m Downloading raw data
-
- [32m✔ [39m Downloading raw data  [38;5;249m[1.6s] [39m
-#&gt; 
- [36mℹ [39m Downloading extended realtime data
-
- [32m✔ [39m Downloading extended realtime data  [38;5;249m[1.6s] [39m
-#&gt; 
- [36mℹ [39m Collating metadata
-
- [32m✔ [39m Collating metadata  [38;5;249m[196ms] [39m
-#&gt; 
- [36mℹ [39m Exporting data to HydroImport container
-
- [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[22ms] [39m</code></pre>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>, <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, type <span class="op">=</span> <span class="st">'l'</span>, main <span class="op">=</span> <span class="st">'Flow data for Bewdley'</span>, xlab <span class="op">=</span> <span class="st">'Date Time'</span>, ylab <span class="op">=</span> <span class="st">'Flow (m3 s-1)'</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>, </span>
+<span>     y <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, </span>
+<span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
+<span>     main <span class="op">=</span> <span class="st">"Flow data for Bewdley"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Date Time"</span>, </span>
+<span>     ylab <span class="op">=</span> <span class="st">"Flow (m3 s-1)"</span>, </span>
+<span>     lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">36232</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">'red'</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="riskyData-realtime_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
