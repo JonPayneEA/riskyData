@@ -478,7 +478,10 @@ HydroImportFactory <- R6::R6Class(
 
       # If the to argument is null the last record is assumed
       if (is.null(end)){
-        end <- tail(self$data$dateTime, 1)
+        end <- as.POSIXct(tail(self$data$dateTime, 1),
+                          format = "%Y-%m-%d %H:%M",
+                          tz = "GMT"
+        )
       } else {
         end <- as.POSIXct(end,
                           format = "%Y-%m-%d %H:%M",
