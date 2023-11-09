@@ -25,17 +25,7 @@ Let's download some stage data;
 library(riskyData)
 ```
 
-```{r stage, eval = FALSE}
-bewdleyStage <- loadAPI(ID = "2001",
-                        measure = "level",
-                        period = 900,
-                        type = "instantaneous",
-                        datapoints = "range",
-                        from = '2020-10-01 00:00', 
-                        rtExt = TRUE)
-```
-
-```{r stage2, echo = FALSE, messages = FALSE, warning = FALSE}
+```{r stage, message = FALSE, warning = FALSE, results = 'hide'}
 bewdleyStage <- loadAPI(ID = "2001",
                         measure = "level",
                         period = 900,
@@ -44,12 +34,12 @@ bewdleyStage <- loadAPI(ID = "2001",
                         from = '2020-10-01 00:00', 
                         rtExt = TRUE)
 
-bewdleyStage
+
 ```
 
 To access the rating use; 
 
-```{r stage3}
+```{r stage1}
 bewdleyStage$rating
 ```
 

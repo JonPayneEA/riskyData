@@ -102,68 +102,14 @@ the <code>HydroImport</code> containers.</p>
 <span>                        datapoints <span class="op">=</span> <span class="st">"range"</span>,</span>
 <span>                        from <span class="op">=</span> <span class="st">'2020-10-01 00:00'</span>, </span>
 <span>                        rtExt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>#&gt; 
- [36mℹ [39m Compiling parameters for raw download
-
- [32m✔ [39m Compiling parameters for raw download  [38;5;249m[295ms] [39m
-#&gt; 
- [36mℹ [39m Downloading raw data
-
- [32m✔ [39m Downloading raw data  [38;5;249m[4s] [39m
-#&gt; 
- [36mℹ [39m Downloading extended realtime data
-
- [32m✔ [39m Downloading extended realtime data  [38;5;249m[511ms] [39m
-#&gt; 
- [36mℹ [39m Collating metadata
-
- [32m✔ [39m Collating metadata  [38;5;249m[209ms] [39m
-#&gt; 
- [36mℹ [39m Exporting data to HydroImport container
-
- [32m✔ [39m Exporting data to HydroImport container  [38;5;249m[20ms] [39m
-#&gt; 
-#&gt;  [36m── [39m  [1mClass: HydroImport [22m  [36m────────────────────────────────────────────────────────── [39m
-#&gt; 
-#&gt; ──  [1m [1mMetadata: [1m [22m ──
-#&gt; 
-#&gt;  [1mData Type: [22m Raw Import
-#&gt;  [1mStation name: [22m Bewdley
-#&gt;  [1mWISKI ID: [22m 2001
-#&gt;  [1mData Type: [22m Level
-#&gt;  [1mModifications: [22m NA
-#&gt;  [1mStart: [22m 2020-10-01
-#&gt;  [1mEnd: [22m 2023-11-09 09:45:00
-#&gt;  [1mTime Step: [22m 900
-#&gt;  [1mObservations: [22m 108887
-#&gt;  [1mEasting: [22m 378235
-#&gt;  [1mNorthing: [22m 276165
-#&gt;  [1mLongitude: [22m -2.321186
-#&gt;  [1mLatitude: [22m 52.383072
-#&gt; 
-#&gt; ──  [1m [1mObserved data: [1m [22m ──
-#&gt;                    dateTime value   quality qcode
-#&gt;      1: 2020-10-01 00:00:00 0.351      Good  &lt;NA&gt;
-#&gt;      2: 2020-10-01 00:15:00 0.350      Good  &lt;NA&gt;
-#&gt;      3: 2020-10-01 00:30:00 0.350      Good  &lt;NA&gt;
-#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;
-#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;
-#&gt;     ---                                          
-#&gt; 108883: 2023-11-09 08:45:00 2.197 Unchecked  &lt;NA&gt;
-#&gt; 108884: 2023-11-09 09:00:00 2.194 Unchecked  &lt;NA&gt;
-#&gt; 108885: 2023-11-09 09:15:00 2.192 Unchecked  &lt;NA&gt;
-#&gt; 108886: 2023-11-09 09:30:00 2.194 Unchecked  &lt;NA&gt;
-#&gt; 108887: 2023-11-09 09:45:00 2.188 Unchecked  &lt;NA&gt;
-#&gt;  [1mFor more details use the $methods() function, the format should be as [22m
-#&gt;  [1m`Object_name`$methods() [22m</code></pre>
 <p>To access the rating use;</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="va">rating</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p>As you can see the imported data doesn’t yet have any rating. To add
 one we can use the <code>addRating()</code> method. This method has four
 arguments that need to be filled (C, A, B, and max).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">addRating</span><span class="op">(</span>C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43.3123</span>, <span class="fl">43.3123</span>, <span class="fl">47.6218</span>, <span class="fl">0.000668</span>, <span class="fl">0.000668</span><span class="op">)</span>,</span>
 <span>                       A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.117731</span>, <span class="op">-</span><span class="fl">8.604474</span>, <span class="op">-</span><span class="fl">8.604474</span><span class="op">)</span>,</span>
 <span>                       B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.44155</span>, <span class="fl">1.44155</span>, <span class="fl">1.38813</span>, <span class="fl">5.139</span>, <span class="fl">5.139</span><span class="op">)</span>,</span>
@@ -171,7 +117,7 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span>                       <span class="op">)</span></span></code></pre></div>
 <p>This will now be displayed whenever you call the
 <code>HydroImport</code> container or using <code>$rating</code>;</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
@@ -184,9 +130,9 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Level</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-09 09:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-09 10:00:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 108887</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 108888</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -201,11 +147,11 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 108883: 2023-11-09 08:45:00 2.197 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108884: 2023-11-09 09:00:00 2.194 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108885: 2023-11-09 09:15:00 2.192 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108886: 2023-11-09 09:30:00 2.194 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108887: 2023-11-09 09:45:00 2.188 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 108888: 2023-11-09 10:00:00 2.184 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
@@ -218,7 +164,7 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre></div>
 <p>To apply the rating to the stage data use the <code>rateFlow()</code>
 method;</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">rateFlow</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         stage      flow limb</span></span>
 <span><span class="co">#&gt;      1: 0.351  17.00650    1</span></span>
@@ -227,14 +173,14 @@ method;</p>
 <span><span class="co">#&gt;      4: 0.351  17.00650    1</span></span>
 <span><span class="co">#&gt;      5: 0.350  16.95963    1</span></span>
 <span><span class="co">#&gt;     ---                     </span></span>
-<span><span class="co">#&gt; 108883: 2.197 152.67922    3</span></span>
 <span><span class="co">#&gt; 108884: 2.194 152.40460    3</span></span>
 <span><span class="co">#&gt; 108885: 2.192 152.22161    3</span></span>
 <span><span class="co">#&gt; 108886: 2.194 152.40460    3</span></span>
-<span><span class="co">#&gt; 108887: 2.188 151.85579    3</span></span></code></pre></div>
+<span><span class="co">#&gt; 108887: 2.188 151.85579    3</span></span>
+<span><span class="co">#&gt; 108888: 2.184 151.49023    3</span></span></code></pre></div>
 <p>To set the outputs in a <code>HydroImport</code> container, set the
 full argument to <code>TRUE</code></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">rateFlow</span><span class="op">(</span>full <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
@@ -247,9 +193,9 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> Rated flow calculated</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-09 09:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-09 10:00:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 108887</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 108888</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -264,11 +210,11 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 108883: 2023-11-09 08:45:00 2.197 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108884: 2023-11-09 09:00:00 2.194 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108885: 2023-11-09 09:15:00 2.192 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108886: 2023-11-09 09:30:00 2.194 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 108887: 2023-11-09 09:45:00 2.188 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 108888: 2023-11-09 10:00:00 2.184 Unchecked  &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
@@ -284,7 +230,7 @@ full argument to <code>TRUE</code></p>
 <h2 id="rated-stage">Rated stage<a class="anchor" aria-label="anchor" href="#rated-stage"></a>
 </h2>
 <p>We can also use the same ratings to convert flow to stage;</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Load flow data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"bewdley"</span><span class="op">)</span></span>
 <span></span>
