@@ -406,7 +406,7 @@ HydroImportFactory <- R6::R6Class(
         B <- ratingTbl$B[limbs[i]]
         C <- ratingTbl$C[limbs[i]]
         # print(A * (data[i] - B)^C)
-        est <- ((self$data$value[i] / C) ^ (1 / B)) -A
+        est <- ((self$data$value[i] / C) ^ (1 / B)) +A
         # print(est)
         stage[i] <- est
       }
