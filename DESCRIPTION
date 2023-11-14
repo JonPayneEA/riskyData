@@ -19,7 +19,9 @@ Imports:
     R6,
     cli,
     tidyr,
-    ggplot2
+    ggplot2,
+    cowplot,
+    RcppRoll
 URL: https://jonpayneea.github.io/riskyData/, https://github.com/JonPayneEA/riskyData
 Depends: 
     R (>= 2.10)
