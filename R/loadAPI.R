@@ -122,17 +122,16 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ("list" %in% sapply(dt, class)) {
       dt <- data.table(tidyr::unnest(dt, c(
-        wiskiID, label, riverName, easting, northing, lat, long
+        easting, northing, lat, long
       ),
       keep_empty = TRUE
       ))
 
-      # Unnesting again on observedproperty resolves issue with too many variables
-      dt <- data.table(tidyr::unnest(dt, c(
-        observedProperty
-      ),
-      keep_empty = TRUE
-      ))
+      # Unnesting again properties that can be variable in length
+      properties <- c('wiskiID', 'label', 'riverName', 'observedProperty')
+      for(i in properties){
+        dt <- data.table(tidyr::unnest(dt, i,keep_empty = TRUE))
+        }
     }
 
     ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,10 +141,17 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       long, dateOpened, catchmentArea, nrfaStationID
     ), ]
     # data_level$observedProperty <- unlist(lst)
-    if (!is.null(ID) && ID == "wiski") {
+    if(is.null(ID)){
+      return(data_level)
+    }
+    if(ID == 'all'){
+      return(data_level)
+    }
+
+    if (ID == "wiski") {
       data_level <- na.omit(data_level, cols = "wiskiID")
     }
-    if (!is.null(ID) && ID == "nrfa") {
+    if (ID == "nrfa") {
       data_level <- na.omit(data_level, cols = "nrfaStationID")
     }
     if (is.null(obsProperty)) {
@@ -153,6 +159,18 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     } else {
       return(data_level[observedProperty == obsProperty, , ])
     }
+
+    # if (any(!is.null(ID) & ID == "wiski")) {
+    #   data_level <- na.omit(data_level, cols = "wiskiID")
+    # }
+    # if (any(!is.null(ID) & ID == "nrfa")) {
+    #   data_level <- na.omit(data_level, cols = "nrfaStationID")
+    # }
+    # if (is.null(obsProperty)) {
+    #   return(data_level)
+    # } else {
+    #   return(data_level[observedProperty == obsProperty, , ])
+    # }
   }
 
   ##! Base real time API
