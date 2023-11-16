@@ -119,7 +119,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       lst[[i]] <- basename(dt_obs[[i]]$`@id`)
     }
     dt$observedProperty <- lst
-    ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ## Check if any columns are class list and unnest ~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ("list" %in% sapply(dt, class)) {
       dt <- data.table(tidyr::unnest(dt, c(
         easting, northing, lat, long
@@ -191,12 +191,30 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
     ## Only the measures column should be a list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     dt <- data.table(tidyr::unnest(dt, c(measures), keep_empty = TRUE))
+
+    ## Check if any columns are class list and unnest ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if ("list" %in% sapply(dt, class)) {
+      dt <- data.table(tidyr::unnest(dt, c(
+        easting, northing, lat, long
+      ),
+      keep_empty = TRUE
+      ))
+
+      # Unnesting again properties that can be variable in length
+      properties <- c('wiskiID', 'label', 'dateOpened')
+      for(i in properties){
+        dt <- data.table(tidyr::unnest(dt, i,keep_empty = TRUE))
+      }
+    }
+
     ## Select relevant columns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     data_level <- dt[, .(
       stationReference, wiskiID, label, parameter, parameterName, riverName,
       catchmentName, easting, northing, lat, long, gridReference, dateOpened,
       datumOffset
     ), ]
+
+
 
     ## Convert parameter values to match obsProperty criteria
     data_level$parameter <- gsub("flow", "waterFlow", data_level$parameter)
