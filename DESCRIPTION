@@ -1,6 +1,6 @@
 Package: riskyData
 Title: Welcome to riskyData the tool for pulling observed data from the EAs API
-Version: 0.3.1.9002
+Version: 0.3.1.9003
 Authors@R: c(
     person("Jonathan", "Payne", , "jon.payne@environment-agency.gov.uk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2551-5353")),
@@ -21,7 +21,8 @@ Imports:
     tidyr,
     ggplot2,
     cowplot,
-    RcppRoll
+    RcppRoll,
+    dplyr
 URL: https://jonpayneea.github.io/riskyData/, https://github.com/JonPayneEA/riskyData
 Depends: 
     R (>= 2.10)
