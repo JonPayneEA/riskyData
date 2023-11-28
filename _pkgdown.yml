@@ -4,16 +4,16 @@ template:
   bootswatch: sandstone
   bslib:
     pkgdown-nav-height: 100px
-  components:
-   articles:
-    text: Articles
-    menu:
-    - text: Welcome
-      href: articles/riskyData-Welcome.html
-    - text: Containers
-      href: articles/riskyData-Containers.html
-    - text: Methods
-      href: articles/riskyData-Methods.html
+  # components:
+  #  articles:
+  #   text: Articles
+  #   menu:
+  #   - text: Welcome
+  #     href: articles/riskyData-Welcome.html
+  #   - text: Containers
+  #     href: articles/riskyData-Containers.html
+  #   - text: Methods
+  #     href: articles/riskyData-Methods.html
   navbar:
     structure:
       left:  [intro, reference, articles, tutorials, news]
