@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,6 +97,15 @@ wish to pad out his data, we can connect to the the real time flood data
 API. This can be done in the <code><a href="../reference/loadAPI.html">loadAPI()</a></code> function by adding
 the argument <code>rtExt = TRUE</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bewdF</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span></span>
+<span>  ID <span class="op">=</span> <span class="st">"2001"</span>,</span>
+<span>  measure <span class="op">=</span> <span class="st">"flow"</span>,</span>
+<span>  period <span class="op">=</span> <span class="fl">900</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"instantaneous"</span>,</span>
+<span>  datapoints <span class="op">=</span> <span class="st">"range"</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"2022-10-01 00:00"</span>, </span>
+<span>  rtExt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span>, </span>
 <span>     y <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
@@ -105,7 +114,7 @@ the argument <code>rtExt = TRUE</code>.</p>
 <span>     ylab <span class="op">=</span> <span class="st">"Flow (m3 s-1)"</span>, </span>
 <span>     lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">36232</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">'red'</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="riskyData-Realtime_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="riskyData-Realtime_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
   </main>
 </div>

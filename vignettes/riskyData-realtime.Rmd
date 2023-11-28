@@ -33,6 +33,17 @@ bewdF <- loadAPI(
   rtExt = TRUE)
 ```
 
+```{r,eval = FALSE}
+bewdF <- loadAPI(
+  ID = "2001",
+  measure = "flow",
+  period = 900,
+  type = "instantaneous",
+  datapoints = "range",
+  from = "2022-10-01 00:00", 
+  rtExt = TRUE)
+```
+
 
 ```{r}
 plot(x = bewdF$data$dateTime, 
