@@ -28,11 +28,11 @@ datasets can be pulled."><meta property="og:image" content="https://jonpayneea.g
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/riskyData-Containers.html">riskyData-Containers</a>
-    <a class="dropdown-item" href="../articles/riskyData-Methods.html">riskyData-Methods</a>
-    <a class="dropdown-item" href="../articles/riskyData-Ratings.html">riskyData-Ratings</a>
-    <a class="dropdown-item" href="../articles/riskyData-Realtime.html">riskyData-Realtime data</a>
-    <a class="dropdown-item" href="../articles/riskyData-Welcome.html">riskyData-Welcome</a>
+    <a class="dropdown-item" href="../articles/1_riskyData-Welcome.html">riskyData-Welcome</a>
+    <a class="dropdown-item" href="../articles/2_riskyData-Containers.html">riskyData-Containers</a>
+    <a class="dropdown-item" href="../articles/3_riskyData-Methods.html">riskyData-Methods</a>
+    <a class="dropdown-item" href="../articles/4_riskyData-Ratings.html">riskyData-Ratings</a>
+    <a class="dropdown-item" href="../articles/5_riskyData-Realtime.html">riskyData-Realtime data</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -194,9 +194,9 @@ the real time API</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"L1207"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    measure period          type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:   level    900 instantaneous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:   level  86400           max</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2:   level  86400           min</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:   level  86400           max</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:   level    900 instantaneous</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">loadAPI</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  ID <span class="op">=</span> <span class="st">"L1207"</span>,</span></span>
@@ -206,16 +206,16 @@ the real time API</p></dd>
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"earliest"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[147ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[124ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[133ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[226ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[208ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[219ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[30ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[15ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span>
@@ -254,16 +254,16 @@ the real time API</p></dd>
 <span class="r-in"><span>  datapoints <span class="op">=</span> <span class="st">"all"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Compiling parameters for raw download</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[163ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Compiling parameters for raw download <span style="color: #B2B2B2;">[130ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading raw data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[31s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Downloading raw data <span style="color: #B2B2B2;">[27.3s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Collating metadata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[215ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Collating metadata <span style="color: #B2B2B2;">[217ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Exporting data to HydroImport container</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[20ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Exporting data to HydroImport container <span style="color: #B2B2B2;">[22ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dt</span><span class="op">$</span><span class="va">data</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">value</span> <span class="op">~</span> <span class="va">dateTime</span>,</span></span>
