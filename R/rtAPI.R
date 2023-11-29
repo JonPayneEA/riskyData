@@ -44,7 +44,7 @@ rtAPI <- function(ID = NULL, measure = NULL){
   # Download the measures
   rtSeries <- data.table(jsonlite::fromJSON(rtLink))
   rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
-  colnames(rtMeasures)[1] <- 'measID'; return(rtMeasures[,.(measID, parameter, unitName, period)])
+  colnames(rtMeasures)[1] <- 'measID'
 
 
   ## Filter to the data used
