@@ -1,8 +1,8 @@
 ^riskyData\.Rproj$
 ^\.Rproj\.user$
-^LICENSE\.md$
-^README\.Rmd$
 ^\.github$
 ^_pkgdown\.yml$
+^LICENSE\.md$
+^README\.Rmd$
 ^docs$
 ^pkgdown$
