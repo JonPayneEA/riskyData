@@ -34,18 +34,20 @@ rtAPI <- function(ID = NULL, measure = NULL){
 
     # Download the measures
     rtSeries <- data.table(jsonlite::fromJSON(rtLink))
-    rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
+    rtMeasures <- data.table(do.call(cbind.data.frame,
+                                     rtSeries$V1[3][[1]]$measures))
     colnames(rtMeasures)[1] <- 'measID'
-    return(rtMeasures[,.(measID, parameter, unitName, period)])
+    return(unique(rtMeasures[,.(measID, parameter, unitName, period)]))
   }
   rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/stations/'
   rtLink <- paste0(rtStation, ID)
 
   # Download the measures
   rtSeries <- data.table(jsonlite::fromJSON(rtLink))
-  rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
+  rtMeasures <- data.table(do.call(cbind.data.frame,
+                                   rtSeries$V1[3][[1]]$measures))
   colnames(rtMeasures)[1] <- 'measID'
-
+  rtMeasures <-  unique(rtMeasures)
 
   ## Filter to the data used
   rtMeasure <- rtMeasures[period == 900 & parameter == measure, measID,]
