@@ -47,7 +47,7 @@ rtAPI <- function(ID = NULL, measure = NULL){
   rtMeasures <- data.table(do.call(cbind.data.frame,
                                    rtSeries$V1[3][[1]]$measures))
   colnames(rtMeasures)[1] <- 'measID'
-  rtMeasures <-  unique(rtMeasures)
+  rtMeasures <-  unique(rtMeasures[,.(measID, parameter, unitName, period)])
 
   ## Filter to the data used
   rtMeasure <- rtMeasures[period == 900 & parameter == measure, measID,]
