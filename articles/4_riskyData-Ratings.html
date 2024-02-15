@@ -130,9 +130,9 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Level</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-12-04 08:00:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2024-02-15 10:45:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 111297</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 111592</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -140,21 +140,23 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                    dateTime value   quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 111293: 2023-12-04 07:00:00 1.392 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111294: 2023-12-04 07:15:00 1.415 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111295: 2023-12-04 07:30:00 1.442 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111296: 2023-12-04 07:45:00 1.470 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111297: 2023-12-04 08:00:00 1.498 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;                    dateTime value   quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;    &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                           </span></span>
+<span><span class="co">#&gt; 111588: 2024-02-15 09:45:00 2.246 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111589: 2024-02-15 10:00:00 2.254 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111590: 2024-02-15 10:15:00 2.256 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111591: 2024-02-15 10:30:00 2.258 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111592: 2024-02-15 10:45:00 2.262 Unchecked   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt;        &lt;num&gt;     &lt;num&gt;   &lt;num&gt;   &lt;num&gt;        &lt;num&gt;</span></span>
 <span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
 <span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
 <span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
@@ -166,18 +168,19 @@ arguments that need to be filled (C, A, B, and max).</p>
 method;</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">rateFlow</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         stage     flow limb</span></span>
-<span><span class="co">#&gt;      1: 0.351 17.00650    1</span></span>
-<span><span class="co">#&gt;      2: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;      3: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;      4: 0.351 17.00650    1</span></span>
-<span><span class="co">#&gt;      5: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;     ---                    </span></span>
-<span><span class="co">#&gt; 111293: 1.392 84.36099    3</span></span>
-<span><span class="co">#&gt; 111294: 1.415 86.15027    3</span></span>
-<span><span class="co">#&gt; 111295: 1.442 88.26406    3</span></span>
-<span><span class="co">#&gt; 111296: 1.470 90.47118    3</span></span>
-<span><span class="co">#&gt; 111297: 1.498 92.69347    3</span></span></code></pre></div>
+<span><span class="co">#&gt;         stage      flow   limb</span></span>
+<span><span class="co">#&gt;         &lt;num&gt;     &lt;num&gt; &lt;fctr&gt;</span></span>
+<span><span class="co">#&gt;      1: 0.351  17.00650      1</span></span>
+<span><span class="co">#&gt;      2: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;      3: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;      4: 0.351  17.00650      1</span></span>
+<span><span class="co">#&gt;      5: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;     ---                       </span></span>
+<span><span class="co">#&gt; 111588: 2.246 157.18405      3</span></span>
+<span><span class="co">#&gt; 111589: 2.254 157.92300      3</span></span>
+<span><span class="co">#&gt; 111590: 2.256 158.10789      3</span></span>
+<span><span class="co">#&gt; 111591: 2.258 158.29284      3</span></span>
+<span><span class="co">#&gt; 111592: 2.262 158.66292      3</span></span></code></pre></div>
 <p>To set the outputs in a <code>HydroImport</code> container, set the
 full argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -193,9 +196,9 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> Rated flow calculated</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-12-04 08:00:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2024-02-15 10:45:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 111297</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 111592</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -203,21 +206,23 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                    dateTime value   quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 111293: 2023-12-04 07:00:00 1.392 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111294: 2023-12-04 07:15:00 1.415 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111295: 2023-12-04 07:30:00 1.442 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111296: 2023-12-04 07:45:00 1.470 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 111297: 2023-12-04 08:00:00 1.498 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;                    dateTime value   quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;    &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                           </span></span>
+<span><span class="co">#&gt; 111588: 2024-02-15 09:45:00 2.246 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111589: 2024-02-15 10:00:00 2.254 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111590: 2024-02-15 10:15:00 2.256 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111591: 2024-02-15 10:30:00 2.258 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 111592: 2024-02-15 10:45:00 2.262 Unchecked   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt;        &lt;num&gt;     &lt;num&gt;   &lt;num&gt;   &lt;num&gt;        &lt;num&gt;</span></span>
 <span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
 <span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
 <span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
@@ -248,18 +253,19 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">## Calculate rated stage</span></span>
 <span><span class="va">ratedStage</span> <span class="op">&lt;-</span> <span class="va">bewdley</span><span class="op">$</span><span class="fu">rateStage</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">ratedStage</span></span>
-<span><span class="co">#&gt;            stage flow limb</span></span>
-<span><span class="co">#&gt;     1: 0.3140213 15.3    1</span></span>
-<span><span class="co">#&gt;     2: 0.3184182 15.5    1</span></span>
-<span><span class="co">#&gt;     3: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;     4: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;     5: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;    ---                    </span></span>
-<span><span class="co">#&gt; 70076: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70077: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70078: 0.2219045 11.3    1</span></span>
-<span><span class="co">#&gt; 70079: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70080: 0.2194841 11.2    1</span></span></code></pre></div>
+<span><span class="co">#&gt;            stage  flow   limb</span></span>
+<span><span class="co">#&gt;            &lt;num&gt; &lt;num&gt; &lt;fctr&gt;</span></span>
+<span><span class="co">#&gt;     1: 0.3140213  15.3      1</span></span>
+<span><span class="co">#&gt;     2: 0.3184182  15.5      1</span></span>
+<span><span class="co">#&gt;     3: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;     4: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;     5: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;    ---                       </span></span>
+<span><span class="co">#&gt; 70076: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70077: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70078: 0.2219045  11.3      1</span></span>
+<span><span class="co">#&gt; 70079: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70080: 0.2194841  11.2      1</span></span></code></pre></div>
 <p>We can compare against the previously imported stage data.</p>
 <p><img src="4_riskyData-Ratings_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>

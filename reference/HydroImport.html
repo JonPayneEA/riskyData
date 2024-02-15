@@ -792,8 +792,9 @@ there should be</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    stationName WISKI Easting Northing Latitude Longitude</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     Bewdley  2001  378235   276165 52.38307 -2.321186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    stationName  WISKI Easting Northing Latitude Longitude</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;char&gt; &lt;char&gt;   &lt;int&gt;    &lt;int&gt;    &lt;num&gt;     &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     Bewdley   2001  378235   276165 52.38307 -2.321186</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `HydroImportFactory$nrfa`</span></span></span>
@@ -801,8 +802,9 @@ there should be</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    WISKI codeNRFA                                             urlNRFA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     WISKI codeNRFA                                             urlNRFA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;char&gt;   &lt;char&gt;                                              &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:   2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `HydroImportFactory$meta`</span></span></span>
@@ -810,21 +812,29 @@ there should be</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      dataType modifications stationName    riverName WISKI RLOID stationGuide</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: Raw Import            NA     Bewdley River Severn  2001  2001           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      dataType modifications stationName    riverName  WISKI  RLOID stationGuide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;char&gt;        &lt;lgcl&gt;      &lt;char&gt;       &lt;char&gt; &lt;char&gt; &lt;char&gt;       &lt;lgcl&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: Raw Import            NA     Bewdley River Severn   2001   2001           NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                  baseURL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   &lt;char&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: http://environment.data.gov.uk/hydrology/id/measures/</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                 dataURL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                  &lt;char&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 8820d897-a09e-4857-8095-5834fee6962f-flow-i-900-m3s-qualified/readings.json?_limit=2000000&amp;mineq-date=2008-10-01&amp;max-date=2022-10-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                       measureURL idNRFA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           &lt;char&gt; &lt;char&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 8820d897-a09e-4857-8095-5834fee6962f-flow-i-900-m3s-qualified  54001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                urlNRFA easting northing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 &lt;char&gt;   &lt;int&gt;    &lt;int&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: https://nrfa.ceh.ac.uk/data/station/info/54001.html  378235   276165</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    latitude longitude area parameter unitName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 52.38307 -2.321186 4325      Flow     m3/s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  unit datum boreholeDepth</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: http://qudt.org/1.1/vocab/unit#CubicMeterPerSecond    NA            NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    latitude longitude  area parameter unitName</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;num&gt;     &lt;num&gt; &lt;num&gt;    &lt;char&gt;   &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: 52.38307 -2.321186  4325      Flow     m3/s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  unit  datum boreholeDepth</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                &lt;char&gt; &lt;lgcl&gt;        &lt;lgcl&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: http://qudt.org/1.1/vocab/unit#CubicMeterPerSecond     NA            NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    aquifer      start                 end timeStep timeZone records</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;lgcl&gt;     &lt;POSc&gt;              &lt;POSc&gt;    &lt;num&gt;   &lt;char&gt;   &lt;int&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:      NA 2008-10-01 2022-09-30 23:45:00      900      GMT  490848</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
@@ -842,6 +852,7 @@ there should be</p></dd>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      quality  count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;char&gt;  &lt;int&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:      Good 457101</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: Estimated  12019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3:   Suspect    669</span>
