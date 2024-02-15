@@ -116,7 +116,9 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     dt_obs <- dt$observedProperty
     lst <- list()
     for (i in seq_along(dt_obs)) {
-      lst[[i]] <- basename(dt_obs[[i]]$`@id`)
+      ## Some null values in ID field cause errors
+      lst[[i]] <- tryCatch({basename(dt_obs[[i]]$`@id`)},
+                           error = function(e){'NA'})
     }
     dt$observedProperty <- lst
     ## Check if any columns are class list and unnest ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -292,7 +294,9 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     dt_obs <- dt$observedProperty
     lst <- list()
     for (i in seq_along(dt_obs)) {
-      lst[[i]] <- basename(dt_obs[[i]]$`@id`)
+      ## Some null values in ID field cause errors
+      lst[[i]] <- tryCatch({basename(dt_obs[[i]]$`@id`)},
+                           error = function(e){'NA'})
     }
     dt$observedProperty <- lst
     ## Check if any columns are class list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
