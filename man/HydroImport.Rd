@@ -61,6 +61,20 @@ bewdley$plot()
 
 data(bewdley)
 bewdley$quality()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$missing`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$missing()
+
+## ------------------------------------------------
+## Method `HydroImportFactory$exceed`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$exceed(threshold = 200, gapWidth = 20)
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -96,6 +110,8 @@ bewdley$quality()
 \item \href{#method-HydroImport-plot}{\code{HydroImportFactory$plot()}}
 \item \href{#method-HydroImport-flowDuration}{\code{HydroImportFactory$flowDuration()}}
 \item \href{#method-HydroImport-quality}{\code{HydroImportFactory$quality()}}
+\item \href{#method-HydroImport-missing}{\code{HydroImportFactory$missing()}}
+\item \href{#method-HydroImport-exceed}{\code{HydroImportFactory$exceed()}}
 \item \href{#method-HydroImport-clone}{\code{HydroImportFactory$clone()}}
 }
 }
@@ -605,13 +621,13 @@ hydrological year}
 \subsection{Method \code{plot()}}{
 Plot the data by years
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$plot(cols = 3)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$plot(wrap = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{cols}}{Set to 3, use this to specify how many of columns of graphs
+\item{\code{wrap}}{Set to 3, use this to specify how many of columns of graphs
 there should be}
 }
 \if{html}{\out{</div>}}
@@ -663,6 +679,63 @@ Displays the number of observations under each quality flag
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{data(bewdley)
 bewdley$quality()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-missing"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-missing}{}}}
+\subsection{Method \code{missing()}}{
+Finds missing values in the data series
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$missing(.)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$missing()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-exceed"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-exceed}{}}}
+\subsection{Method \code{exceed()}}{
+Shows threshold exceedance statistics
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$exceed(threshold = 0, gapWidth = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{threshold}}{The threshold at which to test against}
+
+\item{\code{gapWidth}}{This allows you to ignore a set number of time steps
+beneath a threshold between two or more events}
+
+\item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$exceed(threshold = 200, gapWidth = 20)
 }
 \if{html}{\out{</div>}}
 

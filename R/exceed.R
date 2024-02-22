@@ -6,7 +6,7 @@
 #' @param threshold The threshold at which to test
 #' @param gapWidth This allows you to ignore a set number of time steps beneath
 #' a threshold between two or more events
-#' @param timestep The time step used applied in the observed data in seconds
+#' @param timeStep The time step used applied in the observed data in seconds
 #'
 #' @importFrom data.table data.table
 #' @importFrom data.table shift
@@ -20,13 +20,14 @@
 #' events <- exceed(bewdley$data$dateTime,
 #'                  bewdley$data$value,
 #'                  threshold = 200,
-#'                  gapWidth = 20)
+#'                  gapWidth = 20,
+#'                  timeStep = 900)
 #' events
 exceed <- function(dateTime = NULL,
                    value = NULL,
                    threshold = NULL,
                    gapWidth = 0,
-                   timestep = 900){
+                   timeStep = 900){
   dt <- data.table(dateTime = dateTime, value = value)
   ## Filter NA values out
   dt[is.na(value)] <- 0
@@ -34,14 +35,14 @@ exceed <- function(dateTime = NULL,
   consecEx <- rle(dt$value >= threshold)
   ## Find end point positions
   end <- cumsum(consecEx$lengths)
-  ## Pad out the end value by one time step on TRUE events
-  #! There will be exceedence in this time period
   pos <- which(consecEx$values == TRUE)
-  end[pos] <- end[pos] + 1
+  end[pos] <- end[pos]
   ## Find start position using lagged consecEx values
   start <- c(1, data.table::shift(end, type = 'lag')[-1] + 1)
   ## Relate positions to the dates
-  end <- dt$dateTime[end]
+  ## Pad out the end value by one time step on TRUE events
+  #! There will be exceedence in this time period
+  end <- dt$dateTime[end] + timeStep
   start <- dt$dateTime[start]
 
   ## Combine data for next steps
@@ -50,7 +51,7 @@ exceed <- function(dateTime = NULL,
                       end,
                       ts = as.numeric(difftime(end,
                                                start,
-                                               units = "secs")/900))
+                                               units = "secs")/timeStep))
   ## Iterate through table to find non-events smaller than the threshold
   #! Converts "event" to TRUE if criteria met
   gap <- gapWidth
@@ -70,10 +71,10 @@ exceed <- function(dateTime = NULL,
                   by = group]
   ## Calculate time steps
   export <- export[, .(Start,
-                       End,
+                       End = End,
                        timeSteps = as.numeric(difftime(End,
                                                        Start,
-                                                       units = "secs")/900))]
+                                                       units = "secs")/timeStep))]
   ## Export
   return(export)
 }

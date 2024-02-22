@@ -40,7 +40,6 @@
 #'
 #' @import R6
 #' @import cli
-#' @import cowplot
 #'
 #' @name HydroImport
 #' @rdname HydroImport
@@ -120,7 +119,7 @@ HydroImportFactory <- R6::R6Class(
       cli::cli_text(paste("{.strong Data Type:}", private$dataType))
       cli::cli_text(paste("{.strong Station name:}", private$stationName))
       cli::cli_text(paste("{.strong WISKI ID:}", private$WISKI))
-      cli::cli_text(paste("{.strong Data Type:}", private$parameter))
+      cli::cli_text(paste("{.strong Parameter Type:}", private$parameter))
       cli::cli_text(paste("{.strong Modifications:}", private$modifications))
       cli::cli_text(paste("{.strong Start:}", private$start()))
       cli::cli_text(paste("{.strong End:}", private$end()))
@@ -157,8 +156,9 @@ HydroImportFactory <- R6::R6Class(
         "obj$data", "obj$rating", "obj$meta()", "obj$asVol()",
         "obj$hydroYearDay()", "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()",
         "obj$summary()", "obj$coords()", "obj$nrfa()", "obj$dataAgg()",
-        "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$plot()",
-        "obj$window()", "obj$rateFlow()", "obj$rateStage()"
+        "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$missing()",
+        "obj$exceed", "obj$plot()", "obj$window()", "obj$rateFlow()",
+        "obj$rateStage()"
       )
 
       desc <- c(
@@ -176,7 +176,9 @@ HydroImportFactory <- R6::R6Class(
         "Aggregate data by, hour, day, month calendar year and hydroYear",
         "Uses user specified aggregation timings, see ?rollingAggs",
         "Daily statistics of flow, carried out on hydrological or calendar day",
-        "Provides a quick summary table of the data qualiity flags",
+        "Provides a quick summary table of the data quality flags",
+        "Quickly finds the positions of missing data points",
+        "Show how many times observed data exceed a given threshold",
         "Create a plot of each year of data, by hydrological year",
         "Extracts the subset of data observed between the times start and end.",
         "Converts stage into a rated flow using the specified rating table",
@@ -658,12 +660,12 @@ HydroImportFactory <- R6::R6Class(
     },
     #' @description
     #' Plot the data by years
-    #' @param cols Set to 3, use this to specify how many of columns of graphs
+    #' @param wrap Set to 3, use this to specify how many of columns of graphs
     #' there should be
     #' @examples
     #' data(bewdley)
     #' bewdley$plot()
-    plot = function(cols = 3){
+    plot = function(wrap = TRUE){
       # Function runs on hydrological year
       ## Assert whether hydroYear has been calculated
       if (!"hydroYear" %in% colnames(self$data)) {
@@ -671,31 +673,40 @@ HydroImportFactory <- R6::R6Class(
       }
 
       # Find the years present in the data
-      years <- unique(self$data$hydroYear)
+      # years <- unique(self$data$hydroYear)
 
       # Construct the y axis label using the private metadata
       yAxis <- paste0(private$parameter, " (", private$unitName, ")")
 
-      # Loop through the years, ggplots are stored in a list
-      for(i in seq_along(years)) {
-        if(i == 1){
-          plotlistH <- {} #!! Set condition to first year in the range
+      if(private$parameter == 'Rainfall'){
+        if(wrap == TRUE){
+          plot <- ggplot(self$data, aes(dateTime, value)) +
+            geom_col() +
+            labs(x = NULL, y = yAxis) +
+            scale_x_datetime(labels = scales::date_format("%b")) + # this sets
+            # it to only show the month. Lord knows why month ended up at "%b"
+            facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+        } else {
+          plot <- ggplot(self$data, aes(dateTime, value)) +
+            geom_col() +
+            labs(x = 'Date', y = yAxis)
         }
-
-        ## Subset by year in loop
-        dt <- self$data[hydroYear == years[i],]
-
-        plotlistH[[ length(plotlistH)+1 ]] <- ggplot(dt, aes(dateTime, value)) +
-          geom_line(size = 0.1) +
-          labs(x = NULL, y = yAxis) +
-          scale_x_datetime(labels = scales::date_format("%b")) + # this sets it to
-          #only show the month. Lord knows why month ended up at "%b"
-          ggtitle(paste(toString(years[i])))
+      } else {
+        if(wrap == TRUE){
+          plot <- ggplot(self$data, aes(dateTime, value)) +
+            geom_line(size = 0.1)  +
+            labs(x = NULL, y = yAxis) +
+            scale_x_datetime(labels = scales::date_format("%b")) + # this sets
+            # it to only show the month. Lord knows why month ended up at "%b"
+            facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+        } else {
+          plot <- ggplot(self$data, aes(dateTime, value)) +
+            geom_line(size = 0.1)  +
+            labs(x = 'Date', y = yAxis)
+        }
       }
-      # Put each plot into a grid
-      grd <- cowplot::plot_grid(plotlist = plotlistH, ncol = cols)
-      # Return grd object
-      return(grd)
+
+      return(plot)
     },
     #' @description
     #' Flow duration curve of data
@@ -733,7 +744,37 @@ HydroImportFactory <- R6::R6Class(
     quality = function(.) {
       dt <- self$data[, .(count = .N), by = quality]
       return(dt)
-    }
+    },
+
+  #' @description
+  #' Finds missing values in the data series
+  #' @param . (ignored).
+  #' @examples
+  #' data(bewdley)
+  #' bewdley$missing()
+  missing = function(.) {
+    dt <- naRun(dateTime = self$data$dateTime,
+                value = self$data$value,
+                timestep = private$timeStep())
+    return(dt)
+  },
+  #' @description
+  #' Shows threshold exceedance statistics
+  #' @param threshold The threshold at which to test against
+  #' @param gapWidth This allows you to ignore a set number of time steps
+  #' beneath a threshold between two or more events
+  #' @param . (ignored).
+  #' @examples
+  #' data(bewdley)
+  #' bewdley$exceed(threshold = 200, gapWidth = 20)
+  exceed = function(threshold = 0, gapWidth = 0) {
+    dt <- exceed(dateTime = self$data$dateTime,
+                 value = self$data$value,
+                 timeStep = private$timeStep(),
+                 gapWidth = gapWidth,
+                 threshold = threshold)
+    return(dt)
+  }
   ),
 
   ## Set private fields (hidden from normal view)

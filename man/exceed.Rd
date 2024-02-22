@@ -10,7 +10,7 @@ exceed(
   value = NULL,
   threshold = NULL,
   gapWidth = 0,
-  timestep = 900
+  timeStep = 900
 )
 }
 \arguments{
@@ -23,7 +23,7 @@ exceed(
 \item{gapWidth}{This allows you to ignore a set number of time steps beneath
 a threshold between two or more events}
 
-\item{timestep}{The time step used applied in the observed data in seconds}
+\item{timeStep}{The time step used applied in the observed data in seconds}
 }
 \value{
 A table of events with start and end times
@@ -37,6 +37,7 @@ data(bewdley)
 events <- exceed(bewdley$data$dateTime,
                  bewdley$data$value,
                  threshold = 200,
-                 gapWidth = 20)
+                 gapWidth = 20,
+                 timeStep = 900)
 events
 }
