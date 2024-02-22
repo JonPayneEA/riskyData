@@ -13,9 +13,9 @@ hydroYearDay(x, calendar = "oct_us_gb", ...)
 \method{hydroYearDay}{POSIXct}(x, calendar = "oct_us_gb")
 }
 \arguments{
-\item{d}{Array of dates of class Date}
+\item{x}{Array of dates of class Date}
 
-\item{hy_cal}{hydrological year calendar. Set to 'oct_us_gb' (USA and UK),
+\item{calendar}{hydrological year calendar. Set to 'oct_us_gb' (USA and UK),
 but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).}
 }
 \value{
@@ -27,15 +27,15 @@ Creates fields for hydrological year and hydrological day.
 Speed is slow, needs conversion to C++ in future iterations.
 }
 \examples{
-# Load bewdley dataset
+## Load bewdley dataset
 data(bewdley)
 
-# Inspect the data
+## Inspect the data
 bewdley$data
 
-# Add hydrological year and hydrological day columns
+## Add hydrological year and hydrological day columns
 bewdley$hydroYearDay()
 
-# Print the bewdley dataset
+## Print the bewdley dataset
 bewdley
 }

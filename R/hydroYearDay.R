@@ -4,30 +4,31 @@
 #'
 #' @description Speed is slow, needs conversion to C++ in future iterations.
 #'
-#' @param d Array of dates of class Date
-#' @param hy_cal hydrological year calendar. Set to 'oct_us_gb' (USA and UK),
+#' @param x Array of dates of class Date
+#' @param calendar hydrological year calendar. Set to 'oct_us_gb' (USA and UK),
 #' but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).
 #'
 #' @return Creates a hydrological year and hydrological day column
-#' @export
+#' @export hydroYearDay
 #'
 #' @examples
-#' # Load bewdley dataset
+#' ## Load bewdley dataset
 #' data(bewdley)
 #'
-#' # Inspect the data
+#' ## Inspect the data
 #' bewdley$data
 #'
-#' # Add hydrological year and hydrological day columns
+#' ## Add hydrological year and hydrological day columns
 #' bewdley$hydroYearDay()
 #'
-#' # Print the bewdley dataset
+#' ## Print the bewdley dataset
 #' bewdley
 hydroYearDay <- function(x, calendar = "oct_us_gb", ...) {
   UseMethod("hydroYearDay", x)
 }
 
 #' @rdname hydroYearDay
+#' @export hydroYearDay.data.table
 #' @export
 hydroYearDay.data.table <- function(x, calendar = "oct_us_gb") {
   date <- as.Date(x$dateTime)
@@ -67,6 +68,7 @@ hydroYearDay.data.table <- function(x, calendar = "oct_us_gb") {
 }
 
 #' @rdname hydroYearDay
+#' @export hydroYearDay.POSIXct
 #' @export
 hydroYearDay.POSIXct <- function(x, calendar = "oct_us_gb") {
   date <- as.Date(x)
@@ -104,5 +106,4 @@ hydroYearDay.POSIXct <- function(x, calendar = "oct_us_gb") {
   }
   return(data.table(hydroYear, hydroYearDay))
 }
-
 

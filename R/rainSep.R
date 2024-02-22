@@ -1,4 +1,4 @@
-#' @title Rainfall event seperation
+#' @title Rainfall event separation
 #'
 #' @description The `rainSep()` function uses run length encoding to find
 #' consecutive rainfall periods. To avoid brief timesteps of no rain from

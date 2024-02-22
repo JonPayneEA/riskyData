@@ -2,7 +2,7 @@
 % Please edit documentation in R/rainSep.R
 \name{rainSep}
 \alias{rainSep}
-\title{Rainfall event seperation}
+\title{Rainfall event separation}
 \usage{
 rainSep(dateTime = NULL, precip = NULL, threshold = 0, minTotal = 0, roll = 0)
 }
