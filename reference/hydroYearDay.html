@@ -64,16 +64,19 @@ Speed is slow, needs conversion to C++ in future iterations."><meta property="og
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="va">x</span>, calendar <span class="op">=</span> <span class="st">"oct_us_gb"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for data.table</span></span>
+<span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="va">x</span>, calendar <span class="op">=</span> <span class="st">"oct_us_gb"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for POSIXct</span></span>
 <span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="va">x</span>, calendar <span class="op">=</span> <span class="st">"oct_us_gb"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>d</dt>
+    <dl><dt>x</dt>
 <dd><p>Array of dates of class Date</p></dd>
 
 
-<dt>hy_cal</dt>
+<dt>calendar</dt>
 <dd><p>hydrological year calendar. Set to 'oct_us_gb' (USA and UK),
 but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 
@@ -87,10 +90,10 @@ but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Load bewdley dataset</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Load bewdley dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Inspect the data</span></span></span>
+<span class="r-in"><span><span class="co">## Inspect the data</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    dateTime value quality  qcode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      &lt;POSc&gt; &lt;num&gt;  &lt;char&gt; &lt;char&gt;</span>
@@ -106,13 +109,13 @@ but can also be 'sep_br' (Brazil), 'apr_cl' (Chille).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 490847: 2022-09-30 23:30:00  11.2    Good   &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 490848: 2022-09-30 23:45:00  11.2    Good   &lt;NA&gt;</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Add hydrological year and hydrological day columns</span></span></span>
+<span class="r-in"><span><span class="co">## Add hydrological year and hydrological day columns</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[2.2s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Print the bewdley dataset</span></span></span>
+<span class="r-in"><span><span class="co">## Print the bewdley dataset</span></span></span>
 <span class="r-in"><span><span class="va">bewdley</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroImport</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span>
