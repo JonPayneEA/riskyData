@@ -3,11 +3,14 @@
 \name{hydroYearDay}
 \alias{hydroYearDay}
 \alias{hydroYearDay.data.table}
+\alias{hydroYearDay.POSIXct}
 \title{HydroYearDay}
 \usage{
 hydroYearDay(x, calendar = "oct_us_gb", ...)
 
 \method{hydroYearDay}{data.table}(x, calendar = "oct_us_gb")
+
+\method{hydroYearDay}{POSIXct}(x, calendar = "oct_us_gb")
 }
 \arguments{
 \item{d}{Array of dates of class Date}

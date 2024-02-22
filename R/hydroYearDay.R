@@ -65,3 +65,44 @@ hydroYearDay.data.table <- function(x, calendar = "oct_us_gb") {
   }
   return(data.table(hydroYear, hydroYearDay))
 }
+
+#' @rdname hydroYearDay
+#' @export
+hydroYearDay.POSIXct <- function(x, calendar = "oct_us_gb") {
+  date <- as.Date(x)
+
+  m <- as.numeric(month(date)) # extract month
+  y <- as.numeric(year(date)) # extract year
+
+  ## Create array for hydrological year
+  hydroYear <- y
+
+  if (calendar == "oct_us_gb") {
+    ## USA and Great Britain
+    # Hydrological year 2010 starts on Oct 1 2009 and finishes on Sep 30 2010
+    hydroYear[m >= 10] <- (hydroYear[m >= 10] + 1)
+    startHY <- as.Date(paste0(hydroYear - 1, "-10-01"))
+  } else if (calendar == "sep_br") {
+    ## Brazil
+    # Hydrological year 2010 starts on Sep 1 2009 and finishes on Aug 31 2010
+    hydroYear[m >= 9] <- (hydroYear[m >= 9] + 1)
+    startHY <- as.Date(paste0(hydroYear - 1, "-09-01"))
+  } else if (calendar == "apr_cl") {
+    ## Chile
+    # Hydrological year 2010 starts on Apr 1 2010 and finishes on Mar 31 2011
+    hydroYear[m <= 3] <- (hydroYear[m <= 3] - 1)
+    startHY <- as.Date(paste0(hydroYear, "-04-01"))
+  } else {
+    stop(paste0("Unkown hydrological year calendar:", calendar))
+  }
+
+  ## days since the beginning of the hydro year
+  hydroYearDay <- as.numeric(date - startHY + 1)
+
+  if (any(hydroYearDay < 1 | hydroYearDay > 366)) {
+    stop("Error when computing day of hydro year")
+  }
+  return(data.table(hydroYear, hydroYearDay))
+}
+
+
