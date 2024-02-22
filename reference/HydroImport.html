@@ -106,6 +106,8 @@ contains public raw data and private metadata.</p>
 <li><p><a href="#method-HydroImport-plot"><code>HydroImportFactory$plot()</code></a></p></li>
 <li><p><a href="#method-HydroImport-flowDuration"><code>HydroImportFactory$flowDuration()</code></a></p></li>
 <li><p><a href="#method-HydroImport-quality"><code>HydroImportFactory$quality()</code></a></p></li>
+<li><p><a href="#method-HydroImport-missing"><code>HydroImportFactory$missing()</code></a></p></li>
+<li><p><a href="#method-HydroImport-exceed"><code>HydroImportFactory$exceed()</code></a></p></li>
 <li><p><a href="#method-HydroImport-clone"><code>HydroImportFactory$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-HydroImport-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -661,12 +663,12 @@ hydrological year</p></dd>
 <h3 id="method-plot-">Method <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code><a class="anchor" aria-label="anchor" href="#method-plot-"></a></h3>
 <p>Plot the data by years</p><div class="section">
 <h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>cols <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>cols</code></dt>
+<p></p><div class="arguments"><dl><dt><code>wrap</code></dt>
 <dd><p>Set to 3, use this to specify how many of columns of graphs
 there should be</p></dd>
 
@@ -718,15 +720,68 @@ there should be</p></dd>
 </div>
 
 
-</div><p></p><hr><a id="method-HydroImport-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-HydroImport-missing"></a><div class="section">
+<h3 id="method-missing-">Method <code><a href="https://rdrr.io/r/base/missing.html" class="external-link">missing()</a></code><a class="anchor" aria-label="anchor" href="#method-missing-"></a></h3>
+<p>Finds missing values in the data series</p><div class="section">
 <h4 id="usage-22">Usage<a class="anchor" aria-label="anchor" href="#usage-22"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>.</code></dt>
+<dd><p>(ignored).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-HydroImport-exceed"></a><div class="section">
+<h3 id="method-exceed-">Method <code><a href="exceed.html">exceed()</a></code><a class="anchor" aria-label="anchor" href="#method-exceed-"></a></h3>
+<p>Shows threshold exceedance statistics</p><div class="section">
+<h4 id="usage-23">Usage<a class="anchor" aria-label="anchor" href="#usage-23"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">exceed</span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">0</span>, gapWidth <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>threshold</code></dt>
+<dd><p>The threshold at which to test against</p></dd>
+
+
+<dt><code>gapWidth</code></dt>
+<dd><p>This allows you to ignore a set number of time steps
+beneath a threshold between two or more events</p></dd>
+
+
+<dt><code>.</code></dt>
+<dd><p>(ignored).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="examples-8">Examples<a class="anchor" aria-label="anchor" href="#examples-8"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">exceed</span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">200</span>, gapWidth <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-HydroImport-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-24">Usage<a class="anchor" aria-label="anchor" href="#usage-24"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -857,6 +912,22 @@ there should be</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: Estimated  12019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3:   Suspect    669</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4: Unchecked  21059</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `HydroImportFactory$missing`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> attempt to apply non-function</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `HydroImportFactory$exceed`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">exceed</span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">200</span>, gapWidth <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> attempt to apply non-function</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
