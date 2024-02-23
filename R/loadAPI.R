@@ -31,6 +31,9 @@
 #' @param meta Set as TRUE, exports metadata for gauge with the data request
 #' @param rtExt Set to NULL, if TRUE hydrological data series are extended with
 #' the real time API
+#' @param rtLookup Set as FALSE, this uses an inbuilt dataset, if set to TRUE
+#' this will update the table using the most recent data. However, this can
+#' dramatically increase the run time.
 #'
 #' @import data.table
 #' @import jsonlite
@@ -74,7 +77,8 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                     type = NULL, datapoints = "standard",
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
-                    obsProperty = NULL, meta = TRUE, rtExt = FALSE) {
+                    obsProperty = NULL, meta = TRUE, rtExt = FALSE,
+                    rtLookup = FALSE) {
   # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obsVars <- c(
     "waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
@@ -425,16 +429,47 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     if (rtExt == TRUE){
       ## Download the realtime data
 
-      rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/stations/'
-      rtLink <- paste0(rtStation, ID)
+      rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/measures?stationReference='
 
+      ## Lookup measure to parameters required
+      measures <- c('flow', 'level', 'rainfall')
+      params <- c('waterFlow', 'waterLevel', 'rainfall')
+      names(params) <- measures
+      param <- params[measure]
+
+      if(rtLookup == FALSE) {
+        data("realtimeIDs")
+      } else {
+        realtimeIDs <- riskyData::loadAPI(ID = 'flood')
+        realtimeIDs <- unique(realtimeIDs[, .(stationReference,
+                                              wiskiID,
+                                              label,
+                                              parameter,
+                                              parameterName
+                                              )])
+      }
+      rloid <- realtimeIDs[wiskiID == ID &
+                           parameter == param,
+                           .(stationReference)]
+      rtLink <- paste0(rtStation, rloid[1])
       # Download the measures
-      rtSeries <- data.table(jsonlite::fromJSON(rtLink))
-      rtMeasures <- data.table(rtSeries$V1[3][[1]]$measures)
-      colnames(rtMeasures)[1] <- 'measID'
+      rtSeries <- jsonlite::read_json(rtLink)
+      rtMeasures <- data.table::rbindlist(rtSeries$items, fill = TRUE)
+      ## The fill causes duplicates, easier to just remove
+      rtMeasures <- unique(rtMeasures[, .(`@id`,
+                                          label,
+                                          parameter,
+                                          parameterName,
+                                          period,
+                                          valueType)])
+      ## Rename the `@id` column
+            colnames(rtMeasures)[1] <- 'measID'
 
       ## Filter to the data used in the `loadAPI()` call
-      rtMeasure <- rtMeasures[period == period & parameter == measure, measID,]
+      rtMeasure <- rtMeasures[period == period &
+                                parameter == measure &
+                                valueType == type,
+                              measID]
 
       if (identical(rtMeasure, character(0))){
         stop('There is no realtime data available for the measures required. If you

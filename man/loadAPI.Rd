@@ -19,7 +19,8 @@ loadAPI(
   dist = NULL,
   obsProperty = NULL,
   meta = TRUE,
-  rtExt = FALSE
+  rtExt = FALSE,
+  rtLookup = FALSE
 )
 }
 \arguments{
@@ -64,6 +65,10 @@ Available metrics;
 
 \item{rtExt}{Set to NULL, if TRUE hydrological data series are extended with
 the real time API}
+
+\item{rtLookup}{Set as FALSE, this uses an inbuilt dataset, if set to TRUE
+this will update the table using the most recent data. However, this can
+dramatically increase the run time.}
 }
 \value{
 Various outputs see vignettes
