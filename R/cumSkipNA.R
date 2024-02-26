@@ -27,10 +27,10 @@ cumsumNA <- function(x, ...) {
 
 #' @rdname cumsumNA
 #' @export
-cumsumNA.default <- function(x) {
+cumsumNA.data.table <- function(x) {
   dt <- data.table(
-    dateTime = x$dateTime,
-    cumSum = cumsum(ifelse(is.na(x$value), 0, x$value)) + x$value * 0
+    dateTime <- x$dateTime,
+    cumSum <- cumsum(ifelse(is.na(x$value), 0, x$value)) + x$value * 0
   )
   return(dt)
 }
@@ -39,8 +39,8 @@ cumsumNA.default <- function(x) {
 #' @export
 cumsumNA.HydroImport <- function(x) {
   dt <- data.table(
-    dateTime = x$data$dateTime,
-    cumSum = cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
+    dateTime <- x$data$dateTime,
+    cumSum <- cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
   )
   return(dt)
 }
@@ -49,8 +49,15 @@ cumsumNA.HydroImport <- function(x) {
 #' @export
 cumsumNA.HydroAggs <- function(x) {
   dt <- data.table(
-    dateTime = x$data$dateTime,
-    cumSum = cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
+    dateTime <- x$data$dateTime,
+    cumSum <- cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
   )
   return(dt)
+}
+
+#' @rdname cumsumNA
+#' @export
+cumsumNA.numeric <- function(x) {
+  cumSum <- cumsum(ifelse(is.na(x), 0, x)) + x * 0
+  return(cumSum)
 }

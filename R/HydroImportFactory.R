@@ -662,10 +662,11 @@ HydroImportFactory <- R6::R6Class(
     #' Plot the data by years
     #' @param wrap Set to 3, use this to specify how many of columns of graphs
     #' there should be
+    #' @param cumul Used to provide cumulative rainfall totals on rainfall
     #' @examples
     #' data(bewdley)
     #' bewdley$plot()
-    plot = function(wrap = TRUE){
+    plot = function(wrap = TRUE, cumul = FALSE){
       # Function runs on hydrological year
       ## Assert whether hydroYear has been calculated
       if (!"hydroYear" %in% colnames(self$data)) {
@@ -680,16 +681,37 @@ HydroImportFactory <- R6::R6Class(
 
       if(private$parameter == 'Rainfall'){
         if(wrap == TRUE){
-          plot <- ggplot(self$data, aes(dateTime, value)) +
-            geom_col() +
-            labs(x = NULL, y = yAxis) +
-            scale_x_datetime(labels = scales::date_format("%b")) + # this sets
-            # it to only show the month. Lord knows why month ended up at "%b"
-            facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+          if(cumul == TRUE) {
+            cumul <- self$data[, .(dateTime,
+                                   value = cumsumNA.numeric(value)),
+                               by = hydroYear]
+            print(cumul)
+            plot <- ggplot(cumul, aes(dateTime, value)) +
+              geom_line() +
+              labs(x = NULL, y = yAxis) +
+              scale_x_datetime(labels = scales::date_format("%b")) + # this sets
+              # it to only show the month. Lord knows why month ended up at "%b"
+              facet_wrap(~ hydroYear, scales = 'free_x')
+          } else {
+            plot <- ggplot(self$data, aes(dateTime, value)) +
+              geom_col() +
+              labs(x = NULL, y = yAxis) +
+              scale_x_datetime(labels = scales::date_format("%b")) + # this sets
+              # it to only show the month. Lord knows why month ended up at "%b"
+              facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+          }
         } else {
-          plot <- ggplot(self$data, aes(dateTime, value)) +
-            geom_col() +
-            labs(x = 'Date', y = yAxis)
+          if(cumul == TRUE) {
+            cumul <- self$data[, .(dateTime,
+                                   value = cumsumNA.numeric(value))]
+            plot <- ggplot(cumul, aes(dateTime, value)) +
+              geom_line() +
+              labs(x = NULL, y = yAxis)
+          } else {
+            plot <- ggplot(self$data, aes(dateTime, value)) +
+              geom_col() +
+              labs(x = 'Date', y = yAxis)
+          }
         }
       } else {
         if(wrap == TRUE){

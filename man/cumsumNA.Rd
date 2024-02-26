@@ -2,18 +2,21 @@
 % Please edit documentation in R/cumSkipNA.R
 \name{cumsumNA}
 \alias{cumsumNA}
-\alias{cumsumNA.default}
+\alias{cumsumNA.data.table}
 \alias{cumsumNA.HydroImport}
 \alias{cumsumNA.HydroAggs}
+\alias{cumsumNA.numeric}
 \title{cumsumNA}
 \usage{
 cumsumNA(x, ...)
 
-\method{cumsumNA}{default}(x)
+\method{cumsumNA}{data.table}(x)
 
 \method{cumsumNA}{HydroImport}(x)
 
 \method{cumsumNA}{HydroAggs}(x)
+
+\method{cumsumNA}{numeric}(x)
 }
 \arguments{
 \item{x}{Raw rain gauge data or merged dataset}
