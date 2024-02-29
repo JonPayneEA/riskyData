@@ -685,13 +685,12 @@ HydroImportFactory <- R6::R6Class(
             cumul <- self$data[, .(dateTime,
                                    value = cumsumNA.numeric(value)),
                                by = hydroYear]
-            print(cumul)
             plot <- ggplot(cumul, aes(dateTime, value)) +
               geom_line() +
               labs(x = NULL, y = yAxis) +
               scale_x_datetime(labels = scales::date_format("%b")) + # this sets
               # it to only show the month. Lord knows why month ended up at "%b"
-              facet_wrap(~ hydroYear, scales = 'free_x')
+              facet_wrap(~ hydroYear, scales = 'fixed')
           } else {
             plot <- ggplot(self$data, aes(dateTime, value)) +
               geom_col() +
