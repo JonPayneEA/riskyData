@@ -690,7 +690,7 @@ HydroImportFactory <- R6::R6Class(
               labs(x = NULL, y = yAxis) +
               scale_x_datetime(labels = scales::date_format("%b")) + # this sets
               # it to only show the month. Lord knows why month ended up at "%b"
-              facet_wrap(~ hydroYear, scales = 'fixed')
+              facet_wrap(~ hydroYear, scales = 'free_x')
           } else {
             plot <- ggplot(self$data, aes(dateTime, value)) +
               geom_col() +
