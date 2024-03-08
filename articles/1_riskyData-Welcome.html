@@ -137,19 +137,32 @@ versions.</p>
 <span><span class="co">#&gt; 17940: 2230_w1TH      KNIGHTON MAIN             &lt;NA&gt;        waterFlow  429500</span></span>
 <span><span class="co">#&gt; 17941:    2255TH            WELFORD   River Lambourn        waterFlow  441106</span></span>
 <span><span class="co">#&gt; 17942:    2603TH             TAPLOW             &lt;NA&gt;        waterFlow  490452</span></span>
-<span><span class="co">#&gt;        northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt;           &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;         &lt;num&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt;     1:   208591 51.74668  0.624437 2008-10-31            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     2:   139460 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
-<span><span class="co">#&gt;     3:   139460 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
-<span><span class="co">#&gt;     4:   402022 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
-<span><span class="co">#&gt;     5:   402022 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
-<span><span class="co">#&gt;    ---                                                                   </span></span>
-<span><span class="co">#&gt; 17938:   165260 51.38183 -0.966640       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17939:   164780 51.37737 -0.951237       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17940:   171020 51.43741 -1.576981       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17941:   173066 51.45508 -1.409783       &lt;NA&gt;         176.0         39031</span></span>
-<span><span class="co">#&gt; 17942:   181950 51.52922 -0.697461       &lt;NA&gt;            NA         39866</span></span></code></pre></div>
+<span><span class="co">#&gt;        northing      lat      long dateOpened dateClosed catchmentArea</span></span>
+<span><span class="co">#&gt;           &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt;     1:   208591 51.74668  0.624437 2008-10-31       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;     2:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;     3:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;     4:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;     5:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;    ---                                                                </span></span>
+<span><span class="co">#&gt; 17938:   165260 51.38183 -0.966640       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17939:   164780 51.37737 -0.951237       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17940:   171020 51.43741 -1.576981       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17941:   173066 51.45508 -1.409783       &lt;NA&gt;       &lt;NA&gt;         176.0</span></span>
+<span><span class="co">#&gt; 17942:   181950 51.52922 -0.697461       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;        nrfaStationID</span></span>
+<span><span class="co">#&gt;               &lt;char&gt;</span></span>
+<span><span class="co">#&gt;     1:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     2:         51003</span></span>
+<span><span class="co">#&gt;     3:         51003</span></span>
+<span><span class="co">#&gt;     4:         27030</span></span>
+<span><span class="co">#&gt;     5:         27030</span></span>
+<span><span class="co">#&gt;    ---              </span></span>
+<span><span class="co">#&gt; 17938:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17939:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17940:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17941:         39031</span></span>
+<span><span class="co">#&gt; 17942:         39866</span></span></code></pre></div>
 <p>If you wish to constrain these data to NRFA or WISKI sites only add
 “nrfa” or “wiski” to the <code>ID</code> argument. There’s also an
 additional API that this function can connect to that contains real time
@@ -265,19 +278,32 @@ can use;</p>
 <span><span class="co">#&gt; 1281: 2230_w1TH      KNIGHTON MAIN             &lt;NA&gt;        waterFlow  429500</span></span>
 <span><span class="co">#&gt; 1282:    2255TH            WELFORD   River Lambourn        waterFlow  441106</span></span>
 <span><span class="co">#&gt; 1283:    2603TH             TAPLOW             &lt;NA&gt;        waterFlow  490452</span></span>
-<span><span class="co">#&gt;       northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;         &lt;num&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt;    1:   208591 51.74668  0.624437 2008-10-31            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
-<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
-<span><span class="co">#&gt;    4:   101602 50.80417 -3.511302 1956-04-30         600.9         45001</span></span>
-<span><span class="co">#&gt;    5:   163064 51.36398 -2.788890 1973-03-12            NA         52017</span></span>
-<span><span class="co">#&gt;   ---                                                                   </span></span>
-<span><span class="co">#&gt; 1279:   165260 51.38183 -0.966640       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 1280:   164780 51.37737 -0.951237       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 1281:   171020 51.43741 -1.576981       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 1282:   173066 51.45508 -1.409783       &lt;NA&gt;         176.0         39031</span></span>
-<span><span class="co">#&gt; 1283:   181950 51.52922 -0.697461       &lt;NA&gt;            NA         39866</span></span></code></pre></div>
+<span><span class="co">#&gt;       northing      lat      long dateOpened dateClosed catchmentArea</span></span>
+<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt;    1:   208591 51.74668  0.624437 2008-10-31       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;    4:   101602 50.80417 -3.511302 1956-04-30       &lt;NA&gt;         600.9</span></span>
+<span><span class="co">#&gt;    5:   163064 51.36398 -2.788890 1973-03-12       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;   ---                                                                </span></span>
+<span><span class="co">#&gt; 1279:   165260 51.38183 -0.966640       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1280:   164780 51.37737 -0.951237       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1281:   171020 51.43741 -1.576981       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1282:   173066 51.45508 -1.409783       &lt;NA&gt;       &lt;NA&gt;         176.0</span></span>
+<span><span class="co">#&gt; 1283:   181950 51.52922 -0.697461       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;       nrfaStationID</span></span>
+<span><span class="co">#&gt;              &lt;char&gt;</span></span>
+<span><span class="co">#&gt;    1:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;    2:         51003</span></span>
+<span><span class="co">#&gt;    3:         27030</span></span>
+<span><span class="co">#&gt;    4:         45001</span></span>
+<span><span class="co">#&gt;    5:         52017</span></span>
+<span><span class="co">#&gt;   ---              </span></span>
+<span><span class="co">#&gt; 1279:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 1280:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 1281:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 1282:         39031</span></span>
+<span><span class="co">#&gt; 1283:         39866</span></span></code></pre></div>
 <p>Or if we wished to load the sites that are used within the National
 River Flow Archive (NRFA);</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -295,19 +321,19 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt; 1821:  0250TH   PERROTTS BROOK    River Churn        waterFlow  402150   205710</span></span>
 <span><span class="co">#&gt; 1822:  2255TH          WELFORD River Lambourn        waterFlow  441106   173066</span></span>
 <span><span class="co">#&gt; 1823:  2603TH           TAPLOW           &lt;NA&gt;        waterFlow  490452   181950</span></span>
-<span><span class="co">#&gt;            lat      long dateOpened catchmentArea nrfaStationID</span></span>
-<span><span class="co">#&gt;          &lt;num&gt;     &lt;num&gt;     &lt;char&gt;         &lt;num&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt;    1: 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
-<span><span class="co">#&gt;    2: 51.14632 -3.373695 1967-01-01          36.3         51003</span></span>
-<span><span class="co">#&gt;    3: 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
-<span><span class="co">#&gt;    4: 53.51271 -1.282505 1956-10-29         311.0         27030</span></span>
-<span><span class="co">#&gt;    5: 52.19784 -1.602416 1976-05-12            NA         54048</span></span>
-<span><span class="co">#&gt;   ---                                                          </span></span>
-<span><span class="co">#&gt; 1819: 52.07625  1.102054       &lt;NA&gt;            NA         35010</span></span>
-<span><span class="co">#&gt; 1820: 52.04698  0.693254       &lt;NA&gt;            NA         36007</span></span>
-<span><span class="co">#&gt; 1821: 51.75008 -1.970250       &lt;NA&gt;          79.1         39108</span></span>
-<span><span class="co">#&gt; 1822: 51.45508 -1.409783       &lt;NA&gt;         176.0         39031</span></span>
-<span><span class="co">#&gt; 1823: 51.52922 -0.697461       &lt;NA&gt;            NA         39866</span></span></code></pre></div>
+<span><span class="co">#&gt;            lat      long dateOpened dateClosed catchmentArea nrfaStationID</span></span>
+<span><span class="co">#&gt;          &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;        &lt;char&gt;</span></span>
+<span><span class="co">#&gt;    1: 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3         51003</span></span>
+<span><span class="co">#&gt;    2: 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3         51003</span></span>
+<span><span class="co">#&gt;    3: 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0         27030</span></span>
+<span><span class="co">#&gt;    4: 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0         27030</span></span>
+<span><span class="co">#&gt;    5: 52.19784 -1.602416 1976-05-12       &lt;NA&gt;            NA         54048</span></span>
+<span><span class="co">#&gt;   ---                                                                     </span></span>
+<span><span class="co">#&gt; 1819: 52.07625  1.102054       &lt;NA&gt;       &lt;NA&gt;            NA         35010</span></span>
+<span><span class="co">#&gt; 1820: 52.04698  0.693254       &lt;NA&gt;       &lt;NA&gt;            NA         36007</span></span>
+<span><span class="co">#&gt; 1821: 51.75008 -1.970250       &lt;NA&gt;       &lt;NA&gt;          79.1         39108</span></span>
+<span><span class="co">#&gt; 1822: 51.45508 -1.409783       &lt;NA&gt;       &lt;NA&gt;         176.0         39031</span></span>
+<span><span class="co">#&gt; 1823: 51.52922 -0.697461       &lt;NA&gt;       &lt;NA&gt;            NA         39866</span></span></code></pre></div>
 <p>To view sites that have realtime data available use;</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"flood"</span><span class="op">)</span></span>
@@ -319,11 +345,11 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:            52119 520320_FW                     Gaw Bridge waterLevel</span></span>
 <span><span class="co">#&gt;    5:           E21136    L33865                     Hemingford waterLevel</span></span>
 <span><span class="co">#&gt;   ---                                                                     </span></span>
-<span><span class="co">#&gt; 6212:          SU48_74      &lt;NA&gt;                   Cow Down OBH waterLevel</span></span>
-<span><span class="co">#&gt; 6213:         SU09_139      &lt;NA&gt; Cirencester Ashton Keynes WWTW waterLevel</span></span>
-<span><span class="co">#&gt; 6214:          2249aTH      &lt;NA&gt;             Bucklebury TEMP RL waterLevel</span></span>
-<span><span class="co">#&gt; 6215:          2149aTH      &lt;NA&gt;             Bucklebury TEMP RL waterLevel</span></span>
-<span><span class="co">#&gt; 6216:         SP20_103      &lt;NA&gt;            Field Farm SEBA OBH waterLevel</span></span>
+<span><span class="co">#&gt; 6211:          SU48_74      &lt;NA&gt;                   Cow Down OBH waterLevel</span></span>
+<span><span class="co">#&gt; 6212:         SU09_139      &lt;NA&gt; Cirencester Ashton Keynes WWTW waterLevel</span></span>
+<span><span class="co">#&gt; 6213:          2249aTH      &lt;NA&gt;             Bucklebury TEMP RL waterLevel</span></span>
+<span><span class="co">#&gt; 6214:          2149aTH      &lt;NA&gt;             Bucklebury TEMP RL waterLevel</span></span>
+<span><span class="co">#&gt; 6215:         SP20_103      &lt;NA&gt;            Field Farm SEBA OBH waterLevel</span></span>
 <span><span class="co">#&gt;       parameterName        riverName                           catchmentName</span></span>
 <span><span class="co">#&gt;              &lt;char&gt;           &lt;char&gt;                                  &lt;char&gt;</span></span>
 <span><span class="co">#&gt;    1:   Water Level     River Dikler                               Cotswolds</span></span>
@@ -332,11 +358,11 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:   Water Level    River Parrett Parrett, Brue and West Somerset Streams</span></span>
 <span><span class="co">#&gt;    5:   Water Level River Great Ouse                  Upper and Bedford Ouse</span></span>
 <span><span class="co">#&gt;   ---                                                                       </span></span>
+<span><span class="co">#&gt; 6211:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6212:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6213:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6214:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6215:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6216:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;       easting northing      lat      long gridReference dateOpened datumOffset</span></span>
 <span><span class="co">#&gt;         &lt;num&gt;    &lt;num&gt;    &lt;num&gt;     &lt;num&gt;        &lt;char&gt;     &lt;char&gt;       &lt;num&gt;</span></span>
 <span><span class="co">#&gt;    1:  417990   219610 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
@@ -345,11 +371,11 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:  344383   119926 50.97604 -2.793549          &lt;NA&gt; 1997-01-01        10.0</span></span>
 <span><span class="co">#&gt;    5:  529500   271200 52.32362 -0.101287  TL 2950 7120 1996-10-01         6.3</span></span>
 <span><span class="co">#&gt;   ---                                                                         </span></span>
-<span><span class="co">#&gt; 6212:      NA       NA       NA        NA        SU4784       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6213:      NA       NA       NA        NA        SU0693       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6211:      NA       NA       NA        NA        SU4784       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6212:      NA       NA       NA        NA        SU0693       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6213:  455530   171045 51.43569 -1.202527  SU5553071045       &lt;NA&gt;          NA</span></span>
 <span><span class="co">#&gt; 6214:  455530   171045 51.43569 -1.202527  SU5553071045       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6215:  455530   171045 51.43569 -1.202527  SU5553071045       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6216:      NA       NA       NA        NA        SP2606       &lt;NA&gt;          NA</span></span></code></pre></div>
+<span><span class="co">#&gt; 6215:      NA       NA       NA        NA        SP2606       &lt;NA&gt;          NA</span></span></code></pre></div>
 <p>Finally for tidal sites use;</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"tidal"</span><span class="op">)</span></span>
