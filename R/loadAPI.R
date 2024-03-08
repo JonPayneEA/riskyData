@@ -127,7 +127,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     dt$observedProperty <- lst
     ## Check if any columns are class list and unnest ~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ("list" %in% sapply(dt, class)) {
-      dt <- data.table(tidyr::unnest(dt, c(
+      dt <- data.table::data.table(tidyr::unnest(dt, c(
         easting, northing, lat, long
       ),
       keep_empty = TRUE
@@ -136,7 +136,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       # Unnesting again properties that can be variable in length
       properties <- c('wiskiID', 'label', 'riverName', 'observedProperty')
       for(i in properties){
-        dt <- data.table(tidyr::unnest(dt, i,keep_empty = TRUE))
+        dt <- data.table::data.table(tidyr::unnest(dt, i,keep_empty = TRUE))
         }
     }
 
@@ -144,7 +144,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     data_level <- dt[, .(
       wiskiID, label, riverName,
       observedProperty, easting, northing, lat,
-      long, dateOpened, catchmentArea, nrfaStationID
+      long, dateOpened, dateClosed, catchmentArea, nrfaStationID
     ), ]
     # data_level$observedProperty <- unlist(lst)
     if(is.null(ID)){
