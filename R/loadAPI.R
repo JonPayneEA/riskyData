@@ -112,7 +112,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       is.null(dist)) {
     ## Limit set to 20,000 (current API is ~8,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     datalink <- paste0(baselink, "?_limit=20000")
-    dt <- data.table(jsonlite::fromJSON(datalink)$items)
+    dt <- data.table::data.table(jsonlite::fromJSON(datalink)$items)
 
     ## Unnesting observed property is slightly more difficult ~~~~~~~~~~~~~~~~~~
     ## Stored as dataframe list ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

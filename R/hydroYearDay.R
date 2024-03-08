@@ -31,7 +31,12 @@ hydroYearDay <- function(x, calendar = "oct_us_gb", ...) {
 #' @export hydroYearDay.data.table
 #' @export
 hydroYearDay.data.table <- function(x, calendar = "oct_us_gb") {
-  date <- as.Date(x$dateTime)
+  date <- x$dateTime
+  if("POSIXct" %in% class(date)){
+    ## Correct for start time of 9 am
+    date <- date - 9 * 60 *60
+  }
+  date <- as.Date(date)
 
   m <- as.numeric(month(date)) # extract month
   y <- as.numeric(year(date)) # extract year
