@@ -40,6 +40,8 @@
 #'
 #' @import R6
 #' @import cli
+#' @import ggplot2
+#' @import data.table
 #'
 #' @name HydroImport
 #' @rdname HydroImport
@@ -663,10 +665,14 @@ HydroImportFactory <- R6::R6Class(
     #' @param wrap Set to 3, use this to specify how many of columns of graphs
     #' there should be
     #' @param cumul Used to provide cumulative rainfall totals on rainfall
+    #' @param title Used to add a plot title and subtitle
+    #' @param theme Used to decide on EA colour them
+    #' @param dir Use this to save the plots
     #' @examples
     #' data(bewdley)
     #' bewdley$plot()
-    plot = function(wrap = TRUE, cumul = FALSE){
+    plot = function(wrap = TRUE, cumul = FALSE, title = TRUE, theme = NULL,
+                    dir = NULL){
       # Function runs on hydrological year
       ## Assert whether hydroYear has been calculated
       if (!"hydroYear" %in% colnames(self$data)) {
@@ -679,6 +685,12 @@ HydroImportFactory <- R6::R6Class(
       # Construct the y axis label using the private metadata
       yAxis <- paste0(private$parameter, " (", private$unitName, ")")
 
+      if (length(unique(self$data$hydroYear)) < 3){
+        cols <- length(unique(self$data$hydroYear))
+      } else {
+        cols <- 3
+      }
+
       if(private$parameter == 'Rainfall'){
         if(wrap == TRUE){
           if(cumul == TRUE) {
@@ -690,17 +702,17 @@ HydroImportFactory <- R6::R6Class(
               labs(x = NULL, y = yAxis) +
               scale_x_datetime(labels = scales::date_format("%b")) + # this sets
               # it to only show the month. Lord knows why month ended up at "%b"
-              facet_wrap(~ hydroYear, scales = 'free_x')
+              facet_wrap(~ hydroYear, scales = 'free_x', ncol = cols)
           } else {
             plot <- ggplot(self$data, aes(dateTime, value)) +
               geom_col() +
               labs(x = NULL, y = yAxis) +
               scale_x_datetime(labels = scales::date_format("%b")) + # this sets
               # it to only show the month. Lord knows why month ended up at "%b"
-              facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+              facet_wrap(~ self$data$hydroYear, scales = 'free_x', ncol = cols)
           }
         } else {
-          if(cumul == TRUE) {
+          if (cumul == TRUE) {
             cumul <- self$data[, .(dateTime,
                                    value = cumsumNA.numeric(value))]
             plot <- ggplot(cumul, aes(dateTime, value)) +
@@ -713,20 +725,47 @@ HydroImportFactory <- R6::R6Class(
           }
         }
       } else {
-        if(wrap == TRUE){
+        if (wrap == TRUE){
           plot <- ggplot(self$data, aes(dateTime, value)) +
             geom_line(size = 0.1)  +
             labs(x = NULL, y = yAxis) +
             scale_x_datetime(labels = scales::date_format("%b")) + # this sets
             # it to only show the month. Lord knows why month ended up at "%b"
-            facet_wrap(~ self$data$hydroYear, scales = 'free_x')
+            facet_wrap(~ self$data$hydroYear, scales = 'free_x', ncol = cols)
         } else {
           plot <- ggplot(self$data, aes(dateTime, value)) +
             geom_line(size = 0.1)  +
             labs(x = 'Date', y = yAxis)
         }
       }
-
+      if (title == TRUE){
+        plot <- plot +
+          ggplot2::ggtitle(label = private$stationName,
+                           subtitle = paste(private$parameter,
+                                            "data from", private$start(),
+                                            "to", private$end())) +
+          ggplot2::theme(plot.title=element_text(family = "",
+                                                 face = "bold",
+                                                 colour = "#00A33B",
+                                                 size = 26),
+                         panel.spacing = unit(1, "lines"))
+      }
+      if (!is.null(dir)){
+        if(cols == 1){
+          rowsN <-1
+        } else {
+        rowsN <- ceiling((max(self$data$hydroYear, na.rm = TRUE) -
+                           min(self$data$hydroYear, na.rm = TRUE)) / 3)
+      }
+        ggplot2::ggsave(plot = plot,
+                        filename = paste0(dir, "/", private$stationName, "_",
+                                          private$parameter, ".png"),
+                        width = 210,
+                        height = 297 *(1 + 5 * rowsN) / 26,
+                        units = "mm",
+                        dpi = 300,
+                        bg = "white")
+      }
       return(plot)
     },
     #' @description

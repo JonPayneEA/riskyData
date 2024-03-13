@@ -621,7 +621,13 @@ hydrological year}
 \subsection{Method \code{plot()}}{
 Plot the data by years
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$plot(wrap = TRUE, cumul = FALSE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$plot(
+  wrap = TRUE,
+  cumul = FALSE,
+  title = TRUE,
+  theme = NULL,
+  dir = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -631,6 +637,12 @@ Plot the data by years
 there should be}
 
 \item{\code{cumul}}{Used to provide cumulative rainfall totals on rainfall}
+
+\item{\code{title}}{Used to add a plot title and subtitle}
+
+\item{\code{theme}}{Used to decide on EA colour them}
+
+\item{\code{dir}}{Use this to save the plots}
 }
 \if{html}{\out{</div>}}
 }
