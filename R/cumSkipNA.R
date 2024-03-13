@@ -29,8 +29,8 @@ cumsumNA <- function(x, ...) {
 #' @export
 cumsumNA.data.table <- function(x) {
   dt <- data.table(
-    dateTime <- x$dateTime,
-    cumSum <- cumsum(ifelse(is.na(x$value), 0, x$value)) + x$value * 0
+    dateTime = x$dateTime,
+    cumSum = cumsum(ifelse(is.na(x$value), 0, x$value)) + x$value * 0
   )
   return(dt)
 }
@@ -39,8 +39,8 @@ cumsumNA.data.table <- function(x) {
 #' @export
 cumsumNA.HydroImport <- function(x) {
   dt <- data.table(
-    dateTime <- x$data$dateTime,
-    cumSum <- cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
+    dateTime = x$data$dateTime,
+    cumSum = cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
   )
   return(dt)
 }
@@ -49,8 +49,8 @@ cumsumNA.HydroImport <- function(x) {
 #' @export
 cumsumNA.HydroAggs <- function(x) {
   dt <- data.table(
-    dateTime <- x$data$dateTime,
-    cumSum <- cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
+    dateTime = x$data$dateTime,
+    cumSum = cumsum(ifelse(is.na(x$data$value), 0, x$data$value)) + x$data$value * 0
   )
   return(dt)
 }

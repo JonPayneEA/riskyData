@@ -402,7 +402,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
     }
     if (datapoints == "range") {
       minDate <- as.Date(from)
-      maxDate <- as.Date(to)
+      maxDate <- as.Date(to) + 1
       datalinkAppend <- paste0(
         measImp, "/readings.json?_limit=2000000&mineq-date=",
         minDate, "&max-date=", maxDate
@@ -419,12 +419,22 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
                                     format = "%Y-%m-%dT%H:%M",
                                     tz = "GMT"
       )
+      if (datapoints == "range"){
+        ## API only pulls data by calendar day
+        ## Windowing time series by input data
+        series <- snipRange(x = series, start = from, end = to)
+      }
     }
+
     if (timestep == 86400) {
       series$dateTime <- as.POSIXct(series$dateTime,
                                     format = "%Y-%m-%dT%H:%M",
                                     tz = "GMT"
       )
+      if (datapoints == "range"){
+        lastLine <- length(series$dateTime)
+        series <- series[-lastLine,]
+      }
     }
     if (rtExt == TRUE){
       ## Download the realtime data
