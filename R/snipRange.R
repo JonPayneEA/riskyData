@@ -31,7 +31,7 @@ snipRange <- function(x = NULL, start = NULL, end = NULL){
 
   # If the to argument is null the last record is assumed
   if (is.null(end)){
-    end <- as.POSIXct(tail(self$data$dateTime, 1),
+    end <- as.POSIXct(tail(x$dateTime, 1),
                       format = "%Y-%m-%d %H:%M",
                       tz = "GMT"
     )
