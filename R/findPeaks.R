@@ -18,7 +18,16 @@
 #'
 #' @examples
 #' data(bewdley)
-#' findPeaks(bewdley)
+#' bewdley$hydroYearDay()
+#' peaksB <- riskyData::findPeaks(bewdley)
+#' print(peaksB)
+#' peaksB <- data.table::data.table(peaksB,
+#'                                  riskyData::hydroYearDay.POSIXct(peaksB$dateTime))
+#'
+#' plot <- bewdley$plot(wrap = FALSE)
+#' a <- plot + geom_point(data = peaksB, inherit.aes = FALSE,
+#'                        aes(x = dateTime, y = value), colour = 'red') +
+#'   facet_wrap(~hydroYear, scales = 'free_x')
 findPeaks <-  function(x,
                        levels = 100,
                        from = NULL,
