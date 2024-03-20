@@ -51,8 +51,7 @@ filled (C, A, B, and max).
 bewdleyStage$addRating(C = c(43.3123, 43.3123, 47.6218, 0.000668, 0.000668),
                        A = c(-0.171831, -0.171831, -0.117731, -8.604474, -8.604474),
                        B = c(1.44155, 1.44155, 1.38813, 5.139, 5.139),
-                       max = c(0.359, 0.504, 5.23, 5.55, 999)
-                       )
+                       max = c(0.359, 0.504, 5.23, 5.55, 999))
 ```
 
 This will now be displayed whenever you call the `HydroImport` container or 
@@ -78,7 +77,7 @@ bewdleyStage$rateFlow(full = TRUE)
 
 We can also use the same ratings to convert flow to stage;
 
-```{r}
+```{r flowStage}
 ## Load flow data
 data("bewdley")
 
@@ -86,7 +85,7 @@ data("bewdley")
 bewdley$window(start = "2020-10-01 00:00", end = "2022-10-01 00:00", export = "snip")
 bewdleyStage$window(start = "2020-10-01 00:00", end = "2022-09-30 23:45:00", export = "snip")
 
-## Add the ratingg to bewdley
+## Add the rating to Bewdley
 bewdley$addRating(C = c(43.3123, 43.3123, 47.6218, 0.000668, 0.000668),
                   A = c(-0.171831, -0.171831, -0.117731, -8.604474, -8.604474),
                   B = c(1.44155, 1.44155, 1.38813, 5.139, 5.139),
@@ -101,14 +100,14 @@ ratedStage
 We can compare against the previously imported stage data.
 
 ```{r, echo = FALSE, messages = FALSE, warning = FALSE}
-library(ggplot2)
-bewdleyStage$data$ratedStage <- ratedStage$stage
+# library(ggplot2)
+# bewdleyStage$data$ratedStage <- ratedStage$stage
 ```
 
 ```{r, echo = FALSE}
-ggplot(bewdleyStage$data, aes(x = dateTime, y = value)) +
-  geom_line() + 
-  geom_line(aes(y = ratedStage), colour = "red") +
-  xlab("Date Time") +
-  ylab("Stage (m)")
+# ggplot(bewdleyStage$data, aes(x = dateTime, y = value)) +
+#   geom_line() + 
+#   geom_line(aes(y = ratedStage), colour = "red") +
+#   xlab("Date Time") +
+#   ylab("Stage (m)")
 ```
