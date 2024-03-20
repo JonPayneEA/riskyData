@@ -6,6 +6,7 @@
 #'
 #' @param data Raw data
 #' @param rating Set to blank, if data requires a rating add to here
+#' @param peaks Set to blank, if you calculate peaks they can be stored here
 #' @param dataType Details the type of data in this environment
 #' @param modifications Details modifications made to the data
 #' @param stationName Name of gauge
@@ -54,10 +55,13 @@ HydroImportFactory <- R6::R6Class(
     data = NULL,
     #' @field rating Rating parameters. Uses data.table. At the moment only 1 rating can be applied
     rating = NULL,
+    #' @field peaks Calculated peaks, initialised by "$findPeaks"
+    peaks = NULL,
     #' @description
     #' Initialise the new HydroImport object
     initialize = function(data = NA,
                           rating = NULL,
+                          peaks = NULL,
                           dataType = "Raw Import",
                           modifications = NA,
                           stationName = NA,
@@ -88,6 +92,7 @@ HydroImportFactory <- R6::R6Class(
                           records = NA) {
       self$data <- data
       self$rating <- rating
+      self$peaks <-  peaks
       private$dataType <- dataType
       private$modifications <- modifications
       private$stationName <- stationName
@@ -134,6 +139,12 @@ HydroImportFactory <- R6::R6Class(
       cat("\n")
       cli::cli_h2("Observed data:")
       print(self$data)
+      cat("\n")
+      if (!is.null(self$peaks)){
+        cli::cli_h2("Peaks data:")
+        cat("\n")
+        print(self$peaks)
+      }
       cat("\n")
       if (!is.null(self$rating)){
         cli::cli_h2("Rating data:")
@@ -268,6 +279,31 @@ HydroImportFactory <- R6::R6Class(
       invisible(self)
     },
     #' @description
+    #' Detect peaks within the HydroImport or HydroAggs objects
+    #' @param levels The number of thresholds to apply against the time series.
+    #' Defaults to 100
+    #' @param from  Set the location from where the thresholds should start.
+    #' Defaults to the bottom 10% value.
+    #' @param to Set the location from where the thresholds should end
+    #' Defaults to the maximum observed value.
+    #' @param gaps Used to pad out the run length encoding, prevents wobbly data
+    #' showing multiple exceedances. Set to 96.
+    findPeaks = function(levels = NULL, from = NULL, to = NULL, gaps = NULL){
+      # if (!is.null(levels)){lev <- levels}
+      # if (!is.null(from)){start <- from}
+      # if (!is.null(to)){end <- to}
+      # if (!is.null(gaps)){gap <- gaps}
+
+      self$peaks <- findPeaks(x = self,
+                              levels = 100,
+                              from = NULL,
+                              to = NULL,
+                              gaps = 96)
+      invisible(self)
+
+    },
+
+    #' @description
     #' Add a rating table to the HydroImport or HydroAggs objects
     #' @param C parameter
     #' @param A parameter
@@ -338,6 +374,7 @@ HydroImportFactory <- R6::R6Class(
                                  )
           ),
           rating = self$rating,
+          peaks = self$peaks,
           timeStep = type,
           stationName = private$stationName,
           riverName = private$riverName,
@@ -429,6 +466,7 @@ HydroImportFactory <- R6::R6Class(
                                  )
           ),
           rating = self$rating,
+          peaks = self$peaks,
           timeStep = type,
           stationName = private$stationName,
           riverName = private$riverName,
@@ -565,6 +603,7 @@ HydroImportFactory <- R6::R6Class(
           )
         ),
         rating = self$rating,
+        peaks = self$peaks,
         timeStep = type,
         stationName = private$stationName,
         riverName = private$riverName,

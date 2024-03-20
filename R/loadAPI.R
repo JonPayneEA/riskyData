@@ -537,6 +537,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
       cli::cli_progress_step("Exporting data to HydroImport container")
       out <- HydroImportFactory$new(
         data = series,
+        peaks = NULL,
         stationName = metaD$Data[[1]],
         riverName = metaD$Data[[2]],
         WISKI = metaD$Data[[3]],

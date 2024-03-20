@@ -82,6 +82,8 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \item{\code{data}}{Imported data via the API tool. Uses data.table.}
 
 \item{\code{rating}}{Rating parameters. Uses data.table. At the moment only 1 rating can be applied}
+
+\item{\code{peaks}}{Calculated peaks, initialised by "$findPeaks"}
 }
 \if{html}{\out{</div>}}
 }
@@ -97,6 +99,7 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \item \href{#method-HydroImport-rmVol}{\code{HydroImportFactory$rmVol()}}
 \item \href{#method-HydroImport-rmHY}{\code{HydroImportFactory$rmHY()}}
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
+\item \href{#method-HydroImport-findPeaks}{\code{HydroImportFactory$findPeaks()}}
 \item \href{#method-HydroImport-addRating}{\code{HydroImportFactory$addRating()}}
 \item \href{#method-HydroImport-rateFlow}{\code{HydroImportFactory$rateFlow()}}
 \item \href{#method-HydroImport-rateStage}{\code{HydroImportFactory$rateStage()}}
@@ -124,6 +127,7 @@ Initialise the new HydroImport object
 \if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$new(
   data = NA,
   rating = NULL,
+  peaks = NULL,
   dataType = "Raw Import",
   modifications = NA,
   stationName = NA,
@@ -161,6 +165,8 @@ Initialise the new HydroImport object
 \item{\code{data}}{Raw data}
 
 \item{\code{rating}}{Set to blank, if data requires a rating add to here}
+
+\item{\code{peaks}}{Set to blank, if you calculate peaks they can be stored here}
 
 \item{\code{dataType}}{Details the type of data in this environment}
 
@@ -371,6 +377,38 @@ Remove the calculated hydrological day
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-findPeaks"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-findPeaks}{}}}
+\subsection{Method \code{findPeaks()}}{
+Detect peaks within the HydroImport or HydroAggs objects
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$findPeaks(
+  levels = NULL,
+  from = NULL,
+  to = NULL,
+  gaps = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{levels}}{The number of thresholds to apply against the time series.
+Defaults to 100}
+
+\item{\code{from}}{Set the location from where the thresholds should start.
+Defaults to the bottom 10\% value.}
+
+\item{\code{to}}{Set the location from where the thresholds should end
+Defaults to the maximum observed value.}
+
+\item{\code{gaps}}{Used to pad out the run length encoding, prevents wobbly data
+showing multiple exceedances. Set to 96.}
 }
 \if{html}{\out{</div>}}
 }
