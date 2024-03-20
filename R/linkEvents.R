@@ -52,10 +52,10 @@ linkEvents <- function(upstream = NULL,
 
   ## Constrain the data to the minimum and maximum time differences
   dt <- combined[diff > 0 & diff < 900,]
-  cli::cli_text(paste("{.strong Upstream Events:}", length(upstream$value)))
-  cli::cli_text(paste("{.strong Downstream Events:}", length(downstream$value)))
-  cli::cli_text(paste("{.strong Paired Events:}", length(dt$diff)))
-  cli::cli_text(paste("{.strong Unpaired Events:}", length(downstream$value) -
+  cli::cli_text(paste("{.strong Upstream peaks:}", length(upstream$value)))
+  cli::cli_text(paste("{.strong Downstream peaks:}", length(downstream$value)))
+  cli::cli_text(paste("{.strong Paired peaks:}", length(dt$diff)))
+  cli::cli_text(paste("{.strong Omitted peaks:}", length(downstream$value) -
                         length(combined$diff)))
 
   return(dt)
