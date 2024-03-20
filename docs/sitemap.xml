@@ -64,6 +64,12 @@
     <loc>https://jonpayneea.github.io/riskyData/reference/dayStats.html</loc>
   </url>
   <url>
+    <loc>https://jonpayneea.github.io/riskyData/reference/exceed.html</loc>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/riskyData/reference/findPeaks.html</loc>
+  </url>
+  <url>
     <loc>https://jonpayneea.github.io/riskyData/reference/getMeta.html</loc>
   </url>
   <url>
@@ -85,6 +91,9 @@
     <loc>https://jonpayneea.github.io/riskyData/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://jonpayneea.github.io/riskyData/reference/linkEvents.html</loc>
+  </url>
+  <url>
     <loc>https://jonpayneea.github.io/riskyData/reference/loadAPI.html</loc>
   </url>
   <url>
@@ -95,6 +104,9 @@
   </url>
   <url>
     <loc>https://jonpayneea.github.io/riskyData/reference/monthlyAgg.html</loc>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/riskyData/reference/naRun.html</loc>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/riskyData/reference/rainSep.html</loc>
@@ -113,5 +125,8 @@
   </url>
   <url>
     <loc>https://jonpayneea.github.io/riskyData/reference/rtAPI.html</loc>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/riskyData/reference/snipRange.html</loc>
   </url>
 </urlset>

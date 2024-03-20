@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="riskyData-Ratings">
 <meta property="og:description" content="riskyData">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,8 +113,7 @@ arguments that need to be filled (C, A, B, and max).</p>
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">addRating</span><span class="op">(</span>C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43.3123</span>, <span class="fl">43.3123</span>, <span class="fl">47.6218</span>, <span class="fl">0.000668</span>, <span class="fl">0.000668</span><span class="op">)</span>,</span>
 <span>                       A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.117731</span>, <span class="op">-</span><span class="fl">8.604474</span>, <span class="op">-</span><span class="fl">8.604474</span><span class="op">)</span>,</span>
 <span>                       B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.44155</span>, <span class="fl">1.44155</span>, <span class="fl">1.38813</span>, <span class="fl">5.139</span>, <span class="fl">5.139</span><span class="op">)</span>,</span>
-<span>                       max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.359</span>, <span class="fl">0.504</span>, <span class="fl">5.23</span>, <span class="fl">5.55</span>, <span class="fl">999</span><span class="op">)</span></span>
-<span>                       <span class="op">)</span></span></code></pre></div>
+<span>                       max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.359</span>, <span class="fl">0.504</span>, <span class="fl">5.23</span>, <span class="fl">5.55</span>, <span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>This will now be displayed whenever you call the
 <code>HydroImport</code> container or using <code>$rating</code>;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -127,12 +126,12 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Level</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Parameter Type:</span> Level</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-29 08:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2024-03-20 11:15:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 110820</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 121582</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -140,21 +139,23 @@ arguments that need to be filled (C, A, B, and max).</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                    dateTime value   quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 110816: 2023-11-29 07:45:00 1.309 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110817: 2023-11-29 08:00:00 1.313 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110818: 2023-11-29 08:15:00 1.314 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110819: 2023-11-29 08:30:00 1.319 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110820: 2023-11-29 08:45:00 1.321 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;                    dateTime value   quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;    &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                           </span></span>
+<span><span class="co">#&gt; 121578: 2024-03-20 10:15:00 1.752 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121579: 2024-03-20 10:30:00 1.748 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121580: 2024-03-20 10:45:00 1.750 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121581: 2024-03-20 11:00:00 1.745 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121582: 2024-03-20 11:15:00 1.744 Unchecked   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt;        &lt;num&gt;     &lt;num&gt;   &lt;num&gt;   &lt;num&gt;        &lt;num&gt;</span></span>
 <span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
 <span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
 <span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
@@ -166,18 +167,19 @@ arguments that need to be filled (C, A, B, and max).</p>
 method;</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">rateFlow</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         stage     flow limb</span></span>
-<span><span class="co">#&gt;      1: 0.351 17.00650    1</span></span>
-<span><span class="co">#&gt;      2: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;      3: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;      4: 0.351 17.00650    1</span></span>
-<span><span class="co">#&gt;      5: 0.350 16.95963    1</span></span>
-<span><span class="co">#&gt;     ---                    </span></span>
-<span><span class="co">#&gt; 110816: 1.309 77.99248    3</span></span>
-<span><span class="co">#&gt; 110817: 1.313 78.29617    3</span></span>
-<span><span class="co">#&gt; 110818: 1.314 78.37214    3</span></span>
-<span><span class="co">#&gt; 110819: 1.319 78.75233    3</span></span>
-<span><span class="co">#&gt; 110820: 1.321 78.90455    3</span></span></code></pre></div>
+<span><span class="co">#&gt;         stage      flow   limb</span></span>
+<span><span class="co">#&gt;         &lt;num&gt;     &lt;num&gt; &lt;fctr&gt;</span></span>
+<span><span class="co">#&gt;      1: 0.351  17.00650      1</span></span>
+<span><span class="co">#&gt;      2: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;      3: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;      4: 0.351  17.00650      1</span></span>
+<span><span class="co">#&gt;      5: 0.350  16.95963      1</span></span>
+<span><span class="co">#&gt;     ---                       </span></span>
+<span><span class="co">#&gt; 121578: 1.752 113.51953      3</span></span>
+<span><span class="co">#&gt; 121579: 1.748 113.18255      3</span></span>
+<span><span class="co">#&gt; 121580: 1.750 113.35100      3</span></span>
+<span><span class="co">#&gt; 121581: 1.745 112.93000      3</span></span>
+<span><span class="co">#&gt; 121582: 1.744 112.84585      3</span></span></code></pre></div>
 <p>To set the outputs in a <code>HydroImport</code> container, set the
 full argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -190,12 +192,12 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Rated flow based on stage/discharge rating</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Parameter Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> Rated flow calculated</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2020-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2023-11-29 08:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2024-03-20 11:15:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 110820</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 121582</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Northing:</span> 276165</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Longitude:</span> -2.321186</span></span>
@@ -203,21 +205,23 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                    dateTime value   quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                          </span></span>
-<span><span class="co">#&gt; 110816: 2023-11-29 07:45:00 1.309 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110817: 2023-11-29 08:00:00 1.313 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110818: 2023-11-29 08:15:00 1.314 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110819: 2023-11-29 08:30:00 1.319 Unchecked  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 110820: 2023-11-29 08:45:00 1.321 Unchecked  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;                    dateTime value   quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;    &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2020-10-01 00:00:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2020-10-01 00:15:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2020-10-01 00:30:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2020-10-01 00:45:00 0.351      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2020-10-01 01:00:00 0.350      Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                           </span></span>
+<span><span class="co">#&gt; 121578: 2024-03-20 10:15:00 1.752 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121579: 2024-03-20 10:30:00 1.748 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121580: 2024-03-20 10:45:00 1.750 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121581: 2024-03-20 11:00:00 1.745 Unchecked   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 121582: 2024-03-20 11:15:00 1.744 Unchecked   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Rating data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            C         A       B     max      maxFlow</span></span>
+<span><span class="co">#&gt;        &lt;num&gt;     &lt;num&gt;   &lt;num&gt;   &lt;num&gt;        &lt;num&gt;</span></span>
 <span><span class="co">#&gt; 1: 43.312300 -0.171831 1.44155   0.359 1.738289e+01</span></span>
 <span><span class="co">#&gt; 2: 43.312300 -0.171831 1.44155   0.504 2.462149e+01</span></span>
 <span><span class="co">#&gt; 3: 47.621800 -0.117731 1.38813   5.230 4.882023e+02</span></span>
@@ -238,7 +242,7 @@ full argument to <code>TRUE</code></p>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">window</span><span class="op">(</span>start <span class="op">=</span> <span class="st">"2020-10-01 00:00"</span>, end <span class="op">=</span> <span class="st">"2022-10-01 00:00"</span>, export <span class="op">=</span> <span class="st">"snip"</span><span class="op">)</span></span>
 <span><span class="va">bewdleyStage</span><span class="op">$</span><span class="fu">window</span><span class="op">(</span>start <span class="op">=</span> <span class="st">"2020-10-01 00:00"</span>, end <span class="op">=</span> <span class="st">"2022-09-30 23:45:00"</span>, export <span class="op">=</span> <span class="st">"snip"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Add the ratingg to bewdley</span></span>
+<span><span class="co">## Add the rating to Bewdley</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">addRating</span><span class="op">(</span>C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43.3123</span>, <span class="fl">43.3123</span>, <span class="fl">47.6218</span>, <span class="fl">0.000668</span>, <span class="fl">0.000668</span><span class="op">)</span>,</span>
 <span>                  A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.171831</span>, <span class="op">-</span><span class="fl">0.117731</span>, <span class="op">-</span><span class="fl">8.604474</span>, <span class="op">-</span><span class="fl">8.604474</span><span class="op">)</span>,</span>
 <span>                  B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.44155</span>, <span class="fl">1.44155</span>, <span class="fl">1.38813</span>, <span class="fl">5.139</span>, <span class="fl">5.139</span><span class="op">)</span>,</span>
@@ -248,20 +252,20 @@ full argument to <code>TRUE</code></p>
 <span><span class="co">## Calculate rated stage</span></span>
 <span><span class="va">ratedStage</span> <span class="op">&lt;-</span> <span class="va">bewdley</span><span class="op">$</span><span class="fu">rateStage</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">ratedStage</span></span>
-<span><span class="co">#&gt;            stage flow limb</span></span>
-<span><span class="co">#&gt;     1: 0.3140213 15.3    1</span></span>
-<span><span class="co">#&gt;     2: 0.3184182 15.5    1</span></span>
-<span><span class="co">#&gt;     3: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;     4: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;     5: 0.3162219 15.4    1</span></span>
-<span><span class="co">#&gt;    ---                    </span></span>
-<span><span class="co">#&gt; 70076: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70077: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70078: 0.2219045 11.3    1</span></span>
-<span><span class="co">#&gt; 70079: 0.2194841 11.2    1</span></span>
-<span><span class="co">#&gt; 70080: 0.2194841 11.2    1</span></span></code></pre></div>
+<span><span class="co">#&gt;            stage  flow   limb</span></span>
+<span><span class="co">#&gt;            &lt;num&gt; &lt;num&gt; &lt;fctr&gt;</span></span>
+<span><span class="co">#&gt;     1: 0.3140213  15.3      1</span></span>
+<span><span class="co">#&gt;     2: 0.3184182  15.5      1</span></span>
+<span><span class="co">#&gt;     3: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;     4: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;     5: 0.3162219  15.4      1</span></span>
+<span><span class="co">#&gt;    ---                       </span></span>
+<span><span class="co">#&gt; 70077: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70078: 0.2219045  11.3      1</span></span>
+<span><span class="co">#&gt; 70079: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70080: 0.2194841  11.2      1</span></span>
+<span><span class="co">#&gt; 70081: 0.2194841  11.2      1</span></span></code></pre></div>
 <p>We can compare against the previously imported stage data.</p>
-<p><img src="4_riskyData-Ratings_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="riskyData-Methods">
 <meta property="og:description" content="riskyData">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,7 +124,9 @@ object.</p>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dataAgg()</span>    →    Aggregate data by, hour, day, month calendar year and hydroYear      │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rollingAggs()</span>    →    Uses user specified aggregation timings, see ?rollingAggs        │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$dayStats()</span>    →    Daily statistics of flow, carried out on hydrological or calendar … │</span></span>
-<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data qualiity flags            │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$quality()</span>    →    Provides a quick summary table of the data quality flags             │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$missing()</span>    →    Quickly finds the positions of missing data points                   │</span></span>
+<span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$exceed</span>    →    Show how many times observed data exceed a given threshold              │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$plot()</span>    →    Create a plot of each year of data, by hydrological year                │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$window()</span>    →    Extracts the subset of data observed between the times start and end  │</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$rateFlow()</span>    →    Converts stage into a rated flow using the specified rating table   │</span></span>
@@ -144,36 +146,38 @@ calling the data and not using a method (or function) we can drop the
 parentheses.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span>
-<span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                        </span></span>
-<span><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;                    dateTime value quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;  &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2008-10-01 09:00:00  25.3    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2008-10-01 09:15:00  25.5    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2008-10-01 09:30:00  25.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2008-10-01 09:45:00  25.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2008-10-01 10:00:00  25.7    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                         </span></span>
+<span><span class="co">#&gt; 490844: 2022-10-01 07:45:00  12.0    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490845: 2022-10-01 08:00:00  11.8    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490846: 2022-10-01 08:15:00  11.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490847: 2022-10-01 08:30:00  11.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490848: 2022-10-01 08:45:00  11.6    Good   &lt;NA&gt;</span></span></code></pre></div>
 <p>The data available in these can differ between gauge types, the
 bewdley data in this case is flow. We can see the differences if we look
 at the chesterton rain gauge dataset;</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">)</span></span>
 <span><span class="va">chesterton</span><span class="op">$</span><span class="va">data</span></span>
-<span><span class="co">#&gt;                    dateTime value valid invalid missing completeness   quality</span></span>
-<span><span class="co">#&gt;      1: 2010-12-31 23:45:00   0.0     0       0       0   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt;      2: 2011-01-01 00:00:00   0.0     0       0       0   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt;      3: 2011-01-01 00:15:00   0.0     0       0       0   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt;      4: 2011-01-01 00:30:00   0.0     0       0       0   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt;      5: 2011-01-01 00:45:00   0.0     0       0       0   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt;     ---                                                                       </span></span>
-<span><span class="co">#&gt; 411933: 2022-09-30 22:45:00   0.2     0       0     100   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt; 411934: 2022-09-30 23:00:00   0.0     0       0     100   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt; 411935: 2022-09-30 23:15:00   0.0     0       0     100   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt; 411936: 2022-09-30 23:30:00   0.0     0       0     100   Incomplete Unchecked</span></span>
-<span><span class="co">#&gt; 411937: 2022-09-30 23:45:00   0.0     0       0     100   Incomplete Unchecked</span></span></code></pre></div>
+<span><span class="co">#&gt;                    dateTime value  valid invalid missing completeness   quality</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt; &lt;char&gt;  &lt;char&gt;  &lt;char&gt;       &lt;char&gt;    &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2010-12-31 23:45:00     0      0       0       0   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt;      2: 2011-01-01 00:00:00     0      0       0       0   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt;      3: 2011-01-01 00:15:00     0      0       0       0   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt;      4: 2011-01-01 00:30:00     0      0       0       0   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt;      5: 2011-01-01 00:45:00     0      0       0       0   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt;     ---                                                                        </span></span>
+<span><span class="co">#&gt; 411969: 2022-10-01 07:45:00     0      0       0     100   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt; 411970: 2022-10-01 08:00:00     0      0       0     100   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt; 411971: 2022-10-01 08:15:00     0      0       0     100   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt; 411972: 2022-10-01 08:30:00     0      0       0     100   Incomplete Unchecked</span></span>
+<span><span class="co">#&gt; 411973: 2022-10-01 08:45:00     0      0       0     100   Incomplete Unchecked</span></span></code></pre></div>
 <p>As you can see the rain gauge data has extra columns. For most
 analytics the dateTime and value fields are what is used, however it is
 worth checking if you need to use the extra parameters.</p>
@@ -188,8 +192,8 @@ can give a quick insight as to what data you have.</p>
 <span><span class="co">#&gt; hydroLoad: </span></span>
 <span><span class="co">#&gt;  Data Type: Raw Import</span></span>
 <span><span class="co">#&gt;  Station ID: 2001</span></span>
-<span><span class="co">#&gt;  Start: 2008-10-01</span></span>
-<span><span class="co">#&gt;  End: 2022-09-30 23:45:00</span></span>
+<span><span class="co">#&gt;  Start: 2008-10-01 09:00:00</span></span>
+<span><span class="co">#&gt;  End: 2022-10-01 08:45:00</span></span>
 <span><span class="co">#&gt;  Time Zone: GMT</span></span>
 <span><span class="co">#&gt;  Observations: 490848</span></span>
 <span><span class="co">#&gt;  Parameter: Flow</span></span>
@@ -211,10 +215,10 @@ function overules the one in base R. This means you don’t need to run
 <span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Raw Import</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Station name:</span> Bewdley</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">WISKI ID:</span> 2001</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Data Type:</span> Flow</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Parameter Type:</span> Flow</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Modifications:</span> NA</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2008-10-01</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2022-09-30 23:45:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Start:</span> 2008-10-01 09:00:00</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">End:</span> 2022-10-01 08:45:00</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Time Step:</span> 900</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Observations:</span> 490848</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Easting:</span> 378235</span></span>
@@ -224,18 +228,19 @@ function overules the one in base R. This means you don’t need to run
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Observed data:</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                    dateTime value quality qcode</span></span>
-<span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     ---                                        </span></span>
-<span><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;                    dateTime value quality  qcode</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;  &lt;char&gt; &lt;char&gt;</span></span>
+<span><span class="co">#&gt;      1: 2008-10-01 09:00:00  25.3    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      2: 2008-10-01 09:15:00  25.5    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      3: 2008-10-01 09:30:00  25.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      4: 2008-10-01 09:45:00  25.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;      5: 2008-10-01 10:00:00  25.7    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     ---                                         </span></span>
+<span><span class="co">#&gt; 490844: 2022-10-01 07:45:00  12.0    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490845: 2022-10-01 08:00:00  11.8    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490846: 2022-10-01 08:15:00  11.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490847: 2022-10-01 08:30:00  11.6    Good   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 490848: 2022-10-01 08:45:00  11.6    Good   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">For more details use the $methods() function, the format should be as</span></span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">`Object_name`$methods()</span></span></span></code></pre></div>
 <p>For a quick snapshot on the data quality of the imported data use
@@ -243,7 +248,8 @@ function overules the one in base R. This means you don’t need to run
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chesterton</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      quality  count</span></span>
-<span><span class="co">#&gt; 1: Unchecked 164545</span></span>
+<span><span class="co">#&gt;       &lt;char&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1: Unchecked 164581</span></span>
 <span><span class="co">#&gt; 2:      Good 191351</span></span>
 <span><span class="co">#&gt; 3:   Missing   2406</span></span>
 <span><span class="co">#&gt; 4:   Suspect  53635</span></span></code></pre></div>
@@ -268,7 +274,7 @@ setting <code>transform = TRUE</code></p>
 <span><span class="co">#&gt; RLOID         "2001"                                                                                                                                </span></span>
 <span><span class="co">#&gt; stationGuide  NA                                                                                                                                    </span></span>
 <span><span class="co">#&gt; baseURL       "http://environment.data.gov.uk/hydrology/id/measures/"                                                                               </span></span>
-<span><span class="co">#&gt; dataURL       "8820d897-a09e-4857-8095-5834fee6962f-flow-i-900-m3s-qualified/readings.json?_limit=2000000&amp;mineq-date=2008-10-01&amp;max-date=2022-10-01"</span></span>
+<span><span class="co">#&gt; dataURL       "8820d897-a09e-4857-8095-5834fee6962f-flow-i-900-m3s-qualified/readings.json?_limit=2000000&amp;mineq-date=2008-10-01&amp;max-date=2022-10-02"</span></span>
 <span><span class="co">#&gt; measureURL    "8820d897-a09e-4857-8095-5834fee6962f-flow-i-900-m3s-qualified"                                                                       </span></span>
 <span><span class="co">#&gt; idNRFA        "54001"                                                                                                                               </span></span>
 <span><span class="co">#&gt; urlNRFA       "https://nrfa.ceh.ac.uk/data/station/info/54001.html"                                                                                 </span></span>
@@ -283,8 +289,8 @@ setting <code>transform = TRUE</code></p>
 <span><span class="co">#&gt; datum         NA                                                                                                                                    </span></span>
 <span><span class="co">#&gt; boreholeDepth NA                                                                                                                                    </span></span>
 <span><span class="co">#&gt; aquifer       NA                                                                                                                                    </span></span>
-<span><span class="co">#&gt; start         "2008-10-01"                                                                                                                          </span></span>
-<span><span class="co">#&gt; end           "2022-09-30 23:45:00"                                                                                                                 </span></span>
+<span><span class="co">#&gt; start         "2008-10-01 09:00:00"                                                                                                                 </span></span>
+<span><span class="co">#&gt; end           "2022-10-01 08:45:00"                                                                                                                 </span></span>
 <span><span class="co">#&gt; timeStep      "900"                                                                                                                                 </span></span>
 <span><span class="co">#&gt; timeZone      "GMT"                                                                                                                                 </span></span>
 <span><span class="co">#&gt; records       "490848"</span></span></code></pre></div>
@@ -293,12 +299,14 @@ setting <code>transform = TRUE</code></p>
 <code class="sourceCode R"><span><span class="co">## Coordinates of gauges</span></span>
 <span><span class="va">chesterton</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    stationName  WISKI Easting Northing Latitude Longitude</span></span>
+<span><span class="co">#&gt;         &lt;char&gt; &lt;char&gt;   &lt;int&gt;    &lt;int&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
 <span><span class="co">#&gt; 1:  Chesterton 164163  512830   294610 52.53766 -0.337867</span></span>
 <span></span>
 <span><span class="co">## NRFA details</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    WISKI codeNRFA                                             urlNRFA</span></span>
-<span><span class="co">#&gt; 1:  2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span></span></code></pre></div>
+<span><span class="co">#&gt;     WISKI codeNRFA                                             urlNRFA</span></span>
+<span><span class="co">#&gt;    &lt;char&gt;   &lt;char&gt;                                              &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1:   2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="adding-to-the-public-data">Adding to the public data<a class="anchor" aria-label="anchor" href="#adding-to-the-public-data"></a>
@@ -326,18 +334,19 @@ September)</p></li>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span>
-<span><span class="co">#&gt;                    dateTime value quality qcode hydroYear hydroYearDay</span></span>
-<span><span class="co">#&gt;      1: 2008-10-01 00:00:00  26.3    Good  &lt;NA&gt;      2009            1</span></span>
-<span><span class="co">#&gt;      2: 2008-10-01 00:15:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
-<span><span class="co">#&gt;      3: 2008-10-01 00:30:00  26.5    Good  &lt;NA&gt;      2009            1</span></span>
-<span><span class="co">#&gt;      4: 2008-10-01 00:45:00  26.6    Good  &lt;NA&gt;      2009            1</span></span>
-<span><span class="co">#&gt;      5: 2008-10-01 01:00:00  26.4    Good  &lt;NA&gt;      2009            1</span></span>
-<span><span class="co">#&gt;     ---                                                               </span></span>
-<span><span class="co">#&gt; 490844: 2022-09-30 22:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span><span class="co">#&gt; 490845: 2022-09-30 23:00:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span><span class="co">#&gt; 490846: 2022-09-30 23:15:00  11.3    Good  &lt;NA&gt;      2022          365</span></span>
-<span><span class="co">#&gt; 490847: 2022-09-30 23:30:00  11.2    Good  &lt;NA&gt;      2022          365</span></span>
-<span><span class="co">#&gt; 490848: 2022-09-30 23:45:00  11.2    Good  &lt;NA&gt;      2022          365</span></span></code></pre></div>
+<span><span class="co">#&gt;                    dateTime value quality  qcode hydroYear hydroYearDay</span></span>
+<span><span class="co">#&gt;                      &lt;POSc&gt; &lt;num&gt;  &lt;char&gt; &lt;char&gt;     &lt;num&gt;        &lt;num&gt;</span></span>
+<span><span class="co">#&gt;      1: 2008-10-01 09:00:00  25.3    Good   &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      2: 2008-10-01 09:15:00  25.5    Good   &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      3: 2008-10-01 09:30:00  25.6    Good   &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      4: 2008-10-01 09:45:00  25.6    Good   &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;      5: 2008-10-01 10:00:00  25.7    Good   &lt;NA&gt;      2009            1</span></span>
+<span><span class="co">#&gt;     ---                                                                </span></span>
+<span><span class="co">#&gt; 490844: 2022-10-01 07:45:00  12.0    Good   &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490845: 2022-10-01 08:00:00  11.8    Good   &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490846: 2022-10-01 08:15:00  11.6    Good   &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490847: 2022-10-01 08:30:00  11.6    Good   &lt;NA&gt;      2022          365</span></span>
+<span><span class="co">#&gt; 490848: 2022-10-01 08:45:00  11.6    Good   &lt;NA&gt;      2022          365</span></span></code></pre></div>
 <p>Similarly to remove the columns you can remove the hydrological year
 with <code>$rmHY()</code> and the hydrological day with
 <code>$rmHYD()</code>;</p>
