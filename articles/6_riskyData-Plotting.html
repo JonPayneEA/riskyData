@@ -216,6 +216,10 @@ linedraw and facet the plot so that there are 4 columns.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">findPeaks</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Calculate hydrological year and day of peaks - used in faceting</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="va">peaks</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">peaks</span>, </span>
+<span>                                        <span class="fu"><a href="../reference/hydroYearDay.html">hydroYearDay</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">peaks</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="va">bewdley</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">plot</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bewdley</span><span class="op">$</span><span class="va">peaks</span>, </span>
 <span>                  inherit.aes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
