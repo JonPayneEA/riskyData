@@ -23,6 +23,7 @@ Let's download some stage data;
 
 ```{r load, echo = FALSE, messages = FALSE}
 library(riskyData)
+library(ggplot2)
 ```
 
 ```{r stage, message = FALSE, warning = FALSE, results = 'hide'}
@@ -82,8 +83,8 @@ We can also use the same ratings to convert flow to stage;
 data("bewdley")
 
 ## Set a window to make data comparable
-bewdley$window(start = "2020-10-01 00:00", end = "2022-10-01 00:00", export = "snip")
-bewdleyStage$window(start = "2020-10-01 00:00", end = "2022-09-30 23:45:00", export = "snip")
+bewdley$window(start = "2020-10-01 09:00", end = "2022-10-01 08:45", export = "snip")
+bewdleyStage$window(start = "2020-10-01 09:00", end = "2022-10-01 08:45", export = "snip")
 
 ## Add the rating to Bewdley
 bewdley$addRating(C = c(43.3123, 43.3123, 47.6218, 0.000668, 0.000668),
@@ -100,14 +101,13 @@ ratedStage
 We can compare against the previously imported stage data.
 
 ```{r, echo = FALSE, messages = FALSE, warning = FALSE}
-# library(ggplot2)
-# bewdleyStage$data$ratedStage <- ratedStage$stage
+bewdleyStage$data$ratedStage <- ratedStage$stage
 ```
 
-```{r, echo = FALSE}
-# ggplot(bewdleyStage$data, aes(x = dateTime, y = value)) +
-#   geom_line() + 
-#   geom_line(aes(y = ratedStage), colour = "red") +
-#   xlab("Date Time") +
-#   ylab("Stage (m)")
+```{r, echo = FALSE, fig.width = 7, fig.height = 5}
+ggplot(bewdleyStage$data, aes(x = dateTime, y = value)) +
+  geom_line() +
+  geom_line(aes(y = ratedStage), colour = "red") +
+  xlab("Date Time") +
+  ylab("Stage (m)")
 ```

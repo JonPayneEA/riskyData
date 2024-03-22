@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(riskyData)
+library(ggplot2)
 ```
 
 ## Connecting to realtime data
@@ -45,13 +46,10 @@ bewdF <- loadAPI(
 ```
 
 
-```{r}
-plot(x = bewdF$data$dateTime, 
-     y = bewdF$data$value, 
-     type = "l", 
-     main = "Flow data for Bewdley", 
-     xlab = "Date Time", 
-     ylab = "Flow (m3 s-1)", 
-     lwd = 2)
-abline(v = bewdF$data$dateTime[36232], col = 'red', lwd = 2)
+```{r plot, fig.width = 7, fig.height = 5}
+plot <- bewdF$hydroYearDay()$plot(wrap = FALSE)
+plot + geom_vline(xintercept = bewdF$data$dateTime[39000],
+                  colour = "red", 
+                  linewidth = 1.1,
+                  linetype = "dashed")
 ```

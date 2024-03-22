@@ -200,16 +200,16 @@ dt <- loadAPI(ID = '2001',
               datapoints = 'day',
               from = '2022-06-11')
 
-with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+dt$hydroYearDay()$plot(wrap = FALSE)
 ```
 
-```{r dayBodge, echo = FALSE}
+```{r dayBodge, echo = FALSE, fig.width = 7, fig.height = 5}
 data(bewdley)
 
 c <- bewdley$clone()
 c$data <- c$data[dateTime >= '2022-06-11 00:00' & dateTime <= '2022-06-12 00:00',]
 
-with(c$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+c$hydroYearDay()$plot(wrap = FALSE)
 ```
 
 If we wished to extend this we can use the **'range'** option in `datapoints`. For this we a beginning and end date, these are expressed with `from` and `to` arguments
@@ -223,16 +223,16 @@ dt <- loadAPI(ID = '2001',
               from = '2019-10-01 00:00',
               to = '2020-03-30 00:00')
 
-with(dt$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+dt$hydroYearDay()$plot(wrap = FALSE)
 ```
 
-```{r rangeBodge, echo = FALSE}
+```{r rangeBodge, echo = FALSE, fig.width = 7, fig.height = 5}
 data(bewdley)
 
 d <- bewdley$clone()
 d$data <- d$data[dateTime >= '2019-10-01 00:00' & dateTime <= '2020-03-30 00:00',]
 
-with(d$data, plot(dateTime, value, type = 'l', xlab = "Date Time", ylab = "Flow (cumecs)"))
+d$hydroYearDay()$plot(wrap = FALSE)
 ```
 
 To pull all the data we can use the "all" option.

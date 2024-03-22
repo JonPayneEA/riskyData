@@ -35,7 +35,7 @@ bewdley$methods()
 
 ### Accessing data
 
-When the data are imported from the API, they are stored in a public pot within the container. These should be in a data.table format. These provide an enhanced version of data.frame which allows you to do carry out incredibly fast data manipulations. Due to the large size of our datasets it is much more computationally efficient to use over other methods.
+When the data are imported from the API, they are stored in a public pot within the container. These should be in a data.table format. These provide an enhanced version of data.frame which allows you to do carry out incredibly fast data manipulations. Due to the large size of our data sets it is much more computationally efficient to use over other methods.
 
 To call the data we use `$data` as you are directly calling the data and not using a method (or function) we can drop the parentheses.
 
@@ -131,9 +131,9 @@ bewdley$rmHYD()
 
 ### Plotting data
 
-Currently the containers only support plotting in one way....
+Currently the containers only support plotting in one way.
 
-```{r plot1, fig.width = 8, fig.height = 12, message = FALSE}
+```{r plot1, fig.width = 7, fig.height = 12, message = FALSE}
 bewdley$hydroYearDay()$plot()
 ```
 
