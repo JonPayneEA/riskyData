@@ -145,6 +145,10 @@ If we wished to plot the peaks detected by the `$findPeaks()` function.
 ```{r peaks, fig.width = 7, fig.height = 12}
 bewdley$findPeaks()
 
+# Calculate hydrological year and day of peaks - used in faceting
+bewdley$peaks <- data.table::data.table(bewdley$peaks, 
+                                        hydroYearDay(bewdley$peaks))
+
 plot <- bewdley$plot(wrap = FALSE)
 plot + geom_point(data = bewdley$peaks, 
                   inherit.aes = FALSE,
