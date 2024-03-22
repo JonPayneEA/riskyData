@@ -89,7 +89,6 @@
 
     
     
-<pre><code><span><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.2.3</span></span></code></pre>
 <div class="section level2">
 <h2 id="introduction-to-data-visualisation-in-riskydata">Introduction to data visualisation in riskyData<a class="anchor" aria-label="anchor" href="#introduction-to-data-visualisation-in-riskydata"></a>
 </h2>
@@ -121,16 +120,16 @@ forecasting, additional themes will be added soon.</p>
 Chesterton rain gauge data sets</p>
 <p>All plotting is organised around hydrological years. Use the
 <code>$hydroYearDay()</code> function in any pipelines.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Load data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chesterton</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Convert to hydrological year and day</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[14.9s]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[8.2s]</span></span>[39m</span>
 <span><span class="va">chesterton</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[10s]</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[7.4s]</span></span>[39m</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="standard-plots">Standard plots<a class="anchor" aria-label="anchor" href="#standard-plots"></a>
@@ -138,16 +137,14 @@ Chesterton rain gauge data sets</p>
 <p>For flow and level stations, when you apply the <code>$plot()</code>
 function the plots are faceted by hydrological year and default to a
 line based geometry.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="6_riskyData-Plotting_files/figure-html/baseplot_flow-1.png" width="672"></p>
 <p>For rainfall stations, when you apply the <code>$plot()</code>
 function the plots are also faceted by hydrological year but default to
 a column based geometry.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chesterton</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 2406 rows containing missing values or values outside the scale range</span></span>
-<span><span class="co">#&gt; (`geom_col()`).</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">chesterton</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="6_riskyData-Plotting_files/figure-html/baseplot_rain-1.png" width="672"></p>
 </div>
 <div class="section level3">
@@ -157,7 +154,7 @@ a column based geometry.</p>
 the wrap argument as FALSE. The basic geometries of lines for level and
 flow plots and bars/columns for rainfall sites will be retained.</p>
 <p>If you wish to remove the title, set the title argument to FALSE.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>             title <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="6_riskyData-Plotting_files/figure-html/baseplot_unwrap-1.png" width="672"></p>
@@ -170,13 +167,13 @@ flow plots and bars/columns for rainfall sites will be retained.</p>
 wrap is set as TRUE, the cumulative plots are calculated for each
 hydrological year.</p>
 <p>To set a cumulative plot set cumul to TRUE.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chesterton</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>                cumul <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="6_riskyData-Plotting_files/figure-html/cumul_unwrap-1.png" width="672"></p>
 <p>To calculate and plot cumulative rainfall by hydrological year set
 wrap to TRUE.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chesterton</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                cumul <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="6_riskyData-Plotting_files/figure-html/cumul_wrap-1.png" width="672"></p>
@@ -191,7 +188,7 @@ ggplot2 object.</p>
 <p>In the example below I want to add threshold lines to the bewdley
 flow data that is not faceted. Additionally I wish to set the theme to
 linedraw and facet the plot so that there are 4 columns.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Set threshold examples</span></span>
 <span><span class="va">thresholds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span>, <span class="fl">500</span><span class="op">)</span></span>
 <span></span>
@@ -210,7 +207,7 @@ linedraw and facet the plot so that there are 4 columns.</p>
 <p><img src="6_riskyData-Plotting_files/figure-html/threshold-1.png" width="672"></p>
 <p>If we wished to plot the peaks detected by the
 <code>$findPeaks()</code> function.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">findPeaks</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate hydrological year and day of peaks - used in faceting</span></span>

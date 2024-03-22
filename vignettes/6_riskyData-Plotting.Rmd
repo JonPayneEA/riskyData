@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, echo = FALSE, warnings = FALSE}
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE, }
 library(riskyData)
 library(ggplot2)
 ```
@@ -73,7 +73,7 @@ bewdley$plot()
 For rainfall stations, when you apply the `$plot()` function the plots are
 also faceted by hydrological year but default to a column based geometry.
 
-```{r baseplot_rain, fig.width = 7, fig.height = 12}
+```{r baseplot_rain, fig.width = 7, fig.height = 12, warning = FALSE}
 chesterton$plot()
 ```
 
