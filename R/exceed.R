@@ -30,7 +30,7 @@ exceed <- function(dateTime = NULL,
                    timeStep = 900){
   dt <- data.table(dateTime = dateTime, value = value)
   ## Filter NA values out
-  dt[is.na(value)] <- 0
+  dt$value[is.na(dt$value)] <- 0
   ## Use run length encoder to pick NAs out
   consecEx <- rle(dt$value >= threshold)
   ## Find end point positions

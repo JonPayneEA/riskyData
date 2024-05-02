@@ -36,7 +36,8 @@ naRun <- function(dateTime = NULL,
                                   startPos,
                                   endPos),]
   dt1$id <- seq_along(dt1$id)
-  dt1$timeSteps <- difftime(dt1$end, dt1$start)/timestep
+  # dt1$timeSteps <- difftime(dt1$end, dt1$start)/timestep
+  dt1$timeSteps <- (dt1$endPos - dt1$startPos) + 1
 
   return(dt1)
 }

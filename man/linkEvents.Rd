@@ -4,7 +4,13 @@
 \alias{linkEvents}
 \title{A means to pair up hydrological events by nearest match time}
 \usage{
-linkEvents(upstream = NULL, downstream = NULL, timeMin = 0, timeMax = 1000)
+linkEvents(
+  upstream = NULL,
+  downstream = NULL,
+  timeMin = 0,
+  timeMax = 1000,
+  matrix = TRUE
+)
 }
 \arguments{
 \item{upstream}{Peak values and date time of upstream site}
@@ -14,6 +20,9 @@ linkEvents(upstream = NULL, downstream = NULL, timeMin = 0, timeMax = 1000)
 \item{timeMin}{Used to filter the time difference in paired peaks, set as 0}
 
 \item{timeMax}{Used to filter the time difference in paired peaks, set as 1000}
+
+\item{matrix}{Set to true, exports a matrix of difftimes in minutes that can
+be used to highlight the peak matching. If set as FALSE a nearest join is used.}
 }
 \value{
 a data.table of paired events

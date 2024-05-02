@@ -4,6 +4,8 @@
 #' @param downstream Peak values and date time of downstream site
 #' @param timeMin Used to filter the time difference in paired peaks, set as 0
 #' @param timeMax Used to filter the time difference in paired peaks, set as 1000
+#' @param matrix Set to true, exports a matrix of difftimes in minutes that can
+#' be used to highlight the peak matching. If set as FALSE a nearest join is used.
 #'
 #' @return a data.table of paired events
 #' @export
@@ -34,7 +36,52 @@
 linkEvents <- function(upstream = NULL,
                        downstream = NULL,
                        timeMin = 0,
-                       timeMax = 1000){
+                       timeMax = 1000,
+                       matrix = TRUE){
+
+  if (matrix == TRUE){
+    ## Set diffs function to be used in outer
+    diffs <- function(x, y){
+      dt <- as.numeric(difftime(x, y, units = "mins"))
+      return(dt)
+    }
+
+    ## Apply outer
+    ## Difftime on every event combination
+    matrix <- outer(downstream$dateTime,
+                    upstream$dateTime,
+                    diffs)
+
+    ## Remove negative values
+    # is.na(matrix) <-  matrix <= 0
+
+    ## Filter by min and max times
+    is.na(matrix) <- matrix <= timeMin | matrix >= timeMax
+
+
+    ## Find position of smallest time difference
+    matrixMin <- as.matrix(apply(matrix, 1, which.min))[,1]
+    matches <- data.table(upstreamPos = matrixMin,
+                          downstreamPos = seq_along(matrixMin))
+    return(matches)
+    ## Using the positions of the matrix extract min values as position
+    ## cbind used to coerce to vector
+    matches$timeDiff <- matrix[cbind(matches$downstreamPos,
+                                     matches$upstreamPos)]
+
+    ## Extract data
+    matches <- matches[, .(upstreamPos,
+                           upstreamDateTime = upstream$dateTime[upstreamPos],
+                           upstreamValue = upstream$value[upstreamPos],
+                           downstreamPos,
+                           downstreamDateTime = downstream$dateTime[downstreamPos],
+                           downstreamValue = downstream$value[downstreamPos],
+                           timeDiff)]
+
+    return(list(matrix, matches))
+    # plot(y = bewdPS[matches$downstream,]$value,
+    #      x = buildPS[matches$upstream,]$value)
+  }
 
   ## Duplicate times so they are preserved in join
   upstream$upstreamTime <- upstream$dateTime

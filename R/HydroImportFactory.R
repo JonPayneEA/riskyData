@@ -166,7 +166,7 @@ HydroImportFactory <- R6::R6Class(
     methods = function(.) {
       ## Collate the methods
       usage <- c(
-        "obj$data", "obj$rating", "obj$meta()", "obj$asVol()",
+        "obj$data", "obj$rating", "obj$peaks", "obj$meta()", "obj$asVol()",
         "obj$hydroYearDay()", "obj$rmVol()", "obj$rmHY()", "obj$rmHYD()",
         "obj$summary()", "obj$coords()", "obj$nrfa()", "obj$dataAgg()",
         "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$missing()",
@@ -177,6 +177,7 @@ HydroImportFactory <- R6::R6Class(
       desc <- c(
         "Returns the raw data imported via the API",
         "Returns the user imported rating details",
+        "Returns the calculated peaks that have been detected",
         "Returns the metadata associated with the object",
         "Calculates the volume of water relative to the time step, see ?asVol",
         "Calculates the hydrological year and day, see ?hydroYearDay",
