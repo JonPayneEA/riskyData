@@ -301,8 +301,9 @@ setting <code>transform = TRUE</code></p>
 <span><span class="va">chesterton</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    stationName  WISKI Easting Northing Latitude Longitude</span></span>
 <span><span class="co">#&gt;         &lt;char&gt; &lt;char&gt;   &lt;int&gt;    &lt;int&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:  Chesterton 164163  512830   294610 52.53766 -0.337867</span></span>
-<span></span>
+<span><span class="co">#&gt; 1:  Chesterton 164163  512830   294610 52.53766 -0.337867</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co">## NRFA details</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     WISKI codeNRFA                                             urlNRFA</span></span>
@@ -317,13 +318,13 @@ the <code>riskyData</code> containers currently have a couple of useful
 methods.</p>
 <p>If you wished to convert flow into a volume us the
 <code>$asVol</code> method;</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">asVol</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This adds a volume column to the data table. It uses the metadata to
 derive the suitable values based on the difference in time between
 observations. If you wished to remove the column use
 ``<code>$rmVol()</code>;</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">rmVol</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The other useful method is <code>$hydroYearDay()</code> this
 generates 2 things;</p>
@@ -332,7 +333,7 @@ generates 2 things;</p>
 September)</p></li>
 <li><p>Hydrological day</p></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span></span>
 <span><span class="co">#&gt;                    dateTime value quality  qcode hydroYear hydroYearDay</span></span>
@@ -351,7 +352,7 @@ September)</p></li>
 <p>Similarly to remove the columns you can remove the hydrological year
 with <code>$rmHY()</code> and the hydrological day with
 <code>$rmHYD()</code>;</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">rmHY</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">rmHYD</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -359,7 +360,7 @@ with <code>$rmHY()</code> and the hydrological day with
 <h4 id="plotting-data">Plotting data<a class="anchor" aria-label="anchor" href="#plotting-data"></a>
 </h4>
 <p>Currently the containers only support plotting in one way.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="3_riskyData-Methods_files/figure-html/plot1-1.png" width="672"></p>
 </div>

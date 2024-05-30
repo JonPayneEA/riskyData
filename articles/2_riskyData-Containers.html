@@ -191,12 +191,15 @@ normal data frame but the benefits outstrip the negatives.</p>
 outside of the <code>riskyData</code> package;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 61.3803</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 523</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 7.61</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateTime</span>, y <span class="op">=</span> <span class="va">value</span>, type <span class="op">=</span> <span class="st">'l'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 61.3803</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 523</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">value</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 7.61</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">$</span><span class="va">data</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dateTime</span>, y <span class="op">=</span> <span class="va">value</span>, type <span class="op">=</span> <span class="st">'l'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="2_riskyData-Containers_files/figure-html/public2-1.png" width="700"></p>
 </div>
 <div class="section level3">
@@ -208,7 +211,7 @@ are encapsulated to ensure data integrity.</p>
 this you cannot directly interact with or edit these data. For example
 let’s say I wished to change the catchment area of the bewdley
 dataset</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu">now</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; Error in bewdley$start &lt;- now() : cannot add bindings to a locked environment</span></span></code></pre>
 <p>The data are protected, this ensures that they can be used at all
@@ -232,7 +235,7 @@ how you normally do in R. They can all be applied using the
 object within parenthesis.</p>
 <p>Do find all the methods available to you use <code>$methods()</code>
 after the object name. For example;</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">methods</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ┌ <span style="color: #0000BB; font-weight: bold;">Methods</span> ───────────────────────────────────────────────────────────────────────────────────┐</span></span>
 <span><span class="co">#&gt; │ <span style="color: #BB0000; font-weight: bold;">obj$data</span>    →    Returns the raw data imported via the API                                 │</span></span>
@@ -259,19 +262,21 @@ after the object name. For example;</p>
 <span><span class="co">#&gt; └────────────────────────────────────────────────────────────────────────────────────────────┘</span></span></code></pre></div>
 <p>Using methods inbuilt to the containers, you can interact with the
 private metadata;</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Return NRFA details</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     WISKI codeNRFA                                             urlNRFA</span></span>
 <span><span class="co">#&gt;    &lt;char&gt;   &lt;char&gt;                                              &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1:   2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span></span>
-<span></span>
+<span><span class="co">#&gt; 1:   2001    54001 https://nrfa.ceh.ac.uk/data/station/info/54001.html</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># Return gauge coordinate data</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    stationName  WISKI Easting Northing Latitude Longitude</span></span>
 <span><span class="co">#&gt;         &lt;char&gt; &lt;char&gt;   &lt;int&gt;    &lt;int&gt;    &lt;num&gt;     &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:     Bewdley   2001  378235   276165 52.38307 -2.321186</span></span>
-<span></span>
+<span><span class="co">#&gt; 1:     Bewdley   2001  378235   276165 52.38307 -2.321186</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># Return all the metadata</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      dataType modifications stationName    riverName  WISKI  RLOID stationGuide</span></span>
@@ -316,7 +321,7 @@ amended to ensure that they would still work.</p>
 <code>$dataAgg()</code> function. Here we will calculate the hourly
 maximum data from the bewdley dataset and export it as class
 <code>HydroAggs</code>;</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"hourly"</span>, method <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Class: HydroAggs</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────</span></span></span>

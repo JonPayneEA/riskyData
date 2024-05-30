@@ -125,32 +125,32 @@ versions.</p>
 <p>Note this can take some time to load</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         wiskiID            label      riverName observedProperty easting</span></span>
-<span><span class="co">#&gt;          &lt;char&gt;           &lt;char&gt;         &lt;char&gt;           &lt;char&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt;     1:  037048U  Ulting Sarasota  River Chelmer        waterFlow  581271</span></span>
-<span><span class="co">#&gt;     2:   510810   Beggearn Huish Washford River       waterLevel  304007</span></span>
-<span><span class="co">#&gt;     3:   510810   Beggearn Huish Washford River        waterFlow  304007</span></span>
-<span><span class="co">#&gt;     4:    F0803           Adwick   River Dearne       waterLevel  447677</span></span>
-<span><span class="co">#&gt;     5:    F0803           Adwick   River Dearne        waterFlow  447677</span></span>
-<span><span class="co">#&gt;    ---                                                                  </span></span>
-<span><span class="co">#&gt; 17981:   164163       Chesterton           &lt;NA&gt;         rainfall  512830</span></span>
-<span><span class="co">#&gt; 17982:   0890TH     Thorpe Lakes           &lt;NA&gt;         rainfall  502777</span></span>
-<span><span class="co">#&gt; 17983:   336031        Everleigh           &lt;NA&gt;         rainfall  420105</span></span>
-<span><span class="co">#&gt; 17984: ST21F003      Yalham Farm   Trib (otter)        waterFlow  321916</span></span>
-<span><span class="co">#&gt; 17985:   L33074 Little Wilbraham        New Cut       waterLevel  554898</span></span>
+<span><span class="co">#&gt;        wiskiID                  label      riverName observedProperty easting</span></span>
+<span><span class="co">#&gt;         &lt;char&gt;                 &lt;char&gt;         &lt;char&gt;           &lt;char&gt;   &lt;int&gt;</span></span>
+<span><span class="co">#&gt;     1: 037048U        Ulting Sarasota  River Chelmer        waterFlow  581271</span></span>
+<span><span class="co">#&gt;     2:  510810         Beggearn Huish Washford River       waterLevel  304007</span></span>
+<span><span class="co">#&gt;     3:  510810         Beggearn Huish Washford River        waterFlow  304007</span></span>
+<span><span class="co">#&gt;     4:   F0803                 Adwick   River Dearne       waterLevel  447677</span></span>
+<span><span class="co">#&gt;     5:   F0803                 Adwick   River Dearne        waterFlow  447677</span></span>
+<span><span class="co">#&gt;    ---                                                                       </span></span>
+<span><span class="co">#&gt; 17927:    &lt;NA&gt; WEY_DS WISLEY_E_202403            WEY dissolved-oxygen  506152</span></span>
+<span><span class="co">#&gt; 17928:    &lt;NA&gt; WEY_DS WISLEY_E_202403            WEY     conductivity  506152</span></span>
+<span><span class="co">#&gt; 17929:    &lt;NA&gt; WEY_DS WISLEY_E_202403            WEY               ph  506152</span></span>
+<span><span class="co">#&gt; 17930:    &lt;NA&gt; WEY_DS WISLEY_E_202403            WEY      temperature  506152</span></span>
+<span><span class="co">#&gt; 17931:    &lt;NA&gt; WEY_DS WISLEY_E_202403            WEY        turbidity  506152</span></span>
 <span><span class="co">#&gt;        northing      lat      long dateOpened dateClosed catchmentArea</span></span>
-<span><span class="co">#&gt;           &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;list&gt;         &lt;num&gt;</span></span>
-<span><span class="co">#&gt;     1:   208591 51.74668  0.624437 2008-10-31                       NA</span></span>
-<span><span class="co">#&gt;     2:   139460 51.14632 -3.373695 1967-01-01                     36.3</span></span>
-<span><span class="co">#&gt;     3:   139460 51.14632 -3.373695 1967-01-01                     36.3</span></span>
-<span><span class="co">#&gt;     4:   402022 53.51271 -1.282505 1956-10-29                    311.0</span></span>
-<span><span class="co">#&gt;     5:   402022 53.51271 -1.282505 1956-10-29                    311.0</span></span>
+<span><span class="co">#&gt;           &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt;     1:   208591 51.74668  0.624437 2008-10-31       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;     2:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;     3:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;     4:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;     5:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
 <span><span class="co">#&gt;    ---                                                                </span></span>
-<span><span class="co">#&gt; 17981:   294610 52.53766 -0.337867       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 17982:   167930 51.40109 -0.523920       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 17983:   153111 51.27679 -1.713147       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 17984:   114949 50.92868 -3.112434       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 17985:   258251 52.20072  0.265146       &lt;NA&gt;                       NA</span></span>
+<span><span class="co">#&gt; 17927:   159814 51.32752 -0.477841 2024-03-25       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17928:   159814 51.32752 -0.477841 2024-03-25       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17929:   159814 51.32752 -0.477841 2024-03-25       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17930:   159814 51.32752 -0.477841 2024-03-25       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 17931:   159814 51.32752 -0.477841 2024-03-25       &lt;NA&gt;            NA</span></span>
 <span><span class="co">#&gt;        nrfaStationID</span></span>
 <span><span class="co">#&gt;               &lt;char&gt;</span></span>
 <span><span class="co">#&gt;     1:          &lt;NA&gt;</span></span>
@@ -159,11 +159,11 @@ versions.</p>
 <span><span class="co">#&gt;     4:         27030</span></span>
 <span><span class="co">#&gt;     5:         27030</span></span>
 <span><span class="co">#&gt;    ---              </span></span>
-<span><span class="co">#&gt; 17981:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17982:         39042</span></span>
-<span><span class="co">#&gt; 17983:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17984:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 17985:          &lt;NA&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; 17927:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17928:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17929:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17930:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 17931:          &lt;NA&gt;</span></span></code></pre></div>
 <p>If you wish to constrain these data to NRFA or WISKI sites only add
 “nrfa” or “wiski” to the <code>ID</code> argument. There’s also an
 additional API that this function can connect to that contains real time
@@ -274,24 +274,24 @@ can use;</p>
 <span><span class="co">#&gt;    4:  SS90F011         Thorverton         River Exe        waterFlow  293602</span></span>
 <span><span class="co">#&gt;    5:    521410              Iwood   Congresbury Yeo        waterFlow  345173</span></span>
 <span><span class="co">#&gt;   ---                                                                        </span></span>
-<span><span class="co">#&gt; 1178: 253211017        Chessbridge      Chess Stream        waterFlow  521667</span></span>
-<span><span class="co">#&gt; 1179: 351221005      Tilley Bridge Nunningham Stream        waterFlow  566193</span></span>
-<span><span class="co">#&gt; 1180:      4047     Blyth Oldcotes    Oldcoates Dyke        waterFlow  461470</span></span>
-<span><span class="co">#&gt; 1181:      2884 Burlington - Worfe       River Worfe        waterFlow  378175</span></span>
-<span><span class="co">#&gt; 1182:  ST21F003        Yalham Farm      Trib (otter)        waterFlow  321916</span></span>
+<span><span class="co">#&gt; 1179: 253211017        Chessbridge      Chess Stream        waterFlow  521667</span></span>
+<span><span class="co">#&gt; 1180: 351221005      Tilley Bridge Nunningham Stream        waterFlow  566193</span></span>
+<span><span class="co">#&gt; 1181:      4047     Blyth Oldcotes    Oldcoates Dyke        waterFlow  461470</span></span>
+<span><span class="co">#&gt; 1182:      2884 Burlington - Worfe       River Worfe        waterFlow  378175</span></span>
+<span><span class="co">#&gt; 1183:  ST21F003        Yalham Farm      Trib (otter)        waterFlow  321916</span></span>
 <span><span class="co">#&gt;       northing      lat      long dateOpened dateClosed catchmentArea</span></span>
-<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;list&gt;         &lt;num&gt;</span></span>
-<span><span class="co">#&gt;    1:   208591 51.74668  0.624437 2008-10-31                       NA</span></span>
-<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01                     36.3</span></span>
-<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29                    311.0</span></span>
-<span><span class="co">#&gt;    4:   101602 50.80417 -3.511302 1956-04-30                    600.9</span></span>
-<span><span class="co">#&gt;    5:   163064 51.36398 -2.788890 1973-03-12                       NA</span></span>
+<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt;    1:   208591 51.74668  0.624437 2008-10-31       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;    4:   101602 50.80417 -3.511302 1956-04-30       &lt;NA&gt;         600.9</span></span>
+<span><span class="co">#&gt;    5:   163064 51.36398 -2.788890 1973-03-12       &lt;NA&gt;            NA</span></span>
 <span><span class="co">#&gt;   ---                                                                </span></span>
-<span><span class="co">#&gt; 1178:   117269 50.94203 -0.269620       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1179:   112875 50.89145  0.361642       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1180:   387550 53.38122 -1.077358       &lt;NA&gt;                     85.0</span></span>
-<span><span class="co">#&gt; 1181:   310915 52.69546 -2.324363       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1182:   114949 50.92868 -3.112434       &lt;NA&gt;                       NA</span></span>
+<span><span class="co">#&gt; 1179:   117269 50.94203 -0.269620       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1180:   112875 50.89145  0.361642       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1181:   387550 53.38122 -1.077358       &lt;NA&gt;       &lt;NA&gt;          85.0</span></span>
+<span><span class="co">#&gt; 1182:   310915 52.69546 -2.324363       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1183:   114949 50.92868 -3.112434       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
 <span><span class="co">#&gt;       nrfaStationID</span></span>
 <span><span class="co">#&gt;              &lt;char&gt;</span></span>
 <span><span class="co">#&gt;    1:          &lt;NA&gt;</span></span>
@@ -300,11 +300,11 @@ can use;</p>
 <span><span class="co">#&gt;    4:         45001</span></span>
 <span><span class="co">#&gt;    5:         52017</span></span>
 <span><span class="co">#&gt;   ---              </span></span>
-<span><span class="co">#&gt; 1178:         41028</span></span>
-<span><span class="co">#&gt; 1179:         41001</span></span>
-<span><span class="co">#&gt; 1180:         28047</span></span>
-<span><span class="co">#&gt; 1181:          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 1182:          &lt;NA&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; 1179:         41028</span></span>
+<span><span class="co">#&gt; 1180:         41001</span></span>
+<span><span class="co">#&gt; 1181:         28047</span></span>
+<span><span class="co">#&gt; 1182:          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 1183:          &lt;NA&gt;</span></span></code></pre></div>
 <p>Or if we wished to load the sites that are used within the National
 River Flow Archive (NRFA);</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -317,24 +317,24 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:     F0803             Adwick        River Dearne        waterFlow  447677</span></span>
 <span><span class="co">#&gt;    5:      2048       Wellesbourne          River Dene       waterLevel  427271</span></span>
 <span><span class="co">#&gt;   ---                                                                          </span></span>
-<span><span class="co">#&gt; 1628: 352622003 Lewes Winterbourne Winterbourne Stream        waterFlow  540329</span></span>
-<span><span class="co">#&gt; 1629: 253211017        Chessbridge        Chess Stream        waterFlow  521667</span></span>
-<span><span class="co">#&gt; 1630: 351221005      Tilley Bridge   Nunningham Stream        waterFlow  566193</span></span>
-<span><span class="co">#&gt; 1631:      4047     Blyth Oldcotes      Oldcoates Dyke        waterFlow  461470</span></span>
-<span><span class="co">#&gt; 1632:    0890TH       Thorpe Lakes                &lt;NA&gt;         rainfall  502777</span></span>
+<span><span class="co">#&gt; 1630: 352622003 Lewes Winterbourne Winterbourne Stream        waterFlow  540329</span></span>
+<span><span class="co">#&gt; 1631: 253211017        Chessbridge        Chess Stream        waterFlow  521667</span></span>
+<span><span class="co">#&gt; 1632: 351221005      Tilley Bridge   Nunningham Stream        waterFlow  566193</span></span>
+<span><span class="co">#&gt; 1633:      4047     Blyth Oldcotes      Oldcoates Dyke        waterFlow  461470</span></span>
+<span><span class="co">#&gt; 1634:    0890TH       Thorpe Lakes                &lt;NA&gt;         rainfall  502777</span></span>
 <span><span class="co">#&gt;       northing      lat      long dateOpened dateClosed catchmentArea</span></span>
-<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;list&gt;         &lt;num&gt;</span></span>
-<span><span class="co">#&gt;    1:   139460 51.14632 -3.373695 1967-01-01                     36.3</span></span>
-<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01                     36.3</span></span>
-<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29                    311.0</span></span>
-<span><span class="co">#&gt;    4:   402022 53.51271 -1.282505 1956-10-29                    311.0</span></span>
-<span><span class="co">#&gt;    5:   255587 52.19784 -1.602416 1976-05-12                       NA</span></span>
+<span><span class="co">#&gt;          &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;     &lt;char&gt;         &lt;num&gt;</span></span>
+<span><span class="co">#&gt;    1:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;    2:   139460 51.14632 -3.373695 1967-01-01       &lt;NA&gt;          36.3</span></span>
+<span><span class="co">#&gt;    3:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;    4:   402022 53.51271 -1.282505 1956-10-29       &lt;NA&gt;         311.0</span></span>
+<span><span class="co">#&gt;    5:   255587 52.19784 -1.602416 1976-05-12       &lt;NA&gt;            NA</span></span>
 <span><span class="co">#&gt;   ---                                                                </span></span>
-<span><span class="co">#&gt; 1628:   109584 50.86873 -0.007107       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1629:   117269 50.94203 -0.269620       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1630:   112875 50.89145  0.361642       &lt;NA&gt;                       NA</span></span>
-<span><span class="co">#&gt; 1631:   387550 53.38122 -1.077358       &lt;NA&gt;                     85.0</span></span>
-<span><span class="co">#&gt; 1632:   167930 51.40109 -0.523920       &lt;NA&gt;                       NA</span></span>
+<span><span class="co">#&gt; 1630:   109584 50.86873 -0.007107       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1631:   117269 50.94203 -0.269620       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1632:   112875 50.89145  0.361642       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
+<span><span class="co">#&gt; 1633:   387550 53.38122 -1.077358       &lt;NA&gt;       &lt;NA&gt;          85.0</span></span>
+<span><span class="co">#&gt; 1634:   167930 51.40109 -0.523920       &lt;NA&gt;       &lt;NA&gt;            NA</span></span>
 <span><span class="co">#&gt;       nrfaStationID</span></span>
 <span><span class="co">#&gt;              &lt;char&gt;</span></span>
 <span><span class="co">#&gt;    1:         51003</span></span>
@@ -343,53 +343,53 @@ River Flow Archive (NRFA);</p>
 <span><span class="co">#&gt;    4:         27030</span></span>
 <span><span class="co">#&gt;    5:         54048</span></span>
 <span><span class="co">#&gt;   ---              </span></span>
-<span><span class="co">#&gt; 1628:         41037</span></span>
-<span><span class="co">#&gt; 1629:         41028</span></span>
-<span><span class="co">#&gt; 1630:         41001</span></span>
-<span><span class="co">#&gt; 1631:         28047</span></span>
-<span><span class="co">#&gt; 1632:         39042</span></span></code></pre></div>
+<span><span class="co">#&gt; 1630:         41037</span></span>
+<span><span class="co">#&gt; 1631:         41028</span></span>
+<span><span class="co">#&gt; 1632:         41001</span></span>
+<span><span class="co">#&gt; 1633:         28047</span></span>
+<span><span class="co">#&gt; 1634:         39042</span></span></code></pre></div>
 <p>To view sites that have realtime data available use;</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"flood"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       stationReference   wiskiID             label  parameter parameterName</span></span>
-<span><span class="co">#&gt;                 &lt;char&gt;    &lt;char&gt;            &lt;char&gt;     &lt;char&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt;    1:           1029TH    1029TH   Bourton Dickler waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;    2:           1029TH    1029TH   Bourton Dickler waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;    3:            E2043    L31004   Surfleet Sluice waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;    4:            52119 520320_FW        Gaw Bridge waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;    5:           E21136    L33865        Hemingford waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;   ---                                                                      </span></span>
-<span><span class="co">#&gt; 6230:            E6191    510805        Luxborough waterLevel   Water Level</span></span>
-<span><span class="co">#&gt; 6231:           755950      &lt;NA&gt;         Kirkbride waterLevel   Water Level</span></span>
-<span><span class="co">#&gt; 6232:            E2897      &lt;NA&gt;         IRNHAM GS  waterFlow          Flow</span></span>
-<span><span class="co">#&gt; 6233:            E3004      &lt;NA&gt; BURTON COGGLES GS  waterFlow          Flow</span></span>
-<span><span class="co">#&gt; 6234:          SU26_14      &lt;NA&gt;  Braydon Hook OBH waterLevel   Water Level</span></span>
-<span><span class="co">#&gt;              riverName                           catchmentName easting northing</span></span>
-<span><span class="co">#&gt;                 &lt;char&gt;                                  &lt;char&gt;   &lt;num&gt;    &lt;num&gt;</span></span>
-<span><span class="co">#&gt;    1:     River Dikler                               Cotswolds  417990   219610</span></span>
-<span><span class="co">#&gt;    2:     River Dikler                               Cotswolds  417990   219610</span></span>
-<span><span class="co">#&gt;    3:       River Glen                                 Welland  528000   329300</span></span>
-<span><span class="co">#&gt;    4:    River Parrett Parrett, Brue and West Somerset Streams  344383   119926</span></span>
-<span><span class="co">#&gt;    5: River Great Ouse                  Upper and Bedford Ouse  529500   271200</span></span>
-<span><span class="co">#&gt;   ---                                                                          </span></span>
-<span><span class="co">#&gt; 6230:   Washford River Parrett, Brue and West Somerset Streams  298448   137588</span></span>
-<span><span class="co">#&gt; 6231:             &lt;NA&gt;                                    &lt;NA&gt;  322865   557075</span></span>
-<span><span class="co">#&gt; 6232:             &lt;NA&gt;                                    &lt;NA&gt;  503800   327300</span></span>
-<span><span class="co">#&gt; 6233:             &lt;NA&gt;                                    &lt;NA&gt;  498677   326123</span></span>
-<span><span class="co">#&gt; 6234:             &lt;NA&gt;                                    &lt;NA&gt;      NA       NA</span></span>
-<span><span class="co">#&gt;            lat      long gridReference dateOpened datumOffset</span></span>
-<span><span class="co">#&gt;          &lt;num&gt;     &lt;num&gt;        &lt;char&gt;     &lt;char&gt;       &lt;num&gt;</span></span>
-<span><span class="co">#&gt;    1: 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
-<span><span class="co">#&gt;    2: 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
-<span><span class="co">#&gt;    3: 52.84599 -0.100848          &lt;NA&gt; 1992-01-01         2.0</span></span>
-<span><span class="co">#&gt;    4: 50.97604 -2.793549          &lt;NA&gt; 1997-01-01        10.0</span></span>
-<span><span class="co">#&gt;    5: 52.32362 -0.101287  TL 2950 7120 1996-10-01         6.3</span></span>
-<span><span class="co">#&gt;   ---                                                        </span></span>
-<span><span class="co">#&gt; 6230: 51.12853 -3.452612  SS9844837588 2013-10-29          NA</span></span>
-<span><span class="co">#&gt; 6231: 54.90240 -3.204424    NY22865707       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6232: 52.83322 -0.460655  TF0380027300       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6233: 52.82361 -0.537027  SK9867726123       &lt;NA&gt;          NA</span></span>
-<span><span class="co">#&gt; 6234:       NA        NA        SU2167       &lt;NA&gt;          NA</span></span></code></pre></div>
+<span><span class="co">#&gt;       stationReference   wiskiID                      label  parameter</span></span>
+<span><span class="co">#&gt;                 &lt;char&gt;    &lt;char&gt;                     &lt;char&gt;     &lt;char&gt;</span></span>
+<span><span class="co">#&gt;    1:           1029TH    1029TH            Bourton Dickler waterLevel</span></span>
+<span><span class="co">#&gt;    2:           1029TH    1029TH            Bourton Dickler waterLevel</span></span>
+<span><span class="co">#&gt;    3:            E2043    L31004            Surfleet Sluice waterLevel</span></span>
+<span><span class="co">#&gt;    4:            52119 520320_FW                 Gaw Bridge waterLevel</span></span>
+<span><span class="co">#&gt;    5:           E21136    L33865                 Hemingford waterLevel</span></span>
+<span><span class="co">#&gt;   ---                                                                 </span></span>
+<span><span class="co">#&gt; 6230:           755950      &lt;NA&gt;                  Kirkbride waterLevel</span></span>
+<span><span class="co">#&gt; 6231:            E2897      &lt;NA&gt;                  IRNHAM GS  waterFlow</span></span>
+<span><span class="co">#&gt; 6232:            E3004      &lt;NA&gt;          BURTON COGGLES GS  waterFlow</span></span>
+<span><span class="co">#&gt; 6233:          SU26_14      &lt;NA&gt;           Braydon Hook OBH waterLevel</span></span>
+<span><span class="co">#&gt; 6234:           E78441      &lt;NA&gt; DITCHAMPTON RESERVOIR DNP3 waterLevel</span></span>
+<span><span class="co">#&gt;       parameterName        riverName                           catchmentName</span></span>
+<span><span class="co">#&gt;              &lt;char&gt;           &lt;char&gt;                                  &lt;char&gt;</span></span>
+<span><span class="co">#&gt;    1:   Water Level     River Dikler                               Cotswolds</span></span>
+<span><span class="co">#&gt;    2:   Water Level     River Dikler                               Cotswolds</span></span>
+<span><span class="co">#&gt;    3:   Water Level       River Glen                                 Welland</span></span>
+<span><span class="co">#&gt;    4:   Water Level    River Parrett Parrett, Brue and West Somerset Streams</span></span>
+<span><span class="co">#&gt;    5:   Water Level River Great Ouse                  Upper and Bedford Ouse</span></span>
+<span><span class="co">#&gt;   ---                                                                       </span></span>
+<span><span class="co">#&gt; 6230:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6231:          Flow             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6232:          Flow             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6233:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6234:   Water Level             &lt;NA&gt;                                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;       easting northing      lat      long gridReference dateOpened datumOffset</span></span>
+<span><span class="co">#&gt;         &lt;num&gt;    &lt;num&gt;    &lt;num&gt;     &lt;num&gt;        &lt;char&gt;     &lt;char&gt;       &lt;num&gt;</span></span>
+<span><span class="co">#&gt;    1:  417990   219610 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
+<span><span class="co">#&gt;    2:  417990   219610 51.87477 -1.740083          &lt;NA&gt; 1994-01-01          NA</span></span>
+<span><span class="co">#&gt;    3:  528000   329300 52.84599 -0.100848          &lt;NA&gt; 1992-01-01         2.0</span></span>
+<span><span class="co">#&gt;    4:  344383   119926 50.97604 -2.793549          &lt;NA&gt; 1997-01-01        10.0</span></span>
+<span><span class="co">#&gt;    5:  529500   271200 52.32362 -0.101287  TL 2950 7120 1996-10-01         6.3</span></span>
+<span><span class="co">#&gt;   ---                                                                         </span></span>
+<span><span class="co">#&gt; 6230:  322865   557075 54.90240 -3.204424    NY22865707       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6231:  503800   327300 52.83322 -0.460655  TF0380027300       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6232:  498677   326123 52.82361 -0.537027  SK9867726123       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6233:      NA       NA       NA        NA        SU2167       &lt;NA&gt;          NA</span></span>
+<span><span class="co">#&gt; 6234:      NA       NA       NA        NA        SU0832       &lt;NA&gt;          NA</span></span></code></pre></div>
 <p>Finally for tidal sites use;</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">"tidal"</span><span class="op">)</span></span>
@@ -698,19 +698,19 @@ respectively and wish to find NRFA gauges within 30km;</p>
 coordinates; 52.58302, -0.40656</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">52.58302</span>, long <span class="op">=</span> <span class="op">-</span><span class="fl">0.40656</span>, dist <span class="op">=</span> <span class="fl">100</span>, obsProperty <span class="op">=</span> <span class="st">"groundwaterLevel"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      wiskiID                    label               riverName observedProperty</span></span>
-<span><span class="co">#&gt;       &lt;char&gt;                   &lt;char&gt;                  &lt;char&gt;           &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1:  U32610        Wansford Combined              River Nene        waterFlow</span></span>
-<span><span class="co">#&gt;   2:   8_913           Sutton Wetland                    &lt;NA&gt; groundwaterLevel</span></span>
-<span><span class="co">#&gt;   3:   3_032 Sutton Top Field Spinney                    &lt;NA&gt; groundwaterLevel</span></span>
-<span><span class="co">#&gt;   4:   3_034        Sutton Heath Road                    &lt;NA&gt; groundwaterLevel</span></span>
-<span><span class="co">#&gt;   5:   3_004                  Barnack                    &lt;NA&gt; groundwaterLevel</span></span>
-<span><span class="co">#&gt;  ---                                                                          </span></span>
-<span><span class="co">#&gt; 117:  031021                   Ashley           River Welland        waterFlow</span></span>
-<span><span class="co">#&gt; 118:  032032           Barford Bridge               River Ise        waterFlow</span></span>
-<span><span class="co">#&gt; 119:  L32017 Upper Ringstead upstream              River Nene       waterLevel</span></span>
-<span><span class="co">#&gt; 120:  030022               Rippingale Rippingale Running Dyke        waterFlow</span></span>
-<span><span class="co">#&gt; 121:  031013                   Irnham         East Glen River        waterFlow</span></span>
+<span><span class="co">#&gt;      wiskiID                            label  riverName observedProperty</span></span>
+<span><span class="co">#&gt;       &lt;char&gt;                           &lt;char&gt;     &lt;char&gt;           &lt;char&gt;</span></span>
+<span><span class="co">#&gt;   1:  U32610                Wansford Combined River Nene        waterFlow</span></span>
+<span><span class="co">#&gt;   2:   8_913                   Sutton Wetland       &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   3:   3_032         Sutton Top Field Spinney       &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   4:   3_034                Sutton Heath Road       &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;   5:   3_004                          Barnack       &lt;NA&gt; groundwaterLevel</span></span>
+<span><span class="co">#&gt;  ---                                                                     </span></span>
+<span><span class="co">#&gt; 123:    &lt;NA&gt; WITHAM_COLSTERWORTH US _E_201905     WITHAM     conductivity</span></span>
+<span><span class="co">#&gt; 124:    &lt;NA&gt; WITHAM_COLSTERWORTH US _E_201905     WITHAM               ph</span></span>
+<span><span class="co">#&gt; 125:    &lt;NA&gt; WITHAM_COLSTERWORTH US _E_201905     WITHAM      temperature</span></span>
+<span><span class="co">#&gt; 126:    &lt;NA&gt; WITHAM_COLSTERWORTH US _E_201905     WITHAM        turbidity</span></span>
+<span><span class="co">#&gt; 127:  151890                         Hallaton       &lt;NA&gt;         rainfall</span></span>
 <span><span class="co">#&gt;      easting northing      lat      long dateOpened catchmentArea nrfaStationID</span></span>
 <span><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt;    &lt;num&gt;     &lt;num&gt;     &lt;char&gt;         &lt;num&gt;        &lt;char&gt;</span></span>
 <span><span class="co">#&gt;   1:  508060   299550 52.58302 -0.406558 1996-01-16            NA         32010</span></span>
@@ -719,11 +719,11 @@ coordinates; 52.58302, -0.40656</p>
 <span><span class="co">#&gt;   4:  509035   300235 52.58898 -0.391949 1998-03-25            NA          &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;   5:  507345   305125 52.63326 -0.415299 1971-04-23            NA          &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;  ---                                                                           </span></span>
-<span><span class="co">#&gt; 117:  481880   291570 52.51587 -0.794809 1970-10-01         250.7         31021</span></span>
-<span><span class="co">#&gt; 118:  486090   283050 52.43864 -0.734983 1988-11-08            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 119:  496750   274520 52.36020 -0.580679       &lt;NA&gt;            NA          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 120:  512540   327116 52.82982 -0.331042 1984-01-13           9.6          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 121:  503800   327300 52.83322 -0.460655 1969-02-14          71.5         31013</span></span></code></pre></div>
+<span><span class="co">#&gt; 123:  492800   323800 52.80377 -0.624875 2019-05-21            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 124:  492800   323800 52.80377 -0.624875 2019-05-21            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 125:  492800   323800 52.80377 -0.624875 2019-05-21            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 126:  492800   323800 52.80377 -0.624875 2019-05-21            NA          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 127:  479540   295960 52.55567 -0.828234 1981-09-29            NA          &lt;NA&gt;</span></span></code></pre></div>
 <p><strong>Note</strong> the function will not allow you to mix
 easting-northing with lat-long.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -745,13 +745,13 @@ case Bewdley (WISKI 2001)</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    measure period          type</span></span>
 <span><span class="co">#&gt;     &lt;char&gt;  &lt;int&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1:    flow  86400           max</span></span>
-<span><span class="co">#&gt; 2:   level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 3:    flow  86400           min</span></span>
-<span><span class="co">#&gt; 4:    flow    900 instantaneous</span></span>
-<span><span class="co">#&gt; 5:   level  86400           max</span></span>
-<span><span class="co">#&gt; 6:   level  86400           min</span></span>
-<span><span class="co">#&gt; 7:    flow  86400          mean</span></span></code></pre></div>
+<span><span class="co">#&gt; 1:   level    900 instantaneous</span></span>
+<span><span class="co">#&gt; 2:    flow  86400          mean</span></span>
+<span><span class="co">#&gt; 3:    flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 4:   level  86400           max</span></span>
+<span><span class="co">#&gt; 5:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 6:    flow  86400           min</span></span>
+<span><span class="co">#&gt; 7:   level  86400           min</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
@@ -909,7 +909,7 @@ arguments</p>
 <span></span>
 <span><span class="va">dt</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[85ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[88ms]</span></span></span>
 <span><span class="co">#&gt; </span></span></code></pre>
 <p><img src="1_riskyData-Welcome_files/figure-html/rangeBodge-1.png" width="672"></p>
 <p>To pull all the data we can use the “all” option.</p>
