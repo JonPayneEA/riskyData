@@ -63,11 +63,15 @@ linkEvents <- function(upstream = NULL,
     matrixMin <- as.matrix(apply(matrix, 1, which.min))[,1]
     matches <- data.table(upstreamPos = matrixMin,
                           downstreamPos = seq_along(matrixMin))
-    return(matches)
+    ## Remove integer(0)
+    indices <- which(lengths(matches$upstreamPos) == 0)
+    matches <- matches[-indices,]
+
     ## Using the positions of the matrix extract min values as position
     ## cbind used to coerce to vector
-    matches$timeDiff <- matrix[cbind(matches$downstreamPos,
-                                     matches$upstreamPos)]
+    # matches$timeDiff <- matrix[cbind(matches$downstreamPos,
+    #                                  matches$upstreamPos)]
+    matches$upstreamPos <- unlist(matches$upstreamPos)
 
     ## Extract data
     matches <- matches[, .(upstreamPos,
@@ -76,7 +80,8 @@ linkEvents <- function(upstream = NULL,
                            downstreamPos,
                            downstreamDateTime = downstream$dateTime[downstreamPos],
                            downstreamValue = downstream$value[downstreamPos],
-                           timeDiff)]
+                           timeDiff = downstream$dateTime[downstreamPos] -
+                             upstream$dateTime[upstreamPos])]
 
     return(list(matrix, matches))
     # plot(y = bewdPS[matches$downstream,]$value,
