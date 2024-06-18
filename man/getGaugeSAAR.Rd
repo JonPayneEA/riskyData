@@ -2,7 +2,7 @@
 % Please edit documentation in R/getGaugeSAAR.R
 \name{getGaugeSAAR}
 \alias{getGaugeSAAR}
-\title{Claculate the observed SAAR values from rain gauge data}
+\title{Calculate the observed SAAR values from rain gauge data}
 \usage{
 getGaugeSAAR(gaugeIDs)
 }
@@ -14,7 +14,7 @@ getGaugeSAAR(gaugeIDs)
 A list containing the annual rainfalls, summary statistics and plots
 }
 \description{
-Claculate the observed SAAR values from rain gauge data
+Calculate the observed SAAR values from rain gauge data
 }
 \examples{
 rainGaugeIDs <- c('015347','021228', '013045', 'NE034')

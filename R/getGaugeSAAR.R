@@ -1,4 +1,4 @@
-#' @title Claculate the observed SAAR values from rain gauge data
+#' @title Calculate the observed SAAR values from rain gauge data
 #'
 #' @param gaugeIDs A vector of rain gauge WISKI IDs that can be fed into
 #' `riskyData::loadAPI()`
