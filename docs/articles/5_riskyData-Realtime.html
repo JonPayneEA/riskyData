@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.6.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +109,7 @@ the argument <code>rtExt = TRUE</code>.</p>
 <span>  rtExt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="va">bewdF</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[547ms]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[942ms]</span></span></span>
 <span><span class="va">plot</span> <span class="op">+</span> <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">bewdF</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dateTime</span><span class="op">[</span><span class="fl">39000</span><span class="op">]</span>,</span>
 <span>                  colour <span class="op">=</span> <span class="st">"red"</span>, </span>
 <span>                  linewidth <span class="op">=</span> <span class="fl">1.1</span>,</span>

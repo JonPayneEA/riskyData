@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riskyData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.6.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -745,13 +745,13 @@ case Bewdley (WISKI 2001)</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/loadAPI.html">loadAPI</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="st">'2001'</span><span class="op">)</span> <span class="co">#! It's good practice to input the ID as a character string</span></span>
 <span><span class="co">#&gt;    measure period          type</span></span>
 <span><span class="co">#&gt;     &lt;char&gt;  &lt;int&gt;        &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1:   level  86400           min</span></span>
+<span><span class="co">#&gt; 1:    flow  86400          mean</span></span>
 <span><span class="co">#&gt; 2:   level  86400           max</span></span>
 <span><span class="co">#&gt; 3:   level    900 instantaneous</span></span>
-<span><span class="co">#&gt; 4:    flow  86400           min</span></span>
-<span><span class="co">#&gt; 5:    flow    900 instantaneous</span></span>
-<span><span class="co">#&gt; 6:    flow  86400          mean</span></span>
-<span><span class="co">#&gt; 7:    flow  86400           max</span></span></code></pre></div>
+<span><span class="co">#&gt; 4:    flow    900 instantaneous</span></span>
+<span><span class="co">#&gt; 5:    flow  86400           max</span></span>
+<span><span class="co">#&gt; 6:   level  86400           min</span></span>
+<span><span class="co">#&gt; 7:    flow  86400           min</span></span></code></pre></div>
 <p>As you can see there are 3 level and 4 flow series available. Of
 these there are are 2 time steps or periods available. Daily data are
 86400 seconds and 15 minute are 900 seconds. The 15 minute data are of
@@ -890,7 +890,7 @@ will also plot the data for this;</p>
 <span>              from <span class="op">=</span> <span class="st">'2022-06-11'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dt</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[19ms]</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[14ms]</span></span></span></code></pre>
 <p><img src="1_riskyData-Welcome_files/figure-html/dayBodge-1.png" width="672"></p>
 <p>If we wished to extend this we can use the <strong>‘range’</strong>
 option in <code>datapoints</code>. For this we a beginning and end date,
@@ -906,7 +906,7 @@ arguments</p>
 <span>              to <span class="op">=</span> <span class="st">'2020-03-30 00:00'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dt</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>wrap <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[206ms]</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Calculating hydrological year and day<span style="color: #00BB00;">✔</span> Calculating hydrological year and day <span style="color: #B2B2B2;">[207ms]</span></span></span></code></pre>
 <p><img src="1_riskyData-Welcome_files/figure-html/rangeBodge-1.png" width="672"></p>
 <p>To pull all the data we can use the “all” option.</p>
 <p><strong>Note</strong> this can take a long time as there is a lot of
