@@ -54,8 +54,14 @@ loadMulti <- function(API = "EA",
                                  datapoints,
                                  from,
                                  to)
+    cli_alert_info(paste0(" File names are in the format of measure_ID format"))
+
+    ## Iterate through IDs
+    ## Where data are not downloaded - error messages will  flag
+    errors <- list()
     for(i in seq_along(dt$ID)){
       name <- paste(dt$measure[i], dt$ID[i], sep = "_")
+      cli::cli_h3(paste0("Data import: ", name))
       temp <- tryCatch(
         {
           loadAPI(ID = dt$ID[i],
@@ -84,11 +90,19 @@ loadMulti <- function(API = "EA",
         cli::cli_div(theme = list(span.emph = list(color = "orange")))
         cli::cli_alert_info(" Try using the {.emph loadAPI()} function instead")
         cli::cli_end()
+        ## export errors
+        errors[[i]] <- dt$ID[i]
       }
       rm(temp)
     }
 
   } else {
     stop("Currently only the EAs API is supported")
+  }
+  ## Unlist errors
+  errors <- unlist(errors)
+  if (!is.null(errors)){
+    cli::cli_h3(paste0(" Errors detected at the following sites:"))
+    cli::cli_text("{.pkg {errors}}")
   }
 }
