@@ -17,7 +17,7 @@ loadMulti(
 )
 }
 \arguments{
-\item{API}{Currently only supports the Environment Agency API set as "EA"}
+\item{API}{Currently only supports the Environment Agency API set as "EA".}
 
 \item{ID}{Use to specify a particular WISKI ID or for when downloading all
 stations 'wiski' or 'nrfa' to filter results. Additionally to access the real
@@ -28,24 +28,28 @@ tide gauges. Vectors are supported.}
 parameter. Generally 'flow', 'level', or 'groundwater'}
 
 \item{period}{This is so you can select the time steps available, generally
-900 (15 min) or 86400 (daily)}
+900 (15 min) or 86400 (daily).}
 
 \item{type}{Selects the data type, instantaneous, min, max etc.}
 
 \item{datapoints}{Allows you to decide where in the time series you are
-pulling the data from}
+pulling the data from.}
 
-\item{from}{First time step of choice}
+\item{from}{First time step of choice.}
 
-\item{to}{Last time step of choice}
+\item{to}{Last time step of choice.}
 
-\item{...}{}
+\item{...}{Additional \code{loadAPI()} arguments can be called.}
 }
 \value{
 Multiple \code{HydroImport} containers
 }
 \description{
-Load multiple \code{HydroImport} containers
+The \code{loadMulti()} function iterates through combinations of
+parameters supplied to the arguments. These can be added as vectors, this
+reduces the amount of calls to \code{loadAPI()} in working scripts. Objects or
+\code{HydroImport} are automatically assigned to the environment using a name
+convention of  \emph{paramater}_\emph{WISKI-ID}.
 }
 \examples{
 loadMulti(ID = c('2001', '2002'),

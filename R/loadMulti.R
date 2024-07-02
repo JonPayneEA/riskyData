@@ -1,6 +1,12 @@
 #' Load multiple `HydroImport` containers
 #'
-#' @param API Currently only supports the Environment Agency API set as "EA"
+#' @description The `loadMulti()` function iterates through combinations of
+#' parameters supplied to the arguments. These can be added as vectors, this
+#' reduces the amount of calls to `loadAPI()` in working scripts. Objects or
+#' `HydroImport` are automatically assigned to the environment using a name
+#' convention of  *paramater*_*WISKI-ID*.
+#'
+#' @param API Currently only supports the Environment Agency API set as "EA".
 #' @param ID Use to specify a particular WISKI ID or for when downloading all
 #' stations 'wiski' or 'nrfa' to filter results. Additionally to access the real
 #'  time APIs use "flood" for all critical sites and "tidal" for the category A
@@ -8,13 +14,13 @@
 #' @param measure Use this when exporting observations to select the available
 #' parameter. Generally 'flow', 'level', or 'groundwater'
 #' @param period 	This is so you can select the time steps available, generally
-#' 900 (15 min) or 86400 (daily)
+#' 900 (15 min) or 86400 (daily).
 #' @param type Selects the data type, instantaneous, min, max etc.
 #' @param datapoints Allows you to decide where in the time series you are
-#' pulling the data from
-#' @param from First time step of choice
-#' @param to Last time step of choice
-#' @param ...
+#' pulling the data from.
+#' @param from First time step of choice.
+#' @param to Last time step of choice.
+#' @param ... Additional `loadAPI()` arguments can be called.
 #'
 #' @return Multiple `HydroImport` containers
 #' @export
