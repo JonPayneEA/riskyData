@@ -1,4 +1,4 @@
-#' @title Pull data from the Environment Agency's API
+#' @title Depreciated version Pull data from the Environment Agency's API
 #'
 #' @description The loadAPI function is used to interogate the EAs API. Data for
 #'  all station can be pulled, or when specified to a single site various
@@ -73,31 +73,12 @@
 #'   xlab = "Time",
 #'   ylab = "Stage (mAoD)"
 #' ))
-#'
-#' loadAPIV2('wiski')
-#'
-#' loadAPIV2(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
-#'
-#' loadAPIV2(ID = "L1207")
-#'
-#' loadAPIV2(ID = c("2001", 2002),
-#'           measure = c("level", "flow", "level"),
-#'           period = 900,
-#'           type = "instantaneous",
-#'           datapoints = "earliest",
-#'           rtLookup = FALSE)
-#'
-#' loadAPIV2(ID = "L1207",
-#'           measure = "level",
-#'           period = 900,
-#'           type = "instantaneous",
-#'           datapoints = "latest")
-loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
+loadAPIDep <- function(ID = NULL, measure = NULL, period = NULL,
                     type = NULL, datapoints = "standard",
                     from = NULL, to = NULL, lat = NULL, long = NULL,
                     easting = NULL, northing = NULL, dist = NULL,
                     obsProperty = NULL, meta = TRUE, rtExt = FALSE,
-                    rtLookup = FALSE, assign = TRUE) {
+                    rtLookup = FALSE) {
   # Initial start up check ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obsVars <- c(
     "waterFlow", "waterLevel", "rainfall", "groundwaterLevel", "wind",
@@ -126,7 +107,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   ##! Base hydrology API
   ## Return all available stations from hydrology API ~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if ((is.null(ID) || ID[1] %in% c("all", "wiski", "nrfa")) &
+  if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
       is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
       is.null(dist)) {
     ## Limit set to 20,000 (current API is ~8,000) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,7 +181,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   ##! Base real time API
   ## Return all sites from realtime API
-  if (ID[1] == "flood" &&
+  if (ID == 'flood' &&
       is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
       is.null(dist)){
 
@@ -255,7 +236,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
 
   ##! Base tidal API
   ## Return all tidal sites from realtime API
-  if (ID[1] == "tidal" &&
+  if (ID == 'tidal' &&
       is.null(easting) & is.null(lat) & is.null(long) & is.null(northing) &
       is.null(dist)){
 
@@ -289,7 +270,7 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
   }
 
   # Find available stations within a set distance ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if ((is.null(ID) || ID[1] %in% c("all", "wiski", "nrfa")) &
+  if ((is.null(ID) || ID %in% c("all", "wiski", "nrfa")) &
       (!is.null(easting) | !is.null(lat)) &
       (!is.null(northing) | !is.null(long)) &
       !is.null(dist)) {
@@ -377,83 +358,211 @@ loadAPI <- function(ID = NULL, measure = NULL, period = NULL,
   #~~~~ Main data export ~~~~#
   #~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-
   ## Download data from hydrology API
   if (!is.null(ID) & !is.null(measure) & !is.null(period)) {
-    refs <- data.table::data.table(ID,
-                                   measure,
-                                   period,
-                                   type,
-                                   datapoints,
-                                   from,
-                                   to)
+    cli::cli_progress_step("Compiling parameters for raw download")
+    link <- paste0(baselink, "?wiskiID=", ID)
+    data <- jsonlite::fromJSON(link)
+    data_level <- jsonlite::fromJSON(as.character(data$items[1]))
+    params <- data.table(
+      parameter = data_level$items$measures[[1]]$parameter,
+      period = data_level$items$measures[[1]]$period,
+      type = data_level$items$measures[[1]]$valueType,
+      note = data_level$items$measures[[1]]$notation
+    )
+    ## Insert criteria on what data to extract ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ## Merges into URL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    datalink <- params[
+      parameter == measure &
+        period == timestep &
+        type == dataType,
+      note,
+    ]
+    measImp <- paste0(
+      "http://environment.data.gov.uk/hydrology/id/measures/",
+      datalink
+    )
 
-    if (length(refs$ID) > 1) {
-      cli_alert_info(paste0(" File names are in the format of measure_ID format"))
-      cli::cli_h3(" Data referennces used in download")
-      print(refs)
-      ## Iterate through IDs
-      ## Where data are not downloaded - error messages will  flag
-      errors <- list()
-      for(i in seq_along(refs$ID)){
-        name <- paste(refs$measure[i], refs$ID[i], sep = "_")
-        cli::cli_h3(paste0("Data import: ", name))
-        temp <- tryCatch(
-          {
-            hdeAPI(ID = refs$ID[i],
-                   measure = refs$measure[i],
-                   period = refs$period[i],
-                   type = refs$type[i],
-                   datapoints = refs$datapoints[i],
-                   from = refs$from[i],
-                   to = refs$to[i],
-                   rtExt = rtExt,
-                   meta = meta,
-                   rtLookup = rtLookup)
-
-          },
-          error = function(msg){
-            errorMes <- paste0("{.strong Failed to download data for ",
-                               name, "}")
-            cli::cli_alert_danger(errorMes)
-            return(NULL)
-          }
-        )
-        ## Export data
-        if (!is.null(temp)){
-          cli_alert_info(paste0(" Storing data in environment as {.pkg ",
-                                name,
-                                "}"))
-          assign(name, temp, envir = .GlobalEnv)
-        } else {
-          ## Error message if temp file is empty due to error
-          cli::cli_div(theme = list(span.emph = list(color = "orange")))
-          cli::cli_alert_info(" Try using the {.emph loadAPI()} function instead")
-          cli::cli_end()
-          ## export errors
-          errors[[i]] <- refs$ID[i]
-        }
-        rm(temp)
-      }
-      ## Unlist errors
-      errors <- unlist(errors)
-      if (!is.null(errors)){
-        cli::cli_h3(paste0(" Errors detected at the following sites:"))
-        cli::cli_text("{.pkg {errors}}")
-      }
-    } else {
-      ## To improve functionality the code was embedded into `hdeAPI()` function
-      r6 <- hdeAPI(ID = ID,
-                   measure = measure,
-                   period = period,
-                   type = type,
-                   datapoints = datapoints,
-                   from = from,
-                   to = to,
-                   rtExt = rtExt,
-                   meta = meta,
-                   rtLookup = rtLookup)
-      return(r6)
+    ## Additional URL commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if (datapoints == "all") {
+      datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000")
     }
+    if (datapoints == "earliest") {
+      datalinkAppend <- paste0(measImp, "/readings.json?earliest")
+    }
+    if (datapoints == "latest") {
+      datalinkAppend <- paste0(measImp, "/readings.json?latest")
+    }
+    if (datapoints == "standard") {
+      datalinkAppend <- paste0(measImp, "/readings.json")
+    }
+    if (datapoints == "day") {
+      minDate <- as.Date(from)
+      datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000&date=", minDate)
+    }
+    if (datapoints == "range") {
+      minDate <- as.Date(from)
+      maxDate <- as.Date(to) + 1
+      datalinkAppend <- paste0(
+        measImp, "/readings.json?_limit=2000000&mineq-date=",
+        minDate, "&max-date=", maxDate
+      )
+    }
+    cli::cli_progress_step("Downloading raw data")
+    series <- data.table(jsonlite::fromJSON(datalinkAppend)[[2]])
+    ## Drop needless parameters
+    series <- series[,-1:-2]
+    ## For clarity all dates are coerced to POSIXct ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~
+    if (timestep == 900) {
+      series$dateTime <- as.POSIXct(series$dateTime,
+                                    format = "%Y-%m-%dT%H:%M",
+                                    tz = "GMT"
+      )
+      if (datapoints == "range"){
+        ## API only pulls data by calendar day
+        ## Windowing time series by input data
+        series <- snipRange(x = series, start = from, end = to)
+      }
+    }
+
+    if (timestep == 86400) {
+      series$dateTime <- as.POSIXct(series$dateTime,
+                                    format = "%Y-%m-%dT%H:%M",
+                                    tz = "GMT"
+      )
+      if (datapoints == "range"){
+        lastLine <- length(series$dateTime)
+        series <- series[-lastLine,]
+      }
+    }
+    if (rtExt == TRUE){
+      ## Download the realtime data
+
+      rtStation <- 'https://environment.data.gov.uk/flood-monitoring/id/measures?stationReference='
+
+      ## Lookup measure to parameters required
+      measures <- c('flow', 'level', 'rainfall')
+      params <- c('waterFlow', 'waterLevel', 'rainfall')
+      names(params) <- measures
+      param <- params[measure]
+
+      if(rtLookup == FALSE) {
+        data("realtimeIDs")
+      } else {
+        realtimeIDs <- riskyData::loadAPI(ID = 'flood')
+        realtimeIDs <- unique(realtimeIDs[, .(stationReference,
+                                              wiskiID,
+                                              label,
+                                              parameter,
+                                              parameterName
+        )])
+      }
+      rloid <- realtimeIDs[wiskiID == ID &
+                             parameter == param,
+                           .(stationReference)]
+      rtLink <- paste0(rtStation, rloid[1])
+      # Download the measures
+      rtSeries <- jsonlite::read_json(rtLink)
+      rtMeasures <- data.table::rbindlist(rtSeries$items, fill = TRUE)
+      ## The fill causes duplicates, easier to just remove
+      rtMeasures <- unique(rtMeasures[, .(`@id`,
+                                          label,
+                                          parameter,
+                                          parameterName,
+                                          period,
+                                          valueType)])
+      ## Rename the `@id` column
+      colnames(rtMeasures)[1] <- 'measID'
+
+      ## Filter to the data used in the `loadAPI()` call
+      rtMeasure <- rtMeasures[period == period &
+                                parameter == measure &
+                                valueType == type,
+                              measID]
+
+      if (identical(rtMeasure, character(0))){
+        stop('There is no realtime data available for the measures required. If you
+       want flow data you might be able to convert stage data')
+      }
+
+      ## Setting a limit of 4 weeks, 2688 recordings
+      ##! Longer data series tend to be corrupted
+      measureLink <- paste0(rtMeasure, '/readings.json?_sorted&_limit=2688')
+
+      ## Download data
+      cli::cli_progress_step("Downloading extended realtime data")
+      rtTS <- data.table(jsonlite::fromJSON(measureLink)[3][[1]])
+      rtTS <- rtTS[order(dateTime)] #! Helps combine data
+
+      ## Convert to consistent date time
+
+      if (measure == 'rainfall') {
+        rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
+                                             format = "%Y-%m-%dT%H:%M",
+                                             tz = "GMT"),
+                       value,
+                       valid = NA,
+                       invalid = NA,
+                       missing = NA,
+                       completeness = NA,
+                       quality = 'Unchecked')]
+      } else {
+        rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
+                                             format = "%Y-%m-%dT%H:%M",
+                                             tz = "GMT"),
+                       value, quality = 'Unchecked', qcode = '<NA>' )]
+      }
+
+      ## Filter rt by anything after the latest hydrology API data point
+      hydrologyMax <- max(series$dateTime)
+      rt <- rt[dateTime > hydrologyMax,,]
+
+      ## Merge 2 time series
+      ##! Column presence can vary, particularly the qcode
+      ## Find intersecting columns and bind rows
+      inter <- intersect(names(series), names(rt))
+      series <- rbind(series[,..inter], rt[,..inter])
+    }
+
+    ## Download the metadata
+    if (meta == TRUE) {
+      cli::cli_progress_step("Collating metadata")
+      metaD <- getMeta(
+        ID = ID,
+        mainLink = datalinkAppend,
+        measureLink = measImp,
+        import = series[, -1:-2]
+      )
+      cli::cli_progress_step("Exporting data to HydroImport container")
+      out <- HydroImportFactory$new(
+        data = series,
+        peaks = NULL,
+        stationName = metaD$Data[[1]],
+        riverName = metaD$Data[[2]],
+        WISKI = metaD$Data[[3]],
+        RLOID = metaD$Data[[4]],
+        stationGuide = metaD$Data[[5]],
+        baseURL = metaD$Data[[6]],
+        dataURL = metaD$Data[[7]],
+        measureURL = metaD$Data[[8]],
+        idNRFA = metaD$Data[[9]],
+        urlNRFA = metaD$Data[[10]],
+        easting = metaD$Data[[11]],
+        northing = metaD$Data[[12]],
+        latitude = metaD$Data[[13]],
+        longitude = metaD$Data[[14]],
+        area = metaD$Data[[15]],
+        parameter = metaD$Data[[16]],
+        unitName = metaD$Data[[17]],
+        unit = metaD$Data[[18]],
+        datum = metaD$Data[[19]],
+        boreholeDepth = metaD$Data[[20]],
+        aquifer = metaD$Data[[21]],
+      )
+      return(out)
+    }
+  } else {
+    return(series[, -1:-2])
   }
 }
