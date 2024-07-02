@@ -4,7 +4,7 @@
 #' parameters supplied to the arguments. These can be added as vectors, this
 #' reduces the amount of calls to `loadAPI()` in working scripts. Objects or
 #' `HydroImport` are automatically assigned to the environment using a name
-#' convention of  *paramater*_*WISKI-ID*.
+#' convention of *paramater*_*WISKI-ID*.
 #'
 #' @param API Currently only supports the Environment Agency API set as "EA".
 #' @param ID Use to specify a particular WISKI ID or for when downloading all
@@ -40,12 +40,12 @@ loadMulti <- function(API = "EA",
                       from = NULL,
                       to = NULL,
                       ...) {
-
+  ## Data checks
   if (is.null(ID)) stop("Please include the ID parameter")
   if (is.null(measure)) stop("Please include the measure parameter")
   if (is.null(period)) stop("Please include the period parameter")
   if (is.null(type)) stop("Please include the type parameter")
-
+  ## Currently only available for EA API
   if (API == "EA"){
     dt <- data.table::data.table(ID,
                                  measure,
@@ -56,17 +56,39 @@ loadMulti <- function(API = "EA",
                                  to)
     for(i in seq_along(dt$ID)){
       name <- paste(dt$measure[i], dt$ID[i], sep = "_")
-      print(name)
-      temp <- loadAPI(ID = dt$ID[i],
-                      measure = dt$measure[i],
-                      period = dt$period[i],
-                      type = dt$type[i],
-                      datapoints = dt$datapoints[i],
-                      from = dt$from[i],
-                      to = dt$to[i])
-      assign(print(name), temp, envir = .GlobalEnv)
+      temp <- tryCatch(
+        {
+          loadAPI(ID = dt$ID[i],
+                  measure = dt$measure[i],
+                  period = dt$period[i],
+                  type = dt$type[i],
+                  datapoints = dt$datapoints[i],
+                  from = dt$from[i],
+                  to = dt$to[i])
+        },
+        error = function(msg){
+          errorMes <- paste0("{.strong Failed to download data for ",
+                             name, "}")
+          cli::cli_alert_danger(errorMes)
+          return(NULL)
+        }
+      )
+      ## Export data
+      if (!is.null(temp)){
+        cli_alert_info(paste0(" Storing data in environment as {.pkg ",
+                              name,
+                              "}"))
+        assign(name, temp, envir = .GlobalEnv)
+      } else {
+        ## Error message if temp file is empty due to error
+        cli::cli_div(theme = list(span.emph = list(color = "orange")))
+        cli::cli_alert_info(" Try using the {.emph loadAPI()} function instead")
+        cli::cli_end()
+      }
+      rm(temp)
     }
+
   } else {
-    stope("Currently only the EAs API is supported")
+    stop("Currently only the EAs API is supported")
   }
 }

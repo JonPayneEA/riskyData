@@ -49,7 +49,7 @@ The \code{loadMulti()} function iterates through combinations of
 parameters supplied to the arguments. These can be added as vectors, this
 reduces the amount of calls to \code{loadAPI()} in working scripts. Objects or
 \code{HydroImport} are automatically assigned to the environment using a name
-convention of  \emph{paramater}_\emph{WISKI-ID}.
+convention of \emph{paramater}_\emph{WISKI-ID}.
 }
 \examples{
 loadMulti(ID = c('2001', '2002'),
