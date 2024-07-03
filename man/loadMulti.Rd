@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadMulti.R
 \name{loadMulti}
 \alias{loadMulti}
-\title{DEPRECIATED Load multiple \code{HydroImport} containers}
+\title{Depreciated Load multiple \code{HydroImport} containers}
 \usage{
 loadMulti(
   API = "EA",

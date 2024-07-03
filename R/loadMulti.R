@@ -1,4 +1,4 @@
-#' DEPRECIATED Load multiple `HydroImport` containers
+#' Depreciated Load multiple `HydroImport` containers
 #'
 #' @description The `loadMulti()` function iterates through combinations of
 #' parameters supplied to the arguments. These can be added as vectors, this
@@ -64,16 +64,13 @@ loadMulti <- function(API = "EA",
       cli::cli_h3(paste0("Data import: ", name))
       temp <- tryCatch(
         {
-          hdeAPI(ID = dt$ID[i],
-                 measure = dt$measure[i],
-                 period = dt$period[i],
-                 type = type[i],
-                 datapoints = dt$datapoints[i],
-                 from = dt$from[i],
-                 to = dt$to[i],
-                 rtExt = FALSE,
-                 meta = TRUE,
-                 rtLookup = FALSE)
+          loadAPIDep(ID = dt$ID[i],
+                  measure = dt$measure[i],
+                  period = dt$period[i],
+                  type = dt$type[i],
+                  datapoints = dt$datapoints[i],
+                  from = dt$from[i],
+                  to = dt$to[i])
         },
         error = function(msg){
           errorMes <- paste0("{.strong Failed to download data for ",
