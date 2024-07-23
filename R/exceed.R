@@ -66,8 +66,8 @@ exceed <- function(dateTime = NULL,
   ## Generate group IDs based on rleid function
   rawdt$group <- data.table::rleid(rawdt$event == TRUE)
 
-  export <- rawdt[event == TRUE, .(Start = min(start),
-                                   End = max(end)),
+  export <- rawdt[event == TRUE, .(Start = min(start, na.rm = TRUE),
+                                   End = max(end, na.rm = TRUE)),
                   by = group]
   ## Calculate time steps
   export <- export[, .(Start,

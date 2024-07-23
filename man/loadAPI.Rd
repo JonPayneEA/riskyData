@@ -108,20 +108,20 @@ with(dt$data, plot(value ~ dateTime,
   ylab = "Stage (mAoD)"
 ))
 
-loadAPIV2('wiski')
+loadAPI('wiski')
 
-loadAPIV2(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
+loadAPI(easting = 378235, northing = 276165, dist = 30, ID = "nrfa")
 
-loadAPIV2(ID = "L1207")
+loadAPI(ID = "L1207")
 
-loadAPIV2(ID = c("2001", 2002),
+loadAPI(ID = c("2001", 2002),
           measure = c("level", "flow", "level"),
           period = 900,
           type = "instantaneous",
           datapoints = "earliest",
           rtLookup = FALSE)
 
-loadAPIV2(ID = "L1207",
+loadAPI(ID = "L1207",
           measure = "level",
           period = 900,
           type = "instantaneous",
