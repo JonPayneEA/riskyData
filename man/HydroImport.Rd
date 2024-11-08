@@ -28,6 +28,13 @@ data(bewdley)
 bewdley$summary()
 
 ## ------------------------------------------------
+## Method `HydroImportFactory$statSummary`
+## ------------------------------------------------
+
+data(bewdley)
+bewdley$statSummary()
+
+## ------------------------------------------------
 ## Method `HydroImportFactory$coords`
 ## ------------------------------------------------
 
@@ -94,6 +101,7 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \item \href{#method-HydroImport-print}{\code{HydroImportFactory$print()}}
 \item \href{#method-HydroImport-methods}{\code{HydroImportFactory$methods()}}
 \item \href{#method-HydroImport-summary}{\code{HydroImportFactory$summary()}}
+\item \href{#method-HydroImport-statSummary}{\code{HydroImportFactory$statSummary()}}
 \item \href{#method-HydroImport-asVol}{\code{HydroImportFactory$asVol()}}
 \item \href{#method-HydroImport-hydroYearDay}{\code{HydroImportFactory$hydroYearDay()}}
 \item \href{#method-HydroImport-rmVol}{\code{HydroImportFactory$rmVol()}}
@@ -290,6 +298,32 @@ Display a summary of the R6 object
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{data(bewdley)
 bewdley$summary()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-statSummary"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-statSummary}{}}}
+\subsection{Method \code{statSummary()}}{
+Display a small statistics summary of the R6 object
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$statSummary(.)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{data(bewdley)
+bewdley$statSummary()
 }
 \if{html}{\out{</div>}}
 

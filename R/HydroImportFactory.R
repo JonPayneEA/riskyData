@@ -171,7 +171,7 @@ HydroImportFactory <- R6::R6Class(
         "obj$summary()", "obj$coords()", "obj$nrfa()", "obj$dataAgg()",
         "obj$rollingAggs()", "obj$dayStats()", "obj$quality()", "obj$missing()",
         "obj$exceed", "obj$plot()", "obj$window()", "obj$rateFlow()",
-        "obj$rateStage()"
+        "obj$rateStage(), obj$statSummary()"
       )
 
       desc <- c(
@@ -196,7 +196,8 @@ HydroImportFactory <- R6::R6Class(
         "Create a plot of each year of data, by hydrological year",
         "Extracts the subset of data observed between the times start and end.",
         "Converts stage into a rated flow using the specified rating table",
-        "Converts flow into a rated stage using the specified rating table"
+        "Converts flow into a rated stage using the specified rating table",
+        "Returns some basic global statistics"
       )
 
       ## Set the box interior up
@@ -238,6 +239,55 @@ HydroImportFactory <- R6::R6Class(
       cat("\tUnit Type: ", private$unitName, "\n", sep = "")
       cat("\tUnit: ", private$unit, "\n", sep = "")
     },
+    #' @description
+    #' Display a small statistics summary of the R6 object
+    #' @param . (ignored).
+    #' @examples
+    #' data(bewdley)
+    #' bewdley$statSummary()
+    statSummary = function(.) {
+      ## Calculate missing data
+      missing <-  naRun(dateTime = self$data$dateTime,
+                        value = self$data$value,
+                        timestep = private$timeStep())
+      missing <- sum(missing$timeSteps, na.rm = TRUE)
+
+      ## Calculate basic global stats
+      dt <- data.table(
+        WISKI_ID = private$WISKI,
+        tsStart = private$start(),
+        tsEnd = private$end(),
+        parameter = private$parameter,
+        unit = private$unitName,
+        missing = missing,
+        min = min(self$data$value,
+                  na.rm = TRUE),
+        min = max(self$data$value,
+                  na.rm = TRUE),
+        mean = mean(self$data$value,
+                    na.rm = TRUE),
+        p10 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .10),
+        p25 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .25),
+        p50 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .50),
+        p75 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .75),
+        p90 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .90),
+        p99 <- quantile(self$data$value,
+                        na.rm = TRUE,
+                        probs = .99),
+      )
+      return(dt)
+    },
+
     #' @description
     #' Calculate the volume of water for flow or rainfall data
     #' @param . (ignored).

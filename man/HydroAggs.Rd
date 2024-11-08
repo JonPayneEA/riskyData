@@ -46,6 +46,7 @@ contains public raw data and private metadata.
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmHYD"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmHYD'><code>riskyData::HydroImport$rmHYD()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rmVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rmVol'><code>riskyData::HydroImport$rmVol()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="rollingAggs"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-rollingAggs'><code>riskyData::HydroImport$rollingAggs()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="statSummary"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-statSummary'><code>riskyData::HydroImport$statSummary()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="summary"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-summary'><code>riskyData::HydroImport$summary()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="window"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-window'><code>riskyData::HydroImport$window()</code></a></span></li>
 </ul>
