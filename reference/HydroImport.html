@@ -78,6 +78,7 @@ contains public raw data and private metadata.</p>
 <li><p><a href="#method-HydroImport-print"><code>HydroImportFactory$print()</code></a></p></li>
 <li><p><a href="#method-HydroImport-methods"><code>HydroImportFactory$methods()</code></a></p></li>
 <li><p><a href="#method-HydroImport-summary"><code>HydroImportFactory$summary()</code></a></p></li>
+<li><p><a href="#method-HydroImport-statSummary"><code>HydroImportFactory$statSummary()</code></a></p></li>
 <li><p><a href="#method-HydroImport-asVol"><code>HydroImportFactory$asVol()</code></a></p></li>
 <li><p><a href="#method-HydroImport-hydroYearDay"><code>HydroImportFactory$hydroYearDay()</code></a></p></li>
 <li><p><a href="#method-HydroImport-rmVol"><code>HydroImportFactory$rmVol()</code></a></p></li>
@@ -328,11 +329,11 @@ contains public raw data and private metadata.</p>
 </div>
 
 
-</div><p></p><hr><a id="method-HydroImport-asVol"></a><div class="section">
-<h3 id="method-asvol-">Method <code><a href="asVol.html">asVol()</a></code><a class="anchor" aria-label="anchor" href="#method-asvol-"></a></h3>
-<p>Calculate the volume of water for flow or rainfall data</p><div class="section">
+</div><p></p><hr><a id="method-HydroImport-statSummary"></a><div class="section">
+<h3 id="method-statsummary-">Method <code>statSummary()</code><a class="anchor" aria-label="anchor" href="#method-statsummary-"></a></h3>
+<p>Display a small statistics summary of the R6 object</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">asVol</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">statSummary</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -343,12 +344,18 @@ contains public raw data and private metadata.</p>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">statSummary</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
 
-</div><p></p><hr><a id="method-HydroImport-hydroYearDay"></a><div class="section">
-<h3 id="method-hydroyearday-">Method <code><a href="hydroYearDay.html">hydroYearDay()</a></code><a class="anchor" aria-label="anchor" href="#method-hydroyearday-"></a></h3>
-<p>Calculate hydrological year and day</p><div class="section">
+
+</div><p></p><hr><a id="method-HydroImport-asVol"></a><div class="section">
+<h3 id="method-asvol-">Method <code><a href="asVol.html">asVol()</a></code><a class="anchor" aria-label="anchor" href="#method-asvol-"></a></h3>
+<p>Calculate the volume of water for flow or rainfall data</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">asVol</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -360,11 +367,11 @@ contains public raw data and private metadata.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-HydroImport-rmVol"></a><div class="section">
-<h3 id="method-rmvol-">Method <code><a href="rmVol.html">rmVol()</a></code><a class="anchor" aria-label="anchor" href="#method-rmvol-"></a></h3>
-<p>Remove the calculated volume</p><div class="section">
+</div><p></p><hr><a id="method-HydroImport-hydroYearDay"></a><div class="section">
+<h3 id="method-hydroyearday-">Method <code><a href="hydroYearDay.html">hydroYearDay()</a></code><a class="anchor" aria-label="anchor" href="#method-hydroyearday-"></a></h3>
+<p>Calculate hydrological year and day</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmVol</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">hydroYearDay</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -376,11 +383,11 @@ contains public raw data and private metadata.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-HydroImport-rmHY"></a><div class="section">
-<h3 id="method-rmhy-">Method <code><a href="rmHY.html">rmHY()</a></code><a class="anchor" aria-label="anchor" href="#method-rmhy-"></a></h3>
-<p>Remove the calculated hydroYear</p><div class="section">
+</div><p></p><hr><a id="method-HydroImport-rmVol"></a><div class="section">
+<h3 id="method-rmvol-">Method <code><a href="rmVol.html">rmVol()</a></code><a class="anchor" aria-label="anchor" href="#method-rmvol-"></a></h3>
+<p>Remove the calculated volume</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmHY</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmVol</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -392,11 +399,11 @@ contains public raw data and private metadata.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-HydroImport-rmHYD"></a><div class="section">
-<h3 id="method-rmhyd-">Method <code><a href="rmHYD.html">rmHYD()</a></code><a class="anchor" aria-label="anchor" href="#method-rmhyd-"></a></h3>
-<p>Remove the calculated hydrological day</p><div class="section">
+</div><p></p><hr><a id="method-HydroImport-rmHY"></a><div class="section">
+<h3 id="method-rmhy-">Method <code><a href="rmHY.html">rmHY()</a></code><a class="anchor" aria-label="anchor" href="#method-rmhy-"></a></h3>
+<p>Remove the calculated hydroYear</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmHYD</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmHY</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -408,10 +415,26 @@ contains public raw data and private metadata.</p>
 </dl><p></p></div>
 </div>
 
+</div><p></p><hr><a id="method-HydroImport-rmHYD"></a><div class="section">
+<h3 id="method-rmhyd-">Method <code><a href="rmHYD.html">rmHYD()</a></code><a class="anchor" aria-label="anchor" href="#method-rmhyd-"></a></h3>
+<p>Remove the calculated hydrological day</p><div class="section">
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rmHYD</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>.</code></dt>
+<dd><p>(ignored).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
 </div><p></p><hr><a id="method-HydroImport-findPeaks"></a><div class="section">
 <h3 id="method-findpeaks-">Method <code><a href="findPeaks.html">findPeaks()</a></code><a class="anchor" aria-label="anchor" href="#method-findpeaks-"></a></h3>
 <p>Detect peaks within the HydroImport or HydroAggs objects</p><div class="section">
-<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
+<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">findPeaks</span><span class="op">(</span></span>
 <span>  levels <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  from <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -421,7 +444,7 @@ contains public raw data and private metadata.</p>
 </div>
 
 <div class="section">
-<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>levels</code></dt>
 <dd><p>The number of thresholds to apply against the time series.
 Defaults to 100</p></dd>
@@ -448,12 +471,12 @@ showing multiple exceedances. Set to 96.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-addRating"></a><div class="section">
 <h3 id="method-addrating-">Method <code>addRating()</code><a class="anchor" aria-label="anchor" href="#method-addrating-"></a></h3>
 <p>Add a rating table to the HydroImport or HydroAggs objects</p><div class="section">
-<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">addRating</span><span class="op">(</span>C <span class="op">=</span> <span class="cn">NULL</span>, A <span class="op">=</span> <span class="cn">NULL</span>, B <span class="op">=</span> <span class="cn">NULL</span>, max <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>C</code></dt>
 <dd><p>parameter</p></dd>
 
@@ -478,12 +501,12 @@ showing multiple exceedances. Set to 96.</p></dd>
 <p>Converts stage to flow using the supplied rating. It uses the following
 equation;
 Q = C(h - a)^b</p><div class="section">
-<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rateFlow</span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0</span>, full <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>start</code></dt>
 <dd><p>defaults to 0, change to set a different start point in the
 rating conversion.</p></dd>
@@ -502,12 +525,12 @@ will be supplied. If set to TRUE a new <code>HydroImport</code> object is create
 <p>Converts flow to stage using the supplied rating. It uses the following
 equation;
 h = ((Q/a)^(1/C))- b</p><div class="section">
-<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
+<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rateStage</span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0</span>, full <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>start</code></dt>
 <dd><p>defaults to 0, change to set a different start point in the
 rating conversion.</p></dd>
@@ -524,12 +547,12 @@ will be supplied. If set to TRUE a new <code>HydroImport</code> object is create
 </div><p></p><hr><a id="method-HydroImport-window"></a><div class="section">
 <h3 id="method-window-">Method <code><a href="https://rdrr.io/r/stats/window.html" class="external-link">window()</a></code><a class="anchor" aria-label="anchor" href="#method-window-"></a></h3>
 <p>Extract windows of data from object using start and end date/times</p><div class="section">
-<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
+<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">window</span><span class="op">(</span>start <span class="op">=</span> <span class="cn">NULL</span>, end <span class="op">=</span> <span class="cn">NULL</span>, export <span class="op">=</span> <span class="st">"dt"</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>start</code></dt>
 <dd><p>Function calculates the date of the first imported record</p></dd>
 
@@ -557,30 +580,8 @@ set to "snip" then the R6 object is modified.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-coords"></a><div class="section">
 <h3 id="method-coords-">Method <code>coords()</code><a class="anchor" aria-label="anchor" href="#method-coords-"></a></h3>
 <p>Return the coordinates of the gauge</p><div class="section">
-<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>.</code></dt>
-<dd><p>(ignored).</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
-<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-HydroImport-nrfa"></a><div class="section">
-<h3 id="method-nrfa-">Method <code>nrfa()</code><a class="anchor" aria-label="anchor" href="#method-nrfa-"></a></h3>
-<p>Return the NRFA details of the gauge</p><div class="section">
 <h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -594,6 +595,28 @@ set to "snip" then the R6 object is modified.</p></dd>
 <div class="section">
 <h4 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">coords</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-HydroImport-nrfa"></a><div class="section">
+<h3 id="method-nrfa-">Method <code>nrfa()</code><a class="anchor" aria-label="anchor" href="#method-nrfa-"></a></h3>
+<p>Return the NRFA details of the gauge</p><div class="section">
+<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>.</code></dt>
+<dd><p>(ignored).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">nrfa</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -601,12 +624,12 @@ set to "snip" then the R6 object is modified.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-dataAgg"></a><div class="section">
 <h3 id="method-dataagg-">Method <code><a href="dataAgg.html">dataAgg()</a></code><a class="anchor" aria-label="anchor" href="#method-dataagg-"></a></h3>
 <p>Return aggregated data</p><div class="section">
-<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
+<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">dataAgg</span><span class="op">(</span>type <span class="op">=</span> <span class="cn">NULL</span>, method <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>type</code></dt>
 <dd><p>Set the aggrgegation level to either hourly', 'daily',
 'monthly', 'annual', or 'hydroYear'</p></dd>
@@ -623,7 +646,7 @@ set to "snip" then the R6 object is modified.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-rollingAggs"></a><div class="section">
 <h3 id="method-rollingaggs-">Method <code><a href="rollingAggs.html">rollingAggs()</a></code><a class="anchor" aria-label="anchor" href="#method-rollingaggs-"></a></h3>
 <p>Return the different user selecting rolling aggregations</p><div class="section">
-<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
+<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">rollingAggs</span><span class="op">(</span></span>
 <span>  method <span class="op">=</span> <span class="st">"mean"</span>,</span>
 <span>  rolls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">24</span>, <span class="fl">120</span><span class="op">)</span>,</span>
@@ -632,7 +655,7 @@ set to "snip" then the R6 object is modified.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>method</code></dt>
 <dd><p>Choose mean, median, min, max, and sum for volumes</p></dd>
 
@@ -651,12 +674,12 @@ set to "snip" then the R6 object is modified.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-meta"></a><div class="section">
 <h3 id="method-meta-">Method <code>meta()</code><a class="anchor" aria-label="anchor" href="#method-meta-"></a></h3>
 <p>Returns the metadata as a data.table</p><div class="section">
-<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
+<h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span>transform <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>transform</code></dt>
 <dd><p>Set to FALSE. If TRUE the data.table is transformed
 which increases readability in the console.</p></dd>
@@ -665,7 +688,7 @@ which increases readability in the console.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
+<h4 id="examples-5">Examples<a class="anchor" aria-label="anchor" href="#examples-5"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">meta</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -674,12 +697,12 @@ which increases readability in the console.</p></dd>
 </div><p></p><hr><a id="method-HydroImport-dayStats"></a><div class="section">
 <h3 id="method-daystats-">Method <code><a href="dayStats.html">dayStats()</a></code><a class="anchor" aria-label="anchor" href="#method-daystats-"></a></h3>
 <p>Daily statistics for imported data</p><div class="section">
-<h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
+<h4 id="usage-20">Usage<a class="anchor" aria-label="anchor" href="#usage-20"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">dayStats</span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span>, year <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>plot</code></dt>
 <dd><p>Set to TRUE, will produce a plot of the statistics</p></dd>
 
@@ -695,7 +718,7 @@ hydrological year</p></dd>
 </div><p></p><hr><a id="method-HydroImport-plot"></a><div class="section">
 <h3 id="method-plot-">Method <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code><a class="anchor" aria-label="anchor" href="#method-plot-"></a></h3>
 <p>Plot the data by years</p><div class="section">
-<h4 id="usage-20">Usage<a class="anchor" aria-label="anchor" href="#usage-20"></a></h4>
+<h4 id="usage-21">Usage<a class="anchor" aria-label="anchor" href="#usage-21"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span></span>
 <span>  wrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cumul <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -706,7 +729,7 @@ hydrological year</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
+<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>wrap</code></dt>
 <dd><p>Set to 3, use this to specify how many of columns of graphs
 there should be</p></dd>
@@ -731,7 +754,7 @@ there should be</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="examples-5">Examples<a class="anchor" aria-label="anchor" href="#examples-5"></a></h4>
+<h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -740,12 +763,12 @@ there should be</p></dd>
 </div><p></p><hr><a id="method-HydroImport-flowDuration"></a><div class="section">
 <h3 id="method-flowduration-">Method <code>flowDuration()</code><a class="anchor" aria-label="anchor" href="#method-flowduration-"></a></h3>
 <p>Flow duration curve of data</p><div class="section">
-<h4 id="usage-21">Usage<a class="anchor" aria-label="anchor" href="#usage-21"></a></h4>
+<h4 id="usage-22">Usage<a class="anchor" aria-label="anchor" href="#usage-22"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">flowDuration</span><span class="op">(</span>perc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">25</span>, <span class="fl">75</span>, <span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
+<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>perc</code></dt>
 <dd><p>Determine flow percentiles. Set to c(5, 25, 75, 95)</p></dd>
 
@@ -756,30 +779,8 @@ there should be</p></dd>
 </div><p></p><hr><a id="method-HydroImport-quality"></a><div class="section">
 <h3 id="method-quality-">Method <code>quality()</code><a class="anchor" aria-label="anchor" href="#method-quality-"></a></h3>
 <p>Displays the number of observations under each quality flag</p><div class="section">
-<h4 id="usage-22">Usage<a class="anchor" aria-label="anchor" href="#usage-22"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>.</code></dt>
-<dd><p>(ignored).</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
-<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-HydroImport-missing"></a><div class="section">
-<h3 id="method-missing-">Method <code><a href="https://rdrr.io/r/base/missing.html" class="external-link">missing()</a></code><a class="anchor" aria-label="anchor" href="#method-missing-"></a></h3>
-<p>Finds missing values in the data series</p><div class="section">
 <h4 id="usage-23">Usage<a class="anchor" aria-label="anchor" href="#usage-23"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -793,6 +794,28 @@ there should be</p></dd>
 <div class="section">
 <h4 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
+<span><span class="va">bewdley</span><span class="op">$</span><span class="fu">quality</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-HydroImport-missing"></a><div class="section">
+<h3 id="method-missing-">Method <code><a href="https://rdrr.io/r/base/missing.html" class="external-link">missing()</a></code><a class="anchor" aria-label="anchor" href="#method-missing-"></a></h3>
+<p>Finds missing values in the data series</p><div class="section">
+<h4 id="usage-24">Usage<a class="anchor" aria-label="anchor" href="#usage-24"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>.</code></dt>
+<dd><p>(ignored).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="examples-8">Examples<a class="anchor" aria-label="anchor" href="#examples-8"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">missing</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -800,12 +823,12 @@ there should be</p></dd>
 </div><p></p><hr><a id="method-HydroImport-exceed"></a><div class="section">
 <h3 id="method-exceed-">Method <code><a href="exceed.html">exceed()</a></code><a class="anchor" aria-label="anchor" href="#method-exceed-"></a></h3>
 <p>Shows threshold exceedance statistics</p><div class="section">
-<h4 id="usage-24">Usage<a class="anchor" aria-label="anchor" href="#usage-24"></a></h4>
+<h4 id="usage-25">Usage<a class="anchor" aria-label="anchor" href="#usage-25"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">exceed</span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">0</span>, gapWidth <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
+<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>threshold</code></dt>
 <dd><p>The threshold at which to test against</p></dd>
 
@@ -822,7 +845,7 @@ beneath a threshold between two or more events</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="examples-8">Examples<a class="anchor" aria-label="anchor" href="#examples-8"></a></h4>
+<h4 id="examples-9">Examples<a class="anchor" aria-label="anchor" href="#examples-9"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span>
 <span><span class="va">bewdley</span><span class="op">$</span><span class="fu">exceed</span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">200</span>, gapWidth <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -831,12 +854,12 @@ beneath a threshold between two or more events</p></dd>
 </div><p></p><hr><a id="method-HydroImport-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-25">Usage<a class="anchor" aria-label="anchor" href="#usage-25"></a></h4>
+<h4 id="usage-26">Usage<a class="anchor" aria-label="anchor" href="#usage-26"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">HydroImportFactory</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
+<h4 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -897,6 +920,14 @@ beneath a threshold between two or more events</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Parameter: Flow</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Unit Type: m3/s</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Unit: http://qudt.org/1.1/vocab/unit#CubicMeterPerSecond</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `HydroImportFactory$statSummary`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bewdley</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bewdley</span><span class="op">$</span><span class="fu">statSummary</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> attempt to apply non-function</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `HydroImportFactory$coords`</span></span></span>
@@ -1062,7 +1093,7 @@ beneath a threshold between two or more events</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

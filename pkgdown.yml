@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   1_riskyData-Welcome: 1_riskyData-Welcome.html
@@ -8,7 +8,7 @@ articles:
   4_riskyData-Ratings: 4_riskyData-Ratings.html
   5_riskyData-Realtime: 5_riskyData-Realtime.html
   6_riskyData-Plotting: 6_riskyData-Plotting.html
-last_built: 2024-07-23T08:52Z
+last_built: 2024-11-08T08:12Z
 urls:
   reference: https://jonpayneea.github.io/riskyData/reference
   article: https://jonpayneea.github.io/riskyData/articles
