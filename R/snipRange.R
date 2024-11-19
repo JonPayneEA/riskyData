@@ -20,25 +20,26 @@ snipRange <- function(x = NULL, start = NULL, end = NULL){
     stop("Please include data.table of interest")
   }
 
+
   #! R assumes that dates are BST during the summer months
   #! This causes an hour shift when running queries
 
   ## Constrain dates to GMT
   start <- as.POSIXct(start,
                       format = "%Y-%m-%d %H:%M",
-                      tz = "GMT"
+                      tz = "UTC"
   )
 
   # If the to argument is null the last record is assumed
   if (is.null(end)){
     end <- as.POSIXct(tail(x$dateTime, 1),
-                      format = "%Y-%m-%d %H:%M",
-                      tz = "GMT"
+                      format = "%Y-%m-%dT%H:%M",
+                      tz = "UTC"
     )
   } else {
     end <- as.POSIXct(end,
-                      format = "%Y-%m-%d %H:%M",
-                      tz = "GMT"
+                      format = "%Y-%m-%dT%H:%M",
+                      tz = "UTC"
     )
   }
   ## Snipping the data

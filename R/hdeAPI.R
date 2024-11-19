@@ -37,13 +37,16 @@ hdeAPI <- function(ID = NULL,
                    rtExt = FALSE,
                    meta = TRUE,
                    rtLookup = FALSE) {
+
   dataType <- type # Fixes data.table filter issue
   timestep <- period # Fixes data.table filter issue
   # Base link for the EAs API
-  baselink <- "http://environment.data.gov.uk/hydrology/id/stations.json"
+  baselink <- "http://environment.data.gov.uk/hydrology/id/stations.csv"
+  baselinkJ <- "http://environment.data.gov.uk/hydrology/id/stations.json"
+
 
   cli::cli_progress_step("Compiling parameters for raw download")
-  link <- paste0(baselink, "?wiskiID=", ID)
+  link <- paste0(baselinkJ, "?wiskiID=", ID)
   data <- jsonlite::fromJSON(link)
   data_level <- jsonlite::fromJSON(as.character(data$items[1]))
   params <- data.table(
@@ -67,40 +70,43 @@ hdeAPI <- function(ID = NULL,
 
   ## Additional URL commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if (datapoints == "all") {
-    datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000")
+    datalinkAppend <- paste0(measImp, "/readings.csv?_limit=2000000")
   }
   if (datapoints == "earliest") {
-    datalinkAppend <- paste0(measImp, "/readings.json?earliest")
+    datalinkAppend <- paste0(measImp, "/readings.csv?earliest")
   }
   if (datapoints == "latest") {
-    datalinkAppend <- paste0(measImp, "/readings.json?latest")
+    datalinkAppend <- paste0(measImp, "/readings.csv?latest")
   }
   if (datapoints == "standard") {
-    datalinkAppend <- paste0(measImp, "/readings.json")
+    datalinkAppend <- paste0(measImp, "/readings.csv")
   }
   if (datapoints == "day") {
     minDate <- as.Date(from)
-    datalinkAppend <- paste0(measImp, "/readings.json?_limit=2000000&date=",
+    datalinkAppend <- paste0(measImp, "/readings.csv?_limit=2000000&date=",
                              minDate)
   }
   if (datapoints == "range") {
     minDate <- as.Date(from)
     maxDate <- as.Date(to) + 1
     datalinkAppend <- paste0(
-      measImp, "/readings.json?_limit=2000000&mineq-date=",
+      measImp, "/readings.csv?_limit=2000000&mineq-date=",
       minDate, "&max-date=", maxDate
     )
   }
   cli::cli_progress_step("Downloading raw data")
-  series <- data.table(jsonlite::fromJSON(datalinkAppend)[[2]])
+  series <- data.table::fread(datalinkAppend, showProgress = FALSE)
+
+
+  # print(series)
   ## Drop needless parameters
-  series <- series[,-1:-2]
+  series <- series[,c(-1,-3)]
   ## For clarity all dates are coerced to POSIXct ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~~~
   if (timestep == 900) {
     series$dateTime <- as.POSIXct(series$dateTime,
                                   format = "%Y-%m-%dT%H:%M",
-                                  tz = "GMT"
+                                  tz = "UTC"
     )
     if (datapoints == "range"){
       ## API only pulls data by calendar day
@@ -112,7 +118,7 @@ hdeAPI <- function(ID = NULL,
   if (timestep == 86400) {
     series$dateTime <- as.POSIXct(series$dateTime,
                                   format = "%Y-%m-%dT%H:%M",
-                                  tz = "GMT"
+                                  tz = "UTC"
     )
     if (datapoints == "range"){
       lastLine <- length(series$dateTime)
@@ -171,7 +177,7 @@ hdeAPI <- function(ID = NULL,
 
     ## Setting a limit of 4 weeks, 2688 recordings
     ##! Longer data series tend to be corrupted
-    measureLink <- paste0(rtMeasure, '/readings.json?_sorted&_limit=2688')
+    measureLink <- paste0(rtMeasure, '/readings.csv?_sorted&_limit=2688')
 
     ## Download data
     cli::cli_progress_step("Downloading extended realtime data")
@@ -182,7 +188,7 @@ hdeAPI <- function(ID = NULL,
     if (measure == 'rainfall') {
       rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
                                            format = "%Y-%m-%dT%H:%M",
-                                           tz = "GMT"),
+                                           tz = "UTC"),
                      value,
                      valid = NA,
                      invalid = NA,
@@ -192,7 +198,7 @@ hdeAPI <- function(ID = NULL,
     } else {
       rt <- rtTS[, .(dateTime = as.POSIXct(dateTime,
                                            format = "%Y-%m-%dT%H:%M",
-                                           tz = "GMT"),
+                                           tz = "UTC"),
                      value, quality = 'Unchecked', qcode = '<NA>' )]
     }
 
