@@ -38,7 +38,7 @@ snipRange <- function(x = NULL, start = NULL, end = NULL){
     )
   } else {
     end <- as.POSIXct(end,
-                      format = "%Y-%m-%dT%H:%M",
+                      format = "%Y-%m-%d %H:%M",
                       tz = "UTC"
     )
   }

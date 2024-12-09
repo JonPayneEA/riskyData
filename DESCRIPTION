@@ -1,5 +1,5 @@
 Package: riskyData
-Title: Welcome to riskyData the tool for pulling observed data from the EAs API
+Title: Hydrometric data import and maniuplation with riskyData  
 Version: 0.3.7.9002
 Authors@R: c(
     person("Jonathan", "Payne", , "jon.payne@environment-agency.gov.uk", role = c("aut", "cre"),
