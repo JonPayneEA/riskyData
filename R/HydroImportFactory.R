@@ -330,6 +330,13 @@ HydroImportFactory <- R6::R6Class(
       invisible(self)
     },
     #' @description
+    #' Reorders data by date time, resolving API issues.
+    #' @param . (ignored).
+    postOrder = function(.){
+      self$data <- self$data[order(dateTime)]
+      invisible(self)
+    },
+    #' @description
     #' Detect peaks within the HydroImport or HydroAggs objects
     #' @param levels The number of thresholds to apply against the time series.
     #' Defaults to 100

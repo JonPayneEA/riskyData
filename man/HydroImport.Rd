@@ -107,6 +107,7 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \item \href{#method-HydroImport-rmVol}{\code{HydroImportFactory$rmVol()}}
 \item \href{#method-HydroImport-rmHY}{\code{HydroImportFactory$rmHY()}}
 \item \href{#method-HydroImport-rmHYD}{\code{HydroImportFactory$rmHYD()}}
+\item \href{#method-HydroImport-postOrder}{\code{HydroImportFactory$postOrder()}}
 \item \href{#method-HydroImport-findPeaks}{\code{HydroImportFactory$findPeaks()}}
 \item \href{#method-HydroImport-addRating}{\code{HydroImportFactory$addRating()}}
 \item \href{#method-HydroImport-rateFlow}{\code{HydroImportFactory$rateFlow()}}
@@ -405,6 +406,23 @@ Remove the calculated hydroYear
 Remove the calculated hydrological day
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$rmHYD(.)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{.}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-postOrder"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-postOrder}{}}}
+\subsection{Method \code{postOrder()}}{
+Reorders data by date time, resolving API issues.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$postOrder(.)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
