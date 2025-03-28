@@ -105,7 +105,7 @@ hdeAPI <- function(ID = NULL,
   ## Currently split between 2 timesteps to future proof ~~~~~~~~~~~~~~~~~~~~~~~
   if (timestep == 900) {
     series$dateTime <- as.POSIXct(series$dateTime,
-                                  format = "%Y-%m-%dT%H:%M",
+                                  format = "%Y-%m-%d %H:%M",
                                   tz = "UTC"
     )
     if (datapoints == "range"){
@@ -117,7 +117,7 @@ hdeAPI <- function(ID = NULL,
 
   if (timestep == 86400) {
     series$dateTime <- as.POSIXct(series$dateTime,
-                                  format = "%Y-%m-%dT%H:%M",
+                                  format = "%Y-%m-%d %H:%M",
                                   tz = "UTC"
     )
     if (datapoints == "range"){
