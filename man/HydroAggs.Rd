@@ -24,6 +24,7 @@ contains public raw data and private metadata.
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="addCatchProp"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-addCatchProp'><code>riskyData::HydroImport$addCatchProp()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="addRating"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-addRating'><code>riskyData::HydroImport$addRating()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="asVol"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-asVol'><code>riskyData::HydroImport$asVol()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="riskyData" data-topic="HydroImport" data-id="coords"><a href='../../riskyData/html/HydroImport.html#method-HydroImport-coords'><code>riskyData::HydroImport$coords()</code></a></span></li>

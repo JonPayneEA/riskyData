@@ -7,6 +7,8 @@
 #' @param data Raw data
 #' @param rating Set to blank, if data requires a rating add to here
 #' @param peaks Set to blank, if you calculate peaks they can be stored here
+#' @param catchProp Set to blank, proportion of catchment coverage for rain
+#' gauges can be stored here
 #' @param dataType Details the type of data in this environment
 #' @param modifications Details modifications made to the data
 #' @param stationName Name of gauge
@@ -53,15 +55,18 @@ HydroImportFactory <- R6::R6Class(
   public = list(
     #' @field data Imported data via the API tool. Uses data.table.
     data = NULL,
-    #' @field rating Rating parameters. Uses data.table. At the moment only 1 rating can be applied
+    #' @field rating Rating parameters. Uses data.table. At the moment only 1 rating can be applied.
     rating = NULL,
-    #' @field peaks Calculated peaks, initialised by "$findPeaks"
+    #' @field peaks Calculated peaks, initialised by "$findPeaks".
     peaks = NULL,
+    #' @field catchProp Proportional catchment area, used for rain gauge averaging.
+    catchProp = NULL,
     #' @description
     #' Initialise the new HydroImport object
     initialize = function(data = NA,
                           rating = NULL,
                           peaks = NULL,
+                          catchProp = NULL,
                           dataType = "Raw Import",
                           modifications = NA,
                           stationName = NA,
@@ -93,6 +98,7 @@ HydroImportFactory <- R6::R6Class(
       self$data <- data
       self$rating <- rating
       self$peaks <-  peaks
+      self$catchProp <- catchProp
       private$dataType <- dataType
       private$modifications <- modifications
       private$stationName <- stationName
@@ -150,6 +156,12 @@ HydroImportFactory <- R6::R6Class(
         cli::cli_h2("Rating data:")
         cat("\n")
         print(self$rating)
+      }
+      cat("\n")
+      if (!is.null(self$catchProp)){
+        cli::cli_h2("Proportion of catchment coverage:")
+        cat("\n")
+        print(self$catchProp)
       }
       cat("\n")
       cli::cli_text(paste("{.strong For more details use the $methods()
@@ -360,7 +372,6 @@ HydroImportFactory <- R6::R6Class(
       invisible(self)
 
     },
-
     #' @description
     #' Add a rating table to the HydroImport or HydroAggs objects
     #' @param C parameter
@@ -370,6 +381,16 @@ HydroImportFactory <- R6::R6Class(
     addRating = function(C = NULL, A = NULL, B = NULL, max = NULL){
       self$rating <- data.table(C, A, B, max)
       self$rating$maxFlow <- C*(max - A)^ B
+      invisible(self)
+    },
+    #' @description
+    #' Add a catchment proportion table to the HydroImport or HydroAggs objects
+    #' @param total total area of catchment
+    #' @param area area of proportion covered by rain gauge
+    #' @param B parameter
+    #' @param max parameter
+    addCatchProp = function(total = NULL, area = NULL){
+      self$catchProp <- data.table(total, area)
       invisible(self)
     },
     #' @description
@@ -433,6 +454,7 @@ HydroImportFactory <- R6::R6Class(
           ),
           rating = self$rating,
           peaks = self$peaks,
+          catchProp = self$catchProp,
           timeStep = type,
           stationName = private$stationName,
           riverName = private$riverName,
@@ -525,6 +547,7 @@ HydroImportFactory <- R6::R6Class(
           ),
           rating = self$rating,
           peaks = self$peaks,
+          catchProp = self$catchProp,
           timeStep = type,
           stationName = private$stationName,
           riverName = private$riverName,
@@ -662,6 +685,7 @@ HydroImportFactory <- R6::R6Class(
         ),
         rating = self$rating,
         peaks = self$peaks,
+        catchProp= self$catchProp,
         timeStep = type,
         stationName = private$stationName,
         riverName = private$riverName,

@@ -88,9 +88,11 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \describe{
 \item{\code{data}}{Imported data via the API tool. Uses data.table.}
 
-\item{\code{rating}}{Rating parameters. Uses data.table. At the moment only 1 rating can be applied}
+\item{\code{rating}}{Rating parameters. Uses data.table. At the moment only 1 rating can be applied.}
 
-\item{\code{peaks}}{Calculated peaks, initialised by "$findPeaks"}
+\item{\code{peaks}}{Calculated peaks, initialised by "$findPeaks".}
+
+\item{\code{catchProp}}{Proportional catchment area, used for rain gauge averaging.}
 }
 \if{html}{\out{</div>}}
 }
@@ -110,6 +112,7 @@ bewdley$exceed(threshold = 200, gapWidth = 20)
 \item \href{#method-HydroImport-postOrder}{\code{HydroImportFactory$postOrder()}}
 \item \href{#method-HydroImport-findPeaks}{\code{HydroImportFactory$findPeaks()}}
 \item \href{#method-HydroImport-addRating}{\code{HydroImportFactory$addRating()}}
+\item \href{#method-HydroImport-addCatchProp}{\code{HydroImportFactory$addCatchProp()}}
 \item \href{#method-HydroImport-rateFlow}{\code{HydroImportFactory$rateFlow()}}
 \item \href{#method-HydroImport-rateStage}{\code{HydroImportFactory$rateStage()}}
 \item \href{#method-HydroImport-window}{\code{HydroImportFactory$window()}}
@@ -137,6 +140,7 @@ Initialise the new HydroImport object
   data = NA,
   rating = NULL,
   peaks = NULL,
+  catchProp = NULL,
   dataType = "Raw Import",
   modifications = NA,
   stationName = NA,
@@ -176,6 +180,9 @@ Initialise the new HydroImport object
 \item{\code{rating}}{Set to blank, if data requires a rating add to here}
 
 \item{\code{peaks}}{Set to blank, if you calculate peaks they can be stored here}
+
+\item{\code{catchProp}}{Set to blank, proportion of catchment coverage for rain
+gauges can be stored here}
 
 \item{\code{dataType}}{Details the type of data in this environment}
 
@@ -480,6 +487,29 @@ Add a rating table to the HydroImport or HydroAggs objects
 \item{\code{C}}{parameter}
 
 \item{\code{A}}{parameter}
+
+\item{\code{B}}{parameter}
+
+\item{\code{max}}{parameter}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-HydroImport-addCatchProp"></a>}}
+\if{latex}{\out{\hypertarget{method-HydroImport-addCatchProp}{}}}
+\subsection{Method \code{addCatchProp()}}{
+Add a catchment proportion table to the HydroImport or HydroAggs objects
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{HydroImportFactory$addCatchProp(total = NULL, area = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{total}}{total area of catchment}
+
+\item{\code{area}}{area of proportion covered by rain gauge}
 
 \item{\code{B}}{parameter}
 
