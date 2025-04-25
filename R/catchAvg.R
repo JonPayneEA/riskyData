@@ -3,7 +3,7 @@
 #' @param ... hydroImport containers
 #' @param areas user specified area sizes contributed by each rain gauge
 #'
-#' @return
+#' @return Catchment averaged rainfall in data.table format
 #' @export
 #'
 #' @examples
