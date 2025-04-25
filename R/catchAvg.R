@@ -17,7 +17,19 @@ catchAvg <- function(..., areas = NULL){
   classes <- unlist(lapply(hydroImportList, class))
   # Check that they all match the expected
   if (any(!classes %in% c('R6', 'HydroImport', 'HydroAggs'))){
-    stop('Incorrect data classes supplied, please use "R6", "HydroImport", or "HydroAggs"')
+    incompat <- data.table::data.table(incompatable = classes)
+    incompat <- unique(incompat[!incompatable %in%
+                                  c('R6', 'HydroImport', 'HydroAggs')])
+    cli::cli_abort(
+      c(
+        "x" = "Incompatable data classes",
+        "The class{?es}: {.cls {incompat}} {?is/are} not yet compatable
+        with this function",
+        "i" = "Please ensure that all data submitted is in either
+        {.cls HydroImport} or {.cls HydroAggs} formats"
+      ))
+
+    # stop('Incorrect data classes supplied, please use "R6", "HydroImport", or "HydroAggs"')
   }
 
   # Collate the name of the inputed objects
@@ -27,9 +39,32 @@ catchAvg <- function(..., areas = NULL){
   meta <- list()
   for (i in seq_along(hydroImportList)){
     meta[[i]] <- hydroImportList[[i]]$meta()
+
+    ifelse(is.null(hydroImportList[[i]]$catchProp$area),
+           meta[[i]]$catchProp <- NA,
+           meta[[i]]$catchProp <- hydroImportList[[i]]$catchProp$area)
+
     # meta[[i]][, catchProp := hydroImportList[[i]]$catchProp[1]]
   }
   meta <- data.table::rbindlist(meta)
+
+  if (is.null(areas)){
+    catchAreas <- meta$catchProp
+    if (any(is.na(catchAreas))){
+      n <- paste(meta[is.na(catchProp),]$stationName, sep = ", ")
+      cli::cli_abort(
+        c(
+          "x" = "Unable to calculate catchment averaged rainfall",
+          "The site{?s}: {.var {n}} {?does/ do} not contain catchment area
+          metadata",
+          "i" = "Use 'object${.fn addCatchProp}' to correct for this or apply
+          the {.arg areas} argument"
+        ))
+    }
+  } else {
+    catchAreas <- areas
+  }
+
 
   # catchProps <- list()
   # for (i in seq_along(hydroImportList)){
@@ -48,11 +83,10 @@ catchAvg <- function(..., areas = NULL){
   }
 
   merged <- riskyData::mergeData(...)
-  # print(meta)
   # return(merged)
 
   # Multiply rain gauges by area
-  df <- data.frame(mapply(`*`, merged[, -1], areas, SIMPLIFY = FALSE))
+  df <- data.frame(mapply(`*`, merged[, -1], catchAreas, SIMPLIFY = FALSE))
   ## rowSums is much faster than grouping in data.table
   row <- rowSums(df)
 
@@ -64,7 +98,7 @@ catchAvg <- function(..., areas = NULL){
   # convert columns tonumeric
   dt <- dfNA[, lapply(.SD, as.numeric)]
   # Multiply booleans by RG areas
-  df1 <- data.frame(mapply(`*`, dt, areas, SIMPLIFY = FALSE))
+  df1 <- data.frame(mapply(`*`, dt, catchAreas, SIMPLIFY = FALSE))
   areaRow <- rowSums(df1)
 
   ## Divide row totals by area
@@ -75,4 +109,12 @@ catchAvg <- function(..., areas = NULL){
   return(dt)
 }
 
-catchAvg(boot, cosford, dog, whittlesey, areas = c(50, 40, 25, 35))
+# catchAvg(dog, whit)
+#
+#
+#
+# catchAvg(dog, whittlesey)
+#
+# catchAvg(boot, cosford, dog, whittlesey)
+#
+# catchAvg(boot, cosford, dog, whittlesey, areas = c(50, 40, 25, 35))
