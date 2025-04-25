@@ -9,6 +9,8 @@ catchAvg(..., list = NULL, areas = NULL)
 \arguments{
 \item{...}{hydroImport containers}
 
+\item{list}{set to Null, howerve lists of hydroImports can be placed here if required}
+
 \item{areas}{user specified area sizes contributed by each rain gauge}
 }
 \value{
