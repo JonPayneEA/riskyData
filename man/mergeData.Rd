@@ -4,10 +4,12 @@
 \alias{mergeData}
 \title{Merge HydroImport and HydroAggs R6 objects}
 \usage{
-mergeData(..., metadata = FALSE)
+mergeData(..., list = NULL, metadata = FALSE)
 }
 \arguments{
 \item{...}{Datasets downloaded from the EAs API set inside an R6 container}
+
+\item{list}{set to Null, however lists of hydroImports can be placed here if required}
 
 \item{metadata}{Set to FALSE, if TRUE collated metadata are exported with the
 merged dataset}

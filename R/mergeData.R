@@ -8,6 +8,7 @@
 #' with NAs.
 #'
 #' @param ... Datasets downloaded from the EAs API set inside an R6 container
+#' @param list set to Null, however lists of hydroImports can be placed here if required
 #' @param metadata Set to FALSE, if TRUE collated metadata are exported with the
 #'  merged dataset
 #'
@@ -50,9 +51,14 @@
 #'
 #' z <- mergeData(a, b, c, d, metadata = FALSE)
 #' z
-mergeData <- function(..., metadata = FALSE){
-  # Compile list of the objects inputted
-  dtlst <- list(...)
+mergeData <- function(..., list = NULL,  metadata = FALSE){
+  # Compile list of the objects inputed
+  # Coerce inputs to list
+  if (!is.null(list)) {
+    dtlst <- list
+  } else {
+    dtlst <- list(...)
+  }
 
   # Use only HydroImport, HydroAggs , and R6
   # Collate classes
@@ -62,8 +68,7 @@ mergeData <- function(..., metadata = FALSE){
     stop('Incorrect data classes supplied, please use "R6", "HydroImport", or "HydroAggs"')
   }
 
-  # Collate the name of the inputted objects
-  names <- sapply(substitute(...()), deparse)
+
 
   # Compile metadata for checks
   meta <- list()
@@ -71,6 +76,13 @@ mergeData <- function(..., metadata = FALSE){
     meta[[i]] <- dtlst[[i]]$meta()
   }
   meta <- data.table::rbindlist(meta)
+  # print(meta)
+  # Collate the name of the inputed objects
+  if (!is.null(list)) {
+    names <- paste0(tolower(meta$parameter), "_", meta$WISKI)
+  } else {
+    names <- sapply(substitute(...()), deparse)
+  }
 
   # Check for equal time steps
   if(length(unique(meta$timeStep)) > 1){

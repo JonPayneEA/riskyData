@@ -1,7 +1,7 @@
 #' @title Calculate catchment average rainfall
 #'
 #' @param ... hydroImport containers
-#' @param list set to Null, howerve lists of hydroImports can be placed here if required
+#' @param list set to Null, however lists of hydroImports can be placed here if required
 #' @param areas user specified area sizes contributed by each rain gauge
 #'
 #' @return Catchment averaged rainfall in data.table format
@@ -87,7 +87,11 @@ catchAvg <- function(..., list = NULL, areas = NULL){
     stop("Parameters outside of rainfall have been supplied")
   }
 
-  merged <- riskyData::mergeData(...)
+  if (!is.null(list)){
+    merged <- riskyData::mergeData(list = list)
+  } else {
+    merged <- riskyData::mergeData(...)
+  }
   # return(merged)
 
   # Multiply rain gauges by area
