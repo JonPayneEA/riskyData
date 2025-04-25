@@ -8,9 +8,13 @@
 #'
 #' @examples
 #' ## Do not run
-catchAvg <- function(..., areas = NULL){
+catchAvg <- function(..., list = NULL, areas = NULL){
   # Coerce inputs to list
-  hydroImportList <- list(...)
+  if (!is.null(list)) {
+    hydroImportList <- list
+  } else {
+    hydroImportList <- list(...)
+  }
 
   # Use only HydroImport, HydroAggs, and R6
   # Collate classes

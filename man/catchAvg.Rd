@@ -4,7 +4,7 @@
 \alias{catchAvg}
 \title{Calculate catchment average rainfall}
 \usage{
-catchAvg(..., areas = NULL)
+catchAvg(..., list = NULL, areas = NULL)
 }
 \arguments{
 \item{...}{hydroImport containers}
