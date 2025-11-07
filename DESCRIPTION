@@ -1,6 +1,6 @@
 Package: riskyData
 Title: Hydrometric data import and maniuplation with riskyData  
-Version: 0.3.8
+Version: 0.3.9
 Authors@R: c(
     person("Jonathan", "Payne", , "jon.payne@environment-agency.gov.uk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2551-5353")),
