@@ -97,7 +97,7 @@ catchAvg <- function(..., list = NULL, areas = NULL){
   # Multiply rain gauges by area
   df <- data.frame(mapply(`*`, merged[, -1], catchAreas, SIMPLIFY = FALSE))
   ## rowSums is much faster than grouping in data.table
-  row <- rowSums(df)
+  row <- rowSums(df, na.rm = TRUE)
 
 
   # Calculate areas
@@ -115,6 +115,7 @@ catchAvg <- function(..., list = NULL, areas = NULL){
 
   dt <- data.table(dateTime = merged$dateTime,
                    value = averaged)
+  class(dt) <- append(class(dt), "catchAvg")
   return(dt)
 }
 
