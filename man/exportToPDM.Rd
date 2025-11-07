@@ -22,14 +22,15 @@ csv, XML or data.tables in the format suitable for PDM for PCs
 Export data in a format suitable for PDM for PCs
 }
 \examples{
-boot <- loadAPI(ID = "590310",
-measure = 'rainfall',
-period = 900,
-type = 'total',
-datapoints = 'range',
-from = '2023-10-01 09:00',
-to = '2024-10-01 08:45')
 ## Import some data
+boot <- loadAPI(ID = "590310",
+                measure = 'rainfall',
+                period = 900,
+                type = 'total',
+                datapoints = 'range',
+                from = '2023-10-01 09:00',
+                to = '2024-10-01 08:45')
+
 whit <- loadAPI(ID = "197036",
                 measure = 'rainfall',
                 period = 900,

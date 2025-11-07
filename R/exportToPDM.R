@@ -20,14 +20,15 @@
 #' @export
 #'
 #' @examples
+#' ## Import some data
 #' boot <- loadAPI(ID = "590310",
-#' measure = 'rainfall',
-#' period = 900,
-#' type = 'total',
-#' datapoints = 'range',
-#' from = '2023-10-01 09:00',
-#' to = '2024-10-01 08:45')
-#'## Import some data
+#'                 measure = 'rainfall',
+#'                 period = 900,
+#'                 type = 'total',
+#'                 datapoints = 'range',
+#'                 from = '2023-10-01 09:00',
+#'                 to = '2024-10-01 08:45')
+#'
 #' whit <- loadAPI(ID = "197036",
 #'                 measure = 'rainfall',
 #'                 period = 900,
