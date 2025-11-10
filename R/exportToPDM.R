@@ -104,6 +104,79 @@ exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input")
       XML::saveXML(doc, fullPath)
       cli::cli_alert_success("RAIN.XML exported to {.path {root}}")    }
   }
+  if (any(class(x) == "mosesPE")) {
+    dt <- x
+    if (type == "csv"){
+      fullPath <- file.path(root, "EVAPORATION.csv")
+      fwrite(dt, file = fullPath)
+      cli::cli_alert_success("EVAPORATION.csv exported to {.path {root}}")
+    }
+    if (type == "data.table") {
+      return(dt)
+    }
+    if (type == "XML"){
+      startDate <- as.Date(sprintf("%04d-%02d-%02d",
+                                   dt$year[1],
+                                   dt$month[1],
+                                   dt$day[1]))
+      startTime <- sprintf("%02d:%02d:%02d",
+                           dt$hour[1],
+                           dt$minute[1],
+                           dt$second[1])
+      endDate <- as.Date(tail(sprintf("%04d-%02d-%02d",
+                                      dt$year[1],
+                                      dt$month[1],
+                                      dt$day[1])))
+      endTime <- tail(sprintf("%02d:%02d:%02d",
+                              dt$hour[1],
+                              dt$minute[1],
+                              dt$second[1]), 1)
+      longName <- name
+
+      ## Establish header string
+      headerString <- paste0('
+<TimeSeries version="1.2">
+  <!-- Created by R script written by Jac v1 05th Nov 2025 -->
+  <series>
+    <header>
+      <type>accumulative</type>
+      <locationId>rainfall_station_1</locationId>
+      <parameterId>rainfall_1</parameterId>
+      <timeStep unit="minute" multiplier="15"/>
+      <startDate date="', startDate,'" time="', startTime, '"/>
+      <endDate date="', endDate,'" time="', endTime, '"/>
+      <missVal>NaN</missVal>
+      <longName>"',longName,'"</longName>
+      <stationName>rainfall_1</stationName>
+      <units>mm/hr</units>
+    </header>
+')
+      ## Create date time as strings
+      dateStrs <- sprintf("%04d-%02d-%02d", dt$year, dt$month, dt$day)
+      timeStrs <- sprintf("%02d:%02d:%02d", dt$hour, dt$minute, dt$second)
+      valueStrs <- dt$pe
+
+      ## Create pseudo events nodes
+      eventLines <- sprintf(
+        '<event date="%s" time="%s" value="%.4f" flag="%s"/>',
+        dateStrs, timeStrs, valueStrs, 0
+      )
+      eventsString <- paste(eventLines, collapse = "\n")
+
+      ## Establish footer
+      footerString <- '
+  </series>
+</TimeSeries>
+'
+      ## Tye it together
+      fullXMLString <- paste0(headerString, eventsString, footerString)
+      ## Parse it to XML
+      doc <- XML::xmlParse(fullXMLString, asText = TRUE)
+
+      fullPath <- file.path(root, "EVAPORATION.XML")
+      XML::saveXML(doc, fullPath)
+      cli::cli_alert_success("EVAPORATION.XML exported to {.path {root}}")    }
+  }
 }
 
 

@@ -18,8 +18,6 @@ Returns a data.table in the PDM for PCs format
 Import Hyrad data
 }
 \examples{
-root <- "C:/Users/jp000056/OneDrive - Defra/Desktop/Benchmarking_Data/MOSES_PE"
-files <- list.files(root, full.names = TRUE)
 importHYRAD(files[1], expand = TRUE)
 importHYRAD(files[1], expand = FALSE)
 }
