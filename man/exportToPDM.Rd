@@ -23,31 +23,14 @@ Export data in a format suitable for PDM for PCs
 }
 \examples{
 ## Import some data
-boot <- loadAPI(ID = "590310",
-                measure = 'rainfall',
-                period = 900,
-                type = 'total',
-                datapoints = 'range',
-                from = '2023-10-01 09:00',
-                to = '2024-10-01 08:45')
-
-whit <- loadAPI(ID = "197036",
-                measure = 'rainfall',
-                period = 900,
-                type = 'total',
-                datapoints = 'range',
-                from = '2023-10-01 09:00',
-                to = '2024-10-01 08:45')
-
-dogd <- loadAPI(ID = "U06",
-                measure = 'rainfall',
-                period = 900,
-                type = 'total',
-                datapoints = 'range',
-                from = '2023-10-01 09:00',
-                to = '2024-10-01 08:45')
-## Carry oout a catchment average
-rainfall <- catchAvg(boot, whit, dogd, areas = c(45, 25, 15))
-
+loadAPI(ID = c("590310", "197036", "U06"),
+        measure = 'rainfall',
+        period = 900,
+        type = 'total',
+        datapoints = 'range',
+        from = '2023-10-01 09:00',
+        to = '2024-10-01 08:45')
+## Carry out a catchment average
+rainfall <- catchAvg(rainfall_197036, rainfall_590310, rainfall_U06, areas = c(45, 25, 15))
 exportToPDM(x = rainfall, type = "data.table")
 }
