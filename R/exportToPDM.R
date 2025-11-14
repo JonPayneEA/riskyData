@@ -6,6 +6,7 @@
 #' @param name Catchment name used in XML exports
 #'
 #' @importFrom data.table data.table
+#' @importFrom data.table fwrite
 #' @importFrom data.table year
 #' @importFrom data.table month
 #' @importFrom data.table mday
@@ -32,11 +33,13 @@
 #' rainfall <- catchAvg(rainfall_197036, rainfall_590310, rainfall_U06, areas = c(45, 25, 15))
 #' exportToPDM(x = rainfall, type = "data.table")
 exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input"){
+  ## Data checks
   if (is.null(x)) {cli::cli_abort("No data have been supplied for export!")}
   fileTypes <- c("csv", "XML", "data.table")
   if (!type %in% fileTypes) {cli::cli_abort("The export type, {.emph {type}}, is not supported. Please use either of {.emph {paste(fileTypes, collapse = ', ')}}.", wrap = TRUE)}
   root <- path
   if (is.null(root)){root <- tools::file_path_as_absolute("./")}
+  ## For class catchAvg
   if (any(class(x) == "catchAvg")) {
     dt <- data.table::data.table(year = data.table::year(x$dateTime),
                                  month = data.table::month(x$dateTime),
@@ -47,13 +50,14 @@ exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input")
                                  rainfall = x$value)
     if (type == "csv"){
       fullPath <- file.path(root, "RAIN.csv")
-      fwrite(dt, file = fullPath)
+      data.table::fwrite(dt, file = fullPath)
       cli::cli_alert_success("RAIN.csv exported to {.path {root}}")
     }
     if (type == "data.table") {
       return(dt)
     }
     if (type == "XML"){
+      ## Establish data fit into the XML metadata fields
       startDate <- as.Date(x$dateTime[1])
       startTime <- format(x$dateTime[1], "%H:%M:%S")
       endDate <- as.Date(tail(x$dateTime, 1))
@@ -95,11 +99,12 @@ exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input")
   </series>
 </TimeSeries>
 '
-      ## Tye it together
+      ## Tie it together
       fullXMLString <- paste0(headerString, eventsString, footerString)
       ## Parse it to XML
       doc <- XML::xmlParse(fullXMLString, asText = TRUE)
 
+      ## Export
       fullPath <- file.path(root, "RAIN.XML")
       XML::saveXML(doc, fullPath)
       cli::cli_alert_success("RAIN.XML exported to {.path {root}}")    }
@@ -108,13 +113,14 @@ exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input")
     dt <- x
     if (type == "csv"){
       fullPath <- file.path(root, "EVAPORATION.csv")
-      fwrite(dt, file = fullPath)
+      data.table::fwrite(dt, file = fullPath)
       cli::cli_alert_success("EVAPORATION.csv exported to {.path {root}}")
     }
     if (type == "data.table") {
       return(dt)
     }
     if (type == "XML"){
+      ## Establish data fit into the XML metadata fields
       startDate <- as.Date(sprintf("%04d-%02d-%02d",
                                    dt$year[1],
                                    dt$month[1],
@@ -168,11 +174,12 @@ exportToPDM <- function(x = NULL, path = NULL, type = "csv", name = "PDM_Input")
   </series>
 </TimeSeries>
 '
-      ## Tye it together
+      ## Tie it together
       fullXMLString <- paste0(headerString, eventsString, footerString)
       ## Parse it to XML
       doc <- XML::xmlParse(fullXMLString, asText = TRUE)
 
+      ## Export
       fullPath <- file.path(root, "EVAPORATION.XML")
       XML::saveXML(doc, fullPath)
       cli::cli_alert_success("EVAPORATION.XML exported to {.path {root}}")    }
